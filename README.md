@@ -4,7 +4,7 @@ A minimal portfolio built with Next.js App Router, React, TypeScript, Tailwind C
 Three.js, React Three Fiber and Drei. The homepage uses the existing Blender
 workspace as a small, interactive 3D hero.
 
-![Desktop homepage](docs/previews/home-desktop.png)
+![Desktop homepage](docs/previews/phase-2a/default.png)
 
 ## Develop locally
 
@@ -34,12 +34,14 @@ render into `public/`, verifying their hashes without editing the original asset
 ## Routes and interactions
 
 - `/`: fixed orthographic camera, damped wheel zoom (0.9–1.7×), chair tracking up
-  to ±18°, restrained hover highlights, focus-only tooltips and 3D object navigation.
+  to ±18°, portrait/screen hover feedback and two-stage 3D object navigation.
 - `/about`: clearly marked introductory/background/experience/education placeholders.
 - `/projects`: responsive placeholders for WillDo, MenuLab, FixLens and Sippy.
 - `/contact`: contact placeholders and the verified GitHub profile link.
 
-Wall frame → About, monitor → Projects, smartphone → Contact. The same actions
+Wall frame → About, monitor → Projects, smartphone → Contact. First select focuses;
+select again enters through a coordinated image expansion. Escape/Back restores Home.
+The same actions
 are keyboard accessible. The backpack, mug and trash bin remain static. There are
 no plants, orbit controls, free camera movement or additional hero copy.
 
@@ -51,9 +53,10 @@ no plants, orbit controls, free camera movement or additional hero copy.
   projected DOM accessibility controls and fallback/error handling.
 - `lib/workspace-config.ts`: initial framing, zoom limits, damping and object routes.
 - `scripts/sync-assets.mjs`: source-preserving web asset copying and node/pivot audit.
-- `public/`: only the model and saved render required for web serving.
+- `public/`: model, fallback render, avatar and editable screen assets.
 - `workspace/`: preserved Blender files, models, modeling scripts and references.
-- `docs/PHASE_1.md`: implementation details, validation results and known limits.
+- `docs/PHASE_1.md`: initial website handoff.
+- `docs/PHASE_2A.md`: shared focus/transitions, preview regeneration and validation.
 
 The model is not rebuilt. Web material instances are cloned for reversible hover
 feedback. The existing floor gets a neutral web-only studio fill and a transparent

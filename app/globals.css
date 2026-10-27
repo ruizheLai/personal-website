@@ -20,7 +20,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-header nav a:hover::after, .site-header nav a[aria-current="page"]::after { transform: scaleX(1); }
 .home { position: relative; height: 100dvh; min-height: 480px; overflow: hidden; outline: none; background: var(--paper); }
 .workspace-stage { position: absolute; inset: 80px 0 0; }
-.workspace-canvas { position: absolute !important; inset: 0; opacity: 0; transition: opacity 600ms ease; }
+.workspace-canvas { position: absolute !important; inset: 0; opacity: 0; transition: opacity 420ms ease; }
 .workspace-canvas.is-ready { opacity: 1; }
 .workspace-canvas canvas { display: block; touch-action: pan-y; outline: none; }
 .workspace-fallback { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; pointer-events: none; }
@@ -29,7 +29,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .workspace-status button { display: inline; margin-left: 12px; background: none; border: 0; border-bottom: 1px solid #a0a09a; padding: 0 0 3px; cursor: pointer; color: #3a3a37; pointer-events: auto; }
 .loading-dot { display: inline-block; margin-right: 8px; width: 4px; height: 4px; border-radius: 50%; background: #8c8c85; animation: breathe 1.5s ease-in-out infinite; vertical-align: 2px; }
 @keyframes breathe { 50% { opacity: .25; } }
-.object-tooltip { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); padding: 8px 12px; background: rgba(255,255,253,.96); color: #353532; box-shadow: 0 3px 15px #0000000d; border: 1px solid #deded8; border-radius: 5px; font-size: 11px; line-height: 1.2; white-space: nowrap; pointer-events: none; }
 .scene-focus-target { width: 38px; height: 38px; padding: 0; border: 0; background: transparent; border-radius: 4px; pointer-events: none; }
 .scene-focus-target:focus-visible { outline: 1px solid #7d7d72; box-shadow: 0 0 0 5px #ffffff66; }
 .content-page { width: min(1120px,100%); margin: 0 auto; padding: 190px 48px 40px; min-height: 100dvh; outline: none; }
@@ -63,3 +62,17 @@ h2 { font-size: 20px; font-weight: 400; letter-spacing: -.35px; margin: 12px 0; 
 .workspace-overlays { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
 .projected-object-control { position: absolute; top: 0; left: 0; width: 0; height: 0; opacity: 0; pointer-events: none; }
 .projected-object-control .scene-focus-target { position: absolute; top: -19px; left: -19px; }
+
+/* Phase 2A: loading stays empty until the complete scene is ready. */
+.workspace-focus-nav { position: absolute; z-index: 8; bottom: 35px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 22px; white-space: nowrap; font-size: 12px; color: #777773; }
+.workspace-focus-nav button { background: #f4f4f4e8; border: 1px solid #d6d6d1; border-radius: 30px; padding: 10px 18px; color: #33332f; cursor: pointer; }
+.workspace-focus-nav button:disabled { opacity: .5; cursor: default; }
+.page-transition-shell { position: fixed; inset: 0; z-index: 15; pointer-events: none; }
+.page-transition-image { position: absolute; overflow: hidden; background: var(--paper); will-change: left, top, width, height, opacity; }
+.page-transition-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.transition-contact { background: #c9cac5; }
+.transition-about img { object-position: center; }
+@media(max-width:767px) { .workspace-focus-nav { bottom: 24px; gap: 15px; font-size: 11px; } }
+
+.workspace-focus-nav span { background: #f4f4f4e8; color: #585854; padding: 8px 12px; border-radius: 20px; }
+@media (pointer: coarse) { .projected-object-control .scene-focus-target { width: 44px; height: 44px; top: -22px; left: -22px; pointer-events: auto; touch-action: manipulation; } }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageTransitionProvider from "@/components/workspace/PageTransitionProvider";
 import Header from "@/components/layout/Header";
 import "./globals.css";
 
@@ -12,8 +13,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
-        <Header />
-        {children}
+        <PageTransitionProvider><Header />
+        {children}</PageTransitionProvider>
       </body>
     </html>
   );

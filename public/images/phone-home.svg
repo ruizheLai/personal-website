@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="1040" viewBox="0 0 480 1040">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#deded9"/><stop offset="1" stop-color="#a8aaa6"/></linearGradient></defs>
+<rect width="480" height="1040" fill="url(#bg)"/><rect x="185" y="25" width="110" height="15" rx="7" fill="#262827"/>
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle" fill="#252725"><text x="240" y="220" font-size="76" font-weight="300">09:41</text><text x="240" y="270" font-size="22" letter-spacing="3">LET’S CONNECT</text>
+<g transform="translate(38 510)"><rect width="112" height="112" rx="26" fill="#f5f5f1"/><rect x="24" y="34" width="64" height="46" rx="5" fill="none" stroke="#343734" stroke-width="5"/><path d="m25 37 31 24 31-24" fill="none" stroke="#343734" stroke-width="5"/><text x="56" y="151" font-size="21">Email</text></g>
+<g transform="translate(184 510)"><rect width="112" height="112" rx="26" fill="#f5f5f1"/><text x="56" y="80" font-size="67" font-weight="700">in</text><text x="56" y="151" font-size="21">LinkedIn</text></g>
+<g transform="translate(330 510)"><rect width="112" height="112" rx="26" fill="#f5f5f1"/><path d="M35 42 30 25 47 32 Q56 29 65 32 L82 25 77 43 Q88 65 72 77 L65 81 65 94 M47 94 47 81 Q27 80 27 60 Q27 48 35 42 M47 85 Q29 91 22 77" fill="none" stroke="#343734" stroke-width="5" stroke-linecap="round"/><text x="56" y="151" font-size="21">GitHub</text></g></g>
+<rect x="165" y="997" width="150" height="6" rx="3" fill="#363936"/>
+</svg>

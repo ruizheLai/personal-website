@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "productionBuild": "passed",
+  "typecheck": "passed",
+  "sourceModelSha256": "9a7275e0c53bb3e79c9132f6eea6f58ee1360997fd3278aac9e60265c9ca8b72",
+  "sourceAssetsModified": false,
+  "desktopViewport": [
+    1440,
+    900
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "loading": {
+    "test": "4-second isolated GLB delay",
+    "fallbackImages": 0,
+    "canvasOpacityWhileLoading": 0,
+    "fadeSeconds": 0.42
+  },
+  "navigation": {
+    "firstClick": "focus only",
+    "secondClick": {
+      "WallFrame": "/about",
+      "Monitor": "/projects",
+      "Smartphone": "/contact"
+    },
+    "keyboardEnter": "passed",
+    "keyboardSpace": "passed",
+    "escapeDuringFocus": "passed",
+    "emptySpaceExit": "passed",
+    "mobileBack": "passed",
+    "conflictingClicks": "ignored",
+    "headerInterruption": "passed"
+  },
+  "screens": {
+    "avatar": "correct orientation and centered crop",
+    "monitor": "actual Projects screenshot",
+    "phone": "Email, LinkedIn, GitHub visual previews"
+  },
+  "chair": "left/right/reset visually verified after direction reversal",
+  "modelErrorRetry": "passed",
+  "newDependencies": [],
+  "limitations": [
+    "Responsive browser viewports tested; physical touch hardware not tested.",
+    "Reduced-motion and WebGL-unavailable branches code-reviewed, not forcibly emulated.",
+    "Upstream THREE.Clock development warning remains.",
+    "Overlay uses axis-aligned bounds and blends a static desktop Projects preview into the responsive destination."
+  ]
+}

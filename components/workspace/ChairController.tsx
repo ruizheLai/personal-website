@@ -12,7 +12,7 @@ export default function ChairController({ chair, reducedMotion }: { chair: Objec
       if (event.pointerType !== "mouse" || reducedMotion) return;
       const rect = element.getBoundingClientRect();
       const normalized = MathUtils.clamp(((event.clientX - rect.left) / rect.width - 0.5) * 2, -1, 1);
-      target.current = normalized * MathUtils.degToRad(config.chair.maxDegrees);
+      target.current = config.chair.direction * normalized * MathUtils.degToRad(config.chair.maxDegrees);
       invalidate();
     };
     const reset = () => { target.current = 0; invalidate(); };

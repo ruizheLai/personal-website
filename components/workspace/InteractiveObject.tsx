@@ -1,16 +1,14 @@
 "use client";
-import type { Interaction } from "@/lib/workspace-config";
-export default function InteractiveObject({ interaction, active, enabled, attach, onFocus, onBlur, onNavigate }: {
-  interaction: Interaction; active: boolean; enabled: boolean;
+import type { Interaction, InteractionPhase } from "@/lib/workspace-config";
+export default function InteractiveObject({ interaction, selected, phase, enabled, attach, onFocus, onBlur, onActivate }: {
+  interaction: Interaction; selected: boolean; phase: InteractionPhase; enabled: boolean;
   attach: (element: HTMLDivElement | null) => void;
-  onFocus: () => void; onBlur: () => void; onNavigate: () => void;
+  onFocus: () => void; onBlur: () => void; onActivate: () => void;
 }) {
-  return (
-    <div ref={attach} className="projected-object-control">
-      <button className="scene-focus-target" disabled={!enabled} aria-label={interaction.label} onFocus={onFocus} onBlur={onBlur} onClick={onNavigate}>
-        <span className="sr-only">{interaction.label}</span>
-      </button>
-      {active && <span className="object-tooltip" role="tooltip">{interaction.label}</span>}
-    </div>
-  );
+  const action = selected && phase === "focused" ? "Enter" : "Focus";
+  return <div ref={attach} className="projected-object-control">
+    <button className="scene-focus-target" disabled={!enabled || ((phase === "focused" || phase === "focusing" || phase === "transitioning") && !selected)} aria-disabled={phase === "focusing" || phase === "transitioning"} aria-describedby="workspace-instructions" aria-label={`${action} ${interaction.label}`} aria-pressed={selected} onFocus={onFocus} onBlur={onBlur} onClick={onActivate}>
+      <span className="sr-only">{action} {interaction.label}</span>
+    </button>
+  </div>;
 }
