@@ -68,7 +68,7 @@ def finish(obj, name, parent, mat, bevel=0):
 
 def box(name, location, dimensions, mat, parent, bevel=0.003):
     bpy.ops.mesh.primitive_cube_add(size=1, location=location)
-    obj = bpy.context.object
+    obj = bpy.context.view_layer.objects.active
     obj.dimensions = dimensions
     bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
     return finish(obj, name, parent, mat, bevel)
@@ -77,7 +77,7 @@ def box(name, location, dimensions, mat, parent, bevel=0.003):
 def cylinder(name, location, radius, depth, mat, parent, bevel=0.002):
     bpy.ops.mesh.primitive_cylinder_add(vertices=48, radius=radius, depth=depth,
                                       location=location)
-    return finish(bpy.context.object, name, parent, mat, bevel)
+    return finish(bpy.context.view_layer.objects.active, name, parent, mat, bevel)
 
 
 def surface(name, location, width, height, radius, mat, parent):
@@ -129,7 +129,7 @@ def lathe(name, profile, location, mat, parent, segments=64):
 
 def area(name, location, energy, size, target):
     bpy.ops.object.light_add(type="AREA", location=location)
-    obj = bpy.context.object
+    obj = bpy.context.view_layer.objects.active
     obj.name = name
     obj.data.energy = energy
     obj.data.shape = "DISK"
@@ -242,7 +242,7 @@ def build():
             box("Numpad_%d_%d" % (row, col), (.283 + col * .04, .052 - row * .033, .014),
                 (.031, .024, .009), black, keyboard, .002)
     bpy.ops.mesh.primitive_uv_sphere_add(segments=32, ring_count=16, location=(.47, -.373, .915))
-    mouse = bpy.context.object
+    mouse = bpy.context.view_layer.objects.active
     mouse.scale = (.052, .074, .024)
     bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
     finish(mouse, "Mouse", decor, edge)
@@ -265,7 +265,7 @@ def build():
     bpy.ops.mesh.primitive_torus_add(major_segments=40, minor_segments=12,
         location=(.075, 0, .082), major_radius=.041, minor_radius=.008,
         rotation=(math.pi / 2, 0, 0))
-    finish(bpy.context.object, "MugHandle", mug, ceramic)
+    finish(bpy.context.view_layer.objects.active, "MugHandle", mug, ceramic)
 
     # Hollow, tapered wastebasket. Pivot at floor contact for later rigid-body use.
     trash = lathe("TrashBin", ((.001, 0), (.123, 0), (.139, .02), (.155, .39),
@@ -292,7 +292,7 @@ def build():
             obj["trailing_foliage_drop_m"] = .25
 
     bpy.ops.object.camera_add(location=(0, -8.5, 3.45))
-    camera = bpy.context.object
+    camera = bpy.context.view_layer.objects.active
     camera.name = "WorkspaceCamera"
     target = Vector((0, -.05, .70))
     camera.rotation_euler = (target - camera.location).to_track_quat("-Z", "Y").to_euler()
@@ -372,7 +372,7 @@ def main():
     scene.render.resolution_x = max(300, args.resolution)
     scene.render.resolution_y = round(scene.render.resolution_x * 2 / 3)
     scene.render.resolution_percentage = 100
-    scene.render.filepath = str(output / "previews" / "workspace_preview.png")
+    scene.render.filepath = "//../previews/workspace_preview.png"
     bpy.context.view_layer.update()
     blend = output / "blender" / "workspace.blend"
     bpy.ops.wm.save_as_mainfile(filepath=str(blend))
@@ -393,7 +393,7 @@ def main():
         export_materials="EXPORT", export_animations=False)
     report = validate(glb, expected, parents, surfaces)
     report["glb_bytes"] = glb.stat().st_size
-    report["preview"] = str(output / "previews" / "workspace_preview.png")
+    report["preview"] = "previews/workspace_preview.png"
     report_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
     # Restore the editable studio scene after the deliberately destructive import test.
     bpy.ops.wm.open_mainfile(filepath=str(blend))

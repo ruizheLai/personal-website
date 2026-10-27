@@ -1,3 +1,5 @@
+> Latest scene: [Workspace v2 — chair and backpack](WORKSPACE_V2.md). This page documents the preserved v1 baseline.
+
 # Portfolio workspace — Phase 1
 
 ## Current delivery status
