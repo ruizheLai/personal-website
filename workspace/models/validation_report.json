@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "errors": [],
+  "imported_nodes": 133,
+  "mesh_nodes": 110,
+  "triangles": 22890,
+  "checks": [
+    "names",
+    "hierarchy",
+    "world transforms (0.1 mm tolerance)",
+    "mesh materials",
+    "screen UVs",
+    "placeholder extras"
+  ],
+  "blender_version": "5.2.3 LTS",
+  "glb_bytes": 565788,
+  "preview": "workspace/previews/workspace_preview.png"
+}

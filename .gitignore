@@ -1,0 +1,47 @@
+# JavaScript / React / Next.js
+node_modules/
+.next/
+dist/
+build/
+out/
+coverage/
+.vercel/
+.netlify/
+.turbo/
+.cache/
+*.tsbuildinfo
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+credentials.json
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# Blender backups; keep the editable .blend source
+*.blend[0-9]*
+*.blend@
+# Temporary files and local tools
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+*.log
+.vscode/
+.idea/
+.tools/
+# Windows / macOS
+Thumbs.db
+Desktop.ini
+.DS_Store
+$RECYCLE.BIN/
