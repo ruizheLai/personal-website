@@ -1,0 +1,101 @@
+{
+  "source": "workspace/models/workspace_v2.glb",
+  "servedCopy": "public/models/workspace_v2.glb",
+  "sha256": "9a7275e0c53bb3e79c9132f6eea6f58ee1360997fd3278aac9e60265c9ca8b72",
+  "bytes": 2180504,
+  "nodeCount": 211,
+  "meshCount": 182,
+  "materialCount": 21,
+  "chair": {
+    "name": "Chair_Root",
+    "parent": "Interactive",
+    "translation": [
+      0,
+      -0.004999999888241291,
+      0.9800000190734863
+    ],
+    "rotation": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "axis": "Y"
+  },
+  "camera": {
+    "camera": 0,
+    "name": "WorkspaceCamera",
+    "rotation": [
+      -0.1566684991121292,
+      0,
+      0,
+      0.9876512885093689
+    ],
+    "translation": [
+      0,
+      3.450000047683716,
+      8.5
+    ],
+    "index": 210,
+    "definition": {
+      "name": "Camera",
+      "orthographic": {
+        "xmag": 2.0999999046325684,
+        "ymag": 1.400437436401844,
+        "zfar": 300,
+        "znear": 0.10000000149011612
+      },
+      "type": "orthographic"
+    }
+  },
+  "interactions": [
+    {
+      "name": "Workspace",
+      "parent": null
+    },
+    {
+      "name": "Monitor",
+      "parent": "Navigation"
+    },
+    {
+      "name": "MonitorScreen",
+      "parent": "Monitor"
+    },
+    {
+      "name": "WallFrame",
+      "parent": "Navigation"
+    },
+    {
+      "name": "FrameArtwork",
+      "parent": "WallFrame"
+    },
+    {
+      "name": "Smartphone",
+      "parent": "Navigation"
+    },
+    {
+      "name": "PhoneScreen",
+      "parent": "Smartphone"
+    },
+    {
+      "name": "PhoneStand",
+      "parent": "Workspace"
+    },
+    {
+      "name": "Chair_Root",
+      "parent": "Interactive"
+    },
+    {
+      "name": "Backpack_Root",
+      "parent": "Interactive"
+    },
+    {
+      "name": "TrashBin",
+      "parent": "Interactive"
+    },
+    {
+      "name": "WorkspaceCamera",
+      "parent": null
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "routes": [
+    "/",
+    "/about",
+    "/projects",
+    "/contact"
+  ],
+  "sourceModelSha256": "9a7275e0c53bb3e79c9132f6eea6f58ee1360997fd3278aac9e60265c9ca8b72",
+  "desktopViewport": [
+    1440,
+    900
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "tabletViewport": [
+    1024,
+    768
+  ],
+  "horizontalOverflow": false,
+  "objectRaycastNavigation": {
+    "Monitor": "/projects",
+    "WallFrame": "/about",
+    "Smartphone": "/contact"
+  },
+  "hoverTooltips": "passed",
+  "keyboardNavigation": "passed",
+  "measuredZoom": {
+    "maximum": 1.7,
+    "minimum": 0.9000001912517619
+  },
+  "chairTrackingAndReturn": "visually verified",
+  "modelErrorFallback": "browser verified with isolated GLB 404",
+  "retryRecovery": "browser verified",
+  "normalRouteRuntimeErrors": 0,
+  "npmAuditVulnerabilities": 0,
+  "limitations": [
+    "WebGL-unavailable and reduced-motion branches were not forcibly emulated.",
+    "Responsive viewports were tested, not physical mobile/tablet hardware.",
+    "Upstream THREE.Clock development deprecation warning remains."
+  ]
+}
