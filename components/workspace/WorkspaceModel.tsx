@@ -31,13 +31,13 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
     const ownedMaterials: Material[] = [];
     model.traverse(object => {
       if (!(object instanceof Mesh)) return;
-      object.castShadow = object.name !== "Floor";
+      object.castShadow = object.name !== "Floor" && object.name !== "SeamlessWall";
       object.receiveShadow = true;
       const originals = Array.isArray(object.material) ? object.material : [object.material];
       const materials = originals.map(original => {
         const material = original.clone(); ownedMaterials.push(material);
         if (material instanceof MeshStandardMaterial) {
-          if (object.name === "Floor") material.emissive.setRGB(3.5, 3.5, 3.5);
+          if (object.name === "Floor" || object.name === "SeamlessWall") material.emissive.setRGB(3.5, 3.5, 3.5);
           if (object.name === "MonitorScreen" || object.name === "PhoneScreen") {
             material.color.set("#070a0c"); material.emissive.set(0); material.roughness = .18; material.metalness = .2;
           }
@@ -66,9 +66,15 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
     const shadowFloor = new Mesh(floor.geometry, shadowMaterial);
     floor.matrixWorld.decompose(shadowFloor.position, shadowFloor.quaternion, shadowFloor.scale);
     shadowFloor.position.y += .001; shadowFloor.receiveShadow = true; shadowFloor.renderOrder = 1;
-    return { model, chair, camera, ownedMaterials, surfaces, corners, shadowFloor, shadowMaterial };
+    const wallSupport = model.getObjectByName("SeamlessWall");
+    if (!(wallSupport instanceof Mesh)) throw new Error("The seamless wall support is missing.");
+    const wallShadowMaterial = new ShadowMaterial({ color: "#55554f", opacity: .16, depthWrite: false });
+    const shadowWall = new Mesh(wallSupport.geometry, wallShadowMaterial);
+    wallSupport.matrixWorld.decompose(shadowWall.position, shadowWall.quaternion, shadowWall.scale);
+    shadowWall.position.z += .001; shadowWall.receiveShadow = true; shadowWall.renderOrder = 1;
+    return { model, chair, camera, ownedMaterials, surfaces, corners, shadowFloor, shadowMaterial, shadowWall, wallShadowMaterial };
   }, [asset.scene]);
-  useEffect(() => () => { prepared.ownedMaterials.forEach(material => material.dispose()); prepared.shadowMaterial.dispose(); }, [prepared]);
+  useEffect(() => () => { prepared.ownedMaterials.forEach(material => material.dispose()); prepared.shadowMaterial.dispose(); prepared.wallShadowMaterial.dispose(); }, [prepared]);
   useEffect(() => {
     gl.domElement.style.cursor = hovered ? "pointer" : "";
     return () => { gl.domElement.style.cursor = ""; };
@@ -104,6 +110,7 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
     <ChairController chair={prepared.chair} reducedMotion={reducedMotion} />
     <primitive object={prepared.model} dispose={null} onPointerMove={move} onPointerOut={() => onHoverChange(null)} onClick={click} />
     <primitive object={prepared.shadowFloor} dispose={null} />
+    <primitive object={prepared.shadowWall} dispose={null} />
     {INTERACTIONS.map((item, index) => <SurfaceArtwork key={item.id} surface={prepared.surfaces[item.id]} texture={textures[index]} kind={item.id === "about" ? "portrait" : "screen"} active={active === item.id || command.id === item.id} reducedMotion={reducedMotion} />)}
   </>;
 }

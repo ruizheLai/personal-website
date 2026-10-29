@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "errors": [],
+  "imported_nodes": 205,
+  "mesh_nodes": 177,
+  "triangles": 137108,
+  "checks": [
+    "names",
+    "hierarchy",
+    "world transforms (0.1 mm tolerance)",
+    "mesh materials",
+    "screen UVs",
+    "placeholder extras"
+  ],
+  "blender_version": "5.2.3 LTS",
+  "source_sha256": {
+    "workspace\\blender\\workspace_v2.blend": "3cb61d3a4c9579281bc97874ae543ff3f093636619ca8e23cb7ebc521e76ef7b",
+    "workspace\\models\\workspace_v2.glb": "9a7275e0c53bb3e79c9132f6eea6f58ee1360997fd3278aac9e60265c9ca8b72",
+    "public\\images\\about-avatar.png": "b8d4e0b037768d2bbc6d2b8388a23ddc835992610b8ad3ef8ecafdadc9e533a9"
+  },
+  "previous_sources_unchanged": true,
+  "unchanged_existing_objects": 207,
+  "unexpected_changes": [],
+  "square_artwork_m": [
+    0.4959999918937683,
+    0.0,
+    0.4959999918937683
+  ],
+  "square_frame_outer_m": [
+    0.56,
+    0.56
+  ],
+  "removed_panel": "Wall",
+  "added_support": "SeamlessWall",
+  "hidden_source_graphics": [
+    "ArtworkCircle",
+    "ArtworkGraphic",
+    "ArtworkLine_01",
+    "ArtworkLine_02",
+    "ArtworkLine_03",
+    "ArtworkLine_04"
+  ],
+  "avatar_source": "public/images/about-avatar-v2.png",
+  "avatar_sha256": "a11e037d2f651b30b503bfd859ed725b8a2378960f3cbc0ad243e830e4ee6a38",
+  "glb_sha256": "5271ed53d9c40f128da6b888fdf4a04ab5e50ff4c217a7c5bdb0fcf80dc535b1",
+  "glb_bytes": 2163588,
+  "blender": "blender/workspace_v3.blend",
+  "glb": "models/workspace_v3.glb",
+  "preview": "previews/workspace_v3_preview.png"
+}

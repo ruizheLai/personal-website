@@ -4,7 +4,7 @@ A minimal portfolio built with Next.js App Router, React, TypeScript, Tailwind C
 Three.js, React Three Fiber and Drei. The homepage uses the existing Blender
 workspace as a small, interactive 3D hero.
 
-![Desktop homepage](docs/previews/phase-2a/default.png)
+![Desktop homepage](docs/previews/phase-2a-1/default.png)
 
 ## Develop locally
 
@@ -57,8 +57,9 @@ no plants, orbit controls, free camera movement or additional hero copy.
 - `workspace/`: preserved Blender files, models, modeling scripts and references.
 - `docs/PHASE_1.md`: initial website handoff.
 - `docs/PHASE_2A.md`: shared focus/transitions, preview regeneration and validation.
+- `docs/PHASE_2A_1.md`: seamless white wall, square frame, new avatar and v3 regeneration.
 
-The model is not rebuilt. Web material instances are cloned for reversible hover
+The active v3 model is refined from the saved v2 scene, preserving earlier versions. Web material instances are cloned for reversible hover
 feedback. The existing floor gets a neutral web-only studio fill and a transparent
 shadow layer reusing its geometry; original files remain unchanged.
 

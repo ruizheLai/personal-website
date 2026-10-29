@@ -14,6 +14,7 @@ export default function PageTransitionProvider({ children }: { children: React.R
   const [resetRevision, setResetRevision] = useState(0);
   const [transition, setTransition] = useState<Transition | null>(null);
   const overlay = useRef<HTMLDivElement>(null);
+  const image = useRef<HTMLImageElement>(null);
   const animation = useRef<Animation | null>(null);
   const locked = useRef(false);
   const navigated = useRef(false);
@@ -31,13 +32,28 @@ export default function PageTransitionProvider({ children }: { children: React.R
     const { rect } = transition;
     const element = overlay.current;
     let cancelled = false;
-    animation.current = element.animate([
-      { left: rect.left + "px", top: rect.top + "px", width: rect.width + "px", height: rect.height + "px", borderRadius: transition.id === "contact" ? "8px" : "0px" },
-      { left: "0px", top: "0px", width: window.innerWidth + "px", height: window.innerHeight + "px", borderRadius: "0px" },
-    ], { duration: reducedMotion ? 80 : 720, easing: "cubic-bezier(.22,.7,.18,1)", fill: "forwards" });
-    animation.current.finished.then(() => {
-      if (!cancelled) { navigated.current = true; router.push(target.href); }
-    }).catch(() => {});
+    const expand = async () => {
+      // A new portrait may not be decoded for HTML yet, even when its WebGL texture is ready.
+      // Keep the real 3D surface visible until the matching image can paint.
+      try { await image.current?.decode(); }
+      catch (error) {
+        if (!cancelled) {
+          console.error("Workspace transition image could not be decoded:", error);
+          locked.current = false; setTransition(null); router.push(target.href);
+        }
+        return;
+      }
+      if (cancelled) return;
+      element.dataset.imageReady = "true";
+      animation.current = element.animate([
+        { opacity: 1, left: rect.left + "px", top: rect.top + "px", width: rect.width + "px", height: rect.height + "px", borderRadius: transition.id === "contact" ? "8px" : "0px" },
+        { opacity: 1, left: "0px", top: "0px", width: window.innerWidth + "px", height: window.innerHeight + "px", borderRadius: "0px" },
+      ], { duration: reducedMotion ? 80 : 720, easing: "cubic-bezier(.22,.7,.18,1)", fill: "forwards" });
+      animation.current.finished.then(() => {
+        if (!cancelled) { navigated.current = true; router.push(target.href); }
+      }).catch(() => {});
+    };
+    void expand();
     return () => { cancelled = true; animation.current?.cancel(); };
   }, [transition, router, reducedMotion]);
   useEffect(() => {
@@ -65,9 +81,9 @@ export default function PageTransitionProvider({ children }: { children: React.R
   return <TransitionContext.Provider value={{ enter, cancel, resetRevision }}>
     {children}
     {transition && item && <div className="page-transition-shell" aria-hidden="true">
-      <div ref={overlay} className={`page-transition-image transition-${item.id}`} style={{ left: transition.rect.left, top: transition.rect.top, width: transition.rect.width, height: transition.rect.height }}>
+      <div ref={overlay} className={`page-transition-image transition-${item.id}`} style={{ opacity: 0, left: transition.rect.left, top: transition.rect.top, width: transition.rect.width, height: transition.rect.height }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={item.image} alt="" />
+        <img ref={image} src={item.image} alt="" />
       </div>
     </div>}
   </TransitionContext.Provider>;

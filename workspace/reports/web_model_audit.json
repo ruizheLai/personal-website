@@ -1,11 +1,17 @@
 {
-  "source": "workspace/models/workspace_v2.glb",
-  "servedCopy": "public/models/workspace_v2.glb",
-  "sha256": "9a7275e0c53bb3e79c9132f6eea6f58ee1360997fd3278aac9e60265c9ca8b72",
-  "bytes": 2180504,
-  "nodeCount": 211,
-  "meshCount": 182,
-  "materialCount": 21,
+  "source": "workspace/models/workspace_v3.glb",
+  "servedCopy": "public/models/workspace_v3.glb",
+  "sha256": "5271ed53d9c40f128da6b888fdf4a04ab5e50ff4c217a7c5bdb0fcf80dc535b1",
+  "bytes": 2163588,
+  "nodeCount": 205,
+  "meshCount": 177,
+  "materialCount": 20,
+  "artwork": {
+    "width": 0.4959999918937683,
+    "height": 0.4959999918937683,
+    "aspectRatio": 1
+  },
+  "boundedWallPanel": false,
   "chair": {
     "name": "Chair_Root",
     "parent": "Interactive",
@@ -36,7 +42,7 @@
       3.450000047683716,
       8.5
     ],
-    "index": 210,
+    "index": 204,
     "definition": {
       "name": "Camera",
       "orthographic": {
@@ -96,6 +102,10 @@
     {
       "name": "WorkspaceCamera",
       "parent": null
+    },
+    {
+      "name": "SeamlessWall",
+      "parent": "Environment"
     }
   ]
 }
