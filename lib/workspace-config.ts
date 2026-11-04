@@ -1,5 +1,5 @@
 export const MODEL_URL = "/models/workspace_v3.glb";
-export const ARTWORK = { default: "/images/about-avatar-v2.png" } as const;
+export const ARTWORK = { default: "/images/about-avatar-v3.png" } as const;
 export const SCREEN_ASSETS = { projects: "/images/projects-preview.png", contact: "/images/phone-home.svg" } as const;
 export const WORKSPACE_CONFIG = {
   zoom: { initial: 1, min: 0.9, max: 1.7, damping: 9, wheelSensitivity: 0.0008 },

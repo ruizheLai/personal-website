@@ -1,0 +1,85 @@
+{
+  "avatar": {
+    "sha256": "0bc851c1df8022566443d69f120a917f8d7ed4004bc4f1407d3725e00aeb4072"
+  },
+  "icons": [
+    {
+      "name": "football",
+      "width": 685,
+      "height": 738,
+      "aspect": 0.9281842818428184,
+      "sourceSha256": "da46bd0929fec30183f1ed69969be4c2cf1ab517b69538da2a646b4c35ab795d",
+      "crop": {
+        "left": 239,
+        "top": 201,
+        "width": 685,
+        "height": 738
+      }
+    },
+    {
+      "name": "basketball",
+      "width": 686,
+      "height": 741,
+      "aspect": 0.9257759784075573,
+      "sourceSha256": "c7f91cc11bbdb1e9f025357968d200453d738151100b49252027d363725b7dab",
+      "crop": {
+        "left": 143,
+        "top": 200,
+        "width": 686,
+        "height": 741
+      }
+    },
+    {
+      "name": "running",
+      "width": 913,
+      "height": 696,
+      "aspect": 1.3117816091954022,
+      "sourceSha256": "45c2293f52fe161b7eb471e3f34c01a2149f7b91ac3e0c1528dd6bae576adab8",
+      "crop": {
+        "left": 0,
+        "top": 205,
+        "width": 913,
+        "height": 696
+      }
+    },
+    {
+      "name": "uiux_design",
+      "width": 736,
+      "height": 727,
+      "aspect": 1.0123796423658873,
+      "sourceSha256": "552b881885a93561544986b860ce88b76b4fd0c90b1d1f481d782af2a1011cfa",
+      "crop": {
+        "left": 204,
+        "top": 68,
+        "width": 736,
+        "height": 727
+      }
+    },
+    {
+      "name": "product_design",
+      "width": 796,
+      "height": 735,
+      "aspect": 1.0829931972789115,
+      "sourceSha256": "c70bd9f2d43bc5dcf357ed591a36cc6a3939a8e84a413cb48de2c57576108328",
+      "crop": {
+        "left": 111,
+        "top": 61,
+        "width": 796,
+        "height": 735
+      }
+    },
+    {
+      "name": "ai_development",
+      "width": 789,
+      "height": 772,
+      "aspect": 1.0220207253886011,
+      "sourceSha256": "b7d6dce2aae31a4877ab731fe1450c49da168e30d608563eddd486dc08333b32",
+      "crop": {
+        "left": 29,
+        "top": 31,
+        "width": 789,
+        "height": 772
+      }
+    }
+  ]
+}

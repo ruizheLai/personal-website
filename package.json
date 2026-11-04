@@ -5,7 +5,7 @@
   "scripts": {
     "assets": "node scripts/sync-assets.mjs",
     "check:model": "node scripts/sync-assets.mjs --audit",
-    "check:interactions": "node scripts/check-floating-layout.mjs && node scripts/check-trash-physics.mjs",
+    "check:interactions": "node scripts/check-backpack-layout.mjs && node scripts/check-trash-physics.mjs",
     "predev": "npm run assets",
     "dev": "next dev --hostname 127.0.0.1",
     "prebuild": "npm run assets",
@@ -28,6 +28,7 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@types/three": "0.186.0",
+    "sharp": "0.35.5",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2"
   }

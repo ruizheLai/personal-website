@@ -47,7 +47,8 @@ export default function SurfaceArtwork({ surface, texture, kind, active, reduced
     amount.current = Math.abs(next - target) < 0.0002 ? target : next;
     if (kind === "screen") prepared.material.opacity = amount.current;
     else {
-      const scale = 1 + amount.current * 0.03;
+      const scale = 1; // Keep the supplied portrait fully visible, including on hover.
+      prepared.mesh.position.z = .0005 + amount.current * .003;
       prepared.texture.repeat.set(prepared.cropX / scale, prepared.cropY / scale);
       prepared.texture.offset.set((1 - prepared.texture.repeat.x) / 2, (1 - prepared.texture.repeat.y) / 2);
     }

@@ -12,6 +12,8 @@ import type { SecondaryElements } from "./secondary/SecondaryOverlay";
 import BackpackInteraction from "./secondary/BackpackInteraction";
 import MugInteraction from "./secondary/MugInteraction";
 import SecondaryProjection from "./secondary/SecondaryProjection";
+import BackpackIcons from "./secondary/BackpackIcons";
+import { backpackLayout } from "@/lib/backpack-layout";
 import PhysicsBoundary from "./secondary/PhysicsBoundary";
 import SurfaceArtwork from "./SurfaceArtwork";
 const TrashBinPhysics = lazy(() => import("./secondary/TrashBinPhysics"));
@@ -40,7 +42,7 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
   const asset = useGLTF(MODEL_URL);
   // Suspend the complete scene until every visible image is available.
   const textures = useTexture(INTERACTIONS.map(item => item.image));
-  const { gl, invalidate } = useThree();
+  const { gl, invalidate, size } = useThree();
   const frames = useRef(0);
   const prepared = useMemo(() => {
     const model = asset.scene.clone(true);
@@ -117,6 +119,7 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
       }
     }
   });
+  const bagLayout = useMemo(() => backpackLayout(prepared.secondaryObjects.backpack, size.width < 768), [prepared, size.width < 768]);
   const move = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
     if (secondary.dragging) return;
@@ -127,18 +130,19 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
   };
   const click = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
-    if (event.button !== 0) return;
+    if (event.button !== 0 || secondary.dragging || secondary.clickSuppressed()) return;
     const interaction = interactionFor(event.object);
     const secondaryId = secondaryFor(event.object);
     if (secondaryId) secondary.activate(secondaryId);
     else { secondary.closeBag(); if (interaction) onActivate(interaction.id); else onReset(); }
   };
   return <>
-    <CameraController referenceCamera={prepared.camera} surfaces={prepared.surfaces} command={command} reducedMotion={reducedMotion} onSettled={onSettled} interactionLocked={secondary.dragging} />
-    <PhysicsBoundary><Suspense fallback={null}><TrashBinPhysics source={prepared.binSource} anchors={prepared.secondaryObjects} state={secondary} /></Suspense></PhysicsBoundary>
-    <BackpackInteraction model={prepared.model} open={secondary.enabled && secondary.bagOpen} reducedMotion={reducedMotion} />
+    <CameraController referenceCamera={prepared.camera} surfaces={prepared.surfaces} backpackBounds={bagLayout.bounds} command={command} reducedMotion={reducedMotion} onSettled={onSettled} interactionLocked={secondary.dragging} />
+    <PhysicsBoundary><Suspense fallback={null}><TrashBinPhysics source={prepared.binSource} anchors={prepared.secondaryObjects} state={secondary} elements={secondaryElements} /></Suspense></PhysicsBoundary>
+    <BackpackInteraction model={prepared.model} open={secondary.bagOpen} reducedMotion={reducedMotion} />
     <MugInteraction mug={prepared.secondaryObjects.mug} hovered={secondary.hovered === "mug"} pulse={secondary.mugPulse} reducedMotion={reducedMotion} visible={visible && !command.id} />
-    <SecondaryProjection objects={prepared.secondaryObjects} elements={secondaryElements} primaryRects={rects} />
+    <BackpackIcons layout={bagLayout} state={secondary} elements={secondaryElements} reducedMotion={reducedMotion} visible={visible} />
+    <SecondaryProjection objects={prepared.secondaryObjects} elements={secondaryElements} />
     <ChairController chair={prepared.chair} reducedMotion={reducedMotion} />
     <primitive object={prepared.model} dispose={null} onPointerMove={move} onPointerOut={() => { onHoverChange(null); secondary.hover(null); }} onClick={click} />
     <primitive object={prepared.shadowFloor} dispose={null} />
