@@ -4,9 +4,9 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { MathUtils, OrthographicCamera, Vector3, type Mesh } from "three";
 import { WORKSPACE_CONFIG as config, type InteractionId } from "@/lib/workspace-config";
 export type FocusCommand = { id: InteractionId | null; revision: number };
-export default function CameraController({ referenceCamera, surfaces, command, reducedMotion, onSettled }: {
+export default function CameraController({ referenceCamera, surfaces, command, reducedMotion, onSettled, interactionLocked = false }: {
   referenceCamera: OrthographicCamera; surfaces: Record<InteractionId, Mesh>; command: FocusCommand;
-  reducedMotion: boolean; onSettled: () => void;
+  reducedMotion: boolean; onSettled: () => void; interactionLocked?: boolean;
 }) {
   const { size, gl, invalidate, set, get } = useThree();
   const zoomTarget = useRef<number>(config.zoom.initial);
@@ -59,7 +59,7 @@ export default function CameraController({ referenceCamera, surfaces, command, r
   useEffect(() => {
     const element = gl.domElement;
     const wheel = (event: WheelEvent) => {
-      if (command.id || motion.current || event.ctrlKey || event.metaKey) return;
+      if (interactionLocked || command.id || motion.current || event.ctrlKey || event.metaKey) return;
       const rect = element.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width, y = (event.clientY - rect.top) / rect.height;
       if (x < .18 || x > .82 || y < .15 || y > .9) return;
@@ -70,7 +70,7 @@ export default function CameraController({ referenceCamera, surfaces, command, r
     };
     element.addEventListener("wheel", wheel, { passive: false });
     return () => element.removeEventListener("wheel", wheel);
-  }, [command.id, gl, invalidate]);
+  }, [command.id, interactionLocked, gl, invalidate]);
   useFrame((_, delta) => {
     const moving = motion.current;
     if (moving) {

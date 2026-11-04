@@ -1,12 +1,20 @@
 "use client";
-import { useEffect, useMemo, useRef, type RefObject } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, type RefObject } from "react";
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { useGLTF, useTexture } from "@react-three/drei";
 import { Mesh, MeshStandardMaterial, Object3D, OrthographicCamera, ShadowMaterial, Vector3, type Material } from "three";
 import { INTERACTIONS, MODEL_URL, type Interaction, type InteractionId, type SurfaceRect } from "@/lib/workspace-config";
 import CameraController, { type FocusCommand } from "./CameraController";
 import ChairController from "./ChairController";
+import { SECONDARY_OBJECTS, type SecondaryId } from "@/lib/secondary-config";
+import type { SecondaryState } from "./secondary/useSecondaryInteractions";
+import type { SecondaryElements } from "./secondary/SecondaryOverlay";
+import BackpackInteraction from "./secondary/BackpackInteraction";
+import MugInteraction from "./secondary/MugInteraction";
+import SecondaryProjection from "./secondary/SecondaryProjection";
+import PhysicsBoundary from "./secondary/PhysicsBoundary";
 import SurfaceArtwork from "./SurfaceArtwork";
+const TrashBinPhysics = lazy(() => import("./secondary/TrashBinPhysics"));
 export type OverlayElements = Partial<Record<InteractionId, HTMLDivElement | null>>;
 export type SurfaceRects = Partial<Record<InteractionId, SurfaceRect>>;
 function interactionFor(object: Object3D): Interaction | undefined {
@@ -15,11 +23,19 @@ function interactionFor(object: Object3D): Interaction | undefined {
     if (match) return match;
   }
 }
-export default function WorkspaceModel({ reducedMotion, onReady, active, hovered, command, onSettled, onHoverChange, onActivate, onReset, overlays, rects }: {
+function secondaryFor(object: Object3D): SecondaryId | null {
+  for (let current: Object3D | null = object; current; current = current.parent) {
+    const found = (Object.entries(SECONDARY_OBJECTS) as [SecondaryId, string][]).find(([, name]) => name === current!.name);
+    if (found) return found[0];
+  }
+  return null;
+}
+export default function WorkspaceModel({ reducedMotion, onReady, active, hovered, command, onSettled, onHoverChange, onActivate, onReset, overlays, rects, secondary, secondaryElements, visible }: {
   reducedMotion: boolean; onReady: () => void; active: InteractionId | null; hovered: InteractionId | null;
   command: FocusCommand; onSettled: () => void;
   onHoverChange: (value: InteractionId | null) => void; onActivate: (id: InteractionId) => void; onReset: () => void;
   overlays: RefObject<OverlayElements>; rects: RefObject<SurfaceRects>;
+  secondary: SecondaryState; secondaryElements: RefObject<SecondaryElements>; visible: boolean;
 }) {
   const asset = useGLTF(MODEL_URL);
   // Suspend the complete scene until every visible image is available.
@@ -72,13 +88,19 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
     const shadowWall = new Mesh(wallSupport.geometry, wallShadowMaterial);
     wallSupport.matrixWorld.decompose(shadowWall.position, shadowWall.quaternion, shadowWall.scale);
     shadowWall.position.z += .001; shadowWall.receiveShadow = true; shadowWall.renderOrder = 1;
-    return { model, chair, camera, ownedMaterials, surfaces, corners, shadowFloor, shadowMaterial, shadowWall, wallShadowMaterial };
+    const secondaryObjects = {} as Record<SecondaryId, Object3D>;
+    for (const [id, name] of Object.entries(SECONDARY_OBJECTS)) {
+      const object = model.getObjectByName(name);
+      if (!object) throw new Error("Missing secondary object: " + name);
+      secondaryObjects[id as SecondaryId] = object;
+    }
+    return { model, secondaryObjects, binSource: secondaryObjects.bin as Mesh, chair, camera, ownedMaterials, surfaces, corners, shadowFloor, shadowMaterial, shadowWall, wallShadowMaterial };
   }, [asset.scene]);
   useEffect(() => () => { prepared.ownedMaterials.forEach(material => material.dispose()); prepared.shadowMaterial.dispose(); prepared.wallShadowMaterial.dispose(); }, [prepared]);
   useEffect(() => {
-    gl.domElement.style.cursor = hovered ? "pointer" : "";
+    gl.domElement.style.cursor = secondary.dragging ? "grabbing" : hovered || secondary.hovered ? "pointer" : "";
     return () => { gl.domElement.style.cursor = ""; };
-  }, [hovered, gl]);
+  }, [hovered, secondary.hovered, secondary.dragging, gl]);
   useFrame(({ camera, size }) => {
     if (frames.current < 3) { frames.current++; invalidate(); if (frames.current === 3) onReady(); }
     camera.updateMatrixWorld();
@@ -97,18 +119,28 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
   });
   const move = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
-    if (event.pointerType !== "touch") onHoverChange(interactionFor(event.object)?.id ?? null);
+    if (secondary.dragging) return;
+    if (event.pointerType !== "touch") {
+      onHoverChange(interactionFor(event.object)?.id ?? null);
+      secondary.hover(secondaryFor(event.object));
+    }
   };
   const click = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     if (event.button !== 0) return;
     const interaction = interactionFor(event.object);
-    if (interaction) onActivate(interaction.id); else onReset();
+    const secondaryId = secondaryFor(event.object);
+    if (secondaryId) secondary.activate(secondaryId);
+    else { secondary.closeBag(); if (interaction) onActivate(interaction.id); else onReset(); }
   };
   return <>
-    <CameraController referenceCamera={prepared.camera} surfaces={prepared.surfaces} command={command} reducedMotion={reducedMotion} onSettled={onSettled} />
+    <CameraController referenceCamera={prepared.camera} surfaces={prepared.surfaces} command={command} reducedMotion={reducedMotion} onSettled={onSettled} interactionLocked={secondary.dragging} />
+    <PhysicsBoundary><Suspense fallback={null}><TrashBinPhysics source={prepared.binSource} anchors={prepared.secondaryObjects} state={secondary} /></Suspense></PhysicsBoundary>
+    <BackpackInteraction model={prepared.model} open={secondary.enabled && secondary.bagOpen} reducedMotion={reducedMotion} />
+    <MugInteraction mug={prepared.secondaryObjects.mug} hovered={secondary.hovered === "mug"} pulse={secondary.mugPulse} reducedMotion={reducedMotion} visible={visible && !command.id} />
+    <SecondaryProjection objects={prepared.secondaryObjects} elements={secondaryElements} primaryRects={rects} />
     <ChairController chair={prepared.chair} reducedMotion={reducedMotion} />
-    <primitive object={prepared.model} dispose={null} onPointerMove={move} onPointerOut={() => onHoverChange(null)} onClick={click} />
+    <primitive object={prepared.model} dispose={null} onPointerMove={move} onPointerOut={() => { onHoverChange(null); secondary.hover(null); }} onClick={click} />
     <primitive object={prepared.shadowFloor} dispose={null} />
     <primitive object={prepared.shadowWall} dispose={null} />
     {INTERACTIONS.map((item, index) => <SurfaceArtwork key={item.id} surface={prepared.surfaces[item.id]} texture={textures[index]} kind={item.id === "about" ? "portrait" : "screen"} active={active === item.id || command.id === item.id} reducedMotion={reducedMotion} />)}
