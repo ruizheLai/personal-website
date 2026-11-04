@@ -17,10 +17,10 @@ export default function SecondaryOverlay({state,elements,enabled}:{state:Seconda
    {BAG_CONTENT.map((item,i)=><span key={item.file} ref={el=>{elements.current.labels[i]=el;}} className={"backpack-label"+(state.labelsVisible?" is-visible":"")}>{item.label}</span>)}
   </div>
   {GRABBABLE_IDS.map(id=><div key={id} ref={el=>{elements.current.physics[id]=el;}} className="projected-object-control physics-control">
-   <button className="scene-focus-target physical-focus-target" aria-label={id==="bin"?"Grab trash bin":"Grab paper "+id.slice(-1)} aria-describedby="grab-instructions" disabled={!enabled||state.bagFocused} onKeyDown={event=>state.physicsKeys.current?.(id,event.nativeEvent)}/>
+   <button className="scene-focus-target physical-focus-target" aria-label="Tilt trash bin" aria-describedby="grab-instructions" disabled={!enabled||state.bagFocused} onKeyDown={event=>state.physicsKeys.current?.(id,event.nativeEvent)}/>
   </div>)}
-  <span id="grab-instructions" className="sr-only">Space or Enter grabs and releases. Arrows move; Shift and arrows rotate. Page Up and Page Down move in depth. Home stands the held object upright. Escape releases.</span>
-  {state.held&&<div className="grab-hint" role="status">{state.keyboardGrab?<span>Arrows to move · Shift-arrows to rotate · Page Up/Down for depth · Home for upright · Space to release</span>:<><span className="grab-desktop">Drag to move · Shift-drag to rotate · Wheel for depth</span><span className="grab-touch">Drag to lift · Second finger to rotate</span></>}</div>}
+  <span id="grab-instructions" className="sr-only">Drag to tilt the bin, then release. Keyboard: Space or Enter holds and releases; arrows tilt; Escape releases.</span>
+
   <div ref={el=>{elements.current.toast=el;}} className={"coffee-message"+(state.mugMessage&&enabled?" is-visible":"")} role="status">{state.mugMessage&&enabled?"Coffee break?":""}</div>
  </div>;
 }

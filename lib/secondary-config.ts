@@ -9,5 +9,7 @@ export const BAG_CONTENT = [
   { label: "AI Development", file: "ai_development", group: "Skills" },
 ] as const;
 export const SECONDARY_CONFIG = { exitDelay: 240, steamFps: 24, mobileSteamFps: 16, pocketAngle: -.14 } as const;
-export const GRABBABLE_IDS = ["bin", "paper-1", "paper-2", "paper-3", "paper-4"] as const;
+export const PHYSICS_IDS = ["bin", "paper-1", "paper-2", "paper-3", "paper-4"] as const;
+export type PhysicsBodyId = typeof PHYSICS_IDS[number];
+export const GRABBABLE_IDS = ["bin"] as const;
 export type GrabbableId = typeof GRABBABLE_IDS[number];

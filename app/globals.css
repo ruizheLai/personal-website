@@ -81,8 +81,5 @@ h2 { font-size: 20px; font-weight: 400; letter-spacing: -.35px; margin: 12px 0; 
 .backpack-label.is-visible { opacity: 1; }
 .coffee-message { position: absolute; min-width: 104px; text-align: center; font-size: 12px; color: #5e625d; opacity: 0; transform: translateY(5px); transition: opacity 220ms ease, transform 220ms ease; }
 .coffee-message.is-visible { opacity: 1; transform: none; }
-.grab-hint { position: absolute; left: 20px; right: 20px; bottom: 28px; text-align: center; font-size: 11px; color: #5c6269; pointer-events: none; }
-.grab-touch { display: none; }
 .physical-focus-target { pointer-events: none !important; }
-@media(pointer:coarse) { .grab-touch { display: inline; } .grab-desktop { display: none; } }
 @media(prefers-reduced-motion:reduce) { .backpack-label,.coffee-message { transition: none; } }

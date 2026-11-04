@@ -39,9 +39,9 @@ export default function WorkspaceScene(){
  const onReady=useCallback(()=>setStatus("ready"),[]),onError=useCallback(()=>setStatus("error"),[]);
  const reset=useCallback((force=false)=>{
   if(secondary.dragging||secondary.clickSuppressed())return;
-  secondary.closeBag();
+  secondary.closeBag(focus.id==="backpack");
   setFocus(v=>v.phase==="transitioning"||(!force&&v.phase==="focusing")||!v.id?v:{id:null,phase:"focusing",revision:v.revision+1});setHovered(null);
- },[secondary.dragging,secondary.clickSuppressed,secondary.closeBag]);
+ },[secondary.dragging,secondary.clickSuppressed,secondary.closeBag,focus.id]);
  const activate=useCallback((id:InteractionId)=>{
   if(secondary.dragging||secondary.clickSuppressed()||status!=="ready"||focus.phase==="focusing"||focus.phase==="transitioning")return;
   if(bagFocused){reset(true);return;}

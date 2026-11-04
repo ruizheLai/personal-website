@@ -42,7 +42,7 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
   const asset = useGLTF(MODEL_URL);
   // Suspend the complete scene until every visible image is available.
   const textures = useTexture(INTERACTIONS.map(item => item.image));
-  const { gl, invalidate, size } = useThree();
+  const { gl, invalidate, size, events } = useThree();
   const frames = useRef(0);
   const prepared = useMemo(() => {
     const model = asset.scene.clone(true);
@@ -106,6 +106,14 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
   useFrame(({ camera, size }) => {
     if (frames.current < 3) { frames.current++; invalidate(); if (frames.current === 3) onReady(); }
     camera.updateMatrixWorld();
+    const stage=gl.domElement.closest(".workspace-stage") as HTMLElement|null;
+    if(stage){
+      stage.dataset.cameraPosition=JSON.stringify(camera.position);
+      stage.dataset.cameraQuaternion=JSON.stringify(camera.quaternion.toArray());
+      stage.dataset.cameraZoom=String(camera.zoom);
+      stage.dataset.workspacePosition=JSON.stringify(prepared.model.getWorldPosition(new Vector3()));
+      stage.dataset.backpackPosition=JSON.stringify(prepared.secondaryObjects.backpack.getWorldPosition(new Vector3()));
+    }
     const canvasRect = gl.domElement.getBoundingClientRect();
     for (const item of INTERACTIONS) {
       const points = prepared.corners[item.id].map(p => p.clone().project(camera));
@@ -119,6 +127,11 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
       }
     }
   });
+  useEffect(()=>{
+    if(!secondary.enabled||command.id)return;
+    const frame=requestAnimationFrame(()=>events.update?.());
+    return()=>cancelAnimationFrame(frame);
+  },[secondary.enabled,command.id,events]);
   const bagLayout = useMemo(() => backpackLayout(prepared.secondaryObjects.backpack, size.width < 768), [prepared, size.width < 768]);
   const move = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();

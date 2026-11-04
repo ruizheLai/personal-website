@@ -3,6 +3,7 @@ import {useEffect,useLayoutEffect,useMemo,useRef} from "react";
 import {useFrame,useThree} from "@react-three/fiber";
 import {Box3,MathUtils,OrthographicCamera,Vector3,type Mesh} from "three";
 import {WORKSPACE_CONFIG as config,type InteractionId} from "@/lib/workspace-config";
+import {backpackCameraTarget} from "@/lib/backpack-focus";
 export type FocusId=InteractionId|"backpack";
 export type FocusCommand={id:FocusId|null;revision:number};
 export default function CameraController({referenceCamera,surfaces,backpackBounds,command,reducedMotion,onSettled,interactionLocked=false}:{
@@ -25,15 +26,18 @@ export default function CameraController({referenceCamera,surfaces,backpackBound
   if(command.id&&!previousFocus.current)returnZoom.current=camera.zoom;
   previousFocus.current=command.id;
   const target=home.clone();let targetZoom=returnZoom.current;
-  if(command.id){
-   const box=command.id==="backpack"?backpackBounds:new Box3().setFromObject(surfaces[command.id]);
+  if(command.id==="backpack"){
+   const framing=backpackCameraTarget(home,camera.quaternion,backpackBounds,width,height,returnZoom.current,size.width<768);
+   target.copy(framing.position);targetZoom=framing.zoom;
+  }else if(command.id){
+   const box=new Box3().setFromObject(surfaces[command.id]);
    const center=box.getCenter(new Vector3());
    const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion);
    const offset=center.clone().sub(home);target.addScaledVector(right,offset.dot(right)).addScaledVector(up,offset.dot(up));
    const points=Array.from({length:8},(_,i)=>new Vector3(i&1?box.max.x:box.min.x,i&2?box.max.y:box.min.y,i&4?box.max.z:box.min.z));
    const xs=points.map(p=>p.dot(right)),ys=points.map(p=>p.dot(up));
-   const fraction=command.id==="backpack"?(size.width<768?.78:.62):(size.width<768?.78:config.focus.widthFraction);
-   targetZoom=Math.min(width*fraction/(Math.max(...xs)-Math.min(...xs)),height*(command.id==="backpack"?.73:config.focus.heightFraction)/(Math.max(...ys)-Math.min(...ys)));
+   const fraction=size.width<768?.78:config.focus.widthFraction;
+   targetZoom=Math.min(width*fraction/(Math.max(...xs)-Math.min(...xs)),height*config.focus.heightFraction/(Math.max(...ys)-Math.min(...ys)));
   }
   zoomTarget.current=returnZoom.current;
   motion.current={from:camera.position.clone(),to:target,fromZoom:camera.zoom,toZoom:targetZoom,elapsed:0,duration:reducedMotion?0:(command.id?config.focus.duration:config.focus.returnDuration)/1000};invalidate();

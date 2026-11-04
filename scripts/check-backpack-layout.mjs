@@ -25,3 +25,32 @@ for(const item of BAG_CONTENT){
 }
 geo.dispose();mat.dispose();
 console.log("Six supplied icon files, alpha channels, avatar hash/aspect and world-space backpack bounds passed.");
+
+const {backpackFlight,BACKPACK_ICON_SIZE}=await import("../lib/backpack-layout.ts");
+const {backpackCameraTarget}=await import("../lib/backpack-focus.ts");
+const {Quaternion,OrthographicCamera}=await import("three");
+assert.ok(BACKPACK_ICON_SIZE/.4>=.55&&BACKPACK_ICON_SIZE/.4<=.65,"miniature hover scale");
+for(const small of [false,true]){
+ const layout=backpackLayout(bag,small),savedTargets=layout.targets.map(p=>p.toArray());
+ assert.ok(new Set(layout.targets.map(p=>p.x.toFixed(3))).size>=5,"no fixed columns");
+ assert.ok(new Set(layout.targets.map(p=>p.y.toFixed(3))).size>=5,"no fixed rows");
+ layout.targets.forEach((target,i)=>{
+  assert.ok(backpackFlight(layout.origin,target,0,i).distanceTo(layout.origin)<1e-9,"shared opening origin");
+  assert.ok(backpackFlight(layout.origin,target,1,i).distanceTo(target)<1e-9,"path reaches fixed fan target");
+  const early=backpackFlight(layout.origin,target,.18,i);
+  assert.ok(early.y>layout.origin.y+.10,"initial rise");
+  assert.ok(Math.abs(early.x-layout.origin.x)<.02,"spread follows initial rise");
+  let lastY=layout.origin.y;
+  for(let step=0;step<=20;step++){const p=backpackFlight(layout.origin,target,step/20,i);assert.ok(p.y>=lastY-1e-9);lastY=p.y;}
+ });
+ const home=new Vector3(0,3.450000047683716,8.5),q=new Quaternion(-.1566684991121292,0,0,.9876512885093689);
+ const width=small?4.5:7.4,height=width/(small?390/764:1440/820);
+ const framing=backpackCameraTarget(home,q,layout.bounds,width,height,1,small);
+ assert.ok(framing.zoom>1);
+ if(!small)assert.ok(framing.position.distanceTo(home)<.10,"default desktop focus avoids a composition shift");
+ const camera=new OrthographicCamera(-width/2,width/2,height/2,-height/2,.1,300);
+ camera.position.copy(framing.position);camera.quaternion.copy(q);camera.zoom=framing.zoom;camera.updateProjectionMatrix();camera.updateMatrixWorld();
+ for(const p of layout.targets){const screen=p.clone().project(camera);assert.ok(Math.abs(screen.x)<.97&&Math.abs(screen.y)<.97,"focused fan remains in view");}
+ assert.deepEqual(layout.targets.map(p=>p.toArray()),savedTargets,"focus does not reorganize icons");
+}
+console.log("Organic fan, rise-before-spread path, 60% scale and restrained shared-camera framing passed.");
