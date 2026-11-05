@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { ImageZoomProvider, useImageZoom } from "./NaturalImageZoom";
 import {
-  createContext,
   useCallback,
-  useContext,
   useEffect,
   useId,
   useRef,
@@ -20,15 +19,6 @@ export type CaseStudyAsset = {
   alt: string;
   title?: string;
 };
-
-type LightboxSelection = {
-  asset: CaseStudyAsset;
-  caption?: string;
-  opener: HTMLElement;
-};
-
-type OpenLightbox = (selection: LightboxSelection) => void;
-const LightboxContext = createContext<OpenLightbox | null>(null);
 
 function ExpandIcon() {
   return (
@@ -50,11 +40,6 @@ function ArrowIcon({ direction }: { direction: "previous" | "next" }) {
 /** Only this wrapper is interactive; all server-rendered case-study content remains readable without JS. */
 export function CaseStudyExperience({ children }: { children: ReactNode }) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const [selected, setSelected] = useState<LightboxSelection | null>(null);
-  const titleId = useId();
-  const captionId = useId();
 
   useEffect(() => {
     const root = rootRef.current;
@@ -92,89 +77,7 @@ export function CaseStudyExperience({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  useEffect(() => {
-    if (!selected) return;
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    const body = document.body;
-    const previousOverflow = body.style.overflow;
-    const previousPadding = body.style.paddingRight;
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    const existingPadding = Number.parseFloat(window.getComputedStyle(body).paddingRight) || 0;
-
-    body.style.overflow = "hidden";
-    if (scrollbarWidth > 0) body.style.paddingRight = existingPadding + scrollbarWidth + "px";
-    if (!dialog.open) dialog.showModal();
-    closeRef.current?.focus({ preventScroll: true });
-
-    return () => {
-      if (dialog.open) dialog.close();
-      body.style.overflow = previousOverflow;
-      body.style.paddingRight = previousPadding;
-      if (selected.opener.isConnected) selected.opener.focus({ preventScroll: true });
-    };
-  }, [selected]);
-
-  const openLightbox = useCallback<OpenLightbox>((selection) => {
-    // The image link still has a direct-file fallback in browsers without native modal support.
-    if (typeof dialogRef.current?.showModal !== "function") {
-      window.location.assign(selection.asset.src);
-      return;
-    }
-    setSelected(selection);
-  }, []);
-
-  const closeLightbox = useCallback(() => {
-    if (dialogRef.current?.open) dialogRef.current.close();
-    else setSelected(null);
-  }, []);
-
-  const handleBackdrop = (event: MouseEvent<HTMLDialogElement>) => {
-    if (event.target === event.currentTarget) closeLightbox();
-  };
-
-  return (
-    <LightboxContext.Provider value={openLightbox}>
-      <div className="fx-experience" ref={rootRef}>
-        {children}
-        <dialog
-          className="fx-lightbox"
-          ref={dialogRef}
-          aria-labelledby={titleId}
-          aria-describedby={selected?.caption ? captionId : undefined}
-          onClick={handleBackdrop}
-          onClose={() => setSelected(null)}
-        >
-          <div className="fx-lightbox-content">
-            <div className="fx-lightbox-header">
-              <p className="fx-lightbox-title" id={titleId}>
-                {selected?.asset.title || "Project image"}
-              </p>
-              <button className="fx-lightbox-close" ref={closeRef} type="button" onClick={closeLightbox} aria-label="Close enlarged image">
-                <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                  <path d="m6 6 12 12M18 6 6 18" />
-                </svg>
-                <span>Close</span>
-              </button>
-            </div>
-            {selected && (
-              <Image
-                className="fx-lightbox-image"
-                src={selected.asset.src}
-                width={selected.asset.width}
-                height={selected.asset.height}
-                alt={selected.asset.alt}
-                unoptimized
-                loading="eager"
-              />
-            )}
-            {selected?.caption && <p className="fx-lightbox-caption" id={captionId}>{selected.caption}</p>}
-          </div>
-        </dialog>
-      </div>
-    </LightboxContext.Provider>
-  );
+  return <ImageZoomProvider><div className="fx-experience" ref={rootRef}>{children}</div></ImageZoomProvider>;
 }
 
 export function AssetFigure({
@@ -190,7 +93,7 @@ export function AssetFigure({
   priority?: boolean;
   sizes?: string;
 }) {
-  const open = useContext(LightboxContext);
+  const open = useImageZoom();
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (!open || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -266,7 +169,7 @@ export function HorizontalGallery({ label, children }: { label: string; children
   return (
     <div className="fx-gallery">
       <div className="fx-gallery-toolbar">
-        <p className="fx-gallery-help" id={helpId}>Scroll to explore. Select any image to enlarge.</p>
+        <p className="fx-gallery-help" id={helpId}>Explore the reporting flow</p>
         <div className="fx-gallery-controls">
           <button className="fx-gallery-arrow" type="button" onClick={() => move(-1)} disabled={!controls.previous} aria-label={"Previous images: " + label} aria-controls={trackId}>
             <ArrowIcon direction="previous" />

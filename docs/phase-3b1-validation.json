@@ -1,0 +1,286 @@
+{
+  "phase": "3B.1",
+  "date": "2026-11-05",
+  "branch": "codex/fixlens-phase-3b-visual-review",
+  "baselineCommit": "dbbe1291068bbbda29886ce6169aa47f58fc24eb",
+  "localPreview": "http://127.0.0.1:3010/projects/fixlens",
+  "checks": {
+    "typecheck": "pass",
+    "workspaceInteractions": "pass",
+    "productionBuild": "pass",
+    "homepageProjectsNavigation": "pass",
+    "workspaceModel": "pass",
+    "zoomKeyboardFocusReturn": "pass",
+    "galleryKeyboard": "pass"
+  },
+  "responsive": [
+    {
+      "client": 1440,
+      "scrollWidth": 1440,
+      "sections": 9,
+      "width": 1440
+    },
+    {
+      "client": 1024,
+      "scrollWidth": 1024,
+      "sections": 9,
+      "width": 1024
+    },
+    {
+      "client": 768,
+      "scrollWidth": 768,
+      "sections": 9,
+      "width": 768
+    },
+    {
+      "client": 390,
+      "scrollWidth": 390,
+      "sections": 9,
+      "width": 390
+    },
+    {
+      "client": 375,
+      "scrollWidth": 375,
+      "sections": 9,
+      "width": 375
+    }
+  ],
+  "stationarySlider": [
+    {
+      "images": [
+        {
+          "height": 779.0625,
+          "width": 360,
+          "x": 797.25,
+          "y": 5639.75
+        },
+        {
+          "height": 779.0625,
+          "width": 360,
+          "x": 797.25,
+          "y": 5639.75
+        }
+      ],
+      "mask": "inset(0px 75% 0px 0px)",
+      "value": "25"
+    },
+    {
+      "images": [
+        {
+          "height": 779.0625,
+          "width": 360,
+          "x": 797.25,
+          "y": 5639.75
+        },
+        {
+          "height": 779.0625,
+          "width": 360,
+          "x": 797.25,
+          "y": 5639.75
+        }
+      ],
+      "mask": "inset(0px 50% 0px 0px)",
+      "value": "50"
+    },
+    {
+      "images": [
+        {
+          "height": 779.0625,
+          "width": 360,
+          "x": 797.25,
+          "y": 5639.75
+        },
+        {
+          "height": 779.0625,
+          "width": 360,
+          "x": 797.25,
+          "y": 5639.75
+        }
+      ],
+      "mask": "inset(0px 25% 0px 0px)",
+      "value": "75"
+    }
+  ],
+  "metrics": {
+    "meanAdaptedEase": 4.3,
+    "participants": 6,
+    "taskMeans": [
+      5.0,
+      4.67,
+      3.67,
+      4.33,
+      3.83
+    ],
+    "SUS": 91.7,
+    "tasks": 5
+  },
+  "assetCount": 31,
+  "assetBytes": 5709962.0,
+  "assetsUnchanged": true,
+  "assets": [
+    {
+      "Name": "fx01-tenant-home.webp",
+      "Length": 117870,
+      "SHA256": "E55E091611DD905C22A79EDA09596B516A372CE4D6DD6C324CEAA9119DBD3918"
+    },
+    {
+      "Name": "fx02-pm-dashboard.webp",
+      "Length": 133864,
+      "SHA256": "F978F3C19187D618738E9B446B7626B5FD8AC72D0711BB6561328CCF0DD51A2B"
+    },
+    {
+      "Name": "fx03-tenant-home-rounded-presentation.webp",
+      "Length": 119204,
+      "SHA256": "0769C5493ECEA2D97C7055D2BE104B6EA9F16D90B63E8D65F1CC2DE38832AFDD"
+    },
+    {
+      "Name": "fx06-current-reporting-flow.webp",
+      "Length": 28320,
+      "SHA256": "686D6F83B9602963301E3C374148F02C7E00BBBED8863E9E81BBAB336D3B5957"
+    },
+    {
+      "Name": "fx08-navigation-alternatives.webp",
+      "Length": 1341924,
+      "SHA256": "3D0AA09DAECA6345D0EA27B5B26706F2BE03E40B5873168E0B381D0173B1A387"
+    },
+    {
+      "Name": "fx09-capture-and-progress.webp",
+      "Length": 1300000,
+      "SHA256": "1687A460EEFE7B82820ABB8A100F20AA21FDE404EC48E453F292149EA018DBF7"
+    },
+    {
+      "Name": "fx09-tracking-sketch-detail.webp",
+      "Length": 164460,
+      "SHA256": "D3A104845B68697FE70D2AFE46021644BB0D789603B0B9ECDC1244F4601832C9"
+    },
+    {
+      "Name": "fx10-capture-sketch-detail.webp",
+      "Length": 146308,
+      "SHA256": "F4C36634B2993D2E93E504FA84ED1AF5626FB7F93B60EFBDD8A1D5770DD52DB1"
+    },
+    {
+      "Name": "fx10-home-sketch-detail.webp",
+      "Length": 163904,
+      "SHA256": "719AF5E459644B187C3BB05D8139E1264C8341AA291546ABA87BFEC7550B0E85"
+    },
+    {
+      "Name": "fx10-reporting-flow.webp",
+      "Length": 1246960,
+      "SHA256": "ADE3175BB9CD5724F4DC64FD151AB3E4E8C1A40DA7408098D102C020CE685B09"
+    },
+    {
+      "Name": "fx11-home.webp",
+      "Length": 8752,
+      "SHA256": "D3F4C97C7038770E19379ACECFDF2CDA2A23712A311C0A33BAECDB1A988CEA6D"
+    },
+    {
+      "Name": "fx12-overview-capture.webp",
+      "Length": 6174,
+      "SHA256": "509BD1FA9510A3590B35E5FB060706521C6C7E0F135119CE75F05BAB7D165918"
+    },
+    {
+      "Name": "fx13-case-progress.webp",
+      "Length": 11806,
+      "SHA256": "417F4F19CBC5951B2B257B8261F99A40AE6A596F75AC7CDF8319CEA4C5CEE84E"
+    },
+    {
+      "Name": "fx16-home.webp",
+      "Length": 25642,
+      "SHA256": "884C1DC14C2983C0206969778DA2FA5042BF6EC04D16E5A1F055D2880AE6DC9A"
+    },
+    {
+      "Name": "fx17-report-property-confirmation.webp",
+      "Length": 11666,
+      "SHA256": "28751492A2EEB6D799E3D77B1EA262DDD77D6B6D6E7B5776F8B801248DED32DD"
+    },
+    {
+      "Name": "fx18-review-edit-controls-detail.webp",
+      "Length": 3114,
+      "SHA256": "DA46AA79B423B4ACD8E24F02B6878A3AF1DD8C22188DD750977F4B8ED783C142"
+    },
+    {
+      "Name": "fx19-case-timeline.webp",
+      "Length": 18034,
+      "SHA256": "F4E8575F5AFE6E66B4E75408A059E63AA9ECD40347832886FDF6CBA0F7754021"
+    },
+    {
+      "Name": "fx22-prototype-pm-decision-controls.webp",
+      "Length": 11794,
+      "SHA256": "0F0503C12B48A94F1E2707BCA334451AD96929679FA82DC7F94321F3CE1D72DD"
+    },
+    {
+      "Name": "fx25-issue-understanding.webp",
+      "Length": 115228,
+      "SHA256": "27F9EE1DC096A0E878E7C21BA590033CA8BF1BF83F08E028B8BF3931D8736FBD"
+    },
+    {
+      "Name": "fx26-report-review.webp",
+      "Length": 124338,
+      "SHA256": "477080FA9C57A06A1C7AD3AAE88B981B1A316BE468B38E6847F2D5B989FB6149"
+    },
+    {
+      "Name": "fx27-follow-up-status.webp",
+      "Length": 101322,
+      "SHA256": "B3D255DF5E9CFEFDDDE81B5F67892910079EEB50A777CA1AB1E87217B5B7E1A9"
+    },
+    {
+      "Name": "fx29-camera-recovery.webp",
+      "Length": 52584,
+      "SHA256": "841BEF3E5E624F214D8F8478E260B79BD1780702D9E15B43DA3DF455A78ADA47"
+    },
+    {
+      "Name": "fx30-safety-without-photos.webp",
+      "Length": 179862,
+      "SHA256": "06A65A9DB50E011FF64E55EACF97FA0354D305B4A4F5AC26CE30599CFE38FC12"
+    },
+    {
+      "Name": "fx31-implemented-pm-decision-controls.webp",
+      "Length": 57974,
+      "SHA256": "4E1B40C785C496543733E04175AACBC489B1C3467CD5320353DDA655DB77734A"
+    },
+    {
+      "Name": "fx32-pm-request-types.webp",
+      "Length": 62572,
+      "SHA256": "8CFDD1A017A3724833C7B9BB479EFCBD50DEBFED9EF62D26660F68A5908DB947"
+    },
+    {
+      "Name": "fx33-pm-reviewed-response.webp",
+      "Length": 66212,
+      "SHA256": "F9F54DCA4CD61BD5DD919EF0C12B6ED7535BE6B5038A4119AAA18B790012DF49"
+    },
+    {
+      "Name": "fx37-report-issue-description.webp",
+      "Length": 15198,
+      "SHA256": "FAB5C8800F3AA5557BC03B2C4B79C1D15F2373AAAAF830BAA7F7127CA4F71E6D"
+    },
+    {
+      "Name": "fx38-report-structured-understanding.webp",
+      "Length": 19096,
+      "SHA256": "141D9F2EA8F0B54FC2EEF23FEDC2635E88E890EBFE0BE73AEAE2E4E4599E5FF5"
+    },
+    {
+      "Name": "fx39-report-safety-choice.webp",
+      "Length": 17172,
+      "SHA256": "6E327E72DF141CEF01B5CCA2FA2FB7873B48680F347B42CBD946C7EB2EB9B5D3"
+    },
+    {
+      "Name": "fx40-report-danger-guidance.webp",
+      "Length": 17868,
+      "SHA256": "8F5FE1CCB380C0C30F7C8BF54A8B6457789A00F5B7746F8777F549D86DDA4A17"
+    },
+    {
+      "Name": "fx41-report-safe-capture-plan.webp",
+      "Length": 20740,
+      "SHA256": "65A31C16A84D49BD702380336F06A04F79D93ED644FB5E2277A4393E326BA9F7"
+    }
+  ],
+  "limitations": [
+    "Physical touchscreen input not available in the browser controller; native drag tested at mobile width.",
+    "Reduced-motion branches and CSS reviewed; actual preference emulation not exposed.",
+    "No controlled Lighthouse/LCP baseline benchmark.",
+    "Hero 3D perspective approximated as rotation and uniform scale during zoom."
+  ],
+  "pushed": false,
+  "merged": false,
+  "deployed": false
+}
