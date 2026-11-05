@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-05",
+  "route": "/projects/fixlens",
+  "preview": "http://127.0.0.1:3010/projects/fixlens",
+  "checks": {
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "existingInteractions": "passed",
+    "modelAudit": "passed",
+    "lint": "not configured",
+    "assets": {
+      "count": 31,
+      "bytes": 5709962,
+      "heldExcluded": [
+        "FX23",
+        "FX24",
+        "FX34"
+      ],
+      "hashesDimensionsAlpha": "passed"
+    },
+    "ssr": {
+      "sections": 9,
+      "imageFallbackLinks": 35,
+      "hiddenRevealClass": false
+    },
+    "browser": {
+      "widths": [
+        {
+          "viewport": 1440,
+          "client": 1425,
+          "scroll": 1425
+        },
+        {
+          "viewport": 1024,
+          "client": 1009,
+          "scroll": 1009
+        },
+        {
+          "viewport": 768,
+          "client": 753,
+          "scroll": 753
+        },
+        {
+          "viewport": 390,
+          "client": 375,
+          "scroll": 375
+        },
+        {
+          "viewport": 375,
+          "client": 360,
+          "scroll": 360
+        }
+      ],
+      "horizontalPageOverflow": false,
+      "brokenImages": 0,
+      "unrevealedTargetsAfterFullScroll": 0,
+      "lightbox": [
+        "Enter",
+        "Close button",
+        "Escape",
+        "backdrop",
+        "entry focus",
+        "focus restoration",
+        "tall-image scrolling",
+        "390px layout"
+      ],
+      "gallery": [
+        "next/previous state",
+        "next button movement",
+        "ArrowRight region keyboard navigation",
+        "390px viewport"
+      ],
+      "projectsLink": "passed",
+      "homepageCanvas": "ready",
+      "homepageBackpack": "six labels visible after expansion",
+      "caseStudyConsole": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "homepageConsole": {
+        "errors": 0,
+        "existingDeprecationWarnings": [
+          "THREE.Clock",
+          "physics initialization parameters"
+        ]
+      }
+    },
+    "validationBoundaries": {
+      "reducedMotion": "source inspected; browser media emulation unavailable",
+      "noJavaScript": "SSR HTTP and fallback source inspected; scripting-disabled browser not run",
+      "physicalTouchDevice": "not tested",
+      "automatedAccessibilityScanner": "not run",
+      "quantitativeCLS": "not measured"
+    }
+  },
+  "publicDeployment": false,
+  "preExistingChangePreserved": "next-env.d.ts"
+}

@@ -1,0 +1,877 @@
+{
+  "verification": {
+    "source_manifest": "E:\\UX project\\portfolio draft\\final-assets\\manifests\\ASSET_MANIFEST.json",
+    "source_manifest_sha256": "d98012209d7471d5f91ef405025645d046658cdc2d63e37701bab710c6fecaf1",
+    "source_checklist": "E:\\UX project\\portfolio draft\\final-assets\\manifests\\PUBLICATION_CHECKLIST.md",
+    "source_checklist_sha256": "bcb0e27ad230d3e78f555ed9ec3bc4b87c86370d65c7ab0f2b714fd5d019a56b",
+    "selected_ready_ids": [
+      "FX01",
+      "FX02",
+      "FX03",
+      "FX06",
+      "FX08",
+      "FX09",
+      "FX10",
+      "FX11",
+      "FX12",
+      "FX13",
+      "FX16",
+      "FX17",
+      "FX18",
+      "FX19",
+      "FX22",
+      "FX25",
+      "FX26",
+      "FX27",
+      "FX29",
+      "FX30",
+      "FX31",
+      "FX32",
+      "FX33",
+      "FX37",
+      "FX38",
+      "FX39",
+      "FX40",
+      "FX41"
+    ],
+    "held_ids_excluded": [
+      "FX23",
+      "FX24",
+      "FX34"
+    ],
+    "review_boards_excluded": true,
+    "native_webp_count": 28,
+    "derived_sketch_count": 3,
+    "output_asset_count": 31,
+    "total_asset_bytes": 5709962,
+    "product_capture_provenance": "Actual implemented client using isolated fictional fixtures; not production records or proof of current hosted-backend/model execution.",
+    "prototype_sequence": "FX17, FX37, FX38, FX39, then danger FX40 OR safe FX41.",
+    "source_files_preserved": true
+  },
+  "assets": [
+    {
+      "key": "FX01",
+      "id": "FX01",
+      "file": "public/images/projects/fixlens/fx01-tenant-home.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\01-hero\\tenant-home.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\01-tenant-home-local.jpg"
+      ],
+      "provenance": "Implemented client capture; fictional local fixture",
+      "source_operations": "JPG decoded to lossless RGBA PNG/WebP; no new detail added.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Final Product — tenant Home with an outstanding request. Fictional local demonstration data.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "e55e091611dd905c22a79eda09596b516a372ce4d6dd6c324ceaa9119dbd3918",
+      "output_sha256": "e55e091611dd905c22a79eda09596b516a372ce4d6dd6c324ceaa9119dbd3918",
+      "bytes": 117870,
+      "width": 390,
+      "height": 844,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX02",
+      "id": "FX02",
+      "file": "public/images/projects/fixlens/fx02-pm-dashboard.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\01-hero\\pm-dashboard.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\12-pm-dashboard-local.jpg"
+      ],
+      "provenance": "Implemented client capture; fictional local fixture; crop",
+      "source_operations": "Crop (0,0,1404,570), excluding empty lower viewport; native width retained.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Final Product — maintenance list, status filters and attention markers. Fictional local demonstration data.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "f978f3c19187d618738e9b446b7626b5fd8ac72d0711bb6561328ccf0dd51a2b",
+      "output_sha256": "f978f3c19187d618738e9b446b7626b5fd8ac72d0711bb6561328ccf0dd51a2b",
+      "bytes": 133864,
+      "width": 1404,
+      "height": 570,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX03",
+      "id": "FX03",
+      "file": "public/images/projects/fixlens/fx03-tenant-home-rounded-presentation.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\01-hero\\tenant-home-rounded-presentation.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\01-tenant-home-local.jpg"
+      ],
+      "provenance": "Presentation-only rounded alpha mask on authentic client capture",
+      "source_operations": "25px rounded clipping mask; no device frame; top/bottom corner background pixels removed only.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Presentation crop of an authentic fictional-data client capture; rounded corners added for layout.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "0769c5493ecea2d97c7055d2be104b6ea9f16d90b63e8d65f1cc2de38832afdd",
+      "output_sha256": "0769c5493ecea2d97c7055d2be104b6ea9f16d90b63e8d65f1cc2de38832afdd",
+      "bytes": 119204,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX06",
+      "id": "FX06",
+      "file": "public/images/projects/fixlens/fx06-current-reporting-flow.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\02-problem-research\\current-reporting-flow.webp",
+      "original_sources": [
+        "E:\\UX project\\FixLens Guided Spatial Reporting for Rental Maintenance_Poster_07-10-2026.pdf"
+      ],
+      "provenance": "Crop of existing vector poster rendered to PNG",
+      "source_operations": "4400px PDF render, crop (100,1630,1870,2200); excludes quotes, identities, interim metrics and AR wording.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Project framing: evidence, decisions and handoffs can fragment a maintenance case.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "686d6f83b9602963301e3c374148f02c7e00bbbed8863e9e81bbab336d3b5957",
+      "output_sha256": "686d6f83b9602963301e3c374148f02c7e00bbbed8863e9e81bbab336d3b5957",
+      "bytes": 28320,
+      "width": 1770,
+      "height": 570,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX08",
+      "id": "FX08",
+      "file": "public/images/projects/fixlens/fx08-navigation-alternatives.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\navigation-alternatives.webp",
+      "original_sources": [
+        "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.25 AM.jpeg"
+      ],
+      "provenance": "Original hand sketch photograph; lossless derivative",
+      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Original sketch exploration: alternative starting points and navigation.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "3d0aa09daeca6345d0ea27b5b26706f2be03e40b5873168e0b381d0173b1a387",
+      "output_sha256": "3d0aa09daeca6345d0ea27b5b26706f2be03e40b5873168e0b381d0173b1a387",
+      "bytes": 1341924,
+      "width": 1600,
+      "height": 1188,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX09",
+      "id": "FX09",
+      "file": "public/images/projects/fixlens/fx09-capture-and-progress.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\capture-and-progress.webp",
+      "original_sources": [
+        "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.25 AM (1).jpeg"
+      ],
+      "provenance": "Original hand sketch photograph; lossless derivative",
+      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Original sketch exploration: guided evidence and case-progress concepts.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "1687a460eefe7b82820abb8a100f20aa21fde404ec48e453f292149ea018dbf7",
+      "output_sha256": "1687a460eefe7b82820abb8a100f20aa21fde404ec48e453f292149ea018dbf7",
+      "bytes": 1300000,
+      "width": 1600,
+      "height": 1164,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX10",
+      "id": "FX10",
+      "file": "public/images/projects/fixlens/fx10-reporting-flow.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\reporting-flow.webp",
+      "original_sources": [
+        "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.26 AM.jpeg"
+      ],
+      "provenance": "Original hand sketch photograph; lossless derivative; privacy redaction",
+      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained. First-name greeting region redacted.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Original sketch exploration: confirmation, capture and review within one reporting concept.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "ade3175bb9cd5724f4dc64fd151ab3e4e8c1a40da7408098d102c020ce685b09",
+      "output_sha256": "ade3175bb9cd5724f4dc64fd151ab3e4e8c1a40da7408098d102c020ce685b09",
+      "bytes": 1246960,
+      "width": 1600,
+      "height": 1234,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX11",
+      "id": "FX11",
+      "file": "public/images/projects/fixlens/fx11-home.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\mid-fi\\home.webp",
+      "original_sources": [
+        "E:\\UX project\\mid fidelity wireframe\\Home.png"
+      ],
+      "provenance": "Mid-fi wireframe export; crop-free; privacy redaction",
+      "source_operations": "Native 390×844; no scaling. Greeting redacted.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Mid-fi — structured home.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "d3f4c97c7038770e19379acecfdf2cda2a23712a311c0a33baecdb1a988cea6d",
+      "output_sha256": "d3f4c97c7038770e19379acecfdf2cda2a23712a311c0a33baecdb1a988cea6d",
+      "bytes": 8752,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX12",
+      "id": "FX12",
+      "file": "public/images/projects/fixlens/fx12-overview-capture.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\mid-fi\\overview-capture.webp",
+      "original_sources": [
+        "E:\\UX project\\mid fidelity wireframe\\Capture Overview.png"
+      ],
+      "provenance": "Mid-fi wireframe export; crop-free",
+      "source_operations": "Native 390×844; no scaling.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Mid-fi — structured overview capture.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "509bd1fa9510a3590b35e5fb060706521c6c7e0f135119ce75f05bab7d165918",
+      "output_sha256": "509bd1fa9510a3590b35e5fb060706521c6c7e0f135119ce75f05bab7d165918",
+      "bytes": 6174,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX13",
+      "id": "FX13",
+      "file": "public/images/projects/fixlens/fx13-case-progress.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\mid-fi\\case-progress.webp",
+      "original_sources": [
+        "E:\\UX project\\mid fidelity wireframe\\Bedroom Window Leak.png"
+      ],
+      "provenance": "Mid-fi wireframe export; crop-free; privacy redaction",
+      "source_operations": "Native 390x844; case-ID region (50,78,165,97) redacted; back arrow and title preserved.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Mid-fi — structured case progress.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "417f4f19cbc5951b2b257b8261f99a40ae6a596f75ac7cdf8319cea4c5cee84e",
+      "output_sha256": "417f4f19cbc5951b2b257b8261f99a40ae6a596f75ac7cdf8319cea4c5cee84e",
+      "bytes": 11806,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX16",
+      "id": "FX16",
+      "file": "public/images/projects/fixlens/fx16-home.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\home.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\Home.png"
+      ],
+      "provenance": "Figma-attributed original export; screen-only crop + greeting redaction",
+      "source_operations": "Crop original (80,48,470,892); original rounded alpha retained; greeting redaction (20,136,185,165).",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Hi-fi prototype Home emphasizes reporting and a recent case; outstanding requests are not surfaced here in this state.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "884c1dc14c2983c0206969778da2fa5042bf6ec04d16e5a1f055d2880ae6dc9a",
+      "output_sha256": "884c1dc14c2983c0206969778da2fa5042bf6ec04d16e5a1f055d2880ae6dc9a",
+      "bytes": 25642,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        3,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX17",
+      "id": "FX17",
+      "file": "public/images/projects/fixlens/fx17-report-property-confirmation.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\report-property-confirmation.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\01 · Confirm property.png"
+      ],
+      "provenance": "Owner-confirmed fresh Figma export; screen-only crop + privacy redactions",
+      "source_operations": "Native crop (80,48,470,892); original rounded alpha preserved. Contact/name/address/PM values redacted at (70,253,315,275), (70,316,365,339), (70,378,365,401), (70,441,365,465).",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Hi-fi reporting state 1: Review property and contact details; personal values redacted.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "28751492a2eeb6d799e3d77b1ea262ddd77d6b6d6e7b5776f8b801248ded32dd",
+      "output_sha256": "28751492a2eeb6d799e3d77b1ea262ddd77d6b6d6e7b5776f8b801248ded32dd",
+      "bytes": 11666,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        3,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX18",
+      "id": "FX18",
+      "file": "public/images/projects/fixlens/fx18-review-edit-controls-detail.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\review-edit-controls-detail.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\Review Report.png"
+      ],
+      "provenance": "Figma export matched to prior H38; focused crop",
+      "source_operations": "Crop (112,621,438,801); excludes unverified photo thumbnails and clipped lower Description row.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "The prototype already exposed Edit controls for issue type, location and occurrence; implementation made review controls functional.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "da46aa79b423b4acd8e24f02b6878a3af1dd8c22188dd750977f4b8ed783c142",
+      "output_sha256": "da46aa79b423b4acd8e24f02b6878a3af1dd8c22188dd750977f4b8ed783c142",
+      "bytes": 3114,
+      "width": 326,
+      "height": 180,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX19",
+      "id": "FX19",
+      "file": "public/images/projects/fixlens/fx19-case-timeline.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\case-timeline.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\Bedroom Window Leak.png"
+      ],
+      "provenance": "Original Figma-attributed export; screen crop + case-ID redaction",
+      "source_operations": "Crop (80,48,470,892); case ID masked; original alpha retained.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Hi-fi prototype — case timeline. A timeline and case-level follow-up already existed.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "f4e8575f5afe6e66b4e75408a059e63aa9ecd40347832886fdf6cba0f7754021",
+      "output_sha256": "f4e8575f5afe6e66b4e75408a059e63aa9ecd40347832886fdf6cba0f7754021",
+      "bytes": 18034,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        3,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX22",
+      "id": "FX22",
+      "file": "public/images/projects/fixlens/fx22-prototype-pm-decision-controls.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\06-iteration\\prototype-pm-decision-controls.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\PM Case.png"
+      ],
+      "provenance": "Longer Figma-attributed export; focused action-panel crop",
+      "source_operations": "Original crop (1204,136,1544,690), excluding identity header, photo evidence, assignment and sidebar.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Prototype: approval is recommended and visually primary. Evaluation raised concerns about action emphasis influencing decisions.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "0f0503c12b48a94f1e2707bca334451ad96929679fa82dc7f94321f3ce1d72dd",
+      "output_sha256": "0f0503c12b48a94f1e2707bca334451ad96929679fa82dc7f94321f3ce1d72dd",
+      "bytes": 11794,
+      "width": 340,
+      "height": 554,
+      "alpha": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX25",
+      "id": "FX25",
+      "file": "public/images/projects/fixlens/fx25-issue-understanding.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\04-final-solution\\issue-understanding.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\05-report-summary-local.jpg"
+      ],
+      "provenance": "Implemented client capture; isolated fictional fixture",
+      "source_operations": "JPG decoded at native 390×844; no UI changes.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Implemented issue understanding with fictional local data; not production or hosted-backend test evidence.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "27f9ee1dc096a0e878e7c21ba590033ca8bf1bf83f08e028b8bf3931d8736fbd",
+      "output_sha256": "27f9ee1dc096a0e878e7c21ba590033ca8bf1bf83f08e028b8bf3931d8736fbd",
+      "bytes": 115228,
+      "width": 390,
+      "height": 844,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX26",
+      "id": "FX26",
+      "file": "public/images/projects/fixlens/fx26-report-review.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\04-final-solution\\report-review.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\09-final-review-local.jpg"
+      ],
+      "provenance": "Implemented client capture; isolated fictional fixture",
+      "source_operations": "JPG decoded at native 390×844; no UI changes.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Implemented report review with fictional local data; not production or hosted-backend test evidence.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "477080fa9c57a06a1c7ad3aae88b981b1a316be468b38e6847f2d5b989fb6149",
+      "output_sha256": "477080fa9c57a06a1c7ad3aae88b981b1a316be468b38e6847f2d5b989fb6149",
+      "bytes": 124338,
+      "width": 390,
+      "height": 844,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX27",
+      "id": "FX27",
+      "file": "public/images/projects/fixlens/fx27-follow-up-status.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\04-final-solution\\follow-up-status.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\03-case-follow-up-status-local.jpg"
+      ],
+      "provenance": "Implemented client capture; isolated fictional fixture",
+      "source_operations": "Crop (0,0,390,620): complete status/handler/action/next-step card; excludes clipped lower content.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Implemented follow up status with fictional local data; not production or hosted-backend test evidence.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "b3d255df5e9cfefddde81b5f67892910079eeb50a777ca1ab1e87217b5b7e1a9",
+      "output_sha256": "b3d255df5e9cfefddde81b5f67892910079eeb50a777ca1ab1e87217b5b7e1a9",
+      "bytes": 101322,
+      "width": 390,
+      "height": 620,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX29",
+      "id": "FX29",
+      "file": "public/images/projects/fixlens/fx29-camera-recovery.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\04-final-solution\\camera-recovery.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\07-capture-recovery-local.jpg"
+      ],
+      "provenance": "Implemented client capture; isolated fictional fixture",
+      "source_operations": "JPG decoded at native 390×844; no UI changes.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Implemented camera recovery with fictional local data; not production or hosted-backend test evidence.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "841bef3e5e624f214d8f8478e260b79bd1780702d9e15b43da3df455a78ada47",
+      "output_sha256": "841bef3e5e624f214d8f8478e260b79bd1780702d9e15b43da3df455a78ada47",
+      "bytes": 52584,
+      "width": 390,
+      "height": 844,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX30",
+      "id": "FX30",
+      "file": "public/images/projects/fixlens/fx30-safety-without-photos.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\04-final-solution\\safety-without-photos.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\17-safety-report-local.jpg"
+      ],
+      "provenance": "Implemented client capture; isolated fictional fixture",
+      "source_operations": "Crop (0,0,390,828): safety/report fields; excludes partly visible submission control.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Implemented safety without photos with fictional local data; not production or hosted-backend test evidence.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "06a65a9db50e011ff64e55eacf97fa0354d305b4a4f5ac26ce30599cfe38fc12",
+      "output_sha256": "06a65a9db50e011ff64e55eacf97fa0354d305b4a4f5ac26ce30599cfe38fc12",
+      "bytes": 179862,
+      "width": 390,
+      "height": 828,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX31",
+      "id": "FX31",
+      "file": "public/images/projects/fixlens/fx31-implemented-pm-decision-controls.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\06-iteration\\implemented-pm-decision-controls.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\15-pm-actions-local.jpg"
+      ],
+      "provenance": "Implemented client capture; focused crop; fictional fixture",
+      "source_operations": "Crop (935,195,1404,600); no UI text changes.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Implemented: explicit manual workflow wording replaces recommendation-style language; approval remains primary. Decision bias was not shown to be eliminated.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "4e1b40c785c496543733e04175aacbc489b1c3467cd5320353dda655db77734a",
+      "output_sha256": "4e1b40c785c496543733e04175aacbc489b1c3467cd5320353dda655db77734a",
+      "bytes": 57974,
+      "width": 469,
+      "height": 405,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX32",
+      "id": "FX32",
+      "file": "public/images/projects/fixlens/fx32-pm-request-types.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\04-final-solution\\pm-request-types.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\16-pm-information-request-local.jpg"
+      ],
+      "provenance": "Implemented client capture; dialog crop; fictional fixture",
+      "source_operations": "Crop (490,230,950,770), retains dialog title, choices, instructions and controls.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "PM request choices distinguish overview, close-up and written details. This audit image shows the dialog, not a newly sent request.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "8cfdd1a017a3724833c7b9bb479efcbd50debfed9ef62d26660f68a5908db947",
+      "output_sha256": "8cfdd1a017a3724833c7b9bb479efcbd50debfed9ef62d26660f68a5908db947",
+      "bytes": 62572,
+      "width": 460,
+      "height": 540,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX33",
+      "id": "FX33",
+      "file": "public/images/projects/fixlens/fx33-pm-reviewed-response.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\04-final-solution\\pm-reviewed-response.webp",
+      "original_sources": [
+        "E:\\fixlens\\portfolio-audit\\screenshots\\15-pm-actions-local.jpg"
+      ],
+      "provenance": "Implemented client capture; history crop; fictional fixture",
+      "source_operations": "Crop (30,620,914,925); no private records.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Resolved information requests preserve the renter response and PM review state in the same maintenance workflow.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "f9f54dca4cd61bd5dd919ef0c12b6ed7535be6b5038a4119aaa18b790012df49",
+      "output_sha256": "f9f54dca4cd61bd5dd919ef0c12b6ed7535be6b5038a4119aaa18b790012df49",
+      "bytes": 66212,
+      "width": 884,
+      "height": 305,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX37",
+      "id": "FX37",
+      "file": "public/images/projects/fixlens/fx37-report-issue-description.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\report-issue-description.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\02 · Describe issue.png"
+      ],
+      "provenance": "Owner-confirmed fresh Figma export; screen-only crop + privacy redactions",
+      "source_operations": "Native crop (80,48,470,892); original rounded alpha preserved. Contact/name/address/PM values redacted at (70,253,315,275), (70,316,365,339), (70,378,365,401), (70,441,365,465).",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Hi-fi reporting state 2: Confirmed details remain visible while the renter describes the issue. Personal values redacted.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "fab5c8800f3aa5557bc03b2c4b79c1d15f2373aaaaf830baa7f7127ca4f71e6d",
+      "output_sha256": "fab5c8800f3aa5557bc03b2c4b79c1d15f2373aaaaf830baa7f7127ca4f71e6d",
+      "bytes": 15198,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        3,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX38",
+      "id": "FX38",
+      "file": "public/images/projects/fixlens/fx38-report-structured-understanding.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\report-structured-understanding.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\03 · Review AI summary.png"
+      ],
+      "provenance": "Owner-confirmed fresh Figma export; screen-only crop",
+      "source_operations": "Native crop (80,48,470,892); original rounded alpha preserved.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Hi-fi reporting state 3: The prototype asks the renter to verify or edit the structured interpretation.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "141d9f2ea8f0b54fc2eef23fedc2635e88e890ebfe0be73aeae2e4e4599e5ff5",
+      "output_sha256": "141d9f2ea8f0b54fc2eef23fedc2635e88e890ebfe0be73aeae2e4e4599e5ff5",
+      "bytes": 19096,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        3,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX39",
+      "id": "FX39",
+      "file": "public/images/projects/fixlens/fx39-report-safety-choice.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\report-safety-choice.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\04 · Safety choice.png"
+      ],
+      "provenance": "Owner-confirmed fresh Figma export; screen-only crop",
+      "source_operations": "Native crop (80,48,470,892); original rounded alpha preserved.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Hi-fi reporting state 4: Immediate-danger choice; safe-to-continue remains visually primary.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "6e327e72df141cef01b5cca2fa2fb7873b48680f347b42cbd946c7eb2eb9b5d3",
+      "output_sha256": "6e327e72df141cef01b5cca2fa2fb7873b48680f347b42cbd946c7eb2eb9b5d3",
+      "bytes": 17172,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        3,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX40",
+      "id": "FX40",
+      "file": "public/images/projects/fixlens/fx40-report-danger-guidance.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\report-danger-guidance.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\05 · Danger guidance.png"
+      ],
+      "provenance": "Owner-confirmed fresh Figma export; screen-only crop",
+      "source_operations": "Native crop (80,48,470,892); original rounded alpha preserved.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Hi-fi reporting state 5: Danger branch advises avoiding the affected area; this is prototype guidance, not validated safety effectiveness.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "8f5fe1ccb380c0c30f7c8bf54a8b6457789a00f5b7746f8777f549d86dda4a17",
+      "output_sha256": "8f5fe1ccb380c0c30f7c8bf54a8b6457789a00f5b7746f8777f549d86dda4a17",
+      "bytes": 17868,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        3,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "FX41",
+      "id": "FX41",
+      "file": "public/images/projects/fixlens/fx41-report-safe-capture-plan.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\report-safe-capture-plan.webp",
+      "original_sources": [
+        "E:\\UX project\\high fidelity prototype\\06 · Guided capture plan.png"
+      ],
+      "provenance": "Owner-confirmed fresh Figma export; screen-only crop",
+      "source_operations": "Native crop (80,48,470,892); original rounded alpha preserved.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Hi-fi reporting state 6: Safe branch introduces overview, close-up and proposed video. Complete recorded-video flow was not delivered.",
+      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
+      "source_sha256": "65a31c16a84d49bd702380336f06a04f79d93ed644fb5e2277a4393e326ba9f7",
+      "output_sha256": "65a31c16a84d49bd702380336f06a04f79d93ed644fb5e2277a4393e326ba9f7",
+      "bytes": 20740,
+      "width": 390,
+      "height": 844,
+      "alpha": true,
+      "alpha_extrema": [
+        3,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "homeSketch",
+      "id": "FX10-DETAIL",
+      "file": "public/images/projects/fixlens/fx10-home-sketch-detail.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\reporting-flow.png",
+      "original_sources": [
+        "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.26 AM.jpeg"
+      ],
+      "provenance": "Exact crop of prepared publication-cleared original sketch derivative",
+      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained. First-name greeting region redacted.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Cropped original Home sketch with Report an issue, My cases, Other questions, recent case and bottom navigation; greeting redacted.",
+      "operations_for_website": "Crop (0, 0, 405, 610); native pixels retained; encoded as lossless WebP, no scaling or redrawing.",
+      "crop_box": [
+        0,
+        0,
+        405,
+        610
+      ],
+      "source_sha256": "ff1e00bdcabcd8cd35696cf91e1a915add83573bf434b44c997b99134540f5c3",
+      "output_sha256": "719af5e459644b187c3bb05d8139e1264c8341aa291546aba87bfec7550b0e85",
+      "bytes": 163904,
+      "width": 405,
+      "height": 610,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "captureSketch",
+      "id": "FX10-DETAIL",
+      "file": "public/images/projects/fixlens/fx10-capture-sketch-detail.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\reporting-flow.png",
+      "original_sources": [
+        "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.26 AM.jpeg"
+      ],
+      "provenance": "Exact crop of prepared publication-cleared original sketch derivative",
+      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained. First-name greeting region redacted.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Cropped original overview-capture sketch showing framing, contextual instructions, a photo-library icon, shutter and flash.",
+      "operations_for_website": "Crop (0, 610, 405, 1234); native pixels retained; encoded as lossless WebP, no scaling or redrawing.",
+      "crop_box": [
+        0,
+        610,
+        405,
+        1234
+      ],
+      "source_sha256": "ff1e00bdcabcd8cd35696cf91e1a915add83573bf434b44c997b99134540f5c3",
+      "output_sha256": "f4c36634b2993d2e93e504fa84ed1af5626fb7f93b60efbdd8a1d5770dd52db1",
+      "bytes": 146308,
+      "width": 405,
+      "height": 624,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    },
+    {
+      "key": "trackingSketch",
+      "id": "FX09-DETAIL",
+      "file": "public/images/projects/fixlens/fx09-tracking-sketch-detail.webp",
+      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\capture-and-progress.png",
+      "original_sources": [
+        "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.25 AM (1).jpeg"
+      ],
+      "provenance": "Exact crop of prepared publication-cleared original sketch derivative",
+      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained.",
+      "status": "Ready",
+      "privacy": "Cleared in derivative",
+      "caption": "Cropped original case-tracking sketch with current status, case-progress steps and a What's Next explanation.",
+      "operations_for_website": "Crop (415, 590, 810, 1164); native pixels retained; encoded as lossless WebP, no scaling or redrawing.",
+      "crop_box": [
+        415,
+        590,
+        810,
+        1164
+      ],
+      "source_sha256": "ab506d09aa7f519980a614d5223f9b8038963c442815a65f7b270e80e046a939",
+      "output_sha256": "d3a104845b68697fe70d2afe46021644bb0d789603b0b9ecdc1244f4601832c9",
+      "bytes": 164460,
+      "width": 395,
+      "height": 574,
+      "alpha": false,
+      "alpha_extrema": [
+        255,
+        255
+      ],
+      "format": "WEBP"
+    }
+  ]
+}
