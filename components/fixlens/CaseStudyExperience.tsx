@@ -214,8 +214,8 @@ export function AssetFigure({
           height={asset.height}
           alt={asset.alt}
           sizes={sizes}
-          preload={priority}
-          loading={priority ? undefined : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
+          loading={priority ? "eager" : "lazy"}
           unoptimized
         />
         <span className="fx-image-expand" aria-hidden="true"><ExpandIcon /></span>

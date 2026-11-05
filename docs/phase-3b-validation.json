@@ -1,0 +1,131 @@
+{
+  "date": "2026-11-05",
+  "branch": "codex/fixlens-phase-3b-visual-review",
+  "stable_main": "0d17c079f45a7f115422bd8316d338af1d818f45",
+  "preview": "http://127.0.0.1:3010/projects/fixlens",
+  "reference_analysis": "All three supplied Behance references inspected as browser imagery before implementation; web text fetch failed; no reference assets copied.",
+  "preservation": {
+    "unchanged_sections_exact": {
+      "challenge": true,
+      "research": true,
+      "exploration": true,
+      "evaluation": true,
+      "iteration": true,
+      "reflection": true
+    },
+    "original_paragraphs_preserved": 64,
+    "original_captions_preserved": 19,
+    "original_stage_labels_preserved": 14,
+    "hero_facts_exact": true,
+    "baseline_css_unchanged": true,
+    "asset_hashes_unchanged": 31,
+    "extra_public_assets": 0
+  },
+  "checks": {
+    "typecheck": "passed",
+    "production_build": "passed",
+    "existing_interaction_checks": "passed",
+    "model_audit": "passed",
+    "lint": "not configured",
+    "evolution_artifact_combinations": 8,
+    "capture_fidelity_stages": 2,
+    "keyboard_exercised": [
+      "ArrowRight",
+      "Home",
+      "End",
+      "Enter"
+    ],
+    "all_stage_comparison": "Home three stages and Capture two stages passed",
+    "missing_aria_control_targets": 0,
+    "lightbox": [
+      "Enter opens",
+      "Close receives focus",
+      "Escape closes",
+      "focus restored"
+    ],
+    "viewport_checks": [
+      {
+        "client": 1425,
+        "followupImageOverlap": 0,
+        "overflow": false,
+        "scroll": 1425,
+        "width": 1440
+      },
+      {
+        "client": 1009,
+        "followupImageOverlap": 0,
+        "overflow": false,
+        "scroll": 1009,
+        "width": 1024
+      },
+      {
+        "client": 753,
+        "followupImageOverlap": 0,
+        "overflow": false,
+        "scroll": 753,
+        "width": 768
+      },
+      {
+        "client": 375,
+        "followupImageOverlap": 0,
+        "overflow": false,
+        "scroll": 375,
+        "width": 390
+      },
+      {
+        "client": 360,
+        "followupImageOverlap": 0,
+        "overflow": false,
+        "scroll": 360,
+        "width": 375
+      }
+    ],
+    "reveal_targets_unrevealed_after_scroll": 0,
+    "visible_images_incomplete_or_broken": 0,
+    "final_production_case_console": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "hero_images": {
+      "count": 2,
+      "loading": "eager",
+      "fetchPriority": "high"
+    },
+    "ssr": {
+      "fallback_image_links": 35,
+      "fidelity_artifacts": 8,
+      "enhanced_hiding_class": false
+    },
+    "projects_navigation": "passed",
+    "homepage_canvas": "ready"
+  },
+  "boundaries": {
+    "reduced_motion": "CSS/React source verified; media emulation not performed",
+    "no_javascript": "Server HTML/static fallback verified; scripting-disabled browser not run",
+    "physical_device_touch": "not tested",
+    "automated_accessibility_scanner": "not run",
+    "quantitative_CLS_LCP": "not measured"
+  },
+  "screenshots": [
+    "01-hero-desktop.jpg",
+    "02-evolution-desktop.jpg",
+    "02b-evolution-comparison-desktop.jpg",
+    "03-solution-full-desktop.jpg",
+    "04-solution-guided-desktop.jpg",
+    "05-solution-recovery-desktop.jpg",
+    "06-solution-followup-desktop.jpg",
+    "07-solution-manager-desktop.jpg",
+    "08-full-page-desktop.jpg",
+    "09-hero-mobile.jpg",
+    "10-evolution-mobile.jpg",
+    "11-solution-full-mobile.jpg",
+    "12-solution-guided-mobile.jpg",
+    "13-solution-followup-mobile.jpg",
+    "width-1024.jpg",
+    "width-768.jpg",
+    "width-375.jpg"
+  ],
+  "pushed": false,
+  "public_deployment": false,
+  "pre_existing_next_env_change": "Restored from byte-identical backup; excluded from commit."
+}

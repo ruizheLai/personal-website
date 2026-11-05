@@ -3,6 +3,9 @@ import Link from "next/link";
 import { AssetFigure as Figure, CaseStudyExperience, HorizontalGallery } from "@/components/fixlens/CaseStudyExperience";
 import { fixlensAssets as A } from "@/lib/fixlens-assets";
 import "./fixlens.css";
+import EvolutionStudio from "@/components/fixlens/EvolutionStudio";
+import "./fixlens-art-direction.css";
+import "./evolution-studio.css";
 
 export const metadata: Metadata = {
   title: "FixLens — From report to follow-up",
@@ -33,11 +36,17 @@ export default function FixLensPage() {
       <div className="fx-breadcrumb"><Link href="/projects"><span aria-hidden="true">←</span> All projects</Link><span>Product design · 2026</span></div>
       <section className="fx-hero" aria-labelledby="fixlens-title">
         <div className="fx-hero-heading"><div><p className="fx-kicker">A connected maintenance workflow</p><h1 id="fixlens-title">Fix<span>Lens</span><span className="fx-title-dot" aria-hidden="true">.</span></h1></div><p className="fx-hero-subtitle">Making rental maintenance clearer,<br className="fx-desktop-break" /> from first report to follow-up.</p></div>
-        <div className="fx-hero-stage" data-fx-reveal>
-          <Figure asset={A.FX02} className="fx-hero-dashboard" priority sizes="(max-width: 767px) 90vw, 76vw" />
-          <Figure asset={A.FX03} className="fx-hero-mobile" priority sizes="(max-width: 767px) 37vw, 24vw" />
-          <span className="fx-hero-role fx-hero-role-pm">Property manager portal</span>
-          <span className="fx-hero-role fx-hero-role-tenant">Renter experience</span>
+        <div className="fx-hero-stage fx-art-hero" data-fx-reveal>
+          <div className="fx-art-orbit" aria-hidden="true" />
+          <div className="fx-art-hero-browser">
+            <div className="fx-browser-bar"><span className="fx-browser-dots" aria-hidden="true"><i /><i /><i /></span><span>Property manager portal</span><span aria-hidden="true">↗</span></div>
+            <Figure asset={A.FX02} className="fx-art-dashboard" priority sizes="(max-width: 600px) 90vw, 80vw" />
+          </div>
+          <div className="fx-art-hero-phone">
+            <span className="fx-art-device-label">Renter experience</span>
+            <Figure asset={A.FX03} className="fx-art-phone" priority sizes="(max-width: 600px) 65vw, 330px" />
+          </div>
+          <span className="fx-art-scene-index" aria-hidden="true">01 / Two sides. One connected workflow.</span>
         </div>
         <p className="fx-caption fx-hero-caption">Final Product — authentic client screenshots with fictional demonstration data. Independent screen layers arranged for presentation.</p>
         <div className="fx-overview"><p className="fx-lead">FixLens helps renters communicate problems more clearly and enables property managers to review evidence, request additional information, and coordinate next steps.</p><p>From August to October 2026, I independently researched, designed, evaluated and developed FixLens, using AI-assisted development to bring the concept from early exploration to a deployed exhibition application.</p></div>
@@ -71,7 +80,22 @@ export default function FixLensPage() {
 
       <section id="evolution" className="fx-section">
         <SectionHeading number="05" label="Mid-fi to Hi-fi" title={<>Structure the journey.<br />Then refine the interaction.</>}><p>I translated the sketches into Mid-fi wireframes, then a Hi-fi interactive prototype to examine how the renter journey and management experience could work together.</p></SectionHeading>
-        <div className="fx-evolution-topic"><div className="fx-topic-heading"><h3>Home & navigation</h3><p>Three clear entry points, a recent case and persistent navigation.</p></div><div className="fx-three-stages" data-fx-reveal><Stage label="Low-fi — Sketch detail" id="homeSketch" /><Stage label="Mid-fi — Wireframe" id="FX11" /><Stage label="Hi-fi — Interactive Prototype" id="FX16" /></div></div>
+        <EvolutionStudio topics={[
+          { id: "home", label: "Home & navigation", description: <p>Three clear entry points, a recent case and persistent navigation.</p>, stages: [
+            { label: "Low-fi — Sketch detail", asset: A.homeSketch },
+            { label: "Mid-fi — Wireframe", asset: A.FX11 },
+            { label: "Hi-fi — Interactive Prototype", asset: A.FX16 },
+          ] },
+          { id: "capture", label: "Evidence capture", description: <p>From a framing prompt to a dedicated camera workspace. </p>, note: <p>Early exploration established the capture sequence. The final product's camera-recovery and safety paths appear in the solution below.</p>, stages: [
+            { label: "Low-fi — Capture detail", asset: A.captureSketch },
+            { label: "Mid-fi — Overview wireframe", asset: A.FX12 },
+          ] },
+          { id: "tracking", label: "Case tracking", description: <p>Progress, responsibility and next steps develop from the original sketches. The timeline already existed before evaluation.</p>, stages: [
+            { label: "Low-fi — Progress detail", asset: A.trackingSketch },
+            { label: "Mid-fi — Case progress", asset: A.FX13 },
+            { label: "Hi-fi — Timeline & activity", asset: A.FX19 },
+          ] },
+        ]} />
         <div className="fx-evolution-topic"><div className="fx-topic-heading"><h3>Guided reporting</h3><p>One conversation, six states. Confirmation and editing keep the renter in control.</p></div>
           <HorizontalGallery label="Prototype reporting flow">
             <Figure asset={A.FX17} caption="01 / Confirm property details. Personal values redacted." />
@@ -83,18 +107,43 @@ export default function FixLensPage() {
           <div className="fx-branches"><div><p className="fx-stage-label">Danger reported →</p><Figure asset={A.FX40} caption="05 / Avoid approaching the area; contact the relevant help." /></div><span className="fx-or">or</span><div><p className="fx-stage-label">Safe to continue →</p><Figure asset={A.FX41} caption="06 / Introduce the planned evidence sequence." /></div></div>
           <p className="fx-caption fx-centered">The safety choice leads to one of two paths. Video was proposed in the prototype and is not delivered as a complete recording flow.</p>
         </div>
-        <div className="fx-evolution-topic fx-capture-evolution"><div className="fx-topic-heading"><h3>Evidence capture</h3><p>From a framing prompt to a dedicated camera workspace. </p></div><div className="fx-two-stages"><Stage label="Low-fi — Capture detail" id="captureSketch" /><Stage label="Mid-fi — Overview wireframe" id="FX12" /></div><p className="fx-caption fx-centered">Early exploration established the capture sequence. The final product's camera-recovery and safety paths appear in the solution below.</p></div>
-        <div className="fx-evolution-topic"><div className="fx-topic-heading"><h3>Case tracking</h3><p>Progress, responsibility and next steps develop from the original sketches. The timeline already existed before evaluation.</p></div><div className="fx-three-stages"><Stage label="Low-fi — Progress detail" id="trackingSketch" /><Stage label="Mid-fi — Case progress" id="FX13" /><Stage label="Hi-fi — Timeline & activity" id="FX19" /></div></div>
       </section>
 
       <section id="solution" className="fx-section fx-solution">
         <SectionHeading number="06" label="Final Product — Deployed Application" title="One connected experience for renters and property managers."><p>FixLens brings together guided reporting, evidence collection, case tracking and follow-up management.</p></SectionHeading>
         <p className="fx-provenance-note">The implemented screens below use fictional demonstration data in an isolated local client. They show the delivered interface, not production records or a new evaluation of live AI/backend services.</p>
-        <article className="fx-feature"><div className="fx-feature-copy"><span className="fx-kicker">A / Guided issue reporting</span><h3>Turn descriptions into structured reports.</h3><p>Renters describe a problem in their own words. The system interprets it into issue type, location and observed condition. Before proceeding, renters can review the summary and correct their description.</p><p>The aim is to reduce the effort of organizing an unfamiliar problem while keeping the renter in control of what is submitted.</p></div><div className="fx-phone-pair" data-fx-reveal><Figure asset={A.FX25} caption="Review the interpreted description." /><Figure asset={A.FX26} caption="Edit details and replace evidence before submission." /></div></article>
-        <article className="fx-feature fx-feature-reverse"><div className="fx-feature-copy"><span className="fx-kicker">B / Contextual evidence</span><h3>Support useful capture.<br />Make room for recovery.</h3><p>Ordinary reports guide renters through overview and close-up photographs, with previews, retaking or selecting images and final review.</p><p>If approaching the area may be dangerous, a separate reporting path continues without photos. Camera-permission recovery offers the device picker or Gallery as alternatives.</p><p className="fx-caption">Normal reports still require two photos. These captures do not validate physical camera/torch performance or computer vision.</p></div><div className="fx-phone-pair"><Figure asset={A.FX29} caption="Recover when camera access is unavailable." /><Figure asset={A.FX30} caption="Danger reports can continue without photographs; report detail shown." /></div></article>
-        <article className="fx-feature"><div className="fx-feature-copy"><span className="fx-kicker">C / Connected follow-up</span><h3>Know what is happening—and when to act.</h3><p>A prominent Action Required section on Home links directly to outstanding requests. Case details show status, the responsible party and next steps.</p><p>Responses stay associated with the original case, so users do not have to reconstruct the problem through a separate conversation.</p></div><div className="fx-phone-pair"><Figure asset={A.FX01} caption="Outstanding requests are visible on Home." /><Figure asset={A.FX27} caption="Case status and the renter's action are distinct." /></div></article>
-        <Figure asset={A.FX33} className="fx-wide-detail" caption="A resolved request retains the renter response and PM review state within the case." sizes="(max-width: 767px) 95vw, 884px" />
-        <article className="fx-manager-story"><div className="fx-feature-copy"><span className="fx-kicker">D / Property manager workflow</span><h3>Connect evidence to the next decision.</h3><p>The portal provides a dashboard for finding and reviewing cases. Managers can inspect structured reports, request specific additional evidence, review responses and record workflow actions.</p></div><Figure asset={A.FX02} caption="A focused maintenance-case overview, with status filters and attention markers." sizes="(max-width: 767px) 95vw, 1100px" /><div className="fx-manager-details"><Figure asset={A.FX32} caption="Request an overview, close-up or written details. Dialog shown; a new request was not sent in this capture." /><div className="fx-prose"><h4>Specific requests. Explicit actions.</h4><p>Typed requests clarify what is needed next. Controlled manual actions and review confirmations connect that information to the management workflow.</p><p>The exhibition scope is deliberately focused. It does not provide a working general PM inbox, real contractor integration or email/SMS delivery.</p></div></div></article>
+        <article className="fx-story fx-story-guided">
+          <div className="fx-story-lead"><div><span className="fx-kicker">A / Guided issue reporting</span><h3>Turn descriptions into structured reports.</h3></div><div className="fx-story-body"><p>Renters describe a problem in their own words. The system interprets it into issue type, location and observed condition. Before proceeding, renters can review the summary and correct their description.</p><p>The aim is to reduce the effort of organizing an unfamiliar problem while keeping the renter in control of what is submitted.</p></div></div>
+          <div className="fx-product-scene fx-guided-scene" data-fx-reveal>
+            <span className="fx-scene-word" aria-hidden="true">Clarity.</span>
+            <div className="fx-guided-first"><span className="fx-product-number" aria-hidden="true">01</span><Figure asset={A.FX25} className="fx-art-phone" caption="Review the interpreted description." /></div>
+            <div className="fx-guided-second"><span className="fx-product-number" aria-hidden="true">02</span><Figure asset={A.FX26} className="fx-art-phone" caption="Edit details and replace evidence before submission." /></div>
+            <span className="fx-scene-connector" aria-hidden="true">↗</span>
+          </div>
+        </article>
+        <article className="fx-story fx-story-recovery">
+          <div className="fx-recovery-copy"><span className="fx-kicker">B / Contextual evidence</span><h3>Support useful capture.<br />Make room for recovery.</h3><div className="fx-story-body"><p>Ordinary reports guide renters through overview and close-up photographs, with previews, retaking or selecting images and final review.</p><p>If approaching the area may be dangerous, a separate reporting path continues without photos. Camera-permission recovery offers the device picker or Gallery as alternatives.</p><p className="fx-caption">Normal reports still require two photos. These captures do not validate physical camera/torch performance or computer vision.</p></div></div>
+          <div className="fx-recovery-scene" data-fx-reveal>
+            <Figure asset={A.FX29} className="fx-art-phone fx-recovery-primary" caption="Recover when camera access is unavailable." />
+            <Figure asset={A.FX30} className="fx-art-phone fx-recovery-secondary" caption="Danger reports can continue without photographs; report detail shown." />
+          </div>
+        </article>
+        <article className="fx-story fx-story-followup">
+          <div className="fx-story-lead"><div><span className="fx-kicker">C / Connected follow-up</span><h3>Know what is happening—and when to act.</h3></div><div className="fx-story-body"><p>A prominent Action Required section on Home links directly to outstanding requests. Case details show status, the responsible party and next steps.</p><p>Responses stay associated with the original case, so users do not have to reconstruct the problem through a separate conversation.</p></div></div>
+          <div className="fx-product-scene fx-followup-scene" data-fx-reveal>
+            <div className="fx-followup-orbit" aria-hidden="true" />
+            <Figure asset={A.FX01} className="fx-art-phone fx-followup-home" caption="Outstanding requests are visible on Home." />
+            <Figure asset={A.FX27} className="fx-interface-detail fx-followup-status" caption="Case status and the renter's action are distinct." />
+            <Figure asset={A.FX33} className="fx-interface-detail fx-followup-history" caption="A resolved request retains the renter response and PM review state within the case." sizes="(max-width: 600px) 90vw, 650px" />
+          </div>
+        </article>
+        <article className="fx-story fx-story-manager">
+          <div className="fx-story-lead"><div><span className="fx-kicker">D / Property manager workflow</span><h3>Connect evidence to the next decision.</h3></div><div className="fx-story-body"><p>The portal provides a dashboard for finding and reviewing cases. Managers can inspect structured reports, request specific additional evidence, review responses and record workflow actions.</p></div></div>
+          <div className="fx-manager-scene" data-fx-reveal>
+            <div className="fx-manager-browser"><div className="fx-browser-bar"><span className="fx-browser-dots" aria-hidden="true"><i /><i /><i /></span><span>Property manager portal</span><span aria-hidden="true">↗</span></div><Figure asset={A.FX02} caption="A focused maintenance-case overview, with status filters and attention markers." sizes="(max-width: 767px) 95vw, 1200px" /></div>
+          </div>
+          <div className="fx-manager-story-detail"><div className="fx-story-body"><span className="fx-detail-rule" aria-hidden="true" /><h4>Specific requests. Explicit actions.</h4><p>Typed requests clarify what is needed next. Controlled manual actions and review confirmations connect that information to the management workflow.</p><p>The exhibition scope is deliberately focused. It does not provide a working general PM inbox, real contractor integration or email/SMS delivery.</p></div><Figure asset={A.FX32} className="fx-manager-request fx-interface-detail" caption="Request an overview, close-up or written details. Dialog shown; a new request was not sent in this capture." /></div>
+        </article>
       </section>
 
       <section id="evaluation" className="fx-section">
