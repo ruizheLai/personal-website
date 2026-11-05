@@ -84,7 +84,7 @@ export default function MatchedComparison({ mid, high, label }: MatchedCompariso
       )}
       <figcaption className="fx-mc-help" id={helpId}>
         {enhanced && matched
-          ? "Drag the divider. Use the arrow keys when focused."
+          ? <><span aria-hidden="true">Drag to compare</span><span className="sr-only">Drag the divider to reveal the two screens. Use arrow keys, Home or End when focused.</span></>
           : "The original Mid-fi and Hi-fi artifacts, shown separately."}
       </figcaption>
     </figure>

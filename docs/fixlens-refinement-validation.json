@@ -1,0 +1,146 @@
+{
+  "date": "2026-11-05",
+  "branch": "codex/fixlens-phase-3b-visual-review",
+  "baselineCommit": "d1e0fba7abe9610a5354837bb9cfba64e9b1d202",
+  "checks": {
+    "interactions": "pass",
+    "navigation": "pass",
+    "build": "pass",
+    "typecheck": "pass",
+    "model": "pass",
+    "browserErrors": [],
+    "galleryAndZoom": "pass",
+    "lint": "No script configured"
+  },
+  "responsive": [
+    {
+      "client": 1425,
+      "scroll": 1425,
+      "width": 1440
+    },
+    {
+      "client": 1024,
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "client": 768,
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "client": 390,
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "client": 360,
+      "scroll": 360,
+      "width": 375
+    }
+  ],
+  "activeScroll": [
+    {
+      "active": "Challenge",
+      "y": 875
+    },
+    {
+      "active": "Research",
+      "y": 2625
+    },
+    {
+      "active": "Sketches",
+      "y": 4375
+    },
+    {
+      "active": "Design",
+      "y": 5250
+    },
+    {
+      "active": "Solution",
+      "y": 7875
+    },
+    {
+      "active": "Evaluation",
+      "y": 12250
+    },
+    {
+      "active": "Iteration",
+      "y": 14000
+    }
+  ],
+  "navigation": {
+    "hoverBaseWidth": 164.53,
+    "hashBack": "pass",
+    "hoverExpandedWidth": 289.45,
+    "mobileArrivalGap": 24.39,
+    "desktopLabelPixels": 16,
+    "desktopArrivalGap": 23.59,
+    "keyboardHeadingFocus": "pass"
+  },
+  "comparison": {
+    "visibleHints": 1,
+    "pointerDesktop": "pass",
+    "imagesStationary": true,
+    "pointerMobile375": "pass",
+    "default": 50,
+    "keyboard": "pass"
+  },
+  "layoutReservation": {
+    "after": {
+      "reflectionY": 16630.34375,
+      "iterationHeight": 3155.265625,
+      "pageHeight": 17535
+    },
+    "before": {
+      "reflectionY": 16630.34375,
+      "iterationHeight": 3155.265625,
+      "pageHeight": 17535
+    }
+  },
+  "assetCount": 31,
+  "assetBytes": 5741946,
+  "restoredAssets": [
+    "FX10",
+    "homeSketch",
+    "FX11",
+    "FX13",
+    "FX16",
+    "FX19"
+  ],
+  "unchangedAssets": 25,
+  "retainedPrivacy": [
+    "FX17",
+    "FX37"
+  ],
+  "fontSubsetBytes": 11040,
+  "dependenciesAdded": 0,
+  "screenshots": [
+    "hero-desktop.jpg",
+    "hero-1024.jpg",
+    "hero-768.jpg",
+    "hero-390.jpg",
+    "hero-375.jpg",
+    "navigation-research.jpg",
+    "navigation-hover-desktop.jpg",
+    "navigation-mobile.jpg",
+    "challenge-desktop.jpg",
+    "research-desktop.jpg",
+    "exploration-desktop.jpg",
+    "exploration-mobile.jpg",
+    "evolution-desktop.jpg",
+    "editing-comparison-desktop.jpg",
+    "evaluation-desktop.jpg",
+    "iteration-desktop.jpg",
+    "full-desktop.jpg",
+    "zoom-mobile.jpg"
+  ],
+  "limitations": [
+    "Physical touchscreen input not available in controller.",
+    "Actual media-preference emulation not available; reduced-motion code reviewed.",
+    "No controlled Lighthouse or low-powered-device benchmark."
+  ],
+  "pushed": false,
+  "merged": false,
+  "deployed": false
+}

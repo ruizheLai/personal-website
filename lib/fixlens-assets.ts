@@ -48,14 +48,14 @@ export const fixlensAssets = {
     "src": "/images/projects/fixlens/fx10-reporting-flow.webp",
     "width": 1600,
     "height": 1234,
-    "alt": "Original hand-drawn reporting sequence covering confirmation, issue understanding, evidence capture and review, with a greeting redacted.",
+    "alt": "Original hand-drawn reporting sequence covering confirmation, issue understanding, evidence capture and review.",
     "title": "Reporting Flow"
   },
   "FX11": {
     "src": "/images/projects/fixlens/fx11-home.webp",
     "width": 390,
     "height": 844,
-    "alt": "Mid-fi grayscale Home wireframe with Report an issue, My cases, Other questions, a recent case and bottom navigation; greeting redacted.",
+    "alt": "Mid-fi grayscale Home wireframe with Report an issue, My cases, Other questions, a recent case and bottom navigation.",
     "title": "Home"
   },
   "FX12": {
@@ -69,14 +69,14 @@ export const fixlensAssets = {
     "src": "/images/projects/fixlens/fx13-case-progress.webp",
     "width": 390,
     "height": 844,
-    "alt": "Mid-fi case-progress wireframe showing awaiting landlord approval, no renter action required and a vertical progress timeline; case ID redacted.",
+    "alt": "Mid-fi case-progress wireframe showing awaiting landlord approval, no renter action required and a vertical progress timeline.",
     "title": "Case Progress"
   },
   "FX16": {
     "src": "/images/projects/fixlens/fx16-home.webp",
     "width": 390,
     "height": 844,
-    "alt": "Hi-fi prototype Home with a prominent report action, navigation and a recent case but no outstanding-request card in this state; greeting redacted.",
+    "alt": "Hi-fi prototype Home with a prominent report action, navigation and a recent case but no outstanding-request card in this state.",
     "title": "Prototype Home"
   },
   "FX17": {
@@ -97,7 +97,7 @@ export const fixlensAssets = {
     "src": "/images/projects/fixlens/fx19-case-timeline.webp",
     "width": 390,
     "height": 844,
-    "alt": "Hi-fi prototype case detail showing approval status, a progress timeline and recent case activity; case ID redacted.",
+    "alt": "Hi-fi prototype case detail showing approval status, a progress timeline and recent case activity.",
     "title": "Case Timeline"
   },
   "FX22": {
@@ -202,7 +202,7 @@ export const fixlensAssets = {
     "src": "/images/projects/fixlens/fx10-home-sketch-detail.webp",
     "width": 405,
     "height": 610,
-    "alt": "Cropped original Home sketch with Report an issue, My cases, Other questions, recent case and bottom navigation; greeting redacted.",
+    "alt": "Cropped original Home sketch with Report an issue, My cases, Other questions, recent case and bottom navigation.",
     "title": "Low-fi Home concept"
   },
   "captureSketch": {

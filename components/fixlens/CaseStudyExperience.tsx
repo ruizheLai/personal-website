@@ -37,7 +37,7 @@ function ArrowIcon({ direction }: { direction: "previous" | "next" }) {
   );
 }
 
-/** Only this wrapper is interactive; all server-rendered case-study content remains readable without JS. */
+/** Enhancements are opt-in: server-rendered content stays visible without JS. */
 export function CaseStudyExperience({ children }: { children: ReactNode }) {
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -45,35 +45,113 @@ export function CaseStudyExperience({ children }: { children: ReactNode }) {
     const root = rootRef.current;
     if (!root || !("IntersectionObserver" in window)) return;
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const selector = "[data-fx-motion], [data-fx-reveal]";
+    const targets = new Set<HTMLElement>();
+    const staggerStyles = new Map<HTMLElement, { value: string; priority: string }>();
     let observer: IntersectionObserver | null = null;
+    let disposed = false;
+
+    const reveal = (target: HTMLElement) => {
+      target.classList.add("fx-revealed");
+      observer?.unobserve(target);
+    };
+
+    const prepareStagger = (target: HTMLElement) => {
+      if (target.dataset.fxMotion !== "comparison" && target.dataset.fxMotion !== "research") return;
+      // Explicit direct children keep image rotations, layout wrappers and nested groups independent.
+      Array.from(target.children).forEach((child, index) => {
+        if (!(child instanceof HTMLElement) || !child.hasAttribute("data-fx-motion-item")) return;
+        if (!staggerStyles.has(child)) {
+          staggerStyles.set(child, {
+            value: child.style.getPropertyValue("--fx-motion-delay"),
+            priority: child.style.getPropertyPriority("--fx-motion-delay"),
+          });
+        }
+        child.style.setProperty("--fx-motion-delay", Math.min(index, 3) * 90 + "ms");
+      });
+    };
+
+    const register = (target: HTMLElement) => {
+      prepareStagger(target);
+      if (targets.has(target)) return;
+      targets.add(target);
+      if (preference.matches) reveal(target);
+      else if (!target.classList.contains("fx-revealed")) observer?.observe(target);
+    };
 
     const configure = () => {
       observer?.disconnect();
       observer = null;
       root.classList.remove("fx-motion-ready");
 
-      if (preference.matches) return;
-      const targets = Array.from(root.querySelectorAll<HTMLElement>("[data-fx-reveal]"));
+      // Complete rather than replay if the preference changes during a reveal.
+      if (preference.matches) {
+        targets.forEach(reveal);
+        return;
+      }
       observer = new IntersectionObserver(
         (entries) => {
+          if (disposed || preference.matches) return;
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-            entry.target.classList.add("fx-revealed");
-            observer?.unobserve(entry.target);
+            reveal(entry.target as HTMLElement);
           });
         },
-        { threshold: 0.06, rootMargin: "0px 0px 24px 0px" },
+        { threshold: 0.04, rootMargin: "0px 0px -24px 0px" },
       );
-      targets.forEach((target) => observer?.observe(target));
+      targets.forEach((target) => {
+        if (!target.classList.contains("fx-revealed")) observer?.observe(target);
+      });
       root.classList.add("fx-motion-ready");
     };
 
+    root.querySelectorAll<HTMLElement>(selector).forEach(register);
     configure();
+
+    // A keyboard user must never focus an invisible control in a pending composition.
+    const onFocus = (event: FocusEvent) => {
+      let node = event.target instanceof HTMLElement ? event.target : null;
+      while (node && node !== root) {
+        if (targets.has(node)) reveal(node);
+        node = node.parentElement;
+      }
+    };
+    root.addEventListener("focusin", onFocus);
+
+    // Supports content mounted inside existing disclosure/gallery compositions.
+    const mutations = "MutationObserver" in window ? new MutationObserver((records) => {
+      if (disposed) return;
+      records.forEach((record) => {
+        if (record.target instanceof HTMLElement && targets.has(record.target)) prepareStagger(record.target);
+        record.removedNodes.forEach((node) => {
+          if (!(node instanceof HTMLElement)) return;
+          [node, ...Array.from(node.querySelectorAll<HTMLElement>(selector))].forEach((target) => {
+            if (root.contains(target)) return;
+            observer?.unobserve(target);
+            targets.delete(target);
+          });
+        });
+        record.addedNodes.forEach((node) => {
+          if (!(node instanceof HTMLElement)) return;
+          if (node.matches(selector)) register(node);
+          node.querySelectorAll<HTMLElement>(selector).forEach(register);
+        });
+      });
+    }) : null;
+    mutations?.observe(root, { childList: true, subtree: true });
     preference.addEventListener("change", configure);
     return () => {
+      disposed = true;
       observer?.disconnect();
+      mutations?.disconnect();
       preference.removeEventListener("change", configure);
+      root.removeEventListener("focusin", onFocus);
       root.classList.remove("fx-motion-ready");
+      staggerStyles.forEach(({ value, priority }, target) => {
+        if (value) target.style.setProperty("--fx-motion-delay", value, priority);
+        else target.style.removeProperty("--fx-motion-delay");
+      });
+      targets.clear();
     };
   }, []);
 
@@ -116,6 +194,7 @@ export function AssetFigure({
           width={asset.width}
           height={asset.height}
           alt={asset.alt}
+          style={{ aspectRatio: asset.width + " / " + asset.height }}
           sizes={sizes}
           fetchPriority={priority ? "high" : undefined}
           loading={priority ? "eager" : "lazy"}

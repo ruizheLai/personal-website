@@ -1,0 +1,127 @@
+/* Content is fully visible in server HTML and whenever motion enhancement is unavailable.
+   Put hooks on transform-free wrappers, never the img or the zoom anchor itself. */
+.fx-experience {
+  --fx-motion-ease: cubic-bezier(.22,.7,.2,1);
+}
+
+.fx-experience.fx-motion-ready [data-fx-motion="heading"],
+.fx-experience.fx-motion-ready [data-fx-motion="body"],
+.fx-experience.fx-motion-ready [data-fx-motion="image"],
+.fx-experience.fx-motion-ready [data-fx-reveal]:not([data-fx-motion]) {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms var(--fx-motion-ease), transform 600ms var(--fx-motion-ease);
+}
+.fx-experience.fx-motion-ready [data-fx-motion="heading"] {
+  transform: translateY(20px);
+  transition-duration: 620ms;
+}
+.fx-experience.fx-motion-ready [data-fx-motion="body"] {
+  transform: translateY(12px);
+  transition-duration: 520ms;
+}
+.fx-experience.fx-motion-ready [data-fx-motion="image"] {
+  transform: scale(.98);
+  transition-duration: 700ms;
+  transform-origin: 50% 45%;
+}
+.fx-experience.fx-motion-ready [data-fx-motion="heading"].fx-revealed,
+.fx-experience.fx-motion-ready [data-fx-motion="body"].fx-revealed,
+.fx-experience.fx-motion-ready [data-fx-motion="image"].fx-revealed,
+.fx-experience.fx-motion-ready [data-fx-reveal]:not([data-fx-motion]).fx-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Comparison and research groups deliberately use different entrances. */
+.fx-experience.fx-motion-ready [data-fx-motion="comparison"] > [data-fx-motion-item],
+.fx-experience.fx-motion-ready [data-fx-motion="research"] > [data-fx-motion-item] {
+  opacity: 0;
+  transition: opacity 600ms var(--fx-motion-ease), transform 600ms var(--fx-motion-ease);
+  transition-delay: var(--fx-motion-delay,0ms);
+}
+.fx-experience.fx-motion-ready [data-fx-motion="comparison"] > [data-fx-motion-item] {
+  transform: translateY(18px) scale(.985);
+  transform-origin: 50% 30%;
+  transition-duration: 650ms;
+}
+.fx-experience.fx-motion-ready [data-fx-motion="research"] > [data-fx-motion-item] {
+  transform: translateX(-12px);
+  transition-duration: 540ms;
+}
+.fx-experience.fx-motion-ready [data-fx-motion="comparison"].fx-revealed > [data-fx-motion-item],
+.fx-experience.fx-motion-ready [data-fx-motion="research"].fx-revealed > [data-fx-motion-item] {
+  opacity: 1;
+  transform: none;
+}
+.fx-experience.fx-motion-ready [data-fx-motion]:focus-within,
+.fx-experience.fx-motion-ready [data-fx-reveal]:focus-within,
+.fx-experience.fx-motion-ready [data-fx-motion]:focus-within > [data-fx-motion-item] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* A few compositions can drift gently through their viewport passage. This is
+   independent of entrance/zoom transforms: scene > layer > existing artwork.
+   Unsupported browsers retain the static composition. Never use on text. */
+@supports (animation-timeline: view()) and (view-timeline-name: --fx-composition) {
+  @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+    .fx-scroll-scene {
+      view-timeline-name: --fx-composition;
+      view-timeline-axis: block;
+    }
+    .fx-scroll-scene > .fx-parallax-layer {
+      animation: fx-editorial-drift linear both;
+      animation-timeline: --fx-composition;
+      animation-range: entry 0% exit 100%;
+    }
+    .fx-scroll-scene > .fx-parallax-layer.fx-parallax-slow {
+      animation-name: fx-editorial-drift-slow;
+    }
+    /* Hold the composition steady while its controls have keyboard focus. */
+    .fx-scroll-scene:focus-within > .fx-parallax-layer {
+      animation-play-state: paused;
+    }
+  }
+}
+@keyframes fx-editorial-drift {
+  from { transform: translateY(16px); }
+  to { transform: translateY(-16px); }
+}
+@keyframes fx-editorial-drift-slow {
+  from { transform: translateY(8px); }
+  to { transform: translateY(-8px); }
+}
+
+/* Small, consistent responses on the existing controls. */
+.fx-case .fx-gallery-arrow,
+.fx-case .fx-support summary,
+.fx-case .fx-image-expand {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+.fx-case .fx-gallery-arrow svg { transition: transform 180ms ease; }
+.fx-case .fx-support summary > span { transition: transform 220ms var(--fx-motion-ease); }
+.fx-case .fx-support[open] summary > span { transform: rotate(45deg); }
+.fx-case .fx-live-link { text-underline-offset: .22em; text-decoration-thickness: 1px; }
+.fx-case .fx-live-link:hover { text-decoration-line: underline; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .fx-case .fx-gallery-arrow:not(:disabled):first-child:hover svg { transform: translateX(-2px); }
+  .fx-case .fx-gallery-arrow:not(:disabled):last-child:hover svg { transform: translateX(2px); }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .fx-experience.fx-motion-ready [data-fx-motion],
+  .fx-experience.fx-motion-ready [data-fx-reveal],
+  .fx-experience.fx-motion-ready [data-fx-motion] > [data-fx-motion-item] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .fx-experience .fx-parallax-layer { animation: none !important; }
+  .fx-case .fx-gallery-arrow,
+  .fx-case .fx-gallery-arrow svg,
+  .fx-case .fx-support summary,
+  .fx-case .fx-support summary > span,
+  .fx-case .fx-image-expand { transition: none !important; }
+}

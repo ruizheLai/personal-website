@@ -43,10 +43,29 @@
     "native_webp_count": 28,
     "derived_sketch_count": 3,
     "output_asset_count": 31,
-    "total_asset_bytes": 5709962,
+    "total_asset_bytes": 5741946,
     "product_capture_provenance": "Actual implemented client using isolated fictional fixtures; not production records or proof of current hosted-backend/model execution.",
     "prototype_sequence": "FX17, FX37, FX38, FX39, then danger FX40 OR safe FX41.",
-    "source_files_preserved": true
+    "source_files_preserved": true,
+    "website_derivation_overrides": {
+      "date": "2026-11-05",
+      "keys": [
+        "FX10",
+        "FX11",
+        "FX13",
+        "FX16",
+        "FX19",
+        "homeSketch",
+        "captureSketch"
+      ],
+      "basis": "Owner confirmed Brad is fictional demo data; existing audit identifies FL-1024 as a demo case reference.",
+      "operations": "Exact native pixels/orientation/crops from authentic sources, lossless WebP, no generated content. captureSketch metadata corrected without changing pixels.",
+      "retained_protections": [
+        "FX17",
+        "FX37"
+      ],
+      "original_upstream_manifests_preserved": true
+    }
   },
   "assets": [
     {
@@ -209,19 +228,19 @@
       "key": "FX10",
       "id": "FX10",
       "file": "public/images/projects/fixlens/fx10-reporting-flow.webp",
-      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\reporting-flow.webp",
+      "source": "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.26 AM.jpeg",
       "original_sources": [
         "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.26 AM.jpeg"
       ],
-      "provenance": "Original hand sketch photograph; lossless derivative; privacy redaction",
-      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained. First-name greeting region redacted.",
+      "provenance": "Original hand sketch photograph; lossless native-pixel derivative",
+      "source_operations": "EXIF orientation respected; original 1600×1234 sketch photograph retained. Owner-confirmed fictional demo greeting restored directly from authentic source pixels.",
       "status": "Ready",
-      "privacy": "Cleared in derivative",
+      "privacy": "Owner-confirmed fictional demo greeting released; no contact/property values introduced",
       "caption": "Original sketch exploration: confirmation, capture and review within one reporting concept.",
-      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
-      "source_sha256": "ade3175bb9cd5724f4dc64fd151ab3e4e8c1a40da7408098d102c020ce685b09",
-      "output_sha256": "ade3175bb9cd5724f4dc64fd151ab3e4e8c1a40da7408098d102c020ce685b09",
-      "bytes": 1246960,
+      "operations_for_website": "Lossless native-pixel WebP encoded directly from authentic original; no scaling, UI reconstruction, alpha change or new content.",
+      "source_sha256": "cb409751dcd31a85e1d3d5caf4721dde63388de6a3ade54444ee35fa50af4c71",
+      "output_sha256": "e0e8674236db416ee9b83e54494784f26b3eb6b659a49a4227aa847140a14d0f",
+      "bytes": 1263198,
       "width": 1600,
       "height": 1234,
       "alpha": false,
@@ -229,25 +248,37 @@
         255,
         255
       ],
-      "format": "WEBP"
+      "format": "WEBP",
+      "upstream_prepared_source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\reporting-flow.webp",
+      "upstream_prepared_source_sha256": "ade3175bb9cd5724f4dc64fd151ab3e4e8c1a40da7408098d102c020ce685b09",
+      "privacy_review": {
+        "released_data": "First-name greeting only",
+        "basis": "Owner explicitly confirmed Brad is fictional demo data in the current refinement task",
+        "retained_protections": "Unverified plausible full name/contact/property/PM values in FX17/37 and unknown-rights evidence photographs remain protected; no participant material added"
+      },
+      "website_derivation_validation": {
+        "visible_rgba_matches_authentic_source": true,
+        "transparent_rgb_only_differences": 0,
+        "content_generated": false
+      }
     },
     {
       "key": "FX11",
       "id": "FX11",
       "file": "public/images/projects/fixlens/fx11-home.webp",
-      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\mid-fi\\home.webp",
+      "source": "E:\\UX project\\mid fidelity wireframe\\Home.png",
       "original_sources": [
         "E:\\UX project\\mid fidelity wireframe\\Home.png"
       ],
-      "provenance": "Mid-fi wireframe export; crop-free; privacy redaction",
-      "source_operations": "Native 390×844; no scaling. Greeting redacted.",
+      "provenance": "Original Mid-fi wireframe export; native dimensions",
+      "source_operations": "Original native 390×844 wireframe retained. Owner-confirmed fictional demo greeting restored directly from authentic source pixels.",
       "status": "Ready",
-      "privacy": "Cleared in derivative",
+      "privacy": "Owner-confirmed fictional demo greeting released; no contact/property values introduced",
       "caption": "Mid-fi — structured home.",
-      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
-      "source_sha256": "d3f4c97c7038770e19379acecfdf2cda2a23712a311c0a33baecdb1a988cea6d",
-      "output_sha256": "d3f4c97c7038770e19379acecfdf2cda2a23712a311c0a33baecdb1a988cea6d",
-      "bytes": 8752,
+      "operations_for_website": "Lossless native-pixel WebP encoded directly from authentic original; no scaling, UI reconstruction, alpha change or new content.",
+      "source_sha256": "30666af6c3b54a4ebb38a815c54e58649ee9d15e4f5b404bd65acc88a97d1fee",
+      "output_sha256": "d2a0d98fea23f5519502a51ad486294ca3d4e605a4504a674bc793f1e5f99fd1",
+      "bytes": 8320,
       "width": 390,
       "height": 844,
       "alpha": true,
@@ -255,7 +286,19 @@
         0,
         255
       ],
-      "format": "WEBP"
+      "format": "WEBP",
+      "upstream_prepared_source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\mid-fi\\home.webp",
+      "upstream_prepared_source_sha256": "d3f4c97c7038770e19379acecfdf2cda2a23712a311c0a33baecdb1a988cea6d",
+      "privacy_review": {
+        "released_data": "First-name greeting only",
+        "basis": "Owner explicitly confirmed Brad is fictional demo data in the current refinement task",
+        "retained_protections": "Unverified plausible full name/contact/property/PM values in FX17/37 and unknown-rights evidence photographs remain protected; no participant material added"
+      },
+      "website_derivation_validation": {
+        "visible_rgba_matches_authentic_source": true,
+        "transparent_rgb_only_differences": 0,
+        "content_generated": false
+      }
     },
     {
       "key": "FX12",
@@ -287,19 +330,19 @@
       "key": "FX13",
       "id": "FX13",
       "file": "public/images/projects/fixlens/fx13-case-progress.webp",
-      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\mid-fi\\case-progress.webp",
+      "source": "E:\\UX project\\mid fidelity wireframe\\Bedroom Window Leak.png",
       "original_sources": [
         "E:\\UX project\\mid fidelity wireframe\\Bedroom Window Leak.png"
       ],
-      "provenance": "Mid-fi wireframe export; crop-free; privacy redaction",
-      "source_operations": "Native 390x844; case-ID region (50,78,165,97) redacted; back arrow and title preserved.",
+      "provenance": "Original Mid-fi wireframe export; native dimensions",
+      "source_operations": "Original native 390×844 wireframe retained. Example case ID restored directly from authentic source pixels.",
       "status": "Ready",
-      "privacy": "Cleared in derivative",
+      "privacy": "Demo case reference released; no personal/contact values introduced",
       "caption": "Mid-fi — structured case progress.",
-      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
-      "source_sha256": "417f4f19cbc5951b2b257b8261f99a40ae6a596f75ac7cdf8319cea4c5cee84e",
-      "output_sha256": "417f4f19cbc5951b2b257b8261f99a40ae6a596f75ac7cdf8319cea4c5cee84e",
-      "bytes": 11806,
+      "operations_for_website": "Lossless native-pixel WebP encoded directly from authentic original; no scaling, UI reconstruction, alpha change or new content.",
+      "source_sha256": "9bc7a50c04f2334fef5c784ca6c2580638a94435684db106812dba9d0f966b4b",
+      "output_sha256": "d5d6dbcd2d080b73576f4a52ba9b11ebc4db7a7a2aa340572d2341d6f172c6b9",
+      "bytes": 11566,
       "width": 390,
       "height": 844,
       "alpha": true,
@@ -307,25 +350,37 @@
         0,
         255
       ],
-      "format": "WEBP"
+      "format": "WEBP",
+      "upstream_prepared_source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\mid-fi\\case-progress.webp",
+      "upstream_prepared_source_sha256": "417f4f19cbc5951b2b257b8261f99a40ae6a596f75ac7cdf8319cea4c5cee84e",
+      "privacy_review": {
+        "released_data": "Authored example case reference only",
+        "basis": "SELECTED_VISUALS.md describes demo case IDs; same example reference in corresponding Mid-fi and Hi-fi screens; current owner requests removing artificial demo masking",
+        "retained_protections": "Unverified plausible full name/contact/property/PM values in FX17/37 and unknown-rights evidence photographs remain protected; no participant material added"
+      },
+      "website_derivation_validation": {
+        "visible_rgba_matches_authentic_source": true,
+        "transparent_rgb_only_differences": 0,
+        "content_generated": false
+      }
     },
     {
       "key": "FX16",
       "id": "FX16",
       "file": "public/images/projects/fixlens/fx16-home.webp",
-      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\home.webp",
+      "source": "E:\\UX project\\high fidelity prototype\\Home.png",
       "original_sources": [
         "E:\\UX project\\high fidelity prototype\\Home.png"
       ],
-      "provenance": "Figma-attributed original export; screen-only crop + greeting redaction",
-      "source_operations": "Crop original (80,48,470,892); original rounded alpha retained; greeting redaction (20,136,185,165).",
+      "provenance": "Original Figma-attributed export; native screen-only crop",
+      "source_operations": "Native screen crop (80,48,470,892); original rounded alpha retained. Owner-confirmed fictional demo greeting restored directly from authentic source pixels.",
       "status": "Ready",
-      "privacy": "Cleared in derivative",
+      "privacy": "Owner-confirmed fictional demo greeting released; no contact/property values introduced",
       "caption": "Hi-fi prototype Home emphasizes reporting and a recent case; outstanding requests are not surfaced here in this state.",
-      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
-      "source_sha256": "884c1dc14c2983c0206969778da2fa5042bf6ec04d16e5a1f055d2880ae6dc9a",
-      "output_sha256": "884c1dc14c2983c0206969778da2fa5042bf6ec04d16e5a1f055d2880ae6dc9a",
-      "bytes": 25642,
+      "operations_for_website": "Lossless native-pixel WebP encoded directly from authentic original; no scaling, UI reconstruction, alpha change or new content.",
+      "source_sha256": "5e35a72724958e2563b15c1065aa5beea6d6f5adc826a0280b5be42d9f6bfadf",
+      "output_sha256": "b1ed9d3422eb73cfe10363dbab8d4fe3b036f1187c55df9ade22faf17a90a2e8",
+      "bytes": 26494,
       "width": 390,
       "height": 844,
       "alpha": true,
@@ -333,7 +388,25 @@
         3,
         255
       ],
-      "format": "WEBP"
+      "format": "WEBP",
+      "upstream_prepared_source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\home.webp",
+      "upstream_prepared_source_sha256": "884c1dc14c2983c0206969778da2fa5042bf6ec04d16e5a1f055d2880ae6dc9a",
+      "crop_box": [
+        80,
+        48,
+        470,
+        892
+      ],
+      "privacy_review": {
+        "released_data": "First-name greeting only",
+        "basis": "Owner explicitly confirmed Brad is fictional demo data in the current refinement task",
+        "retained_protections": "Unverified plausible full name/contact/property/PM values in FX17/37 and unknown-rights evidence photographs remain protected; no participant material added"
+      },
+      "website_derivation_validation": {
+        "visible_rgba_matches_authentic_source": true,
+        "transparent_rgb_only_differences": 0,
+        "content_generated": false
+      }
     },
     {
       "key": "FX17",
@@ -391,19 +464,19 @@
       "key": "FX19",
       "id": "FX19",
       "file": "public/images/projects/fixlens/fx19-case-timeline.webp",
-      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\case-timeline.webp",
+      "source": "E:\\UX project\\high fidelity prototype\\Bedroom Window Leak.png",
       "original_sources": [
         "E:\\UX project\\high fidelity prototype\\Bedroom Window Leak.png"
       ],
-      "provenance": "Original Figma-attributed export; screen crop + case-ID redaction",
-      "source_operations": "Crop (80,48,470,892); case ID masked; original alpha retained.",
+      "provenance": "Original Figma-attributed export; native screen-only crop",
+      "source_operations": "Native screen crop (80,48,470,892); original rounded alpha retained. Example case ID restored directly from authentic source pixels.",
       "status": "Ready",
-      "privacy": "Cleared in derivative",
+      "privacy": "Demo case reference released; no personal/contact values introduced",
       "caption": "Hi-fi prototype — case timeline. A timeline and case-level follow-up already existed.",
-      "operations_for_website": "Byte-for-byte copy of selected native lossless WebP; no scaling, alpha alteration or UI edits.",
-      "source_sha256": "f4e8575f5afe6e66b4e75408a059e63aa9ecd40347832886fdf6cba0f7754021",
-      "output_sha256": "f4e8575f5afe6e66b4e75408a059e63aa9ecd40347832886fdf6cba0f7754021",
-      "bytes": 18034,
+      "operations_for_website": "Lossless native-pixel WebP encoded directly from authentic original; no scaling, UI reconstruction, alpha change or new content.",
+      "source_sha256": "e6890cd84f15747f9c61eecd288e70d491430f657b940abf9c7bcb095bdf2552",
+      "output_sha256": "e44136a95746fcca0b8c9457b130924f19ca107bf3fbd97fd657af47345c8fb8",
+      "bytes": 17936,
       "width": 390,
       "height": 844,
       "alpha": true,
@@ -411,7 +484,25 @@
         3,
         255
       ],
-      "format": "WEBP"
+      "format": "WEBP",
+      "upstream_prepared_source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\hi-fi\\case-timeline.webp",
+      "upstream_prepared_source_sha256": "f4e8575f5afe6e66b4e75408a059e63aa9ecd40347832886fdf6cba0f7754021",
+      "crop_box": [
+        80,
+        48,
+        470,
+        892
+      ],
+      "privacy_review": {
+        "released_data": "Authored example case reference only",
+        "basis": "SELECTED_VISUALS.md describes demo case IDs; same example reference in corresponding Mid-fi and Hi-fi screens; current owner requests removing artificial demo masking",
+        "retained_protections": "Unverified plausible full name/contact/property/PM values in FX17/37 and unknown-rights evidence photographs remain protected; no participant material added"
+      },
+      "website_derivation_validation": {
+        "visible_rgba_matches_authentic_source": true,
+        "transparent_rgb_only_differences": 0,
+        "content_generated": false
+      }
     },
     {
       "key": "FX22",
@@ -781,25 +872,25 @@
       "key": "homeSketch",
       "id": "FX10-DETAIL",
       "file": "public/images/projects/fixlens/fx10-home-sketch-detail.webp",
-      "source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\reporting-flow.png",
+      "source": "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.26 AM.jpeg",
       "original_sources": [
         "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.26 AM.jpeg"
       ],
-      "provenance": "Exact crop of prepared publication-cleared original sketch derivative",
-      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained. First-name greeting region redacted.",
+      "provenance": "Original hand sketch photograph; lossless native-pixel derivative",
+      "source_operations": "EXIF orientation respected; exact native crop (0,0,405,610) from original sketch photograph. Owner-confirmed fictional demo greeting restored directly from authentic source pixels.",
       "status": "Ready",
-      "privacy": "Cleared in derivative",
-      "caption": "Cropped original Home sketch with Report an issue, My cases, Other questions, recent case and bottom navigation; greeting redacted.",
-      "operations_for_website": "Crop (0, 0, 405, 610); native pixels retained; encoded as lossless WebP, no scaling or redrawing.",
+      "privacy": "Owner-confirmed fictional demo greeting released; no contact/property values introduced",
+      "caption": "Cropped original Home sketch with Report an issue, My cases, Other questions, recent case and bottom navigation.",
+      "operations_for_website": "Lossless native-pixel WebP encoded directly from authentic original; no scaling, UI reconstruction, alpha change or new content.",
       "crop_box": [
         0,
         0,
         405,
         610
       ],
-      "source_sha256": "ff1e00bdcabcd8cd35696cf91e1a915add83573bf434b44c997b99134540f5c3",
-      "output_sha256": "719af5e459644b187c3bb05d8139e1264c8341aa291546aba87bfec7550b0e85",
-      "bytes": 163904,
+      "source_sha256": "cb409751dcd31a85e1d3d5caf4721dde63388de6a3ade54444ee35fa50af4c71",
+      "output_sha256": "05d047224ea1939d2a3b01ed09d45b4c836a74fdf243aaaf8890de177eebf1c1",
+      "bytes": 179568,
       "width": 405,
       "height": 610,
       "alpha": false,
@@ -807,7 +898,19 @@
         255,
         255
       ],
-      "format": "WEBP"
+      "format": "WEBP",
+      "upstream_prepared_source": "E:\\UX project\\portfolio draft\\final-assets\\03-design-exploration\\low-fi\\reporting-flow.png",
+      "upstream_prepared_source_sha256": "ff1e00bdcabcd8cd35696cf91e1a915add83573bf434b44c997b99134540f5c3",
+      "privacy_review": {
+        "released_data": "First-name greeting only",
+        "basis": "Owner explicitly confirmed Brad is fictional demo data in the current refinement task",
+        "retained_protections": "Unverified plausible full name/contact/property/PM values in FX17/37 and unknown-rights evidence photographs remain protected; no participant material added"
+      },
+      "website_derivation_validation": {
+        "visible_rgba_matches_authentic_source": true,
+        "transparent_rgb_only_differences": 0,
+        "content_generated": false
+      }
     },
     {
       "key": "captureSketch",
@@ -817,10 +920,10 @@
       "original_sources": [
         "E:\\UX project\\sketches\\WhatsApp Image 2026-09-03 at 10.46.26 AM.jpeg"
       ],
-      "provenance": "Exact crop of prepared publication-cleared original sketch derivative",
-      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained. First-name greeting region redacted.",
+      "provenance": "Exact native crop of original hand sketch photograph, verified pixel-identical to the corresponding original-source crop",
+      "source_operations": "EXIF orientation respected; original aspect ratio and native size retained. The prepared source-sheet greeting mask is outside the selected capture crop; this derivative contains no masked pixels.",
       "status": "Ready",
-      "privacy": "Cleared in derivative",
+      "privacy": "No greeting, personal or contact values visible in selected capture crop",
       "caption": "Cropped original overview-capture sketch showing framing, contextual instructions, a photo-library icon, shutter and flash.",
       "operations_for_website": "Crop (0, 610, 405, 1234); native pixels retained; encoded as lossless WebP, no scaling or redrawing.",
       "crop_box": [
@@ -839,7 +942,22 @@
         255,
         255
       ],
-      "format": "WEBP"
+      "format": "WEBP",
+      "privacy_review": {
+        "released_data": "None; image unchanged",
+        "basis": "Pixel audit found zero differences between this crop and EXIF-oriented original photograph",
+        "retained_protections": "Other source-sheet regions remain independent; no contact/property values introduced"
+      },
+      "website_derivation_validation": {
+        "image_unchanged": true,
+        "original_crop": [
+          0,
+          610,
+          405,
+          1234
+        ],
+        "visible_rgba_matches_authentic_source": true
+      }
     },
     {
       "key": "trackingSketch",
