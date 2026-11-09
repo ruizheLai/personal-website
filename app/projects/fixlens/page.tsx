@@ -1,124 +1,82 @@
-import type { Metadata } from "next";
-import type { ReactNode } from "react";
-import Link from "next/link";
-import { AssetFigure as Figure, CaseStudyExperience, HorizontalGallery } from "@/components/fixlens/CaseStudyExperience";
-import StoryNavigation from "@/components/fixlens/StoryNavigation";
-import ChallengeVisual from "@/components/fixlens/ChallengeVisual";
-import MatchedComparison from "@/components/fixlens/MatchedComparison";
-import EvaluationResults from "@/components/fixlens/EvaluationResults";
-import { fixlensAssets as A } from "@/lib/fixlens-assets";
-import "./fixlens.css";
-import "./challenge-visual.css";
-import "./matched-comparison.css";
-import "./evaluation-results.css";
-import "./natural-zoom.css";
-import "./fixlens-refinement.css";
-import "./story-navigation.css";
-import "./fixlens-editorial.css";
-import "./editorial-motion.css";
+import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import localFont from 'next/font/local';
+import Link from 'next/link';
+import { AssetFigure as Figure } from '@/components/fixlens/CaseStudyExperience';
+import { ImageZoomProvider } from '@/components/fixlens/NaturalImageZoom';
+import MatchedComparison from '@/components/fixlens/MatchedComparison';
+import TasteMoment from '@/components/fixlens/taste/TasteMoment';
+import ReportingJourney from '@/components/fixlens/taste/ReportingJourney';
+import { tasteAssets as A } from '@/lib/fixlens-taste-assets';
+import './matched-comparison.css';
+import './natural-zoom.css';
+import './taste.css';
 
-export const metadata: Metadata = {
-  title: "FixLens — From report to follow-up",
-  description: "An end-to-end UX case study: eight interviews, a six-person prototype evaluation, and a deployed rental-maintenance exhibition application.",
-};
+const sora=localFont({src:[{path:'./fonts/sora-400.ttf',weight:'400'},{path:'./fonts/sora-500.ttf',weight:'500'}],variable:'--taste-display',display:'swap'});
+const figtree=localFont({src:[{path:'./fonts/figtree-400.ttf',weight:'400'},{path:'./fonts/figtree-500.ttf',weight:'500'}],variable:'--taste-text',display:'swap'});
+export const metadata:Metadata={title:'FixLens — A connected rental maintenance case study',description:'Ruizhe Lai’s individual UX and product design project: research, reporting, evidence and follow-up in a functional exhibition application.',other:{'page-type':'software','site-kind':'software'}};
+const sections=[['challenge','Challenge'],['research','Research'],['exploration','Sketches'],['evolution','Design'],['solution','Product'],['evaluation','Evaluation'],['iteration','Iteration']] as const;
+function Head({number,title,children}:{number:string;title:ReactNode;children?:ReactNode}){return <div className="tc-section-head"><span className="tc-index" aria-hidden="true">{number}</span><div><h2>{title}</h2>{children&&<div className="tc-intro">{children}</div>}</div></div>;}
+function Note({title,children}:{title:string;children:ReactNode}){return <details className="tc-note"><summary>{title}</summary><div className="tc-note-body">{children}</div></details>;}
+function Stage({label,id}:{label:string;id:keyof typeof A}){return <div className="tc-stage"><h4>{label}</h4><Figure asset={A[id]}/></div>;}
+const escape=(text:string)=>text.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+function picture(key:keyof typeof A){const asset=A[key];return `<a href="${asset.src}" data-asset="${key}" aria-label="Enlarge ${escape(asset.title)}"><img src="${asset.src}" width="${asset.width}" height="${asset.height}" alt="${escape(asset.alt)}" loading="lazy" decoding="async"></a>`;}
+const chapters=`<div class="tc-wrap mo-pc__grid"><div class="mo-pc__text"><h3>The report stays<br>with the case.</h3><ol class="mo-pc__steps"><li class="mo-pc__step"><h4><button type="button" data-chapter="0">01 &nbsp; Review the interpretation</button></h4><p>Describe the issue, then check the interpreted type, location and condition before continuing.</p><figure class="mo-pc__visual mo-pc__visual--lit">${picture('FX25')}</figure></li><li class="mo-pc__step"><h4><button type="button" data-chapter="1">02 &nbsp; Recover during capture</button></h4><p>Retake a photo or use the device picker when camera access fails. A danger path continues without photos.</p><figure class="mo-pc__visual mo-pc__visual--lit">${picture('FX29')}</figure></li><li class="mo-pc__step"><h4><button type="button" data-chapter="2">03 &nbsp; Keep the next action visible</button></h4><p>Status, responsibility and the renter’s next step remain attached to the case.</p><figure class="mo-pc__visual mo-pc__visual--lit">${picture('FX27')}</figure></li></ol></div><div class="mo-pc__visuals frame"></div></div>`;
+const scores=`<div class="tc-score"><strong class="t-stat">91.7</strong><span>/100</span><p>Mean System Usability Scale</p></div><div class="tc-score"><strong class="t-stat">4.30</strong><span>/5</span><p>Mean adapted task ease</p></div>`;
+const tasks=[['Start a maintenance report','5.00',100],['Capture and submit evidence','4.67',93.4],['Review a report as PM','3.67',73.4],['Respond to a follow-up','4.33',86.6],['Find PM contact details','3.83',76.6]] as const;
 
-function SectionHeading({ number, label, title, children }: { number: string; label: string; title: ReactNode; children?: ReactNode }) {
-  return <div className="fx-section-heading" data-fx-motion="heading"><p className="fx-kicker"><span>{number}</span> {label}</p><h2>{title}</h2>{children && <div className="fx-prose">{children}</div>}</div>;
-}
-
-function SupportNotes({ label, children, className = "" }: { label: string; children: ReactNode; className?: string }) {
-  return <details className={"fx-support " + className}><summary>{label}<span aria-hidden="true">+</span></summary><div className="fx-support-content">{children}</div></details>;
-}
-
-function Stage({ label, id }: { label: string; id: keyof typeof A }) {
-  return <div className={"fx-stage fx-stage-" + id.toLowerCase()} data-fx-motion-item><p className="fx-stage-label">{label}</p><Figure asset={A[id]} /></div>;
-}
-
-function BrowserBar() {
-  return <div className="fx-browser-bar"><span className="fx-browser-dots" aria-hidden="true"><i /><i /><i /></span><span>Property manager portal</span><span aria-hidden="true">↗</span></div>;
-}
-
-export default function FixLensPage() {
-  return <CaseStudyExperience><main id="main-content" className="fx-case" tabIndex={-1}>
-    <div className="fx-container">
-      <div className="fx-breadcrumb"><Link href="/projects"><span aria-hidden="true">←</span> All projects</Link><span>Product design · 2026</span></div>
-      <section className="fx-hero" aria-labelledby="fixlens-title">
-        <div className="fx-hero-heading" data-fx-motion="heading"><div><p className="fx-kicker">A connected maintenance workflow</p><h1 id="fixlens-title">Fix<span>Lens</span><span className="fx-title-dot" aria-hidden="true">.</span></h1></div><p className="fx-hero-subtitle">Making rental maintenance clearer, from first report to <span className="fx-nowrap">follow-up.</span></p></div>
-        <div className="fx-scroll-scene" data-fx-motion="image"><div className="fx-parallax-layer fx-parallax-slow"><div className="fx-hero-stage fx-art-hero">
-          <div className="fx-art-hero-browser"><BrowserBar /><Figure asset={A.FX02} className="fx-art-dashboard" priority sizes="(max-width: 600px) 95vw, 85vw" /></div>
-          <div className="fx-art-hero-phone"><span className="fx-art-device-label">Renter experience</span><Figure asset={A.FX03} className="fx-art-phone" priority sizes="(max-width: 600px) 240px, 310px" /></div>
-        </div></div></div>
-        <div className="fx-overview" data-fx-motion="body"><p className="fx-lead">Help renters explain the problem. Give property managers the context to move it forward.</p><div><p>I independently researched, designed, evaluated and developed FixLens from August–October 2026. AI-assisted development brought the mobile web app and management portal into a functional exhibition application.</p><a className="fx-live-link" href="https://fix-lens.app/" target="_blank" rel="noopener noreferrer">Visit the live application <span aria-hidden="true">↗</span></a></div></div>
-      </section>
-      <StoryNavigation />
-
-      <section id="challenge" className="fx-section">
-        <SectionHeading number="02" label="The challenge" title="Reporting a problem is only the beginning." />
-        <ChallengeVisual />
-        <div className="fx-hmw"><span className="fx-kicker">The design opportunity</span><p>How might we make issues easier to explain—and keep the context connected through review and follow-up?</p></div>
-        <SupportNotes label="The limits of better evidence"><p>Clearer evidence alone cannot remove approval, cost or contractor delays. The design opportunity concerns communication and continuity, rather than a claim to resolve every barrier to maintenance.</p></SupportNotes>
-      </section>
-
-      <section id="research" className="fx-section">
-        <SectionHeading number="03" label="Research & design direction" title="Understand both sides of reporting."><p>Eight semi-structured interviews explored how issues were reported, which information mattered, and where communication became difficult.</p></SectionHeading>
-        <div className="fx-research-intro" data-fx-motion="body"><p className="fx-sample"><strong>8</strong><span>exploratory interviews<br /><b>6 renters · 2 landlords</b></span></p><p>The focus shifted from collecting more photographs to collecting the right information—and preserving its context.</p></div>
-        <div className="fx-insights" data-fx-motion="research">
-          <article data-fx-motion-item><span className="fx-insight-number">01</span><div><h3>Evidence depends on the issue.</h3><p>An overview establishes context; a close-up reveals detail. Intermittent faults also need timing, triggers and functional impact.</p></div><div className="fx-principle"><h4>Capture relevant context.</h4><p>Guide people toward useful information for the issue.</p></div></article>
-          <article data-fx-motion-item><span className="fx-insight-number">02</span><div><h3>Guidance belongs before submission.</h3><p>Renters do not always know what will help someone assess an issue. Missing details lead to more questions.</p></div><div className="fx-principle"><h4>Guide, don't overwhelm.</h4><p>Use manageable prompts and explicit confirmation.</p></div></article>
-          <article data-fx-motion-item><span className="fx-insight-number">03</span><div><h3>A case needs continuity.</h3><p>Requests and handoffs can spread across channels, leaving renters unsure who is responsible or whether to act.</p></div><div className="fx-principle"><h4>Keep it connected.</h4><p>Attach requests, responses and next steps to the case.</p></div></article>
-        </div>
-        <SupportNotes label="Research approach & change in direction"><p>I used coding and thematic analysis to identify recurring patterns across the interviews. I initially approached the problem through spatial and visual evidence; the research broadened the opportunity to relevant information, guidance and continuity as a case progresses.</p></SupportNotes>
-      </section>
-
-      <section id="exploration" className="fx-section">
-        <SectionHeading number="04" label="Low-fi exploration" title="Find the shape of the conversation." />
-        <p className="fx-hand-note" aria-hidden="true">early explorations</p>
-        <div className="fx-scroll-scene" data-fx-motion="image"><div className="fx-parallax-layer fx-parallax-slow"><div className="fx-curated-sketches">
-          <Figure asset={A.homeSketch} className="fx-sketch-main" caption="A clear starting point" sizes="(max-width: 600px) 78vw, 420px" />
-          <Figure asset={A.captureSketch} className="fx-sketch-capture" caption="Guidance at capture" sizes="(max-width: 600px) 55vw, 310px" />
-          <Figure asset={A.trackingSketch} className="fx-sketch-tracking" caption="Progress and next steps" sizes="(max-width: 600px) 50vw, 290px" />
-        </div></div></div>
-        <p className="fx-prose fx-narrow fx-design-takeaway" data-fx-motion="body">The direction became a guided conversation with structured information and explicit confirmation, keeping the renter in control.</p>
-        <SupportNotes label="View the original sketch sheets" className="fx-sketch-sources"><div className="fx-source-sheets"><Figure asset={A.FX08} caption="Navigation alternatives" /><Figure asset={A.FX09} caption="Capture and progress" /><Figure asset={A.FX10} caption="Connected reporting flow" /></div></SupportNotes>
-      </section>
-
-      <section id="evolution" className="fx-section">
-        <SectionHeading number="05" label="Mid-fi → Hi-fi" title={<>Structure the journey.<br />Refine the interaction.</>} />
-        <div className="fx-home-comparison"><div className="fx-comparison-intro"><span className="fx-kicker">Home & navigation</span><h3>Same starting point.<br />A more considered interface.</h3><p>Three clear entry points. A recent case. Navigation always within reach.</p></div><MatchedComparison mid={A.FX11} high={A.FX16} label="Home & navigation" /></div>
-        <div className="fx-tracking-comparison"><div className="fx-topic-heading"><h3>Give progress a place.</h3><p>From case progress to a timeline of activity.</p></div><div className="fx-two-stages" data-fx-motion="comparison"><Stage label="Mid-fi" id="FX13" /><Stage label="Hi-fi" id="FX19" /></div></div>
-        <SupportNotes label="Explore the reporting flow"><HorizontalGallery label="Prototype reporting flow"><Figure asset={A.FX17} caption="Confirm property details · personal values redacted" /><Figure asset={A.FX37} caption="Describe the issue" /><Figure asset={A.FX38} caption="Check or edit the interpretation" /><Figure asset={A.FX39} caption="Choose the safety branch" /></HorizontalGallery><div className="fx-branch-label"><span>After the safety choice</span><span aria-hidden="true">↙ &nbsp; ↘</span></div><div className="fx-branches"><div><p className="fx-stage-label">Danger reported →</p><Figure asset={A.FX40} caption="Avoid approaching the area; contact relevant help." /></div><span className="fx-or">or</span><div><p className="fx-stage-label">Safe to continue →</p><Figure asset={A.FX41} caption="Introduce the planned evidence sequence." /></div></div></SupportNotes>
-        <SupportNotes label="Prototype scope & capture exploration"><div className="fx-capture-note"><Figure asset={A.FX12} caption="Mid-fi capture wireframe" /><div><p>The Mid-fi capture wireframe established framing prompts and the planned evidence sequence. A corresponding cleared Hi-fi capture screen is unavailable, so it is not used in the slider.</p><p>The timeline and editable fields already existed before evaluation. Video was proposed in the prototype, but a complete recording flow was not delivered.</p></div></div></SupportNotes>
-      </section>
-
-      <section id="solution" className="fx-section fx-solution">
-        <SectionHeading number="06" label="The implemented experience" title="One case. Two connected perspectives." />
-        <article className="fx-story fx-story-guided"><div className="fx-story-lead" data-fx-motion="heading"><div><span className="fx-kicker">Guided reporting</span><h3>Turn descriptions into structured reports.</h3></div><div className="fx-story-body"><p>Describe the problem in your own words, then review the interpreted issue type, location and observed condition. Correct the details before proceeding.</p></div></div><div className="fx-product-scene fx-guided-scene" data-fx-motion="image"><div className="fx-guided-first"><Figure asset={A.FX25} className="fx-art-phone" /></div><div className="fx-guided-second"><Figure asset={A.FX26} className="fx-art-phone" /></div></div></article>
-        <article className="fx-story fx-story-recovery"><div className="fx-recovery-copy" data-fx-motion="heading"><span className="fx-kicker">Evidence capture & safety</span><h3>Useful guidance.<br />Room for recovery.</h3><div className="fx-story-body"><p>Overview and close-up photos add context. Previews, retaking and the device picker support recovery when camera access fails.</p><p>If approaching the area may be dangerous, a separate reporting path continues without photographs.</p></div></div><div className="fx-recovery-scene" data-fx-motion="image"><Figure asset={A.FX29} className="fx-art-phone fx-recovery-primary" /><Figure asset={A.FX30} className="fx-art-phone fx-recovery-secondary" /></div></article>
-        <article className="fx-story fx-story-followup"><div className="fx-story-lead" data-fx-motion="heading"><div><span className="fx-kicker">Connected follow-up</span><h3>Know what is happening—and when to act.</h3></div><div className="fx-story-body"><p>Action Required on Home links to outstanding requests. Status, responsibility and next steps stay with the case, alongside the renter's response and PM review state.</p></div></div><div className="fx-scroll-scene" data-fx-motion="image"><div className="fx-parallax-layer fx-parallax-slow"><div className="fx-product-scene fx-followup-scene"><Figure asset={A.FX01} className="fx-art-phone fx-followup-home" /><Figure asset={A.FX27} className="fx-interface-detail fx-followup-status" /><Figure asset={A.FX33} className="fx-interface-detail fx-followup-history" sizes="(max-width: 600px) 90vw, 650px" /></div></div></div></article>
-        <article className="fx-story fx-story-manager"><div className="fx-story-lead" data-fx-motion="heading"><div><span className="fx-kicker">Property manager workflow</span><h3>Connect evidence to the next decision.</h3></div><div className="fx-story-body"><p>Find and review cases, request specific evidence, inspect responses and record the next workflow action.</p></div></div><div className="fx-manager-scene" data-fx-motion="image"><div className="fx-manager-browser"><BrowserBar /><Figure asset={A.FX02} sizes="(max-width: 767px) 95vw, 1200px" /></div></div><div className="fx-manager-story-detail"><div className="fx-story-body"><span className="fx-detail-rule" aria-hidden="true" /><h4>Specific requests.<br />Explicit actions.</h4><p>Typed requests clarify what is needed. Manual actions and review confirmations connect the response to the management workflow.</p></div><Figure asset={A.FX32} className="fx-manager-request fx-interface-detail" /></div></article>
-        <SupportNotes label="About the product captures & delivered scope"><p>These authentic implemented screens use fictional demonstration data in an isolated local client. Independent screen layers are arranged for presentation. They are not production records or a new validation of live AI/backend services.</p><p>Ordinary reports still require two photos; danger reports can continue without them. The captures do not validate physical camera or torch performance, or computer vision. The PM request dialog is shown without sending a new request.</p><p>The exhibition application does not provide a working general PM inbox, real contractor integration or email/SMS delivery. Experimental network vision is disabled; complete video recording and full AR are outside delivered scope.</p></SupportNotes>
-      </section>
-
-      <section id="evaluation" className="fx-section">
-        <SectionHeading number="07" label="Hi-fi prototype evaluation" title={<>Strong scores.<br />Specific interaction problems.</>}><p>A moderated formative evaluation combined five tasks, think-aloud feedback, adapted task-ease ratings and SUS.</p></SectionHeading>
-        <EvaluationResults><div className="fx-evaluation-findings"><h3>What the scores didn't resolve</h3><ul><li>Follow-up requests were not always noticeable.</li><li>Status could leave responsibility unclear.</li><li>Emphasized PM recommendations could influence decisions.</li><li>Contact details were difficult to find; some participants wanted more capture flexibility.</li></ul><p>PM review and contact discovery were the lowest-rated tasks.</p></div></EvaluationResults>
-        <SupportNotes label="Study scope & interpretation"><p>Six participants completed five tasks with the Hi-fi prototype. PM tasks were role-played rather than completed by professional property managers. These metrics belong to that formative prototype study, not the implemented application. There was no formal usability retest of the deployed product.</p></SupportNotes>
-      </section>
-
-      <section id="iteration" className="fx-section">
-        <SectionHeading number="08" label="Iteration & development" title="Make the intended interactions work." />
-        <article className="fx-comparison"><div className="fx-comparison-copy"><span className="fx-kicker">Follow-up visibility</span><h3>Surface the next action on Home.</h3><p>The prototype shows a recent case. The implementation brings eligible outstanding requests onto Home with a direct response action.</p></div><div className="fx-comparison-images fx-compare-phones" data-fx-motion="comparison"><Stage label="Hi-fi prototype" id="FX16" /><Stage label="Implemented product" id="FX01" /></div></article>
-        <article className="fx-comparison fx-comparison-review" data-fx-motion="comparison"><div className="fx-review-reason" data-fx-motion-item><div className="fx-comparison-copy"><span className="fx-kicker">Report review & editing</span><h3>Make the designed controls functional.</h3><p>Editable fields were already designed. Implementation adds report edits, photo replacement and safe retries.</p></div><Stage label="Hi-fi prototype · field detail" id="FX18" /></div><div className="fx-review-implemented" data-fx-motion-item><Stage label="Implemented product · review" id="FX26" /></div></article>
-        <article className="fx-comparison"><div className="fx-comparison-copy"><span className="fx-kicker">PM decision controls</span><h3>Make management actions explicit.</h3><p>Controlled manual actions and confirmations replace recommendation-style prompts. AI does not make PM decisions.</p></div><div className="fx-comparison-images" data-fx-motion="comparison"><Stage label="Hi-fi prototype" id="FX22" /><Stage label="Implemented product" id="FX31" /></div></article>
-        <SupportNotes label="Reading these comparisons"><p>The Home comparison uses different case data and states; discoverability was not retested. The report review comparison places a prototype field detail beside a product viewport, rather than matching whole screens. Editing and the timeline predate evaluation, and the planned video step was not delivered.</p><p>Approval remains visually primary in the implemented PM controls. Decision bias was not shown to be eliminated, and contact functionality remains limited. No post-implementation usability improvement is claimed.</p></SupportNotes>
-        <SupportNotes label="Implementation notes"><p>Implementation brought feedback, recovery and state consistency into focus. These are delivered refinements, not measured usability improvements.</p><p>I developed FixLens with AI assistance. React and TypeScript support the frontend; Supabase provides database services, private evidence storage and server-side functions. The frontend is hosted on Vercel.</p><p>Bounded AI-assisted interpretation returns structured information for renter confirmation rather than automatic diagnosis. Persisted cases, evidence, requests and review states connect the workflow. Permissions, error recovery, data handling and state consistency required decisions beyond the Figma prototype.</p><p>The result is a functional exhibition experience, not a fully validated commercial platform.</p></SupportNotes>
-      </section>
-
-      <section id="reflection" className="fx-section fx-reflection">
-        <SectionHeading number="09" label="Reflection" title="Good evidence is not always more evidence."><p>Research shifted my focus from photographs and AI toward relevant information, clear responsibility and continuity across the reporting journey.</p><p>Designing for both sides taught me to connect decisions across a service. Building the application revealed what a working system must reliably support beyond what a prototype communicates.</p></SectionHeading>
-        <div className="fx-next-steps"><p className="fx-kicker">If I continued</p><p>Evaluate with professional property managers. Adapt evidence requirements. Improve contact pathways. Test the deployed experience with real users.</p></div>
-        <div className="fx-end-nav"><Link href="/projects">← Back to selected work</Link><Link href="/">Return to the workspace ↗</Link></div>
-      </section>
+export default function FixLensTastePage(){return <ImageZoomProvider><main id="main-content" tabIndex={-1} className={`tc-page ${sora.variable} ${figtree.variable}`}>
+  <section className="tc-hero" aria-labelledby="fixlens-title" data-enter="true">
+    <div className="tc-wrap">
+      <div className="tc-topline"><Link href="/projects">← All projects</Link><span>Individual project · Aug–Oct 2026</span></div>
+      <div className="tc-triptych">
+        <div className="tc-hero-copy"><p className="tc-overline">UX / Product design</p><h1 id="fixlens-title">FixLens<span>.</span></h1><p className="tc-hero-line">Rental maintenance, <br/>connected.</p><p className="tc-hero-description">A clearer way for renters and property managers to report, review and follow up on maintenance.</p></div>
+        <div className="tc-hero-art" aria-label="Implemented renter and property-manager experiences"><div className="tc-hero-dashboard"><Figure asset={A.FX02} priority sizes="(max-width: 600px) 80vw, 650px"/></div><div className="tc-hero-report"><Figure asset={A.FX25} priority sizes="(max-width: 600px) 150px, 220px"/></div><div className="tc-hero-home"><Figure asset={A.FX03} priority sizes="(max-width: 600px) 150px, 220px"/></div></div>
+        <aside className="tc-hero-aside"><p>I researched, designed, evaluated and built FixLens as a functional exhibition application.</p><dl><div><dt>Role</dt><dd>Individual designer & developer</dd></div><div><dt>Scope</dt><dd>Renter app & management portal</dd></div></dl><a className="btn tc-action" href="https://fix-lens.app/" target="_blank" rel="noopener noreferrer">View application<span className="sr-only"> (opens in a new tab)</span></a><span className="tc-small">Developed with AI assistance</span></aside>
+      </div><p className="tc-hero-foot">From exploratory interviews to a deployed application.</p>
     </div>
-  </main></CaseStudyExperience>;
-}
+  </section>
+  <nav className="tc-contents tc-wrap" aria-label="Case study sections">{sections.map(([id,label])=><a href={'#'+id} key={id}>{label}</a>)}</nav>
+  <section id="challenge" className="tc-section tc-challenge"><div className="tc-wrap">
+    <Head number="01" title={<>A report can lose<br/>its context.</>}><p>The issue is described. Evidence arrives separately. Responsibility becomes unclear as the case moves between people.</p></Head>
+    <div className="tc-context-map" role="img" aria-label="Editorial interpretation of research themes: descriptions, evidence and follow-up can become fragmented. The design opportunity connects them around a single case."><div className="tc-fragments"><div className="tc-fragment tc-fragment-description"><span>Description</span><p>What happened?<br/>Where and when?</p><i/><i/></div><div className="tc-fragment tc-fragment-evidence"><span>Evidence</span><div className="tc-photo-outline"><b/><b/></div><p>Context and detail</p></div><div className="tc-fragment tc-fragment-followup"><span>Follow-up</span><p>Who acts next?</p><i/></div></div><div className="tc-map-connection" aria-hidden="true"><span/><span/><span/></div><div className="tc-connected-case"><span className="tc-case-mark">A connected case</span><div><span>Description</span><b>Relevant details</b></div><div><span>Evidence</span><b>Context kept together</b></div><div><span>Follow-up</span><b>Clear next steps</b></div></div></div>
+    <div className="tc-opportunity"><span>The design opportunity</span><p>Help people explain the issue.<br/>Keep its context connected.</p></div>
+    <Note title="The limits of better evidence"><p>This diagram interprets the research themes; it is not an original research artifact or a product screen. Clearer information alone cannot remove approval, cost or contractor delays.</p></Note>
+  </div></section>
+  <section id="research" className="tc-section"><div className="tc-wrap">
+    <Head number="02" title={<>Relevant information beats<br/>more photographs.</>}/>
+    <div className="tc-research-layout"><div className="tc-research-count"><strong>8<span>interviews</span></strong><div className="tc-people" aria-hidden="true">{Array.from({length:8},(_,i)=><i key={i} data-role={i<6?'renter':'landlord'}/>)}</div><p>6 renters · 2 landlords</p><p className="tc-small">Exploratory, semi-structured interviews</p></div><div className="tc-insight-list"><article><h3>Evidence depends on the issue.</h3><p>Overview and detail images establish different kinds of context. Intermittent faults also need timing and triggers.</p><span>Design direction: capture relevant context.</span></article><article><h3>Guidance belongs before submission.</h3><p>Missing details lead to more questions. Manageable prompts help renters explain what matters.</p><span>Design direction: guide each decision.</span></article><article><h3>A case needs continuity.</h3><p>Requests and handoffs can spread across channels, leaving responsibility and next steps unclear.</p><span>Design direction: attach follow-up to the case.</span></article></div></div>
+    <Note title="Research method & change in direction"><p>I used coding and thematic analysis to identify recurring patterns. An initial focus on spatial and visual evidence broadened into relevant information, guidance and continuity. These were exploratory findings, not prevalence estimates.</p></Note>
+  </div></section>
+  <section id="exploration" className="tc-section tc-exploration"><div className="tc-wrap">
+    <Head number="03" title="A conversation takes shape."><p>Early sketches connected a starting point, evidence guidance and progress. The renter stays in control of each confirmation.</p></Head>
+    <div className="tc-sketch-composition"><Figure asset={A.homeSketch} className="tc-sketch-home"/><Figure asset={A.captureSketch} className="tc-sketch-capture"/><Figure asset={A.trackingSketch} className="tc-sketch-progress"/></div>
+    <Note title="Read the sketch decisions"><p>The Home concept establishes three entry points. The capture concept introduces framing guidance. The tracking concept connects status with what happens next. These are authentic, selectively cropped Low-fi sketches; no interface was recreated for this portfolio.</p></Note>
+  </div></section>
+  <section id="evolution" className="tc-section"><div className="tc-wrap">
+    <Head number="04" title="From structure to interaction."><p>The same journey becomes more explicit through hierarchy, framing and confirmation.</p></Head>
+    <div className="tc-evolution-pair"><article><h3>A familiar starting point.</h3><p>Home keeps its three entry points.</p><MatchedComparison mid={A.FX11} high={A.FX16} label="Home & navigation"/></article><article><h3>Guidance in the viewfinder.</h3><p>Overview capture keeps context in frame.</p><MatchedComparison mid={A.FX12} high={A.overview} label="Overview capture"/></article></div>
+    <ReportingJourney/>
+    <Note title="Capture prototype scope"><div className="tc-capture-note"><Figure asset={A.closeup}/><p>The authentic Hi-fi prototype includes overview and close-up guidance. Video was proposed, but a complete recording flow and full AR were not delivered. These screens do not validate camera or computer-vision performance.</p></div></Note>
+  </div></section>
+  <section id="solution" className="tc-section tc-solution"><div className="tc-wrap"><Head number="05" title="One case, across both sides."><p>The implemented renter experience connects reporting, evidence and follow-up.</p></Head></div>
+    <TasteMoment kind="pinned-chapters" html={chapters} className="tc-chapters"/>
+    <div className="tc-wrap tc-manager"><div className="tc-manager-intro"><h3>Give property managers<br/>the whole picture.</h3><p>Find a case, inspect its evidence, request specific information and record the next workflow action.</p></div><div className="tc-browser"><div aria-hidden="true" className="tc-browser-line"><i/><i/><i/><span>Property manager workspace</span></div><Figure asset={A.FX02} sizes="(max-width: 600px) 95vw, 1250px"/></div><div className="tc-manager-detail"><Figure asset={A.FX32}/><div><h4>A specific request.<br/>An explicit action.</h4><p>Typed requests and review confirmations keep the response connected to the management workflow.</p></div></div>
+    <Note title="About these product captures"><p>Authentic implemented screens use fictional data in an isolated local client. They are not production records or a new validation of hosted AI/backend services. Ordinary reports require two photos; danger reports can continue without photos. Camera recovery supports retaking and the device picker.</p><p>The exhibition application does not provide a working general PM inbox, contractor integration or email/SMS delivery. Experimental network vision is disabled; complete video recording and full AR are outside delivered scope.</p></Note></div>
+  </section>
+  <section id="evaluation" className="tc-section"><div className="tc-wrap">
+    <Head number="06" title={<>A strong score still<br/>left friction.</>}><p>Six participants completed five tasks with the Hi-fi prototype in a moderated formative evaluation.</p></Head>
+    <div className="tc-evaluation-layout"><TasteMoment kind="counter-rolls" html={scores} className="tc-scores"/><div className="tc-task-results"><h3>Where the effort remained</h3><p className="tc-small">Mean adapted task ease · 1 very difficult to 5 very easy</p><ol>{tasks.map(([label,value,width])=><li key={label}><div><span>{label}</span><strong>{value}</strong></div><div className="tc-task-track"><span style={{width:width+'%'}}/></div></li>)}</ol></div></div>
+    <div className="tc-evaluation-reading"><h3>Management review and contact discovery<br/>were the lowest-rated tasks.</h3><p>Follow-up requests could be missed. Responsibility was not always clear. Emphasized recommendations could influence PM decisions.</p></div>
+    <Note title="Study scope & interpretation"><p>SUS 91.7/100 and mean adapted task ease 4.30/5 belong to the six-person Hi-fi prototype study. PM tasks were role-played, not completed by professional property managers. Some participants wanted greater capture flexibility; contact details were difficult to find. No formal usability retest followed final implementation.</p></Note>
+  </div></section>
+  <section id="iteration" className="tc-section"><div className="tc-wrap">
+    <Head number="07" title="From prototype to working application."><p>Implementation made the intended interactions functional and connected their states.</p></Head>
+    <article className="tc-iteration-home"><div className="tc-iteration-copy"><h3>Put the next action on Home.</h3><p>The prototype shows a recent case. The product surfaces eligible outstanding requests with a direct response action.</p></div><div className="tc-before-after"><Stage label="Hi-fi prototype" id="FX16"/><Stage label="Implemented product" id="FX01"/></div></article>
+    <article className="tc-iteration-review"><div><h3>Make designed edits work.</h3><p>Editable fields already existed in the prototype. Implementation adds report edits, photo replacement and safe retries.</p><Stage label="Hi-fi field detail" id="FX18"/></div><Stage label="Implemented review" id="FX26"/></article>
+    <article className="tc-iteration-decisions"><div className="tc-iteration-copy"><h3>Make PM decisions explicit.</h3><p>Manual actions and confirmations replace recommendation-style prompts. AI does not make PM decisions.</p></div><div className="tc-decision-pair"><Stage label="Hi-fi prototype" id="FX22"/><Stage label="Implemented product" id="FX31"/></div></article>
+    <Note title="What these comparisons establish"><p>Home captures use different case data and states; discoverability was not retested. The editing comparison is a prototype field detail beside a full product viewport, not matching whole screens. The timeline and editing predate evaluation. Approval remains visually primary in implemented PM controls; eliminated decision bias is not demonstrated. Contact functionality remains limited.</p></Note>
+    <Note title="Development & delivered scope"><p>I developed FixLens with AI assistance using React and TypeScript. Persisted cases, evidence, requests and review states connect the workflow. Implementation required permissions, recovery, data handling and state-consistency decisions beyond the prototype.</p><p>The result was a deployed functional exhibition application. These are delivered refinements, not measured usability improvements.</p></Note>
+  </div></section>
+  <section id="reflection" className="tc-section tc-reflection"><div className="tc-wrap"><Head number="08" title={<>Good evidence<br/>needs continuity.</>}/><div className="tc-reflection-body"><p>Research shifted my focus from photographs and AI toward relevant information, clear responsibility and continuity.</p><p>Designing both sides taught me to connect decisions across a service. Building FixLens showed me what a working system must support beyond a prototype.</p><div className="tc-next"><h3>Next, I would test the deployed experience.</h3><p>Work with professional property managers, adapt evidence requirements and improve contact pathways.</p></div></div><footer className="tc-footer"><Link href="/projects">Back to selected work</Link><span>FixLens · Ruizhe Lai · 2026</span><Link href="/">Return to the workspace</Link></footer></div></section>
+</main></ImageZoomProvider>;}

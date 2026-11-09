@@ -1,0 +1,62 @@
+{
+  "originals_preserved": true,
+  "generated_ui": false,
+  "records": [
+    {
+      "source": "E:/UX project/high fidelity prototype/01 · Confirm property.png",
+      "output": "public/images/projects/fixlens/taste-property.webp",
+      "crop": {
+        "x": 80,
+        "y": 48,
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "a747792725f64e4a153faa9b45b6699f88e55d68d8b962daeaac055fbf838d8d",
+      "output_sha256": "d6a27287a3dec8b2064dd8a3d82b8ac7561ff1426b4a91b1ed17ca2e30c400fb",
+      "bytes": 13654,
+      "authorization": "Owner explicitly confirmed reporting values and capture photographs safe for portfolio publication in this conversation, 9 November 2026."
+    },
+    {
+      "source": "E:/UX project/high fidelity prototype/02 · Describe issue.png",
+      "output": "public/images/projects/fixlens/taste-description.webp",
+      "crop": {
+        "x": 80,
+        "y": 48,
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "ffff1425190af21dbd9fb61788d387cf711710c138deb61d091ccf33e3d7b0a3",
+      "output_sha256": "0c56163611184e8f1014313e8abf03bd000117ab61ed0d7fd843ca655a471efd",
+      "bytes": 17146,
+      "authorization": "Owner explicitly confirmed reporting values and capture photographs safe for portfolio publication in this conversation, 9 November 2026."
+    },
+    {
+      "source": "E:/UX project/high fidelity prototype/Capture Overview.png",
+      "output": "public/images/projects/fixlens/taste-overview.webp",
+      "crop": {
+        "x": 80,
+        "y": 48,
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "209b036527222352bc9d93f396c93dd1e461e8e94e6889ab181759eab2248619",
+      "output_sha256": "e12d8fc61567ba3858c45e600fd36659aa108eb65dd31fffaa92699d5f65f471",
+      "bytes": 168034,
+      "authorization": "Owner explicitly confirmed reporting values and capture photographs safe for portfolio publication in this conversation, 9 November 2026."
+    },
+    {
+      "source": "E:/UX project/high fidelity prototype/Capture Close-up.png",
+      "output": "public/images/projects/fixlens/taste-closeup.webp",
+      "crop": {
+        "x": 80,
+        "y": 48,
+        "width": 390,
+        "height": 844
+      },
+      "source_sha256": "08bc2b85b7465e433a781ee0fd95c4f008db6c7efc02b90e5b2eb4fc68b9475e",
+      "output_sha256": "414852a39ede2020ea7c238d5a67339dcdc8d8c800f57151cb07b3e15f8cad37",
+      "bytes": 339952,
+      "authorization": "Owner explicitly confirmed reporting values and capture photographs safe for portfolio publication in this conversation, 9 November 2026."
+    }
+  ]
+}
