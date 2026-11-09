@@ -180,7 +180,7 @@ export function AssetFigure({
   };
 
   return (
-    <figure className={"fx-figure " + className}>
+    <figure className={"fx-figure " + className} data-presentation={asset.width === 390 && asset.height >= 800 ? "phone" : undefined}>
       <a
         className="fx-image-link"
         href={asset.src}
