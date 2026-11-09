@@ -1,0 +1,37 @@
+[
+  {
+    "accordionCount": 0,
+    "brokenImages": 0,
+    "mode": "active",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "accordionCount": 0,
+    "brokenImages": 0,
+    "mode": "active",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "accordionCount": 0,
+    "brokenImages": 0,
+    "mode": "static",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "accordionCount": 0,
+    "brokenImages": 0,
+    "mode": "static",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "accordionCount": 0,
+    "brokenImages": 0,
+    "mode": "static",
+    "scrollWidth": 360,
+    "width": 375
+  }
+]

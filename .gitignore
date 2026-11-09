@@ -45,3 +45,6 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 $RECYCLE.BIN/
+
+# Local Finesse design rotation memory
+.finesse/
