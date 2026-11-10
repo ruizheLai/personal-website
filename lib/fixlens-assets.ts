@@ -219,4 +219,13 @@ export const fixlensAssets = {
     "alt": "Cropped original case-tracking sketch with current status, case-progress steps and a What's Next explanation.",
     "title": "Low-fi case-tracking concept"
   }
+,  propertyClean: {"src": "/images/projects/fixlens/md-property-confirmation.webp", "width": 390, "height": 844, "alt": "Confirm property details, with authorized fictional demonstration values.", "title": "Confirm property details"},
+  descriptionClean: {"src": "/images/projects/fixlens/md-issue-description.webp", "width": 390, "height": 844, "alt": "Describe the issue with confirmed property context retained, using authorized demo values.", "title": "Describe the issue"},
+  captureOverview: {"src": "/images/projects/fixlens/md-capture-overview.webp", "width": 390, "height": 844, "alt": "Authentic Hi-fi overview camera screen with framing guidance and an authorized interior photo.", "title": "Hi-fi overview capture"},
+  captureCloseup: {"src": "/images/projects/fixlens/md-capture-closeup.webp", "width": 390, "height": 844, "alt": "Authentic Hi-fi close-up camera screen with detail guidance and an authorized texture photo.", "title": "Hi-fi close-up capture"},
+  overviewReview: {"src":"/images/projects/fixlens/md1-overview-review.webp","width":390,"height":844,"alt":"Overview review and annotation from the authentic Hi-fi Figma prototype. Publication-authorized demonstration content.","title":"Overview review and annotation"},
+  closeupReview: {"src":"/images/projects/fixlens/md1-closeup-review.webp","width":390,"height":844,"alt":"Close-up review and annotation from the authentic Hi-fi Figma prototype. Publication-authorized demonstration content.","title":"Close-up review and annotation"},
+  evidenceReady: {"src":"/images/projects/fixlens/md1-evidence-ready.webp","width":390,"height":844,"alt":"Evidence ready for report review from the authentic Hi-fi Figma prototype. Publication-authorized demonstration content.","title":"Evidence ready for report review"},
+  reportReviewHifi: {"src":"/images/projects/fixlens/md1-report-review-hifi.webp","width":390,"height":844,"alt":"Hi-fi final report review viewport from the authentic Hi-fi Figma prototype. Publication-authorized demonstration content.","title":"Hi-fi final report review viewport"},
+  reportSubmittedHifi: {"src":"/images/projects/fixlens/md1-report-submitted-hifi.webp","width":390,"height":844,"alt":"Hi-fi report submission confirmation from the authentic Hi-fi Figma prototype. Publication-authorized demonstration content.","title":"Hi-fi report submission confirmation"},
 } as const satisfies Record<string, FixLensAsset>;

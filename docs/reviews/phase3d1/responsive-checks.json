@@ -1,0 +1,47 @@
+[
+  {
+    "brokenImages": 0,
+    "buttons": 0,
+    "heroGap": 28.92578125,
+    "mode": "active",
+    "scrollWidth": 1425,
+    "steps": 12,
+    "width": 1440
+  },
+  {
+    "brokenImages": 0,
+    "buttons": 0,
+    "heroGap": 18.78515625,
+    "mode": "active",
+    "scrollWidth": 1009,
+    "steps": 12,
+    "width": 1024
+  },
+  {
+    "brokenImages": 0,
+    "buttons": 0,
+    "heroGap": 78.30859375,
+    "mode": "static",
+    "scrollWidth": 753,
+    "steps": 12,
+    "width": 768
+  },
+  {
+    "brokenImages": 0,
+    "buttons": 0,
+    "heroGap": 48.134765625,
+    "mode": "static",
+    "scrollWidth": 375,
+    "steps": 12,
+    "width": 390
+  },
+  {
+    "brokenImages": 0,
+    "buttons": 0,
+    "heroGap": 53.5703125,
+    "mode": "static",
+    "scrollWidth": 360,
+    "steps": 12,
+    "width": 375
+  }
+]

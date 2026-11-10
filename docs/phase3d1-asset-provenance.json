@@ -1,0 +1,82 @@
+[
+  {
+    "id": "overviewReview",
+    "title": "Overview review and annotation",
+    "source": "E:\\UX project\\high fidelity prototype\\Overview Review.png",
+    "sourceSHA256": "56b7fff5b0de7a62775109b6b7d8760dc5ca23ac3353337dd9b81791209c76d3",
+    "destination": "public/images/projects/fixlens/md1-overview-review.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "visiblePixelDifferences": 0,
+    "derivativeSHA256": "57e5f0075f5b4bba8b24b42951c3c7643eff9dd2adcbda1b3a3b96ef5647f860",
+    "authorization": "Authentic Figma exports. Demo values and Overview/Close-up photography authorized by owner in conversation. No video photograph added."
+  },
+  {
+    "id": "closeupReview",
+    "title": "Close-up review and annotation",
+    "source": "E:\\UX project\\high fidelity prototype\\Close-up Review.png",
+    "sourceSHA256": "4f85b4e4c400286e91c4eab1b1ca48af77044d50552863cfd5fa50cf4203dbca",
+    "destination": "public/images/projects/fixlens/md1-closeup-review.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "visiblePixelDifferences": 0,
+    "derivativeSHA256": "3876c2bcadd73bc83fec1eb6b98a90634cb59ccc348c3caa50a45606c012295f",
+    "authorization": "Authentic Figma exports. Demo values and Overview/Close-up photography authorized by owner in conversation. No video photograph added."
+  },
+  {
+    "id": "evidenceReady",
+    "title": "Evidence ready for report review",
+    "source": "E:\\UX project\\high fidelity prototype\\Evidence Captured.png",
+    "sourceSHA256": "1686fcd353fc55ac07f2ac26f5a9126d85be19d54540e298283261b08f6df31a",
+    "destination": "public/images/projects/fixlens/md1-evidence-ready.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "visiblePixelDifferences": 0,
+    "derivativeSHA256": "3676602085a62b00ffc816e099ebc15ae022b18b005cf44a97a1a40308f4fdef",
+    "authorization": "Authentic Figma exports. Demo values and Overview/Close-up photography authorized by owner in conversation. No video photograph added."
+  },
+  {
+    "id": "reportReviewHifi",
+    "title": "Hi-fi final report review viewport",
+    "source": "E:\\UX project\\high fidelity prototype\\Review Report.png",
+    "sourceSHA256": "19da2dccb1a0ce3c8891d86905aeaa2d3201ef957a9cc89aaaa279a8d471cd9d",
+    "destination": "public/images/projects/fixlens/md1-report-review-hifi.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "visiblePixelDifferences": 0,
+    "derivativeSHA256": "25b27ba9e090b4e1a16d27e6cfe7e791bc59ff816f2a74203d16cf4a5f3a7639",
+    "authorization": "Authentic Figma exports. Demo values and Overview/Close-up photography authorized by owner in conversation. No video photograph added."
+  },
+  {
+    "id": "reportSubmittedHifi",
+    "title": "Hi-fi report submission confirmation",
+    "source": "E:\\UX project\\high fidelity prototype\\Report Submitted.png",
+    "sourceSHA256": "1f1ba0c86fb437ba9e5ca54b776b23a8ea2a9054f760d601fcef4a4da56c5799",
+    "destination": "public/images/projects/fixlens/md1-report-submitted-hifi.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "visiblePixelDifferences": 0,
+    "derivativeSHA256": "9dab7e815a3579db7823592acb3b4d31b0c5d51d83a393717cbc70620dbf0c79",
+    "authorization": "Authentic Figma exports. Demo values and Overview/Close-up photography authorized by owner in conversation. No video photograph added."
+  }
+]

@@ -1,0 +1,116 @@
+{
+  "p0": 0,
+  "files": [
+    {
+      "file": "app/projects/fixlens/page.tsx",
+      "findings": [
+        {
+          "id": "em-dash",
+          "severity": "P2",
+          "label": "Em-dash / \"--\" as a prose flourish (kinetic pause / dramatic aside)",
+          "fix": "clarify",
+          "count": 3,
+          "hits": [
+            {
+              "line": 47,
+              "text": "explain—and"
+            },
+            {
+              "line": 53,
+              "text": "information—and"
+            },
+            {
+              "line": 87,
+              "text": "happening—and"
+            }
+          ]
+        },
+        {
+          "id": "missing-stamp",
+          "severity": "P2",
+          "label": "No /* finesse · … */ build stamp — next run has nothing to rotate against",
+          "fix": "divergence §4.2",
+          "hits": [
+            {
+              "line": 0,
+              "text": "no five-axis stamp in CSS"
+            }
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "file": "app/projects/fixlens/motion-story.css",
+      "findings": [
+        {
+          "id": "pure-bw",
+          "severity": "P2",
+          "label": "Pure #fff / #000 (untinted neutral)",
+          "fix": "soul",
+          "count": 7,
+          "hits": [
+            {
+              "line": 9,
+              "text": "#fff"
+            },
+            {
+              "line": 82,
+              "text": "#fff"
+            },
+            {
+              "line": 94,
+              "text": "#fff"
+            },
+            {
+              "line": 212,
+              "text": "#fff"
+            },
+            {
+              "line": 243,
+              "text": "#fff"
+            },
+            {
+              "line": 437,
+              "text": "#fff"
+            },
+            {
+              "line": 752,
+              "text": "#fff"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "components/fixlens/MotionStory.tsx",
+      "findings": [
+        {
+          "id": "missing-stamp",
+          "severity": "P2",
+          "label": "No /* finesse · … */ build stamp — next run has nothing to rotate against",
+          "fix": "divergence §4.2",
+          "hits": [
+            {
+              "line": 0,
+              "text": "no five-axis stamp in CSS"
+            }
+          ],
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "notCovered": [
+    "default-category aesthetic (the vibe, not just token names — beige+brass craft, AI purple-glow)",
+    "div-based fake screenshots / fake dashboards",
+    "identical / generic card grids (icon + title + text × N)",
+    "zero imagery on an image-implied brief (food / hotel / fashion / travel)",
+    "glassmorphism / AI-purple-glow used as decoration",
+    "layout-family repetition (§5) and whether the soul is actually distinct",
+    "whether the engine RENDERS real pixels (needs the Playwright runtime pass, not a grep)",
+    "mobile-floor M3/M4 — clickable text wrapping to two lines, long-word overflow at 320px (needs a rendered page at 320, not a grep)",
+    "HTML fragments constructed in JavaScript: URLs resolve against the consuming document, so verify them in the browser",
+    "root-relative asset paths (`/img/x.png`) — dead-ref only resolves file-relative ones; a broken `/…` link needs the real serving root"
+  ]
+}

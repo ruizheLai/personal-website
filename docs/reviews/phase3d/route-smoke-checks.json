@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/projects",
+    "title": "Projects — Ruizhe Lai",
+    "main": 1
+  },
+  {
+    "path": "/about",
+    "title": "About — Ruizhe Lai",
+    "main": 1
+  },
+  {
+    "path": "/contact",
+    "title": "Contact — Ruizhe Lai",
+    "main": 1
+  },
+  {
+    "path": "/",
+    "title": "Ruizhe Lai",
+    "main": 1
+  }
+]

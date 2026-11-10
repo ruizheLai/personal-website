@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
+import { useRef, type ReactNode } from "react";
+import { useOnceViewportProgress } from "./ViewportMotion";
 
-const DURATION = 780;
 const TASKS = [
   { label: "Start a maintenance report", score: 5.00 },
   { label: "Capture and submit evidence", score: 4.67 },
@@ -11,81 +11,9 @@ const TASKS = [
   { label: "Locate property-manager contact details", score: 3.83 },
 ] as const;
 
-/** Final values render on the server; motion is an optional, once-only enhancement. */
-function useViewportProgress(ref: RefObject<HTMLElement | null>) {
-  const [progress, setProgress] = useState(1);
-  const playedRef = useRef(false);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    let observer: IntersectionObserver | null = null;
-    let disposed = false;
-
-    const finish = () => {
-      window.cancelAnimationFrame(frame);
-      frame = 0;
-      playedRef.current = true;
-      observer?.disconnect();
-      if (!disposed) setProgress(1);
-    };
-
-    const begin = () => {
-      if (playedRef.current || preference.matches) {
-        finish();
-        return;
-      }
-      playedRef.current = true;
-      observer?.disconnect();
-      const start = window.performance.now();
-      setProgress(0);
-      const tick = (now: number) => {
-        if (disposed) return;
-        if (preference.matches) {
-          finish();
-          return;
-        }
-        const elapsed = Math.min(1, Math.max(0, (now - start) / DURATION));
-        const eased = 1 - Math.pow(1 - elapsed, 3);
-        setProgress(eased);
-        if (elapsed < 1) frame = window.requestAnimationFrame(tick);
-        else finish();
-      };
-      frame = window.requestAnimationFrame(tick);
-    };
-
-    const onPreferenceChange = () => {
-      // A preference change never replays an already displayed result.
-      if (preference.matches) finish();
-    };
-
-    if (preference.matches || playedRef.current || !("IntersectionObserver" in window)) {
-      finish();
-    } else {
-      setProgress(0);
-      observer = new IntersectionObserver((entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) begin();
-      }, { threshold: 0.2 });
-      observer.observe(element);
-    }
-    preference.addEventListener("change", onPreferenceChange);
-
-    return () => {
-      disposed = true;
-      observer?.disconnect();
-      window.cancelAnimationFrame(frame);
-      preference.removeEventListener("change", onPreferenceChange);
-    };
-  }, [ref]);
-
-  return progress;
-}
-
 export function EvaluationMetrics() {
   const ref = useRef<HTMLDivElement>(null);
-  const progress = useViewportProgress(ref);
+  const progress = useOnceViewportProgress(ref);
   return (
     <div className="fx-er-metrics" ref={ref} data-animation-complete={progress === 1}>
       <div className="fx-er-metric">
@@ -118,7 +46,7 @@ export function EvaluationMetrics() {
 
 export function TaskEaseChart() {
   const ref = useRef<HTMLElement>(null);
-  const progress = useViewportProgress(ref);
+  const progress = useOnceViewportProgress(ref);
   return (
     <figure className="fx-er-chart" ref={ref} data-animation-complete={progress === 1}>
       <figcaption>

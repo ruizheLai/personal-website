@@ -1,0 +1,50 @@
+[
+  {
+    "source": "E:\\UX project\\high fidelity prototype\\01 · Confirm property.png",
+    "destination": "public\\images\\projects\\fixlens\\md-property-confirmation.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "sha256": "a747792725f64e4a153faa9b45b6699f88e55d68d8b962daeaac055fbf838d8d",
+    "authorization": "Owner confirmed all reporting values safe to publish; Overview/Close-up photos authorized for portfolio publication."
+  },
+  {
+    "source": "E:\\UX project\\high fidelity prototype\\02 · Describe issue.png",
+    "destination": "public\\images\\projects\\fixlens\\md-issue-description.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "sha256": "ffff1425190af21dbd9fb61788d387cf711710c138deb61d091ccf33e3d7b0a3",
+    "authorization": "Owner confirmed all reporting values safe to publish; Overview/Close-up photos authorized for portfolio publication."
+  },
+  {
+    "source": "E:\\UX project\\high fidelity prototype\\Capture Overview.png",
+    "destination": "public\\images\\projects\\fixlens\\md-capture-overview.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "sha256": "209b036527222352bc9d93f396c93dd1e461e8e94e6889ab181759eab2248619",
+    "authorization": "Owner confirmed all reporting values safe to publish; Overview/Close-up photos authorized for portfolio publication."
+  },
+  {
+    "source": "E:\\UX project\\high fidelity prototype\\Capture Close-up.png",
+    "destination": "public\\images\\projects\\fixlens\\md-capture-closeup.webp",
+    "crop": {
+      "left": 80,
+      "top": 48,
+      "width": 390,
+      "height": 844
+    },
+    "sha256": "08bc2b85b7465e433a781ee0fd95c4f008db6c7efc02b90e5b2eb4fc68b9475e",
+    "authorization": "Owner confirmed all reporting values safe to publish; Overview/Close-up photos authorized for portfolio publication."
+  }
+]
