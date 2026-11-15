@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "width": 390,
+      "metadata": "none",
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "metadata": "none",
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "change": "Optional metadata line hidden on mobile to leave the shell reveal clear. Scroll geometry unchanged."
+}

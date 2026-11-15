@@ -23,6 +23,14 @@ export default function ProjectsPage() {
               <p>Connecting rental maintenance, from first report to follow-up.</p>
             </Link>
           </article>
+        ) : name === "Sippy" ? (
+          <article className="project-card project-sippy" key={name}>
+            <Link href="/projects/sippy" className="project-sippy-link" aria-label="Sippy — Read the tangible interaction case study">
+              <div className="project-cover project-sippy-cover"><Image src="/images/sippy/plush.webp" width={571} height={633} alt="Sippy's colourful plush body and coffee cup" unoptimized /><small>TANGIBLE INTERACTION · PHYSICAL COMPUTING</small></div>
+              <div className="project-caption"><h2>Sippy</h2><span>View case study ↗</span></div>
+              <p>A playful desktop companion with a little persistence.</p>
+            </Link>
+          </article>
         ) : (
           <article className="project-card" key={name}>
             <div className={`project-cover cover-${index}`} aria-hidden="true"><span>{name.slice(0, 1)}</span><small>{String(index + 1).padStart(2, "0")}</small></div>
