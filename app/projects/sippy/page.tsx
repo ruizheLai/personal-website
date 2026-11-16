@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SippyExperience, { ComponentVisual, SippyResults } from "@/components/sippy/SippyExperience";
 import { sippyMedia as M } from "@/lib/sippy-assets";
+import BehaviourStory from "@/components/sippy/BehaviourStory";
+import MakingStory from "@/components/sippy/MakingStory";
 import "./sippy.css";
+import "./storytelling.css";
 
 const siteHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
 export const metadata: Metadata = {
@@ -12,10 +15,6 @@ export const metadata: Metadata = {
   openGraph: { title: "Sippy — A small desktop companion", description: "From a playful presence to the technology inside.", images: [{ url: "/images/sippy/project-cover.jpg", width: 1200, height: 800 }] },
   other: { "page-type": "product", "site-kind": "tech" },
 };
-
-function Media({ name, alt, className = "" }: { name: string; alt: string; className?: string }) {
-  return <img className={className} src={`${M}${name}.webp`} alt={alt} width="1200" height="900" loading="lazy" />;
-}
 
 export default function SippyPage() {
   return <SippyExperience><main id="main-content" className="sp-main" tabIndex={-1}>
@@ -32,7 +31,6 @@ export default function SippyPage() {
       </div>
       <div className="sp-structure-layers" aria-hidden="true">
         {(["plush", "upper", "central", "lower"] as const).map(name => <div className={`sp-layer sp-layer-${name}`} data-structure={name} key={name}><img src={`${M}${name === "central" ? "structure-only" : name === "upper" ? "upper-shell" : name === "lower" ? "lower-shell" : "plush"}.webp`} width="1000" height="1000" alt="" /></div>)}
-        <div className="sp-layer sp-layer-cup" data-structure="cup"><img src={`${M}cup.webp`} width="240" height="190" alt="" /></div>
       </div>
     </section>
 
@@ -48,22 +46,9 @@ export default function SippyPage() {
       <p className="sp-contribution">I was a major contributor to this group project. The early Coffee Time exploration shown below is my individual work; the final device and evaluation were team efforts.</p>
     </section>
 
-    <section className="sp-action" aria-labelledby="action-title"><div className="sp-wrap">
-      <div className="sp-section-heading"><h2 id="action-title">See Sippy<br /><em>in Action</em></h2><p>The physical prototype at the showcase. Movement, a hand gesture and cup handling make the interaction visible beyond the reconstructed hero.</p></div>
-      <div className="sp-film-primary"><video controls playsInline muted preload="none" poster={`${M}gesture-demo.webp`} aria-label="Authentic exhibition excerpt showing a hand gesture and Sippy moving"><source src={`${M}gesture-demo.mp4`} type="video/mp4" /><track kind="captions" src="/images/sippy/demo-captions.vtt" srcLang="en" label="Visual description" /></video><div className="sp-film-side"><span>In the room</span><p>A small movement becomes something you can respond to.</p></div></div>
-      <div className="sp-film-pair"><div><h3>A moving presence</h3><video controls playsInline muted preload="none" poster={`${M}movement-demo.webp`} aria-label="Authentic close exhibition footage of Sippy moving with its cup"><source src={`${M}movement-demo.mp4`} type="video/mp4" /></video></div><div><h3>The cup is part of the interaction</h3><video controls playsInline muted preload="none" poster={`${M}cup-demo.webp`} aria-label="Authentic exhibition excerpt showing the cup removed and handled beside Sippy"><source src={`${M}cup-demo.mp4`} type="video/mp4" /></video></div></div>
-      <p className="sp-source-note">Separate, silent excerpts from the original project film. They contain source edits and show selected moments, not an uninterrupted test cycle or measured reliability.</p>
-    </div></section>
+    <BehaviourStory />
 
-    <section className="sp-evolution sp-wrap" aria-labelledby="idea-title">
-      <div className="sp-section-heading"><h2 id="idea-title">From Idea<br /><em>to Companion</em></h2><p>The direction moved from making a break visible to making it tangible. The materials show a change in approach, then the physical form and final showcase appearance.</p></div>
-      <div className="sp-development">
-        <article><div className="sp-development-image sp-paper"><Media name="coffee-time" alt="Original Coffee Time exploration with cup-stain and desktop concepts" /></div><h3>An early direction</h3><p>Coffee Time explored ways to bring a break into view. It informed the exploration; it was not a working Sippy prototype.</p></article>
-        <article><div className="sp-development-image sp-paper"><Media name="cup-sketch" alt="Original hand-drawn dimensional study of a cup holder" /></div><h3>Giving it a form</h3><p>Cup-holder and shell studies considered how an everyday cup could sit within a small moving object.</p></article>
-        <article><div className="sp-development-image sp-grey"><Media name="grey-prototype" alt="Authentic grey-shell Sippy prototype and cup before the plush showcase appearance" /></div><h3>A physical prototype</h3><p>The grey shell brought the cup, sensing and movement together in a tangible device.</p></article>
-        <article><div className="sp-development-image"><Media name="exhibition" alt="Authentic project video still of the final colourful plush Sippy at the exhibition" /></div><h3>A companion on the desk</h3><p>Colourful fur and expressive eyes gave the exhibition version a softer, more approachable presence.</p></article>
-      </div>
-    </section>
+    <MakingStory />
 
     <section className="sp-evaluation" aria-labelledby="notice-title"><div className="sp-wrap">
       <div className="sp-section-heading"><h2 id="notice-title">Did People<br /><em>Notice?</em></h2><p>20 questionnaire responses at the showcase offer a first look at perceived noticeability.</p></div>

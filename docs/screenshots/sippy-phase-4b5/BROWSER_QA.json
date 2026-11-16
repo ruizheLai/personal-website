@@ -1,0 +1,625 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.00006103515625,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Cup weight → load cell and HX711 → ESP32 → Bleak BLE → Python CUP_OFF → Unity status",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        }
+      ],
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.000030517578125,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Cup weight → load cell and HX711 → ESP32 → Bleak BLE → Python CUP_OFF → Unity status",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        }
+      ],
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.000030517578125,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Cup weight → load cell and HX711 → ESP32 → Bleak BLE → Python CUP_OFF → Unity status",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        }
+      ],
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.00006103515625,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Cup weight → load cell and HX711 → ESP32 → Bleak BLE → Python CUP_OFF → Unity status",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        }
+      ],
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.00006103515625,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Cup weight → load cell and HX711 → ESP32 → Bleak BLE → Python CUP_OFF → Unity status",
+          "overflow": false
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "flow": "Camera frames → MediaPipe and Python → Bleak BLE → ESP32 → motor driver → movement",
+          "overflow": false
+        }
+      ],
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true
+        }
+      ]
+    }
+  ],
+  "reduced": {
+    "heroHeight": 812,
+    "viewport": 812,
+    "videoPaused": true,
+    "videoControls": true,
+    "behaviourPosition": "relative",
+    "processInline": true
+  },
+  "blocked": {
+    "label": "Play clip▷",
+    "paused": true,
+    "muted": true
+  },
+  "noScript": {
+    "chapters": 3,
+    "stages": 5,
+    "staticLinks": true,
+    "inline": true
+  },
+  "recording": {
+    "frames": 280,
+    "fps": 10,
+    "encoderErrors": "",
+    "source": "Actual Chrome screenshots after native scroll events, forward then reverse"
+  },
+  "errors": []
+}
