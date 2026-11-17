@@ -1,0 +1,19 @@
+{
+  "source": "public\\images\\sippy\\process\\showcase.webp",
+  "source_sha256": "0b53078920bdce96863a085706baae98989ea0ede286a3de1abd4ed2d809d330",
+  "crop_box": [
+    95,
+    55,
+    485,
+    435
+  ],
+  "output": "public\\images\\sippy\\process\\showcase-focus.webp",
+  "dimensions": [
+    390,
+    380
+  ],
+  "operation": "Crop authentic showcase photograph around plush Sippy; no regeneration, no enlargement",
+  "permission": "Existing user permission confirmation retained",
+  "originals": "Unmodified",
+  "output_sha256": "3a119afdab5c13d8abf8afb9313f3b6de69889d444bb314c2c90319faadee527"
+}

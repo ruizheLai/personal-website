@@ -3,9 +3,11 @@ import Link from "next/link";
 import SippyExperience, { ComponentVisual, SippyResults } from "@/components/sippy/SippyExperience";
 import { sippyMedia as M } from "@/lib/sippy-assets";
 import BehaviourStory from "@/components/sippy/BehaviourStory";
+import ResponseArchitecture from "@/components/sippy/ResponseArchitecture";
 import MakingStory from "@/components/sippy/MakingStory";
 import "./sippy.css";
 import "./storytelling.css";
+import "./refinement.css";
 
 const siteHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
 export const metadata: Metadata = {
@@ -23,7 +25,7 @@ export default function SippyPage() {
         <div className="sp-story-intro">
           <Link className="sp-back" href="/projects">← All projects</Link>
           <h1 id="sippy-title">Sippy<span aria-hidden="true">.</span></h1>
-          <p>A playful desktop companion that makes<br className="sp-desktop-break" /> taking a break harder to forget.</p>
+          <p>A playful desktop companion exploring<br className="sp-desktop-break" /> physical reminders during focused work.</p>
           <span className="sp-project-type">Tangible interaction · Physical computing · Group project</span>
         </div>
         <div className="sp-arena" role="img" aria-label="Sippy has colourful fur, expressive eyes and an upright coffee cup. The scroll study reveals its intact mechanism, followed by the component groups explained below."><div className="sp-desk" /><img className="sp-still" src={`${M}plush.webp`} width="571" height="633" alt="Sippy's colourful fur, expressive eyes and upright coffee cup" fetchPriority="high" /></div>
@@ -38,7 +40,7 @@ export default function SippyPage() {
       <div className="sp-build-heading"><p className="sp-kicker">A soft exterior. A working system.</p><h2 id="build-title">How a Small Companion<br />Was Built</h2></div>
       <div className="sp-systems">
         <article className="sp-system sp-sensing"><div className="sp-system-copy"><h3>Sensing</h3><p>A load cell beneath the cup holder senses weight changes. The documented HX711 Load Cell Amplifier passes readings to the controller, allowing cup placement and removal to affect the interaction.</p></div><div className="sp-slot-pair"><div className="sp-slot" data-dest="sensing"><ComponentVisual id="sensing" /></div><div className="sp-slot" data-dest="amplifier"><ComponentVisual id="amplifier" /></div></div></article>
-        <article className="sp-system sp-control"><div className="sp-system-copy"><h3>Control</h3><p>An ESP32 connects sensing and movement. Bluetooth Low Energy links the device with the computer, where Python and MediaPipe support gesture interaction.</p></div><div className="sp-slot" data-dest="control"><ComponentVisual id="control" /></div></article>
+        <article className="sp-system sp-control"><div className="sp-system-copy"><h3>Control</h3><p>An ESP32 coordinates sensing and movement within the physical prototype.</p></div><div className="sp-slot" data-dest="control"><ComponentVisual id="control" /></div></article>
         <article className="sp-system sp-power"><div className="sp-system-copy"><h3>Power</h3><p>LiPo and 18650 battery systems provide portable power for sensing and movement. The three-cell holder is shown as one assembly; the visuals do not establish exact ratings or wiring.</p></div><div className="sp-slot" data-dest="power"><ComponentVisual id="power" /></div></article>
         <article className="sp-system sp-movement"><div className="sp-system-copy"><h3>Motorised movement</h3><p>A motor driver controls two DC gear motors. Two wheels and a ball caster support movement across the desk, turning a reminder into a physical presence.</p></div><div className="sp-slot-pair"><div className="sp-slot" data-dest="driver"><ComponentVisual id="driver" /></div><div className="sp-slot" data-dest="movement"><ComponentVisual id="movement" /></div></div></article>
         <article className="sp-system sp-construction"><div className="sp-system-copy"><h3>Construction</h3><p>3D-printed shells and a cup holder surround the internal assembly. Laser-cut platforms, a chassis and metal mounts support the hardware; the plush finish changes how the device feels on a desk.</p></div><div className="sp-slot" data-dest="structure"><ComponentVisual id="structure" /></div></article>
@@ -47,6 +49,8 @@ export default function SippyPage() {
     </section>
 
     <BehaviourStory />
+
+    <ResponseArchitecture />
 
     <MakingStory />
 

@@ -58,12 +58,20 @@ export default function SippyExperience({ children }: { children: ReactNode }) {
       const plush = lerp(mobile ? [435, 585, 270, 300] : [760, 560, 310, 344], mobile ? [350, 580, 410, 455] : [610, 540, 470, 522], approach);
       plush[0] += Math.sin(approach * Math.PI) * 18 + sway; plush[1] += sway * .55;
       const closed: Record<string, Pose> = mobile ? { upper: [350, 490, 345, 235], lower: [350, 640, 320, 200], central: [350, 550, 340, 380] } : { upper: [610, 460, 370, 255], lower: [610, 610, 350, 218], central: [610, 530, 360, 405] };
-      const opened: Record<string, Pose> = mobile ? { upper: [350, 100, 245, 167], lower: [350, 1070, 180, 100], central: [350, 560, 325, 365] } : { upper: [600, 90, 240, 165], lower: [600, 800, 250, 160], central: [600, 440, 320, 360] };
+      const roomy = innerWidth >= 1200 && innerHeight >= 760;
+      const opened: Record<string, Pose> = mobile ? { upper: [350, 100, 245, 167], lower: [350, 1070, 180, 100], central: [350, 560, 325, 365] } : { upper: [610, 105, roomy ? 280 : 240, 180], lower: [610, 805, roomy ? 280 : 250, 175], central: [610, 455, roomy ? 400 : 350, roomy ? 450 : 393] };
       const dest: Record<SippyPart, Pose> = mobile ? {
         sensing: [150, 300, 245, 155], amplifier: [545, 300, 170, 140], control: [165, 525, 220, 185], driver: [535, 525, 185, 165], power: [155, 765, 250, 190], movement: [535, 765, 255, 195], structure: [350, 940, 170, 140],
+      } : roomy ? {
+        sensing: [250, 350, 320, 220], amplifier: [650, 300, 240, 200], control: [980, 315, 300, 250], driver: [240, 570, 250, 220], power: [980, 600, 300, 235], movement: [615, 565, 330, 250], structure: [310, 785, 225, 180],
       } : {
         sensing: [230, 240, 240, 165], amplifier: [575, 235, 175, 145], control: [890, 245, 245, 205], driver: [230, 505, 195, 180], power: [890, 525, 255, 205], movement: [560, 510, 260, 205], structure: [300, 735, 190, 150],
       };
+      if (roomy) {
+        const anchors: Record<SippyPart, number> = { sensing: -.18, amplifier: .06, control: .28, driver: -.28, movement: .01, power: .27, structure: -.22 };
+        const spread = Math.min(innerWidth, 2100);
+        (Object.keys(dest) as SippyPart[]).forEach(id => { dest[id][0] = (innerWidth * .53 + spread * anchors[id] - ox) / scale; });
+      }
       const timing: Record<SippyPart, [number, number]> = { sensing: [.57, .625], amplifier: [.61, .665], control: [.655, .71], power: [.70, .755], driver: [.745, .80], movement: [.79, .855], structure: [.85, .92] };
       const poses: Record<string, Pose> = {}, alphas: Record<string, number> = {};
       function place(e: HTMLElement, a: Pose, alpha: number, baseW = 240, baseH = 200) {
