@@ -1,0 +1,3276 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.00006103515625,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 0,
+            "screenCentre": 450.0703125,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "blur(0px)",
+                "centre": 450.078125,
+                "height": 138.796875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.5px)",
+                "centre": 805.1781311035156,
+                "height": 190.60247802734375,
+                "visibleFraction": 0.1584514179601778
+              },
+              {
+                "opacity": 0,
+                "blur": "blur(3.5px)",
+                "centre": 1160.278076171875,
+                "height": 190.6025390625,
+                "visibleFraction": 0
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 0.99987,
+            "screenCentre": 449.9921875,
+            "copies": [
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.49953px)",
+                "centre": 118.34430694580078,
+                "height": 122.14125061035156,
+                "visibleFraction": 0.15895475241950022
+              },
+              {
+                "opacity": 1,
+                "blur": "blur(0.000467415px)",
+                "centre": 450.04742431640625,
+                "height": 216.59375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.5px)",
+                "centre": 805.1474304199219,
+                "height": 190.60247802734375,
+                "visibleFraction": 0.15820260526426183
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 1.99987,
+            "screenCentre": 449.9921875,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "blur(3.5px)",
+                "centre": -213.355712890625,
+                "height": 122.1412353515625,
+                "visibleFraction": 0
+              },
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.49953px)",
+                "centre": 94.94742584228516,
+                "height": 190.6024932861328,
+                "visibleFraction": 0.15870029800681673
+              },
+              {
+                "opacity": 1,
+                "blur": "blur(0.000467415px)",
+                "centre": 450.04742431640625,
+                "height": 216.59375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 0.99987,
+            "screenCentre": 449.9921875,
+            "copies": [
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.49953px)",
+                "centre": 118.34430694580078,
+                "height": 122.14125061035156,
+                "visibleFraction": 0.15895475241950022
+              },
+              {
+                "opacity": 1,
+                "blur": "blur(0.000467415px)",
+                "centre": 450.04742431640625,
+                "height": 216.59375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.5px)",
+                "centre": 805.1474304199219,
+                "height": 190.60247802734375,
+                "visibleFraction": 0.15820260526426183
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 0,
+            "screenCentre": 450.0703125,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "blur(0px)",
+                "centre": 450.078125,
+                "height": 138.796875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.5px)",
+                "centre": 805.1781311035156,
+                "height": 190.60247802734375,
+                "visibleFraction": 0.1584514179601778
+              },
+              {
+                "opacity": 0,
+                "blur": "blur(3.5px)",
+                "centre": 1160.278076171875,
+                "height": 190.6025390625,
+                "visibleFraction": 0
+              }
+            ],
+            "panels": []
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "centered": true,
+          "position": 0.24944,
+          "screenCentre": 449.9921875,
+          "copies": [
+            {
+              "opacity": 0.867723,
+              "blur": "blur(0.873037px)",
+              "centre": 367.26104736328125,
+              "height": 136.2049560546875,
+              "visibleFraction": 1
+            },
+            {
+              "opacity": 0.282277,
+              "blur": "blur(2.62696px)",
+              "centre": 716.524169921875,
+              "height": 194.647216796875,
+              "visibleFraction": 0.6206070678247781
+            },
+            {
+              "opacity": 0,
+              "blur": "blur(3.5px)",
+              "centre": 1071.6240844726562,
+              "height": 190.6024169921875,
+              "visibleFraction": 0
+            }
+          ],
+          "panels": []
+        },
+        {
+          "centered": true,
+          "position": 0.50072,
+          "screenCentre": 449.9921875,
+          "copies": [
+            {
+              "opacity": 0.574081,
+              "blur": "blur(1.75252px)",
+              "centre": 283.9107971191406,
+              "height": 130.4510498046875,
+              "visibleFraction": 1
+            },
+            {
+              "opacity": 0.575919,
+              "blur": "blur(1.74748px)",
+              "centre": 627.2939453125,
+              "height": 203.626220703125,
+              "visibleFraction": 1
+            },
+            {
+              "opacity": 0,
+              "blur": "blur(3.5px)",
+              "centre": 982.3938598632812,
+              "height": 190.6024169921875,
+              "visibleFraction": 0
+            }
+          ],
+          "panels": []
+        },
+        {
+          "centered": true,
+          "position": 0.75029,
+          "screenCentre": 449.9921875,
+          "copies": [
+            {
+              "opacity": 0.282532,
+              "blur": "blur(2.62603px)",
+              "centre": 201.12757873535156,
+              "height": 124.73818969726562,
+              "visibleFraction": 0.8297112042043137
+            },
+            {
+              "opacity": 0.867468,
+              "blur": "blur(0.873972px)",
+              "centre": 538.6706848144531,
+              "height": 212.54119873046875,
+              "visibleFraction": 1
+            },
+            {
+              "opacity": 0.15,
+              "blur": "blur(3.5px)",
+              "centre": 893.7706604003906,
+              "height": 190.60247802734375,
+              "visibleFraction": 0
+            }
+          ],
+          "panels": []
+        }
+      ],
+      "architecture": {
+        "nodes": 5,
+        "states": 2,
+        "text": "Behindthe ResponseSeeing a hand. Sensing a cup. Coordinating a physical response.From a gesture to movement.CameraHand-gesture inputMediaPipe + PythonRecognise the gestureBleak / BLESend the movement commandESP32Arduino C++ controls the driverMotor driver + motorsMove the companionThe cup sets the state.Weight readings from the load cell and documented HX711 amplifier reach the ESP32. BLE carries cup status to the Python control program.Load cell / amplifier → ESP32 → BLE / PythonCup presentCUP_ONGesture control is enabled.Cup removedCUP_OFFGesture control is disabled. Python coordinates Unity’s drink animation until the cup returns.Reported system architecture, not live telemetry. The team’s 10-second demo interval was a technical test setting, not a validated everyday reminder schedule.",
+        "between": true
+      },
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 0,
+            "screenCentre": 450.0625,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 450.0625,
+                "height": 213.40625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 462.06251525878906,
+                "height": 207.00411987304688,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 474.06248474121094,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 486.0625,
+                "height": 233.3759765625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 498.06248474121094,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 1.00102,
+            "screenCentre": 450,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 437.9877166748047,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 449.9877014160156,
+                "height": 213.40618896484375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 461.9877166748047,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 473.9877014160156,
+                "height": 233.37591552734375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 485.9877166748047,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 1.99985,
+            "screenCentre": 450,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 426.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 438.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 450.00177001953125,
+                "height": 213.40625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 462.0017395019531,
+                "height": 233.37591552734375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 474.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 3.00102,
+            "screenCentre": 450,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 413.9877166748047,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 425.9877166748047,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 437.9877166748047,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 449.9877014160156,
+                "height": 240.59368896484375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 461.9877166748047,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 3.99985,
+            "screenCentre": 450,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 402.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 414.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 426.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 438.0017395019531,
+                "height": 233.37591552734375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 450.00177001953125,
+                "height": 213.40625,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 1.99985,
+            "screenCentre": 450,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 426.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 438.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 450.00177001953125,
+                "height": 213.40625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 462.0017395019531,
+                "height": 233.37591552734375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 474.0017547607422,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 0,
+            "screenCentre": 450.0625,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 450.0625,
+                "height": 213.40625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 462.06251525878906,
+                "height": 207.00411987304688,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 474.06248474121094,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 486.0625,
+                "height": 233.3759765625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 498.06248474121094,
+                "height": 207.00405883789062,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.000030517578125,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 0.00074,
+            "screenCentre": 383.9765625,
+            "copies": [
+              {
+                "opacity": 0.999999,
+                "blur": "blur(0.00258183px)",
+                "centre": 383.7281799316406,
+                "height": 190.53118896484375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0.150001,
+                "blur": "blur(3.49742px)",
+                "centre": 739.4220275878906,
+                "height": 192.34881591796875,
+                "visibleFraction": 0.15979695650532152
+              },
+              {
+                "opacity": 0,
+                "blur": "blur(3.5px)",
+                "centre": 1116.7140502929688,
+                "height": 224.6612548828125,
+                "visibleFraction": 0
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 1.00066,
+            "screenCentre": 383.9765625,
+            "copies": [
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.5px)",
+                "centre": 36.456031799316406,
+                "height": 167.66749572753906,
+                "visibleFraction": 0.15689030571454599
+              },
+              {
+                "opacity": 0.999999,
+                "blur": "blur(0.00230129px)",
+                "centre": 383.75050354003906,
+                "height": 218.57809448242188,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0.150001,
+                "blur": "blur(3.4977px)",
+                "centre": 750.2433776855469,
+                "height": 224.66131591796875,
+                "visibleFraction": 0.16056015307329746
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 2,
+            "screenCentre": 383.9765625,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "blur(3.5px)",
+                "centre": -310.6156005859375,
+                "height": 167.66748046875,
+                "visibleFraction": 0
+              },
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.5px)",
+                "centre": 28.28436279296875,
+                "height": 192.3487548828125,
+                "visibleFraction": 0.15843286977834273
+              },
+              {
+                "opacity": 1,
+                "blur": "blur(0px)",
+                "centre": 383.984375,
+                "height": 255.296875,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 1.00066,
+            "screenCentre": 383.9765625,
+            "copies": [
+              {
+                "opacity": 0.15,
+                "blur": "blur(3.5px)",
+                "centre": 36.456031799316406,
+                "height": 167.66749572753906,
+                "visibleFraction": 0.15689030571454599
+              },
+              {
+                "opacity": 0.999999,
+                "blur": "blur(0.00230129px)",
+                "centre": 383.75050354003906,
+                "height": 218.57809448242188,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0.150001,
+                "blur": "blur(3.4977px)",
+                "centre": 750.2433776855469,
+                "height": 224.66131591796875,
+                "visibleFraction": 0.16056015307329746
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": true,
+            "position": 0.00074,
+            "screenCentre": 383.9765625,
+            "copies": [
+              {
+                "opacity": 0.999999,
+                "blur": "blur(0.00258183px)",
+                "centre": 383.7281799316406,
+                "height": 190.53118896484375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0.150001,
+                "blur": "blur(3.49742px)",
+                "centre": 739.4220275878906,
+                "height": 192.34881591796875,
+                "visibleFraction": 0.15979695650532152
+              },
+              {
+                "opacity": 0,
+                "blur": "blur(3.5px)",
+                "centre": 1116.7140502929688,
+                "height": 224.6612548828125,
+                "visibleFraction": 0
+              }
+            ],
+            "panels": []
+          }
+        }
+      ],
+      "transitions": [
+        {
+          "centered": true,
+          "position": 0.24921,
+          "screenCentre": 383.9765625,
+          "copies": [
+            {
+              "opacity": 0.867938,
+              "blur": "blur(0.872252px)",
+              "centre": 297.43209075927734,
+              "height": 186.9789581298828,
+              "visibleFraction": 1
+            },
+            {
+              "opacity": 0.282062,
+              "blur": "blur(2.62775px)",
+              "centre": 651.0386962890625,
+              "height": 196.4239501953125,
+              "visibleFraction": 0.6168171126185054
+            },
+            {
+              "opacity": 0,
+              "blur": "blur(3.5px)",
+              "centre": 1025.6471557617188,
+              "height": 224.6612548828125,
+              "visibleFraction": 0
+            }
+          ],
+          "panels": []
+        },
+        {
+          "centered": true,
+          "position": 0.4997,
+          "screenCentre": 383.9765625,
+          "copies": [
+            {
+              "opacity": 0.575388,
+              "blur": "blur(1.74893px)",
+              "centre": 210.44007873535156,
+              "height": 179.10983276367188,
+              "visibleFraction": 1
+            },
+            {
+              "opacity": 0.574612,
+              "blur": "blur(1.75107px)",
+              "centre": 561.9426116943359,
+              "height": 205.45144653320312,
+              "visibleFraction": 1
+            },
+            {
+              "opacity": 0,
+              "blur": "blur(3.5px)",
+              "centre": 933.8458862304688,
+              "height": 224.6612548828125,
+              "visibleFraction": 0
+            }
+          ],
+          "panels": []
+        },
+        {
+          "centered": true,
+          "position": 0.75018,
+          "screenCentre": 383.9765625,
+          "copies": [
+            {
+              "opacity": 0.282644,
+              "blur": "blur(2.62562px)",
+              "centre": 123.44805908203125,
+              "height": 171.23541259765625,
+              "visibleFraction": 0.6720653668249141
+            },
+            {
+              "opacity": 0.867356,
+              "blur": "blur(0.874382px)",
+              "centre": 472.8465576171875,
+              "height": 214.4849853515625,
+              "visibleFraction": 1
+            },
+            {
+              "opacity": 0.15,
+              "blur": "blur(3.5px)",
+              "centre": 842.0446166992188,
+              "height": 224.6612548828125,
+              "visibleFraction": 0
+            }
+          ],
+          "panels": []
+        }
+      ],
+      "architecture": {
+        "nodes": 5,
+        "states": 2,
+        "text": "Behindthe ResponseSeeing a hand. Sensing a cup. Coordinating a physical response.From a gesture to movement.CameraHand-gesture inputMediaPipe + PythonRecognise the gestureBleak / BLESend the movement commandESP32Arduino C++ controls the driverMotor driver + motorsMove the companionThe cup sets the state.Weight readings from the load cell and documented HX711 amplifier reach the ESP32. BLE carries cup status to the Python control program.Load cell / amplifier → ESP32 → BLE / PythonCup presentCUP_ONGesture control is enabled.Cup removedCUP_OFFGesture control is disabled. Python coordinates Unity’s drink animation until the cup returns.Reported system architecture, not live telemetry. The team’s 10-second demo interval was a technical test setting, not a validated everyday reminder schedule.",
+        "between": true
+      },
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 0,
+            "screenCentre": 384.09375,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 384.09375,
+                "height": 218.15625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 396.09375,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 408.09375,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 420.09373474121094,
+                "height": 237.98342895507812,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 432.09375,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 1.00035,
+            "screenCentre": 383.984375,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 371.9801025390625,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 383.9801025390625,
+                "height": 218.15625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 395.9801025390625,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 407.9801025390625,
+                "height": 237.9833984375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 419.9801025390625,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 2.00099,
+            "screenCentre": 383.984375,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 359.97254180908203,
+                "height": 211.61155700683594,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 371.9725341796875,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 383.97254943847656,
+                "height": 218.15621948242188,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 395.9725646972656,
+                "height": 237.98345947265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 407.9725341796875,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 2.99887,
+            "screenCentre": 383.984375,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 347.9978713989258,
+                "height": 211.61155700683594,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 359.9978713989258,
+                "height": 211.61155700683594,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 371.9978790283203,
+                "height": 211.61160278320312,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 383.9978790283203,
+                "height": 245.34371948242188,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 395.9978942871094,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 3.9995,
+            "screenCentre": 383.984375,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 335.9903259277344,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 347.9903259277344,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 359.9903030395508,
+                "height": 211.61155700683594,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 371.9903259277344,
+                "height": 237.98345947265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 383.9903259277344,
+                "height": 218.15625,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 2.00099,
+            "screenCentre": 383.984375,
+            "copies": [
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 359.97254180908203,
+                "height": 211.61155700683594,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 371.9725341796875,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 383.97254943847656,
+                "height": 218.15621948242188,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 395.9725646972656,
+                "height": 237.98345947265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 407.9725341796875,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": true,
+            "position": 0,
+            "screenCentre": 384.09375,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 384.09375,
+                "height": 218.15625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 396.09375,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 408.09375,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 420.09373474121094,
+                "height": 237.98342895507812,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 0,
+                "blur": "none",
+                "centre": 432.09375,
+                "height": 211.611572265625,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.000030517578125,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 260.8984375,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 748.03125,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1290.75,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1833.46875,
+                "height": 542.71875,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 260.8984375,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 205.03125,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 747.75,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1290.46875,
+                "height": 542.71875,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 260.8984375,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -337.96875,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 204.75,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 747.46875,
+                "height": 542.71875,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 260.8984375,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 205.03125,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 747.75,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1290.46875,
+                "height": 542.71875,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 260.8984375,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 748.03125,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1290.75,
+                "height": 542.71875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1833.46875,
+                "height": 542.71875,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        }
+      ],
+      "transitions": [],
+      "architecture": {
+        "nodes": 5,
+        "states": 2,
+        "text": "Behindthe ResponseSeeing a hand. Sensing a cup. Coordinating a physical response.From a gesture to movement.CameraHand-gesture inputMediaPipe + PythonRecognise the gestureBleak / BLESend the movement commandESP32Arduino C++ controls the driverMotor driver + motorsMove the companionThe cup sets the state.Weight readings from the load cell and documented HX711 amplifier reach the ESP32. BLE carries cup status to the Python control program.Load cell / amplifier → ESP32 → BLE / PythonCup presentCUP_ONGesture control is enabled.Cup removedCUP_OFFGesture control is disabled. Python coordinates Unity’s drink animation until the cup returns.Reported system architecture, not live telemetry. The team’s 10-second demo interval was a technical test setting, not a validated everyday reminder schedule.",
+        "between": true
+      },
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 461.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1306.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2151.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2996.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 3841.265625,
+                "height": 845,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -383.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 461.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1306.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2151.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2996.265625,
+                "height": 845,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1228.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -383.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 461.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1306.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2151.265625,
+                "height": 845,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 3,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -2073.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1228.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -383.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 461.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1306.265625,
+                "height": 845,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 4,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -2918.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -2073.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1228.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -383.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 461.265625,
+                "height": 845,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1228.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -383.734375,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 461.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1306.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2151.265625,
+                "height": 845,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 461.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1306.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2151.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2996.265625,
+                "height": 845,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 3841.265625,
+                "height": 845,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.00006103515625,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 169.8515625,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 535.25,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 982.5625,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1429.875,
+                "height": 447.3125,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 141.7421875,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 88.25,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 535.5625,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 982.875,
+                "height": 447.3125,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 141.7421875,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -358.75,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 88.5625,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 535.875,
+                "height": 447.3125,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 141.7421875,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 88.25,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 535.5625,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 982.875,
+                "height": 447.3125,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 169.8515625,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 535.25,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 982.5625,
+                "height": 447.3125,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1429.875,
+                "height": 447.3125,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        }
+      ],
+      "transitions": [],
+      "architecture": {
+        "nodes": 5,
+        "states": 2,
+        "text": "Behindthe ResponseSeeing a hand. Sensing a cup. Coordinating a physical response.From a gesture to movement.CameraHand-gesture inputMediaPipe + PythonRecognise the gestureBleak / BLESend the movement commandESP32Arduino C++ controls the driverMotor driver + motorsMove the companionThe cup sets the state.Weight readings from the load cell and documented HX711 amplifier reach the ESP32. BLE carries cup status to the Python control program.Load cell / amplifier → ESP32 → BLE / PythonCup presentCUP_ONGesture control is enabled.Cup removedCUP_OFFGesture control is disabled. Python coordinates Unity’s drink animation until the cup returns.Reported system architecture, not live telemetry. The team’s 10-second demo interval was a technical test setting, not a validated everyday reminder schedule.",
+        "between": true
+      },
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 379.9375,
+                "height": 702.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1094.875,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1849.8125,
+                "height": 782.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2604.75,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 3315.640625,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -335.0625,
+                "height": 702.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 379.875,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1134.8125,
+                "height": 782.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1889.75,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2600.640625,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1090.0625,
+                "height": 702.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -375.125,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 379.8125,
+                "height": 782.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1134.75,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1845.640625,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 3,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1845.0625,
+                "height": 702.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1130.125,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -375.1875,
+                "height": 782.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 379.75,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1090.640625,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 4,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -2556.0625,
+                "height": 702.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1841.125,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1086.1875,
+                "height": 782.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -331.25,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 379.640625,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1090.0625,
+                "height": 702.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -375.125,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 379.8125,
+                "height": 782.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1134.75,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1845.640625,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 379.9375,
+                "height": 702.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1094.875,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1849.8125,
+                "height": 782.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2604.75,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 3315.640625,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "cupRemoved": true,
+      "cupRestored": true,
+      "reversible": true,
+      "collisions": {
+        "labels": [],
+        "boxes": []
+      },
+      "landingError": 0.00006103515625,
+      "nodeCount": 7,
+      "noOverflow": true,
+      "heroClips": [],
+      "behaviour": [
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 164.203125,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 517.0078125,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 947.3671875,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1377.7265625,
+                "height": 430.359375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 137.625,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 86.0078125,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 516.3671875,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 946.7265625,
+                "height": 430.359375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "source": "/images/sippy/cup-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 137.625,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -343.9921875,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 86.3671875,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 516.7265625,
+                "height": 430.359375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "source": "/images/sippy/movement-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 137.625,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 86.0078125,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 516.3671875,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 946.7265625,
+                "height": 430.359375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "source": "/images/sippy/gesture-story.mp4",
+          "playing": true,
+          "muted": true,
+          "controls": false,
+          "count": 1,
+          "architectureAbsent": true,
+          "overflow": false,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 164.203125,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 517.0078125,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 947.3671875,
+                "height": 430.359375,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1377.7265625,
+                "height": 430.359375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": []
+          }
+        }
+      ],
+      "transitions": [],
+      "architecture": {
+        "nodes": 5,
+        "states": 2,
+        "text": "Behindthe ResponseSeeing a hand. Sensing a cup. Coordinating a physical response.From a gesture to movement.CameraHand-gesture inputMediaPipe + PythonRecognise the gestureBleak / BLESend the movement commandESP32Arduino C++ controls the driverMotor driver + motorsMove the companionThe cup sets the state.Weight readings from the load cell and documented HX711 amplifier reach the ESP32. BLE carries cup status to the Python control program.Load cell / amplifier → ESP32 → BLE / PythonCup presentCUP_ONGesture control is enabled.Cup removedCUP_OFFGesture control is disabled. Python coordinates Unity’s drink animation until the cup returns.Reported system architecture, not live telemetry. The team’s 10-second demo interval was a technical test setting, not a validated everyday reminder schedule.",
+        "between": true
+      },
+      "manualPause": true,
+      "pausePersists": true,
+      "inactivePaused": true,
+      "making": [
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 364.984375,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1092.671875,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1860.359375,
+                "height": 807.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2640.796875,
+                "height": 753.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 3364.4375,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 1,
+          "active": 1,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 1,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -362.015625,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 365.671875,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1133.359375,
+                "height": 807.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1913.796875,
+                "height": 753.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2637.4375,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1130.015625,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -402.328125,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 365.359375,
+                "height": 807.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1145.796875,
+                "height": 753.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1869.4375,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 3,
+          "active": 3,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 3,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1910.015625,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1182.328125,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -414.640625,
+                "height": 807.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 365.796875,
+                "height": 753.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1089.4375,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 4,
+          "active": 4,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 4,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -2634.015625,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1906.328125,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1138.640625,
+                "height": 807.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -358.203125,
+                "height": 753.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 365.4375,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 2,
+          "active": 2,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 2,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -1130.015625,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": -402.328125,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 365.359375,
+                "height": 807.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1145.796875,
+                "height": 753.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1869.4375,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "requested": 0,
+          "active": 0,
+          "overflow": false,
+          "visibleImages": true,
+          "focus": {
+            "centered": false,
+            "position": 0,
+            "screenCentre": 0,
+            "copies": [
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 364.984375,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1092.671875,
+                "height": 727.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 1860.359375,
+                "height": 807.6875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 2640.796875,
+                "height": 753.1875,
+                "visibleFraction": 1
+              },
+              {
+                "opacity": 1,
+                "blur": "none",
+                "centre": 3364.4375,
+                "height": 694.09375,
+                "visibleFraction": 1
+              }
+            ],
+            "panels": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "reduced": {
+    "heroHeight": 812,
+    "viewport": 812,
+    "videoPaused": true,
+    "videoControls": true,
+    "behaviourPosition": "relative",
+    "processInline": true
+  },
+  "blocked": {
+    "label": "Play clip▷",
+    "paused": true,
+    "muted": true
+  },
+  "noScript": {
+    "chapters": 3,
+    "stages": 5,
+    "staticLinks": true,
+    "inline": true
+  },
+  "recording": {
+    "frames": 280,
+    "fps": 10,
+    "encoderErrors": "",
+    "source": "Actual Chrome screenshots after native scroll events, forward then reverse"
+  },
+  "errors": []
+}
