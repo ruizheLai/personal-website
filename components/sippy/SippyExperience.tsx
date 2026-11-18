@@ -107,9 +107,6 @@ export default function SippyExperience({ children }: { children: ReactNode }) {
       el.style.backgroundColor = `rgb(${[7, 75, 55].map((v, i) => Math.round(v + ([241, 237, 227][i] - v) * wash)).join(",")})`;
       el.querySelectorAll<HTMLElement>(".sp-build-heading,.sp-system-copy").forEach(e => { e.style.opacity = String(media.matches ? 1 : band(h, .78, .98)); });
       const desk = el.querySelector<HTMLElement>(".sp-desk")!; desk.style.opacity = String(1 - band(p, .3, .43));
-      const phase = el.querySelector<HTMLElement>(".sp-phase")!;
-      phase.style.opacity = String(1 - band(h, 0, .12));
-      phase.textContent = p < .3 ? "A small presence on your desk." : p < .52 ? "Soft outside. Working parts inside." : "A companion, made tangible.";
       el.querySelector<HTMLElement>(".sp-story-intro")!.style.opacity = String(1 - band(h, 0, .18));
       window.sippyState = { p, h, heroEnd, handoffStart, handEnd, reduced: media.matches, coreOpacity, open, poses, alphas, nodeIds: parts.map(e => e.id) };
     };

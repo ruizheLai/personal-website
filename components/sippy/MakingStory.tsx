@@ -36,6 +36,5 @@ export default function MakingStory() {
         <span className="sm-step-name">{stage.name}</span><h3>{stage.title}</h3><div className="sm-inline"><ProcessVisual stage={i} /></div><p>{stage.text}</p>
       </article>)}</div><span className="sm-neighbour sm-after" aria-hidden="true">{active < stages.length-1 ? stages[active+1].name : ""}</span></div>
     </div></div>
-    <p className="sp-source-note">Original project studies and photographs; stages group related process evidence.</p>
   </section>;
 }

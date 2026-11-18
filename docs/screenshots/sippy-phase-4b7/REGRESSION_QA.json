@@ -1,0 +1,30 @@
+{
+  "routes": [
+    {
+      "route": "/about",
+      "main": true,
+      "overflow": false,
+      "title": "About — Ruizhe Lai"
+    },
+    {
+      "route": "/contact",
+      "main": true,
+      "overflow": false,
+      "title": "Contact — Ruizhe Lai"
+    },
+    {
+      "route": "/projects",
+      "main": true,
+      "overflow": false,
+      "title": "Projects — Ruizhe Lai"
+    }
+  ],
+  "keyboardSkip": true,
+  "cleanup": true,
+  "fixlens": true,
+  "home": true,
+  "canvasOrFallback": true,
+  "modelHTTP": 200,
+  "returned": true,
+  "errors": []
+}

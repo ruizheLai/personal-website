@@ -53,7 +53,6 @@ export default function BehaviourStory() {
         </div>
         <div className="sb-chapters" data-focus-window>{chapters.map((c, i) => <article key={c.title} data-behaviour-step={i} data-focus-copy={i} className={i === active ? "is-active" : ""}><span className="sb-chapter-number">{String(i + 1).padStart(2, "0")} / {c.title}</span><h3>{c.lead}</h3><p>{c.copy}</p><a className="sb-static-link" href={`${M}${c.file}.mp4`}>Watch {c.title.toLowerCase()} excerpt ↗</a></article>)}</div>
       </div></div>
-      <p className="sp-source-note sb-film-note">Authentic project footage, presented as separate edited moments.</p>
     </div>
   </section>;
 }
