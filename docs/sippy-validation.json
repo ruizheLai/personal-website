@@ -1,0 +1,243 @@
+{
+  "base_commit": "e5c8163e6579a7b76a6547deaf52a18582cec1f7",
+  "branch": "codex/sippy-phase-4b4-case-study",
+  "typecheck": "passed: npm run typecheck",
+  "build": "passed: npm run build (Next 16.4.3, all eight routes generated)",
+  "existing_tests": "passed: npm run check:interactions (backpack layout and trash physics)",
+  "protected_files": "git diff --exit-code origin/main -- FixLens, workspace, layouts, global CSS, other routes, models and dependencies: passed",
+  "source_integrity": {
+    "source_files_checked": 31,
+    "source_files_changed": [],
+    "structure_alpha_matches_original_trim_exactly": true,
+    "transparent_assets": [
+      {
+        "file": "adc.webp",
+        "size": [
+          803,
+          606
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "battery-pack.webp",
+        "size": [
+          1000,
+          1000
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "caster.webp",
+        "size": [
+          1000,
+          1000
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "chassis.webp",
+        "size": [
+          1000,
+          1000
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "esp32.webp",
+        "size": [
+          659,
+          495
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "lipo.webp",
+        "size": [
+          1000,
+          1000
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "load-cell.webp",
+        "size": [
+          1000,
+          441
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "motor-driver.webp",
+        "size": [
+          872,
+          651
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "motor.webp",
+        "size": [
+          1000,
+          1000
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "structure-only.webp",
+        "size": [
+          862,
+          947
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      },
+      {
+        "file": "wheel.webp",
+        "size": [
+          1000,
+          1000
+        ],
+        "alpha": [
+          0,
+          255
+        ]
+      }
+    ]
+  },
+  "browser": [
+    {
+      "width": 1440,
+      "height": 900,
+      "reversible": true,
+      "paused": true,
+      "nodesStable": true,
+      "noOverflow": true,
+      "allLoaded": true,
+      "coreHeld": true,
+      "maxArrivalError": 0,
+      "resizeError": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "reversible": true,
+      "paused": true,
+      "nodesStable": true,
+      "noOverflow": true,
+      "allLoaded": true,
+      "coreHeld": true,
+      "maxArrivalError": 0,
+      "resizeError": 0
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "reversible": true,
+      "paused": true,
+      "nodesStable": true,
+      "noOverflow": true,
+      "allLoaded": true,
+      "coreHeld": true,
+      "maxArrivalError": 0,
+      "resizeError": 0
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "reversible": true,
+      "paused": true,
+      "nodesStable": true,
+      "noOverflow": true,
+      "allLoaded": true,
+      "coreHeld": true,
+      "maxArrivalError": 0,
+      "resizeError": 0
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "reversible": true,
+      "paused": true,
+      "nodesStable": true,
+      "noOverflow": true,
+      "allLoaded": true,
+      "coreHeld": true,
+      "maxArrivalError": 0,
+      "resizeError": 0
+    }
+  ],
+  "reduced_motion": {
+    "reduced": true,
+    "heroHeight": 812,
+    "viewport": 812,
+    "still": "visible",
+    "words": true
+  },
+  "browser_errors": [],
+  "projects_navigation_round_trip": true,
+  "final_mobile_finish": {
+    "checks": [
+      {
+        "width": 390,
+        "metadata": "none",
+        "overflow": false
+      },
+      {
+        "width": 375,
+        "metadata": "none",
+        "overflow": false
+      }
+    ],
+    "errors": [],
+    "change": "Optional metadata line hidden on mobile to leave the shell reveal clear. Scroll geometry unchanged."
+  },
+  "recording": {
+    "frames": 192,
+    "fps": 12,
+    "encoderErrors": ""
+  },
+  "general_design_gate": {
+    "status": "open",
+    "open_findings": 42,
+    "warnings": 27,
+    "clean_pass": false,
+    "report": "sippy-general-design-gate.json"
+  },
+  "permissions": "User confirmed all media permitted in chat on 15 November 2026. Existing asset-specific attribution retained.",
+  "scope": "Sippy route, Sippy card, Sippy components/assets/docs/tests only; no main merge or production deployment",
+  "limits": [
+    "No physical-device or assistive-technology testing",
+    "No real-device frame-time measurement",
+    "Exact installed component SKUs/ratings remain unverified",
+    "Separate edited clips, no continuous-cycle reliability claim"
+  ]
+}

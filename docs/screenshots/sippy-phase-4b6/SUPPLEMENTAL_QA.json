@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "width": 1920,
+      "hero": {
+        "overflow": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 320,
+      "hero": {
+        "overflow": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 414,
+      "hero": {
+        "overflow": false,
+        "clipped": []
+      }
+    }
+  ],
+  "reducedDesktop": {
+    "centered": false,
+    "inline": true,
+    "desktop": "none",
+    "clipped": false
+  },
+  "noScriptDesktop": {
+    "centered": false,
+    "inline": true,
+    "links": true
+  },
+  "keyboard": {
+    "paused": true,
+    "focused": "sb-play",
+    "hiddenFocusable": 0
+  },
+  "errors": []
+}

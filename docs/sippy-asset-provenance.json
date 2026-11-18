@@ -1,0 +1,721 @@
+[
+  {
+    "id": "plush",
+    "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\phase-4b3\\assets\\structure\\plush.webp",
+    "source_sha256": "790d4a3f72bcf164370c588471bc5059ddbd6f38db5264c2ce8508ba8c5def8a",
+    "output": "plush.webp",
+    "size": [
+      571,
+      636
+    ],
+    "kind": "Existing prototype derivative",
+    "meaning": "Source-derived presentation layer, not new product photography",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "operation": "Byte-identical copy",
+    "earlier_provenance": {
+      "asset": "plush.webp",
+      "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\previews\\reference-crops\\C01_plush-front_K14.png",
+      "crop": null,
+      "polygon": null,
+      "matte": "green",
+      "bbox": [
+        34,
+        34,
+        605,
+        670
+      ],
+      "size": [
+        571,
+        636
+      ],
+      "source_sha256": "906bb48914aaf0f4671d09048935ee142f3b16879759cd7b0e08bdb5b22ddb1d"
+    },
+    "output_sha256": "790d4a3f72bcf164370c588471bc5059ddbd6f38db5264c2ce8508ba8c5def8a",
+    "output_bytes": 34742,
+    "output_dimensions": [
+      571,
+      636
+    ]
+  },
+  {
+    "id": "upper-shell",
+    "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\phase-4b3\\assets\\structure\\upper-shell.webp",
+    "source_sha256": "89249e20e2da61b2dbdceac890060bbb3a6e8367b18707e308a8b166458d4d30",
+    "output": "upper-shell.webp",
+    "size": [
+      1000,
+      636
+    ],
+    "kind": "Existing prototype derivative",
+    "meaning": "Source-derived presentation layer, not new product photography",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "operation": "Byte-identical copy",
+    "earlier_provenance": {
+      "asset": "upper-shell.webp",
+      "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\previews\\reference-crops\\C03_outer-shell_S024.png",
+      "crop": null,
+      "polygon": [
+        [
+          90,
+          820
+        ],
+        [
+          65,
+          615
+        ],
+        [
+          78,
+          440
+        ],
+        [
+          150,
+          335
+        ],
+        [
+          335,
+          290
+        ],
+        [
+          470,
+          210
+        ],
+        [
+          610,
+          65
+        ],
+        [
+          790,
+          130
+        ],
+        [
+          900,
+          225
+        ],
+        [
+          1030,
+          290
+        ],
+        [
+          1125,
+          430
+        ],
+        [
+          1180,
+          740
+        ],
+        [
+          1040,
+          810
+        ],
+        [
+          650,
+          825
+        ]
+      ],
+      "matte": "white",
+      "bbox": [
+        77,
+        122,
+        1180,
+        824
+      ],
+      "size": [
+        1000,
+        636
+      ],
+      "source_sha256": "c496bffb95af5e64befc15e95e4faa662c13566d17eead40f664ac37c967a1b4"
+    },
+    "output_sha256": "89249e20e2da61b2dbdceac890060bbb3a6e8367b18707e308a8b166458d4d30",
+    "output_bytes": 174600,
+    "output_dimensions": [
+      1000,
+      636
+    ]
+  },
+  {
+    "id": "lower-shell",
+    "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\phase-4b3\\assets\\structure\\lower-shell.webp",
+    "source_sha256": "88c3c75f16f36598fdcfee3608d0a3c52f69e19ffa6d0fa001f5f4af5bf8da69",
+    "output": "lower-shell.webp",
+    "size": [
+      1000,
+      658
+    ],
+    "kind": "Existing prototype derivative",
+    "meaning": "Source-derived presentation layer, not new product photography",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "operation": "Byte-identical copy",
+    "earlier_provenance": {
+      "asset": "lower-shell.webp",
+      "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\previews\\reference-crops\\C08_lower-plush-shell.png",
+      "crop": null,
+      "polygon": [
+        [
+          140,
+          285
+        ],
+        [
+          230,
+          140
+        ],
+        [
+          450,
+          30
+        ],
+        [
+          900,
+          0
+        ],
+        [
+          1190,
+          40
+        ],
+        [
+          1340,
+          155
+        ],
+        [
+          1390,
+          340
+        ],
+        [
+          1280,
+          615
+        ],
+        [
+          1070,
+          760
+        ],
+        [
+          650,
+          835
+        ],
+        [
+          340,
+          730
+        ],
+        [
+          200,
+          550
+        ]
+      ],
+      "matte": "white",
+      "bbox": [
+        159,
+        19,
+        1376,
+        820
+      ],
+      "size": [
+        1000,
+        658
+      ],
+      "source_sha256": "cd3a3a4c24e381a22cc0a2c7cdfb05f1b1a1c30d0b2e371c3f2fb7b3845f23d4"
+    },
+    "output_sha256": "88c3c75f16f36598fdcfee3608d0a3c52f69e19ffa6d0fa001f5f4af5bf8da69",
+    "output_bytes": 145334,
+    "output_dimensions": [
+      1000,
+      658
+    ]
+  },
+  {
+    "id": "structure-only",
+    "source": "E:\\portfolio source\\sippy\\structure only.png",
+    "source_sha256": "549a3921aeb2274a6b4cbe4e57d8a48d3cf6e5e77b0630d6f15ee966bb40554f",
+    "source_size": [
+      1920,
+      1080
+    ],
+    "output": "structure-only.webp",
+    "size": [
+      862,
+      947
+    ],
+    "bytes": 123682,
+    "kind": "Original project isolated image",
+    "meaning": "Genuine complete assembly; existing source alpha preserved; no manual outline mask",
+    "operation": "EXIF transpose, WebP encode; trim fully transparent exterior only, alpha unchanged",
+    "trim_box": [
+      574,
+      67,
+      1436,
+      1014
+    ],
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "source_alpha": "RGBA; full source 1920x1080; alpha range 0..255; trim empty exterior [574,67,1436,1014] only",
+    "output_sha256": "fb27c4135bb714ea68f5272e0599cad3435b4d05e656abdb8ed73a842b9d09fc",
+    "output_bytes": 123682,
+    "output_dimensions": [
+      862,
+      947
+    ]
+  },
+  {
+    "id": "battery-pack",
+    "source": "E:\\portfolio source\\sippy\\ChatGPT Image Nov 15, 2026, 07_41_25 PM-1.png",
+    "source_sha256": "314092453dd27b8f8589c0761b2530a01235c25869bc9854a21cfd5dd31217e1",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "output": "battery-pack.webp",
+    "size": [
+      1000,
+      1000
+    ],
+    "bytes": 129962,
+    "kind": "User-supplied reconstructed/source-based component visual",
+    "meaning": "Three blue 18650 cells installed in one holder; one complete asset",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "exact_model_status": "Representative supplied visual. Exact installed SKU/ratings not established; generated filename does not prove untouched photography.",
+    "output_sha256": "a47dc97410338da950b5fe7f070c6167bbf478b744170c1cd2284878d31ddf18",
+    "output_bytes": 129962,
+    "output_dimensions": [
+      1000,
+      1000
+    ]
+  },
+  {
+    "id": "chassis",
+    "source": "E:\\portfolio source\\sippy\\ChatGPT Image Nov 15, 2026, 07_41_26 PM-2.png",
+    "source_sha256": "e2d6363f0e8014c39b64fe6c6bad397ac42587395f9469627f947f9085bce2d3",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "output": "chassis.webp",
+    "size": [
+      1000,
+      1000
+    ],
+    "bytes": 82922,
+    "kind": "User-supplied reconstructed/source-based component visual",
+    "meaning": "Supplied circular Pololu-marked chassis illustration; representative geometry, not verified exact cut pattern",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "exact_model_status": "Representative supplied visual. Exact installed SKU/ratings not established; generated filename does not prove untouched photography.",
+    "output_sha256": "6489a6786c35195e2d830839356a664e008238dc5e74ba481d17f97f7b60ba6b",
+    "output_bytes": 82922,
+    "output_dimensions": [
+      1000,
+      1000
+    ]
+  },
+  {
+    "id": "motor",
+    "source": "E:\\portfolio source\\sippy\\ChatGPT Image Nov 15, 2026, 07_41_27 PM-3.png",
+    "source_sha256": "15381f847cb7806a3ad7b752892e1bc74bb90b408b6f05c24946997b6b11d4a8",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "output": "motor.webp",
+    "size": [
+      1000,
+      1000
+    ],
+    "bytes": 113476,
+    "kind": "User-supplied reconstructed/source-based component visual",
+    "meaning": "Supplied reconstructed gearmotor illustration; ratio/model unverified",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "exact_model_status": "Representative supplied visual. Exact installed SKU/ratings not established; generated filename does not prove untouched photography.",
+    "output_sha256": "bc49a21fa7b75916efaed0571dd751efd3f2699dba6a8d91c3dc618bf1cfef83",
+    "output_bytes": 113476,
+    "output_dimensions": [
+      1000,
+      1000
+    ]
+  },
+  {
+    "id": "lipo",
+    "source": "E:\\portfolio source\\sippy\\ChatGPT Image Nov 15, 2026, 07_41_28 PM-4.png",
+    "source_sha256": "15243a8a19b2019739fd795921cebb58adcfbb851b24a459a754e24e315081ac",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "output": "lipo.webp",
+    "size": [
+      1000,
+      1000
+    ],
+    "bytes": 82924,
+    "kind": "User-supplied reconstructed/source-based component visual",
+    "meaning": "Supplied LiPo illustration; printed rating is not a verified Sippy specification",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "exact_model_status": "Representative supplied visual. Exact installed SKU/ratings not established; generated filename does not prove untouched photography.",
+    "output_sha256": "2b532742196a22b7f642abbf26d06b33e727d03cea11991af3eae022f580ef66",
+    "output_bytes": 82924,
+    "output_dimensions": [
+      1000,
+      1000
+    ]
+  },
+  {
+    "id": "caster",
+    "source": "E:\\portfolio source\\sippy\\ChatGPT Image Nov 15, 2026, 07_41_29 PM-5.png",
+    "source_sha256": "f1fcdb00011c570a5dcbaa39cdafd4b65b4e589fd6585530aab1ffdf93dbf529",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "output": "caster.webp",
+    "size": [
+      1000,
+      1000
+    ],
+    "bytes": 51306,
+    "kind": "User-supplied reconstructed/source-based component visual",
+    "meaning": "Supplied reconstructed caster illustration; model/diameter unverified",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "exact_model_status": "Representative supplied visual. Exact installed SKU/ratings not established; generated filename does not prove untouched photography.",
+    "output_sha256": "e5e1a4d45029fb9529d3b76ac2150c46b11e216e1c82f0701a31f33127c9e247",
+    "output_bytes": 51306,
+    "output_dimensions": [
+      1000,
+      1000
+    ]
+  },
+  {
+    "id": "wheel",
+    "source": "E:\\portfolio source\\sippy\\ChatGPT Image Nov 15, 2026, 07_41_33 PM-6.png",
+    "source_sha256": "c780af135cf9d32d2055259436cec9adb7fd8af3e5b945d821a8a5ebb752ffc8",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "output": "wheel.webp",
+    "size": [
+      1000,
+      1000
+    ],
+    "bytes": 52448,
+    "kind": "User-supplied reconstructed/source-based component visual",
+    "meaning": "Supplied reconstructed wheel illustration; model/diameter unverified",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "exact_model_status": "Representative supplied visual. Exact installed SKU/ratings not established; generated filename does not prove untouched photography.",
+    "output_sha256": "b9d4db2d8d0535e09ac77996d5dfd10a30ea9eab0603b4166106c16011ef89ab",
+    "output_bytes": 52448,
+    "output_dimensions": [
+      1000,
+      1000
+    ]
+  },
+  {
+    "id": "load-cell",
+    "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\phase-4b3\\assets\\components\\load-cell.webp",
+    "source_sha256": "6aadf8627d0bf08e376582375090ea6158752011a106865eeafce89a69f1d431",
+    "output": "load-cell.webp",
+    "size": [
+      1000,
+      441
+    ],
+    "kind": "External catalogue reference / derived transparent cutout",
+    "meaning": "Representative Feather V2 / beam cell; Makerverse ADC/driver family references. ADC photo reads HX710, report documents HX711.",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "operation": "Byte-identical approved derivative",
+    "publisher": "Core Electronics",
+    "source_url": "https://core-electronics.com.au/load-cell-3kg.html",
+    "original_image_url": "https://core-electronics.com.au/media/catalog/product/C/E/CE08423-1.jpg",
+    "licence_note": "User-confirmed permission; prior public clearance unresolved before confirmation",
+    "output_sha256": "6aadf8627d0bf08e376582375090ea6158752011a106865eeafce89a69f1d431",
+    "output_bytes": 68756,
+    "output_dimensions": [
+      1000,
+      441
+    ]
+  },
+  {
+    "id": "adc",
+    "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\phase-4b3\\assets\\components\\adc.webp",
+    "source_sha256": "5ce6231c88a46c6e62062a9feb4a88ea1f0a88768cda6b6f28e1ceab5749ce55",
+    "output": "adc.webp",
+    "size": [
+      803,
+      606
+    ],
+    "kind": "External catalogue reference / derived transparent cutout",
+    "meaning": "Representative Feather V2 / beam cell; Makerverse ADC/driver family references. ADC photo reads HX710, report documents HX711.",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "operation": "Byte-identical approved derivative",
+    "publisher": "Core Electronics",
+    "source_url": "https://core-electronics.com.au/makerverse-load-cell-amplifier.html",
+    "original_image_url": "https://core-electronics.com.au/media/catalog/product/m/a/makerverse-load-cell-adc-with-headers.jpg",
+    "licence_note": "User-confirmed permission; source marking HX710, report wording HX711",
+    "output_sha256": "5ce6231c88a46c6e62062a9feb4a88ea1f0a88768cda6b6f28e1ceab5749ce55",
+    "output_bytes": 107346,
+    "output_dimensions": [
+      803,
+      606
+    ]
+  },
+  {
+    "id": "esp32",
+    "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\phase-4b3\\assets\\components\\esp32.webp",
+    "source_sha256": "5215be0528cf1b5e287a6c749546f3f7ffcd74f19462441899c53dd989b5342f",
+    "output": "esp32.webp",
+    "size": [
+      659,
+      495
+    ],
+    "kind": "External catalogue reference / derived transparent cutout",
+    "meaning": "Representative Feather V2 / beam cell; Makerverse ADC/driver family references. ADC photo reads HX710, report documents HX711.",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "operation": "Byte-identical approved derivative",
+    "publisher": "Kattni Rembor / Adafruit",
+    "source_url": "https://learn.adafruit.com/assets/117185",
+    "original_image_url": "https://cdn-learn.adafruit.com/assets/assets/000/117/185/original/adafruit_products_FV2_top_angle.jpg",
+    "licence_note": "CC BY-SA 3.0; background masked, crop/WebP; attribution retained",
+    "output_sha256": "5215be0528cf1b5e287a6c749546f3f7ffcd74f19462441899c53dd989b5342f",
+    "output_bytes": 86352,
+    "output_dimensions": [
+      659,
+      495
+    ]
+  },
+  {
+    "id": "motor-driver",
+    "source": "E:\\portfolio source\\_portfolio_audit\\sippy-motion-hero\\phase-4b3\\assets\\components\\motor-driver.webp",
+    "source_sha256": "5d4af9378bbb37be2737d44313186542908c49ed717826dc32b32fd22d2e0ceb",
+    "output": "motor-driver.webp",
+    "size": [
+      872,
+      651
+    ],
+    "kind": "External catalogue reference / derived transparent cutout",
+    "meaning": "Representative Feather V2 / beam cell; Makerverse ADC/driver family references. ADC photo reads HX710, report documents HX711.",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "operation": "Byte-identical approved derivative",
+    "publisher": "Core Electronics",
+    "source_url": "https://core-electronics.com.au/makerverse-motor-driver-2-channel.html",
+    "original_image_url": "https://core-electronics.com.au/media/catalog/product/c/e/ce08038-makerverse-motor-driver-2ch.jpg",
+    "licence_note": "User-confirmed permission; family reference, revision not verified",
+    "output_sha256": "5d4af9378bbb37be2737d44313186542908c49ed717826dc32b32fd22d2e0ceb",
+    "output_bytes": 114326,
+    "output_dimensions": [
+      872,
+      651
+    ]
+  },
+  {
+    "id": "coffee-time",
+    "source": "E:\\portfolio source\\sippy\\coffee time.png",
+    "source_sha256": "a55387b52348b2b9cc9f423aa333b538fc9e80a00aa579ca3b381e8a1931b222",
+    "source_size": [
+      1000,
+      1000
+    ],
+    "output": "coffee-time.webp",
+    "size": [
+      1000,
+      1000
+    ],
+    "bytes": 117548,
+    "kind": "Original project design material",
+    "meaning": "Coffee Time early idea, not a literal Sippy prototype",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "7558c499b3f3b57f692a76a4d00162d24c196cb0799b92e0dc37ea638a00f375",
+    "output_bytes": 117548,
+    "output_dimensions": [
+      1000,
+      1000
+    ]
+  },
+  {
+    "id": "cup-sketch",
+    "source": "E:\\portfolio source\\sippy\\sketch 1.png",
+    "source_sha256": "56f68c6c62d6e03aa43aa72a04d18ae3d7af49987eb6ce49902c3ceb73d59163",
+    "source_size": [
+      1920,
+      1080
+    ],
+    "output": "cup-sketch.webp",
+    "size": [
+      1000,
+      563
+    ],
+    "bytes": 23474,
+    "kind": "Original project design material",
+    "meaning": "Cup-holder dimensions in original mechanical sketch",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "cf5071d5544d2db5c56a2a430c819a7685ee637de6787bc66a2e013061233515",
+    "output_bytes": 23474,
+    "output_dimensions": [
+      1000,
+      563
+    ]
+  },
+  {
+    "id": "grey-prototype",
+    "source": "E:\\portfolio source\\sippy\\shell.png",
+    "source_sha256": "4dad3c44f0388e569321eecf27abf33ca50acf062e49445d21b5db0ccf55a45a",
+    "source_size": [
+      1920,
+      1080
+    ],
+    "output": "grey-prototype.webp",
+    "size": [
+      1400,
+      788
+    ],
+    "bytes": 39032,
+    "kind": "Original project design material",
+    "meaning": "Authentic grey-shell prototype with cup; full source frame",
+    "operation": "EXIF transpose, WebP encode",
+    "trim_box": null,
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "fe20e97bc08458be540baaddc3a0fca77405b180a79868f48e34d6f8aa152e4e",
+    "output_bytes": 39032,
+    "output_dimensions": [
+      1400,
+      788
+    ]
+  },
+  {
+    "id": "movement-demo",
+    "source": "E:\\portfolio source\\sippy\\Group N64 - INFO90003.mp4",
+    "source_sha256": "7a086b841498ca2dbc7ba3c576b1182c15118ab7b9a11aea6ed1df2fdac6e266",
+    "output": "movement-demo.mp4",
+    "kind": "Original project video / edited excerpt",
+    "source_range": [
+      136.2,
+      143.2
+    ],
+    "operation": "crop=800:600:1090:380,scale=960:720; H264; silent; separate excerpt, not continuous test cycle",
+    "meaning": "Authentic exhibition interaction; faces excluded by fixed crop; hands/clothing may remain. Consent not established.",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "5fffcfca2df28a4d223234afa46f79767afb9e4cf53e3e8dffb7f83eada06ccc",
+    "output_bytes": 703109
+  },
+  {
+    "id": "movement-demo-poster",
+    "source": "E:\\portfolio source\\sippy\\Group N64 - INFO90003.mp4",
+    "output": "movement-demo.webp",
+    "kind": "Original project video still",
+    "operation": "0.4s frame of the corresponding edited excerpt",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "44ff42c1cfde87ce38c5a100ccea4494e29db3f3416988db2cabb1ccf4e89f92",
+    "output_bytes": 13812,
+    "output_dimensions": [
+      960,
+      720
+    ]
+  },
+  {
+    "id": "cup-demo",
+    "source": "E:\\portfolio source\\sippy\\Group N64 - INFO90003.mp4",
+    "source_sha256": "7a086b841498ca2dbc7ba3c576b1182c15118ab7b9a11aea6ed1df2fdac6e266",
+    "output": "cup-demo.mp4",
+    "kind": "Original project video / edited excerpt",
+    "source_range": [
+      128.0,
+      130.8
+    ],
+    "operation": "crop=1020:540:850:500,scale=960:508; H264; silent; separate excerpt, not continuous test cycle",
+    "meaning": "Authentic exhibition interaction; faces excluded by fixed crop; hands/clothing may remain. Consent not established.",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "e0cea36bc804a5e4465b6e4aa0583116d90a70d40a6272f8cb90fd7f5db2939f",
+    "output_bytes": 433041
+  },
+  {
+    "id": "cup-demo-poster",
+    "source": "E:\\portfolio source\\sippy\\Group N64 - INFO90003.mp4",
+    "output": "cup-demo.webp",
+    "kind": "Original project video still",
+    "operation": "0.4s frame of the corresponding edited excerpt",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "4c778d099adb97cfd28168fc2f592e8c0c8718edf68750262dcfc4f1ff9fbafe",
+    "output_bytes": 13020,
+    "output_dimensions": [
+      960,
+      508
+    ]
+  },
+  {
+    "id": "exhibition",
+    "source": "E:\\portfolio source\\sippy\\Group N64 - INFO90003.mp4",
+    "output": "exhibition.webp",
+    "kind": "Original project video still",
+    "operation": "0.4s frame of movement-demo; face-free crop",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "44ff42c1cfde87ce38c5a100ccea4494e29db3f3416988db2cabb1ccf4e89f92",
+    "output_bytes": 13812,
+    "output_dimensions": [
+      960,
+      720
+    ]
+  },
+  {
+    "id": "gesture-demo",
+    "source": "E:/portfolio source/sippy/Group N64 - INFO90003.mp4",
+    "output": "gesture-demo.mp4",
+    "kind": "Original project video / edited excerpt",
+    "source_range": [
+      120.15,
+      122.85
+    ],
+    "operation": "crop=1740:580:200:470,scale=960:320; silent H264",
+    "meaning": "Hand gesture and movement, without faces in this crop",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "0fc21cc7ddc0acdd81ec01d4bb6c34b729d287108ab78defd2699d86efcacbdf",
+    "output_bytes": 147532
+  },
+  {
+    "id": "gesture-demo-poster",
+    "source": "E:/portfolio source/sippy/Group N64 - INFO90003.mp4",
+    "output": "gesture-demo.webp",
+    "kind": "Original project video still",
+    "operation": "0.4s frame from gesture-demo",
+    "publication": "User confirmed all media permitted in this chat, 15 November 2026. External source identity and CC attribution retained; no separate licence document supplied.",
+    "output_sha256": "0c94c105fb5f3f6654731ef736855d1e9942522379b67b22c069098d5bda271e",
+    "output_bytes": 11990,
+    "output_dimensions": [
+      960,
+      320
+    ]
+  },
+  {
+    "id": "cup",
+    "source": "Phase 4B.3 plush.webp",
+    "output": "cup.webp",
+    "kind": "Derived transparent cutout",
+    "operation": "Outline isolate the existing white cup; no redrawing; used through shell opening/intact hold",
+    "publication": "User confirmed all media permitted, 15 November 2026",
+    "output_sha256": "a7274580c1f987cd4d210805e1570d3394d8194a018a46ca871c3e4a1797ad67",
+    "output_bytes": 4506,
+    "output_dimensions": [
+      232,
+      180
+    ]
+  },
+  {
+    "id": "project-cover",
+    "source": "Phase 4B.3 plush.webp",
+    "output": "project-cover.jpg",
+    "kind": "Existing prototype asset / composed social cover",
+    "operation": "Plush on green field, title added",
+    "publication": "User confirmed all media permitted",
+    "output_sha256": "a76102cc31450affc01e04cbc49772a294a85d4aa04455f27f716b3d22ebfebb",
+    "output_bytes": 60889,
+    "output_dimensions": [
+      1200,
+      800
+    ]
+  }
+]

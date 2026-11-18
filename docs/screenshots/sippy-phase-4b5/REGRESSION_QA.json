@@ -1,0 +1,10 @@
+{
+  "keyboardSkip": true,
+  "cleanup": true,
+  "fixlens": true,
+  "home": true,
+  "canvasOrFallback": true,
+  "modelHTTP": 200,
+  "returned": true,
+  "errors": []
+}

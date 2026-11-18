@@ -1,0 +1,26 @@
+{
+  "implementationCommit": "2b7e83e0310c758100c77cc0cc279d68dfe06343",
+  "environment": "Preview",
+  "status": "Ready",
+  "deployment": "https://vercel.com/brad-s-team2/personal-website/Htx5H5FZi5cTfLLWNwbrDvMKVEC6",
+  "url": "https://personal-website-drdtbjp0p-brad-s-team2.vercel.app/projects/sippy",
+  "branchAlias": "https://personal-website-git-codex-sippy-phase-4b6-852ae7-brad-s-team2.vercel.app/projects/sippy",
+  "hydrated": {
+    "page": "sp-page sp-enhanced",
+    "action": "story-ready story-centered",
+    "making": "story-ready story-centered",
+    "parts": 7,
+    "videoCount": 1,
+    "nativeControls": false,
+    "responseNodes": 5,
+    "opaqueMakingPanels": "rgb(241, 237, 227)"
+  },
+  "scrollVerified": {
+    "actionChapter": 2,
+    "actionSource": "/images/sippy/cup-story.mp4",
+    "pausePersisted": true,
+    "makingPosition": 0.79426,
+    "makingStage": 1,
+    "makingImage": "/images/sippy/process/open-shell.webp"
+  }
+}

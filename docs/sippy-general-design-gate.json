@@ -1,0 +1,1708 @@
+{
+ "start": "2026-11-15T09:03:29.382Z",
+ "round": 1,
+ "idle": 0,
+ "errors": 0,
+ "status": "open",
+ "history": [
+  {
+   "at": "2026-11-15T09:46:28.602Z",
+   "mode": "manual",
+   "status": "open",
+   "fails": 42,
+   "round": 1,
+   "reused": false,
+   "stopHookActive": false
+  }
+ ],
+ "max": 1,
+ "marker": {
+  "page": null,
+  "url": "http://127.0.0.1:3104/projects/sippy",
+  "root": null,
+  "kind": "tech",
+  "category": "Tangible interaction portfolio case study",
+  "primary": "Back to Projects",
+  "rounds": 1,
+  "start": "2026-11-15T09:03:29.382Z",
+  "by": "gate.mjs --start"
+ },
+ "manual": true,
+ "roundKey": "69ddeca2f6dea9d8:da39a3ee",
+ "roundFree": false,
+ "idleFree": false,
+ "blockKey": null,
+ "fp": "69ddeca2f6dea9d8",
+ "page": "http://127.0.0.1:3104/projects/sippy",
+ "found": {
+  "fails": [
+   {
+    "check": "credit-wall",
+    "where": "main#main-content > footer.sp-footer.sp-wrap > p:nth-of-type(3) \"Controller image: Kattni Rembor / Adafru\"",
+    "msg": "the photo credits fill 2 lines in 1 block (1 credits, 262 characters): a wall of credits",
+    "fix": "one short credit line in the footer (or the credits on an imprint page): never a block of names",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "credit-wall"
+    ],
+    "wheres": [
+     "main#main-content > footer.sp-footer.sp-wrap > p:nth-of-type(3) \"Controller image: Kattni Rembor / Adafru\""
+    ]
+   },
+   {
+    "check": "pinned",
+    "where": "main#main-content > section.sp-hero > div.sp-stage \"← All projects Sippy. A playful desktop \"",
+    "msg": "held on screen for 2.2 screens of scroll (position: sticky) while the page moves on",
+    "fix": "let the section scroll with the page",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "pinned"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-hero > div.sp-stage \"← All projects Sippy. A playful desktop \""
+    ]
+   },
+   {
+    "check": "text-only",
+    "where": "main#main-content > section.sp-reflection.sp-wrap \"When Distraction Becomes Care\"",
+    "msg": "the closing section is only text: no picture, icon, mock or effect in it",
+    "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "text-only"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-reflection.sp-wrap \"When Distraction Becomes Care\""
+    ]
+   },
+   {
+    "check": "cta",
+    "where": "main#main-content > section.sp-hero",
+    "msg": "the hero has no button (the nav's does not count)",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "cta"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-hero"
+    ]
+   },
+   {
+    "check": "cta",
+    "where": "main#main-content > section.sp-reflection.sp-wrap \"When Distraction Becomes Care\"",
+    "msg": "the last section before the footer ends with no button",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "cta"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-reflection.sp-wrap \"When Distraction Becomes Care\""
+    ]
+   },
+   {
+    "check": "copy-headline",
+    "where": "h1#sippy-title \"Sippy.\"",
+    "msg": "\"Sippy.\" does not name what is sold (tangible interaction portfolio case study, tangible, interaction, portfolio, from flags)",
+    "fix": "put the category noun in the h1 (and who it is for, or where), in 2 to 8 words",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "copy-headline"
+    ],
+    "wheres": [
+     "h1#sippy-title \"Sippy.\""
+    ]
+   },
+   {
+    "check": "copy-fact",
+    "where": "h1#sippy-title \"Sippy.\"",
+    "msg": "the first screen holds no number, price, date, place, platform or genre",
+    "fix": "put one hard fact from the brief on the first screen: a number, a price, a date, the place, the platforms it runs on or a game's genre; take it from the brief or remove the claim",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "copy-fact"
+    ],
+    "wheres": [
+     "h1#sippy-title \"Sippy.\""
+    ]
+   },
+   {
+    "check": "copy-headings",
+    "where": "div.sp-wrap > div.sp-film-pair > div:nth-of-type(1) > h3 \"A moving presence\"",
+    "msg": "\"A moving presence\" names no product, part, place or section (7 headings like it; at most one brand line per page) (and 6 more like it: \"From Idea to Companion\", \"Giving it a form\", \"A companion on the desk\", \"Did People Notice?\", ...)",
+    "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "copy-headings"
+    ],
+    "wheres": [
+     "div.sp-wrap > div.sp-film-pair > div:nth-of-type(1) > h3 \"A moving presence\""
+    ]
+   },
+   {
+    "check": "heading-scale",
+    "where": "div.sp-wrap > div.sp-results.sp-results-ready > div.sp-result:nth-of-type(1) > h3 \"More likely to notice movement.\"",
+    "msg": "h3 headings in 3 sizes, 14px (\"A moving presence\") to 27px (x1.93)",
+    "fix": "size headings by level: the h1 largest, one size per level, each level below the one above",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "heading-scale"
+    ],
+    "wheres": [
+     "div.sp-wrap > div.sp-results.sp-results-ready > div.sp-result:nth-of-type(1) > h3 \"More likely to notice movement.\""
+    ]
+   },
+   {
+    "check": "off-grid",
+    "where": "section.sp-evaluation > div.sp-wrap > div.sp-section-heading > p \"20 questionnaire responses at the showca\"",
+    "msg": "left edge at 793.5px, 7.5px off a common edge of its section at 786px (4 elements, like p.sp-stat)",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "off-grid"
+    ],
+    "wheres": [
+     "section.sp-evaluation > div.sp-wrap > div.sp-section-heading > p \"20 questionnaire responses at the showca\""
+    ]
+   },
+   {
+    "check": "text-contrast",
+    "where": "div.sp-systems > article.sp-system.sp-sensing > div.sp-system-copy > p \"A load cell beneath the cup holder sense\"",
+    "msg": "body text in #52685a on #f1ede3 reads 5.15:1 (needs 7:1); 12 like it, like \"An ESP32 connects sens\", \"LiPo and 18650 battery\", \"A motor driver control\"",
+    "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "text-contrast"
+    ],
+    "wheres": [
+     "div.sp-systems > article.sp-system.sp-sensing > div.sp-system-copy > p \"A load cell beneath the cup holder sense\""
+    ]
+   },
+   {
+    "check": "text-contrast",
+    "where": "section.sp-evaluation > div.sp-wrap > div.sp-section-heading > p \"20 questionnaire responses at the showca\"",
+    "msg": "body text in #52685a on #e3e8db reads 4.83:1 (needs 7:1); 5 like it, like \"Physical movement was \", \"18 of 20 rated movemen\", \"Noticeability is a beg\"",
+    "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "text-contrast"
+    ],
+    "wheres": [
+     "section.sp-evaluation > div.sp-wrap > div.sp-section-heading > p \"20 questionnaire responses at the showca\""
+    ]
+   },
+   {
+    "check": "section-gaps",
+    "where": "main#main-content > section.sp-hero / section#construction",
+    "msg": "1765px between these sections (never on one screen), +742% against the median 210px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-gaps"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-hero / section#construction"
+    ]
+   },
+   {
+    "check": "visual-empty",
+    "where": "section.sp-hero > div.sp-structure-layers > div.sp-layer.sp-layer-central > img \"picture structure-only.webp\"",
+    "msg": "the picture structure-only.webp shows nothing at 1440px: 1 colour in its 214x235px, 100% one colour, an empty ground or frame where the visual should be",
+    "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "visual-empty"
+    ],
+    "wheres": [
+     "section.sp-hero > div.sp-structure-layers > div.sp-layer.sp-layer-central > img \"picture structure-only.webp\""
+    ]
+   },
+   {
+    "check": "visual-empty",
+    "where": "div#sippy-part-power > div.sp-part-images > img:nth-of-type(2) \"picture lipo.webp\"",
+    "msg": "the picture lipo.webp shows nothing at 1440px: 1 colour in its 132x198px, 100% one colour (45% of it on screen), an empty ground or frame where the visual should be",
+    "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "visual-empty"
+    ],
+    "wheres": [
+     "div#sippy-part-power > div.sp-part-images > img:nth-of-type(2) \"picture lipo.webp\""
+    ]
+   },
+   {
+    "check": "visual-empty",
+    "where": "div#sippy-part-structure > div.sp-part-images > img \"picture chassis.webp\"",
+    "msg": "the picture chassis.webp shows nothing at 1440px: 1 colour in its 276x198px, 100% one colour (45% of it on screen), an empty ground or frame where the visual should be",
+    "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "visual-empty"
+    ],
+    "wheres": [
+     "div#sippy-part-structure > div.sp-part-images > img \"picture chassis.webp\""
+    ]
+   },
+   {
+    "check": "visual-empty",
+    "where": "div#sippy-part-driver > div.sp-part-images > img \"picture motor-driver.webp\"",
+    "msg": "the picture motor-driver.webp shows nothing at 1440px: 1 colour in its 200x143px, 100% one colour (41% of it on screen), an empty ground or frame where the visual should be",
+    "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "visual-empty"
+    ],
+    "wheres": [
+     "div#sippy-part-driver > div.sp-part-images > img \"picture motor-driver.webp\""
+    ]
+   },
+   {
+    "check": "empty-area",
+    "where": "main#main-content > section.sp-hero \"Sippy.\"",
+    "msg": "75% of the section is empty: 2064px above its first content, 4% beside content that covers under half the container, in its 2880px of rows (WARN over 35%, FAIL over 50%)",
+    "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "empty-area"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-hero \"Sippy.\""
+    ]
+   },
+   {
+    "check": "run-on",
+    "where": "h2#reflection-title \"When DistractionBecomes Care\"",
+    "msg": "\"Becomes | Care\": the heading runs its first sentence into the grey second one with no stop",
+    "fix": "end the heading's first sentence with a full stop before its grey second one (\"Rooms and prices. Breakfast included.\")",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "run-on"
+    ],
+    "wheres": [
+     "h2#reflection-title \"When DistractionBecomes Care\""
+    ]
+   },
+   {
+    "check": "moment-none",
+    "where": "(the page)",
+    "msg": "a tech page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+    "fix": "deal one (moments.mjs pick --page tech) and mount it in its own section",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "moment-none"
+    ],
+    "wheres": [
+     "(the page)"
+    ]
+   },
+   {
+    "check": "hidden-content",
+    "where": "section.sp-hero > div.sp-stage > div.sp-story-intro > a.sp-back \"← All projects\"",
+    "msg": "with reduced motion asked for 2 lines stay hidden on the first screen, 0.7 s after it was scrolled to (opacity 0): \"Sippy.\": the page shows it only when a script reveals it",
+    "fix": "show the content at rest: the hidden state only under a class the script adds on its live path, never in the plain CSS (prefers-reduced-motion and a script that never runs show the finished page)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "hidden-content"
+    ],
+    "wheres": [
+     "section.sp-hero > div.sp-stage > div.sp-story-intro > a.sp-back \"← All projects\""
+    ]
+   },
+   {
+    "check": "hidden-content",
+    "where": "div#sippy-part-sensing > span \"Weight Sensing\"",
+    "msg": "with reduced motion asked for 3 lines stay hidden on screen 2, 0.7 s after it was scrolled to (opacity 0): \"Load Cell Amplifier\", \"ESP32 Control\": the page shows it only when a script reveals it",
+    "fix": "show the content at rest: the hidden state only under a class the script adds on its live path, never in the plain CSS (prefers-reduced-motion and a script that never runs show the finished page)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "hidden-content"
+    ],
+    "wheres": [
+     "div#sippy-part-sensing > span \"Weight Sensing\""
+    ]
+   },
+   {
+    "check": "hidden-content",
+    "where": "div#sippy-part-power > span \"Power\"",
+    "msg": "with reduced motion asked for 4 lines stay hidden on screen 3, 0.7 s after it was scrolled to (opacity 0): \"Motor Driver\", \"Motorised Movement\", \"Structure\": the page shows it only when a script reveals it",
+    "fix": "show the content at rest: the hidden state only under a class the script adds on its live path, never in the plain CSS (prefers-reduced-motion and a script that never runs show the finished page)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "hidden-content"
+    ],
+    "wheres": [
+     "div#sippy-part-power > span \"Power\""
+    ]
+   },
+   {
+    "check": "hero-screen",
+    "where": "main#main-content > section.sp-hero \"← All projectsSippy.A playful desktop co\"",
+    "msg": "the hero ends at 2880px on a 900px screen, 1980px below the fold: it ends at the fold, 1px either way (SR-1)",
+    "fix": "make the hero exactly one screen (height: 100svh, its content fitted inside), never taller or shorter",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "hero-screen"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-hero \"← All projectsSippy.A playful desktop co\""
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "main#main-content > footer.sp-footer.sp-wrap \"Sippy · Tangible interaction · Group pro\"",
+    "msg": "the section is 143px tall (0.2 screens), 757px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+    "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height"
+    ],
+    "wheres": [
+     "main#main-content > footer.sp-footer.sp-wrap \"Sippy · Tangible interaction · Group pro\"",
+     "main#main-content > section.sp-action \"See Sippyin ActionThe physical prototype\"",
+     "main#main-content > section.sp-reflection.sp-wrap \"ReflectionWhen DistractionBecomes CareA \"",
+     "main#main-content > section.sp-evolution.sp-wrap \"From Ideato CompanionThe direction moved\""
+    ]
+   },
+   {
+    "check": "section-height",
+    "where": "section#construction \"A soft exterior. A working system.How a \"",
+    "msg": "the section is 1417px tall (1.6 screens), 383px short of two screens (1800px): every section after the hero is one screen or two, 2px either way (and 3 more like it: \"ReflectionWhen Distracti\", \"Did PeopleNotice?20 ques\", \"From Ideato CompanionThe\") (SR-2)",
+    "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-height"
+    ],
+    "wheres": [
+     "section#construction \"A soft exterior. A working system.How a \""
+    ]
+   },
+   {
+    "check": "section-air",
+    "where": "section#construction \"A soft exterior. A working system.How a \"",
+    "msg": "the content fills 2.6% of the section's height (37 of 1417px): 55% or more (40% WARN) (SR-3)",
+    "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-air"
+    ],
+    "wheres": [
+     "section#construction \"A soft exterior. A working system.How a \""
+    ]
+   },
+   {
+    "check": "section-air",
+    "where": "main#main-content > section.sp-evaluation > div.sp-wrap > div.sp-evidence-note \"Noticeability is a beginning. These shor\"",
+    "msg": "a top border across 100% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (SR-3)",
+    "fix": "take the rule out: sections and their parts are parted by their ground and the air between them",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-air"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-evaluation > div.sp-wrap > div.sp-evidence-note \"Noticeability is a beginning. These shor\""
+    ]
+   },
+   {
+    "check": "one-section",
+    "where": "main#main-content > section.sp-evaluation \"Did PeopleNotice?20 questionnaire respon\"",
+    "msg": "the screen at scroll 7200px (stride 8) shows 222px of section 5 and the content of 2 sections, over 24px each beside section 6: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+    "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "one-section"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-evaluation \"Did PeopleNotice?20 questionnaire respon\"",
+     "main#main-content > section.sp-action \"See Sippyin ActionThe physical prototype\"",
+     "main#main-content > section.sp-hero \"← All projectsSippy.A playful desktop co\"",
+     "main#main-content > footer.sp-footer.sp-wrap \"Sippy · Tangible interaction · Group pro\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "header.site-header \"Ruizhe LaiAboutProjectsContact\"",
+    "msg": "the nav's content runs 60px from the left and 60px from the right (read from its outermost blocks: no .wrap): the page's container starts at 65px; the margin is 64-120px at 1440px (one container, equal margins, 2px either way) (SR-6)",
+    "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "header.site-header \"Ruizhe LaiAboutProjectsContact\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "a.skip-link \"Skip to content\"",
+    "msg": "a <a> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (SR-6)",
+    "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "a.skip-link \"Skip to content\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "header.site-header > nav > a:nth-of-type(3) \"Contact\"",
+    "msg": "\"Contact\" runs 1331-1380px, outside the container lines of the nav at 65-1375px: full width is for background layers and grounds only (SR-6)",
+    "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "header.site-header > nav > a:nth-of-type(3) \"Contact\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "header.site-header > a.wordmark \"Ruizhe Lai\"",
+    "msg": "\"Ruizhe Lai\" runs 60-165px, outside the container lines of the nav at 65-1375px: full width is for background layers and grounds only (SR-6)",
+    "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "header.site-header > a.wordmark \"Ruizhe Lai\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "div.sp-wrap > div.sp-film-primary > div.sp-film-side > p \"A small movement becomes something you c\"",
+    "msg": "1 text block starts on a left line at x 954, 890px from the container's left: text starts on the container's left, or on one split line (x 621, 732, 843) (SR-6)",
+    "fix": "start the text on the container's left, or on the one split line every split shares",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "div.sp-wrap > div.sp-film-primary > div.sp-film-side > p \"A small movement becomes something you c\""
+    ]
+   },
+   {
+    "check": "container-edges",
+    "where": "section#construction > p.sp-contribution \"I was a major contributor to this group \"",
+    "msg": "a box over half the container wide runs 65-815px, not on the container's lines at 65-1375px (SR-6)",
+    "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "container-edges"
+    ],
+    "wheres": [
+     "section#construction > p.sp-contribution \"I was a major contributor to this group \""
+    ]
+   },
+   {
+    "check": "split-pair",
+    "where": "main#main-content > section.sp-evaluation > div.sp-wrap > div.sp-section-heading \"Did PeopleNotice?20 questionnaire respon\"",
+    "msg": "the two columns of the split start 101px apart at the top: a split's columns are top-aligned, 8px either way (SR-8)",
+    "fix": "top-align both columns of the split (align-items: start)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "split-pair"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-evaluation > div.sp-wrap > div.sp-section-heading \"Did PeopleNotice?20 questionnaire respon\""
+    ]
+   },
+   {
+    "check": "split-pair",
+    "where": "main#main-content > section.sp-action > div.sp-wrap > div.sp-section-heading \"See Sippyin ActionThe physical prototype\"",
+    "msg": "the two columns of the split start 73px apart at the top: a split's columns are top-aligned, 8px either way (SR-8)",
+    "fix": "top-align both columns of the split (align-items: start)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "split-pair"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-action > div.sp-wrap > div.sp-section-heading \"See Sippyin ActionThe physical prototype\""
+    ]
+   },
+   {
+    "check": "split-pair",
+    "where": "main#main-content > section.sp-evolution.sp-wrap > div.sp-section-heading \"From Ideato CompanionThe direction moved\"",
+    "msg": "the two columns of the split start 73px apart at the top: a split's columns are top-aligned, 8px either way (and 1 more like it: \"In the roomA small movem\") (SR-8)",
+    "fix": "top-align both columns of the split (align-items: start)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "split-pair"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-evolution.sp-wrap > div.sp-section-heading \"From Ideato CompanionThe direction moved\""
+    ]
+   },
+   {
+    "check": "split-pair",
+    "where": "main#main-content > section.sp-action > div.sp-wrap > div.sp-film-primary \"In the roomA small movement becomes some\"",
+    "msg": "the split's left column starts with a picture or a box, not text: text left, the visual right, on every split (SR-8)",
+    "fix": "put the text in the left column and the visual in the right, on every split",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "split-pair"
+    ],
+    "wheres": [
+     "main#main-content > section.sp-action > div.sp-wrap > div.sp-film-primary \"In the roomA small movement becomes some\""
+    ]
+   },
+   {
+    "check": "heading-scale",
+    "where": "section.sp-evolution.sp-wrap > div.sp-development > article:nth-of-type(1) > h3 \"An early direction\"",
+    "msg": "h3 headings in 3 sizes, 14px (\"A moving presence\") to 28px (x2.00)",
+    "fix": "size headings by level: the h1 largest, one size per level, each level below the one above",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "heading-scale"
+    ],
+    "wheres": [
+     "section.sp-evolution.sp-wrap > div.sp-development > article:nth-of-type(1) > h3 \"An early direction\""
+    ]
+   },
+   {
+    "check": "text-contrast",
+    "where": "div.sp-systems > article.sp-system.sp-control > div.sp-system-copy > p \"An ESP32 connects sensing and movement. \"",
+    "msg": "body text in #52685a on #f1ede3 reads 5.15:1 (needs 7:1); 10 like it, like \"LiPo and 18650 battery\", \"A motor driver control\", \"3D-printed shells and \"",
+    "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+    "widths": [
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "text-contrast"
+    ],
+    "wheres": [
+     "div.sp-systems > article.sp-system.sp-control > div.sp-system-copy > p \"An ESP32 connects sensing and movement. \""
+    ]
+   },
+   {
+    "check": "container",
+    "where": "page",
+    "msg": "no .wrap",
+    "fix": "put the content in one .wrap",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "layout",
+    "ids": [
+     "container"
+    ],
+    "wheres": [
+     "page"
+    ]
+   }
+  ],
+  "warns": [
+   {
+    "check": "no-visual",
+    "where": "section#construction \"How a Small Companion Was Built\"",
+    "msg": "pictures, effects and mocks cover 23% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "no-visual",
+    "where": "main#main-content > section.sp-evaluation \"Did People Notice?\"",
+    "msg": "pictures, effects and mocks cover 22% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "section#construction \"How a Small Companion Was Built\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-headline",
+    "where": "h1#sippy-title \"Sippy.\"",
+    "msg": "the h1 has 1 word (2 to 8 read at a glance)",
+    "fix": "put the category noun in the h1 (and who it is for, or where), in 2 to 8 words",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-actions",
+    "where": "(the page)",
+    "msg": "the main action \"Back to Projects\" does not read word for word the same in the nav or hero and the closing section",
+    "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "off-grid",
+    "where": "header.site-header > a.wordmark \"Ruizhe Lai\"",
+    "msg": "left edge at 60.5px, 4.5px off the page margin at 65px (25 elements, none of them near it)",
+    "fix": "move it onto the page margin, or the column edge its section uses",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "body-size",
+    "where": "section#construction > p.sp-contribution \"I was a major contributor to this group \"",
+    "msg": "15 of 20 paragraphs of running text are set under 16px (13, 14, 15px)",
+    "fix": "set running text at 16px or more",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "div.sp-development > article:nth-of-type(3) > div.sp-development-image.sp-grey > img \"grey-prototype.webp\"",
+    "msg": "11 photographs in more than one look: lightness from 0.22 to 0.85; saturation from 0.18 to 0.67; the odd one out is grey-prototype.webp",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "link-styles",
+    "where": "section.sp-hero > div.sp-stage > div.sp-story-intro > a.sp-back \"← All projects\"",
+    "msg": "text links in 3 looks: no line, regular (1, like \"← All projects\"); border 1px, regular (1, like \"Back to Projects ↗\"); underline, regular (3, like \"Kattni Rembor / Adaf\")",
+    "fix": "give text links one look wherever they sit: one underline, one weight",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-length",
+    "where": "section#construction \"How a Small Companion Was Built\"",
+    "msg": "3 sections over 90 words a screen outside the UI mocks (\"How a Small Companion Wa\" 123, \"From Idea to Companion\" 111, \"Did People Notice?\" 94); 60 words a screen across the page (567 words in 9.4 screens): a tech page says it in about 80 or fewer",
+    "fix": "cut every section to its heading, one line and the product UI: the UI says the rest; no second paragraph, no list of feature sentences",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "div#sippy-part-sensing > span \"WEIGHT SENSING\"",
+    "msg": "a muted 11px line of 2 rows sits 0px under the picture load-cell.webp: it reads as a caption: \"WEIGHT SENSING\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "div#sippy-part-amplifier > span \"LOAD CELL AMPLIFIER\"",
+    "msg": "a muted 11px line of 2 rows sits 0px under the picture adc.webp: it reads as a caption: \"LOAD CELL AMPLIFIER\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "div#sippy-part-control > span \"ESP32 CONTROL\"",
+    "msg": "a muted 11px line of 2 rows sits 0px under the picture esp32.webp: it reads as a caption: \"ESP32 CONTROL\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "div#sippy-part-driver > span \"MOTOR DRIVER\"",
+    "msg": "a muted 13px line of 1 row sits 0px under the picture motor-driver.webp: it reads as a caption: \"MOTOR DRIVER\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "div#sippy-part-structure > span \"STRUCTURE\"",
+    "msg": "a muted 11px line of 2 rows sits 0px under the picture chassis.webp: it reads as a caption: \"STRUCTURE\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-caption",
+    "where": "main#main-content > section.sp-action > div.sp-wrap > p.sp-source-note \"Separate, silent excerpts from the origi\"",
+    "msg": "a muted 12px line of 2 rows sits 28px under the video: it reads as a caption: \"Separate, silent excerpts from the origi...\"; no caption or description under any image, render or visual (house rule)",
+    "fix": "take the line away: no caption or description under, over or on any image, render or visual; a licence credit goes in one footer line",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-empty",
+    "where": "div#sippy-part-amplifier > div.sp-part-images > img \"picture adc.webp\"",
+    "msg": "the picture adc.webp is nearly empty at 1440px: 3 colours in its 276x198px, 95.2% one colour (a thin line drawing or a logo can be this plain: look at it)",
+    "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "visual-empty",
+    "where": "div#sippy-part-power > div.sp-part-images > img:nth-of-type(1) \"picture battery-pack.webp\"",
+    "msg": "the picture battery-pack.webp is nearly empty at 1440px: 4 colours in its 132x198px, 98.5% one colour (45% of it on screen) (a thin line drawing or a logo can be this plain: look at it)",
+    "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "share-meta",
+    "where": "head",
+    "msg": "the head lacks an icon, theme-color: a shared link shows no picture or title of its own",
+    "fix": "copy the head block of starter.html: og tags, twitter:card, the icon and theme-color (references/system.md, Head)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "container-edges",
+    "where": "section.sp-hero > div.sp-stage > div.sp-arena > div.sp-desk",
+    "msg": "a box over half the container wide runs 287-1261px, not on the container's lines at 65-1375px (it sits in a part held on screen as the page scrolls: told as a WARN) (SR-6)",
+    "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "tap-size",
+    "where": "header.site-header > a.wordmark \"Ruizhe Lai\"",
+    "msg": "a 93x21px tap target: under the 44px a phone needs",
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box",
+    "widths": [
+     390,
+     320
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "tap-size",
+    "where": "header.site-header > nav > a:nth-of-type(1) \"About\"",
+    "msg": "a 31x36px tap target (and 2 more like it on this screen): under the 44px a phone needs",
+    "fix": "make every link and control outside running text 44px tall on a phone: display: inline-flex; align-items: center; min-height: 44px (a footer list then needs no gap), a 44px small button, or a transparent ::before laid past the box",
+    "widths": [
+     390,
+     320
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "main#main-content > section.sp-action \"See Sippy in Action\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "main#main-content > section.sp-evolution.sp-wrap \"From Idea to Companion\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "main#main-content > section.sp-evaluation \"Did People Notice?\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "body-size",
+    "where": "section.sp-evaluation > div.sp-wrap > div.sp-evidence-note > p:nth-of-type(1) \"Noticeability is a beginning. These shor\"",
+    "msg": "15 of 19 paragraphs of running text are set under 16px (13, 14, 15px)",
+    "fix": "set running text at 16px or more",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "section.sp-hero > div.sp-structure-layers > div.sp-layer.sp-layer-central > img \"structure-only.webp\"",
+    "msg": "6 photographs in more than one look: lightness from 0.26 to 0.85; the odd one out is structure-only.webp",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   }
+  ],
+  "crashed": [],
+  "seconds": {
+   "consistency": 131,
+   "layout": 13
+  }
+ },
+ "open": [
+  {
+   "check": "credit-wall",
+   "where": "main#main-content > footer.sp-footer.sp-wrap > p:nth-of-type(3) \"Controller image: Kattni Rembor / Adafru\"",
+   "msg": "the photo credits fill 2 lines in 1 block (1 credits, 262 characters): a wall of credits",
+   "fix": "one short credit line in the footer (or the credits on an imprint page): never a block of names",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "credit-wall"
+   ],
+   "wheres": [
+    "main#main-content > footer.sp-footer.sp-wrap > p:nth-of-type(3) \"Controller image: Kattni Rembor / Adafru\""
+   ]
+  },
+  {
+   "check": "pinned",
+   "where": "main#main-content > section.sp-hero > div.sp-stage \"← All projects Sippy. A playful desktop \"",
+   "msg": "held on screen for 2.2 screens of scroll (position: sticky) while the page moves on",
+   "fix": "let the section scroll with the page",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "pinned"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-hero > div.sp-stage \"← All projects Sippy. A playful desktop \""
+   ]
+  },
+  {
+   "check": "text-only",
+   "where": "main#main-content > section.sp-reflection.sp-wrap \"When Distraction Becomes Care\"",
+   "msg": "the closing section is only text: no picture, icon, mock or effect in it",
+   "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "text-only"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-reflection.sp-wrap \"When Distraction Becomes Care\""
+   ]
+  },
+  {
+   "check": "cta",
+   "where": "main#main-content > section.sp-hero",
+   "msg": "the hero has no button (the nav's does not count)",
+   "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "cta"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-hero"
+   ]
+  },
+  {
+   "check": "cta",
+   "where": "main#main-content > section.sp-reflection.sp-wrap \"When Distraction Becomes Care\"",
+   "msg": "the last section before the footer ends with no button",
+   "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "cta"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-reflection.sp-wrap \"When Distraction Becomes Care\""
+   ]
+  },
+  {
+   "check": "copy-headline",
+   "where": "h1#sippy-title \"Sippy.\"",
+   "msg": "\"Sippy.\" does not name what is sold (tangible interaction portfolio case study, tangible, interaction, portfolio, from flags)",
+   "fix": "put the category noun in the h1 (and who it is for, or where), in 2 to 8 words",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "copy-headline"
+   ],
+   "wheres": [
+    "h1#sippy-title \"Sippy.\""
+   ]
+  },
+  {
+   "check": "copy-fact",
+   "where": "h1#sippy-title \"Sippy.\"",
+   "msg": "the first screen holds no number, price, date, place, platform or genre",
+   "fix": "put one hard fact from the brief on the first screen: a number, a price, a date, the place, the platforms it runs on or a game's genre; take it from the brief or remove the claim",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "copy-fact"
+   ],
+   "wheres": [
+    "h1#sippy-title \"Sippy.\""
+   ]
+  },
+  {
+   "check": "copy-headings",
+   "where": "div.sp-wrap > div.sp-film-pair > div:nth-of-type(1) > h3 \"A moving presence\"",
+   "msg": "\"A moving presence\" names no product, part, place or section (7 headings like it; at most one brand line per page) (and 6 more like it: \"From Idea to Companion\", \"Giving it a form\", \"A companion on the desk\", \"Did People Notice?\", ...)",
+   "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "copy-headings"
+   ],
+   "wheres": [
+    "div.sp-wrap > div.sp-film-pair > div:nth-of-type(1) > h3 \"A moving presence\""
+   ]
+  },
+  {
+   "check": "heading-scale",
+   "where": "div.sp-wrap > div.sp-results.sp-results-ready > div.sp-result:nth-of-type(1) > h3 \"More likely to notice movement.\"",
+   "msg": "h3 headings in 3 sizes, 14px (\"A moving presence\") to 27px (x1.93)",
+   "fix": "size headings by level: the h1 largest, one size per level, each level below the one above",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "heading-scale"
+   ],
+   "wheres": [
+    "div.sp-wrap > div.sp-results.sp-results-ready > div.sp-result:nth-of-type(1) > h3 \"More likely to notice movement.\""
+   ]
+  },
+  {
+   "check": "off-grid",
+   "where": "section.sp-evaluation > div.sp-wrap > div.sp-section-heading > p \"20 questionnaire responses at the showca\"",
+   "msg": "left edge at 793.5px, 7.5px off a common edge of its section at 786px (4 elements, like p.sp-stat)",
+   "fix": "move it onto the page margin, or the column edge its section uses",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "off-grid"
+   ],
+   "wheres": [
+    "section.sp-evaluation > div.sp-wrap > div.sp-section-heading > p \"20 questionnaire responses at the showca\""
+   ]
+  },
+  {
+   "check": "text-contrast",
+   "where": "div.sp-systems > article.sp-system.sp-sensing > div.sp-system-copy > p \"A load cell beneath the cup holder sense\"",
+   "msg": "body text in #52685a on #f1ede3 reads 5.15:1 (needs 7:1); 12 like it, like \"An ESP32 connects sens\", \"LiPo and 18650 battery\", \"A motor driver control\"",
+   "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "text-contrast"
+   ],
+   "wheres": [
+    "div.sp-systems > article.sp-system.sp-sensing > div.sp-system-copy > p \"A load cell beneath the cup holder sense\""
+   ]
+  },
+  {
+   "check": "text-contrast",
+   "where": "section.sp-evaluation > div.sp-wrap > div.sp-section-heading > p \"20 questionnaire responses at the showca\"",
+   "msg": "body text in #52685a on #e3e8db reads 4.83:1 (needs 7:1); 5 like it, like \"Physical movement was \", \"18 of 20 rated movemen\", \"Noticeability is a beg\"",
+   "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "text-contrast"
+   ],
+   "wheres": [
+    "section.sp-evaluation > div.sp-wrap > div.sp-section-heading > p \"20 questionnaire responses at the showca\""
+   ]
+  },
+  {
+   "check": "section-gaps",
+   "where": "main#main-content > section.sp-hero / section#construction",
+   "msg": "1765px between these sections (never on one screen), +742% against the median 210px",
+   "fix": "use one gap between sections (all within 25% of each other)",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-gaps"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-hero / section#construction"
+   ]
+  },
+  {
+   "check": "visual-empty",
+   "where": "section.sp-hero > div.sp-structure-layers > div.sp-layer.sp-layer-central > img \"picture structure-only.webp\"",
+   "msg": "the picture structure-only.webp shows nothing at 1440px: 1 colour in its 214x235px, 100% one colour, an empty ground or frame where the visual should be",
+   "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "visual-empty"
+   ],
+   "wheres": [
+    "section.sp-hero > div.sp-structure-layers > div.sp-layer.sp-layer-central > img \"picture structure-only.webp\""
+   ]
+  },
+  {
+   "check": "visual-empty",
+   "where": "div#sippy-part-power > div.sp-part-images > img:nth-of-type(2) \"picture lipo.webp\"",
+   "msg": "the picture lipo.webp shows nothing at 1440px: 1 colour in its 132x198px, 100% one colour (45% of it on screen), an empty ground or frame where the visual should be",
+   "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "visual-empty"
+   ],
+   "wheres": [
+    "div#sippy-part-power > div.sp-part-images > img:nth-of-type(2) \"picture lipo.webp\""
+   ]
+  },
+  {
+   "check": "visual-empty",
+   "where": "div#sippy-part-structure > div.sp-part-images > img \"picture chassis.webp\"",
+   "msg": "the picture chassis.webp shows nothing at 1440px: 1 colour in its 276x198px, 100% one colour (45% of it on screen), an empty ground or frame where the visual should be",
+   "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "visual-empty"
+   ],
+   "wheres": [
+    "div#sippy-part-structure > div.sp-part-images > img \"picture chassis.webp\""
+   ]
+  },
+  {
+   "check": "visual-empty",
+   "where": "div#sippy-part-driver > div.sp-part-images > img \"picture motor-driver.webp\"",
+   "msg": "the picture motor-driver.webp shows nothing at 1440px: 1 colour in its 200x143px, 100% one colour (41% of it on screen), an empty ground or frame where the visual should be",
+   "fix": "make the visual draw at this width: a picture that loads, an effect that renders, or its still fallback; never an empty ground or frame",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "visual-empty"
+   ],
+   "wheres": [
+    "div#sippy-part-driver > div.sp-part-images > img \"picture motor-driver.webp\""
+   ]
+  },
+  {
+   "check": "empty-area",
+   "where": "main#main-content > section.sp-hero \"Sippy.\"",
+   "msg": "75% of the section is empty: 2064px above its first content, 4% beside content that covers under half the container, in its 2880px of rows (WARN over 35%, FAIL over 50%)",
+   "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "empty-area"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-hero \"Sippy.\""
+   ]
+  },
+  {
+   "check": "run-on",
+   "where": "h2#reflection-title \"When DistractionBecomes Care\"",
+   "msg": "\"Becomes | Care\": the heading runs its first sentence into the grey second one with no stop",
+   "fix": "end the heading's first sentence with a full stop before its grey second one (\"Rooms and prices. Breakfast included.\")",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "run-on"
+   ],
+   "wheres": [
+    "h2#reflection-title \"When DistractionBecomes Care\""
+   ]
+  },
+  {
+   "check": "moment-none",
+   "where": "(the page)",
+   "msg": "a tech page (--type) deals no moment: every kind carries one, two on a long page (moments.md)",
+   "fix": "deal one (moments.mjs pick --page tech) and mount it in its own section",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "moment-none"
+   ],
+   "wheres": [
+    "(the page)"
+   ]
+  },
+  {
+   "check": "hidden-content",
+   "where": "section.sp-hero > div.sp-stage > div.sp-story-intro > a.sp-back \"← All projects\"",
+   "msg": "with reduced motion asked for 2 lines stay hidden on the first screen, 0.7 s after it was scrolled to (opacity 0): \"Sippy.\": the page shows it only when a script reveals it",
+   "fix": "show the content at rest: the hidden state only under a class the script adds on its live path, never in the plain CSS (prefers-reduced-motion and a script that never runs show the finished page)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "hidden-content"
+   ],
+   "wheres": [
+    "section.sp-hero > div.sp-stage > div.sp-story-intro > a.sp-back \"← All projects\""
+   ]
+  },
+  {
+   "check": "hidden-content",
+   "where": "div#sippy-part-sensing > span \"Weight Sensing\"",
+   "msg": "with reduced motion asked for 3 lines stay hidden on screen 2, 0.7 s after it was scrolled to (opacity 0): \"Load Cell Amplifier\", \"ESP32 Control\": the page shows it only when a script reveals it",
+   "fix": "show the content at rest: the hidden state only under a class the script adds on its live path, never in the plain CSS (prefers-reduced-motion and a script that never runs show the finished page)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "hidden-content"
+   ],
+   "wheres": [
+    "div#sippy-part-sensing > span \"Weight Sensing\""
+   ]
+  },
+  {
+   "check": "hidden-content",
+   "where": "div#sippy-part-power > span \"Power\"",
+   "msg": "with reduced motion asked for 4 lines stay hidden on screen 3, 0.7 s after it was scrolled to (opacity 0): \"Motor Driver\", \"Motorised Movement\", \"Structure\": the page shows it only when a script reveals it",
+   "fix": "show the content at rest: the hidden state only under a class the script adds on its live path, never in the plain CSS (prefers-reduced-motion and a script that never runs show the finished page)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "hidden-content"
+   ],
+   "wheres": [
+    "div#sippy-part-power > span \"Power\""
+   ]
+  },
+  {
+   "check": "hero-screen",
+   "where": "main#main-content > section.sp-hero \"← All projectsSippy.A playful desktop co\"",
+   "msg": "the hero ends at 2880px on a 900px screen, 1980px below the fold: it ends at the fold, 1px either way (SR-1)",
+   "fix": "make the hero exactly one screen (height: 100svh, its content fitted inside), never taller or shorter",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "hero-screen"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-hero \"← All projectsSippy.A playful desktop co\""
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "main#main-content > footer.sp-footer.sp-wrap \"Sippy · Tangible interaction · Group pro\"",
+   "msg": "the section is 143px tall (0.2 screens), 757px short of one screen (900px): every section after the hero is one screen or two, 2px either way (SR-2)",
+   "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height"
+   ],
+   "wheres": [
+    "main#main-content > footer.sp-footer.sp-wrap \"Sippy · Tangible interaction · Group pro\"",
+    "main#main-content > section.sp-action \"See Sippyin ActionThe physical prototype\"",
+    "main#main-content > section.sp-reflection.sp-wrap \"ReflectionWhen DistractionBecomes CareA \"",
+    "main#main-content > section.sp-evolution.sp-wrap \"From Ideato CompanionThe direction moved\""
+   ]
+  },
+  {
+   "check": "section-height",
+   "where": "section#construction \"A soft exterior. A working system.How a \"",
+   "msg": "the section is 1417px tall (1.6 screens), 383px short of two screens (1800px): every section after the hero is one screen or two, 2px either way (and 3 more like it: \"ReflectionWhen Distracti\", \"Did PeopleNotice?20 ques\", \"From Ideato CompanionThe\") (SR-2)",
+   "fix": "set the section to one screen or two (height: calc(var(--h,1) * 100vh), --h 1 or 2) and cut or split its content to fit",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-height"
+   ],
+   "wheres": [
+    "section#construction \"A soft exterior. A working system.How a \""
+   ]
+  },
+  {
+   "check": "section-air",
+   "where": "section#construction \"A soft exterior. A working system.How a \"",
+   "msg": "the content fills 2.6% of the section's height (37 of 1417px): 55% or more (40% WARN) (SR-3)",
+   "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-air"
+   ],
+   "wheres": [
+    "section#construction \"A soft exterior. A working system.How a \""
+   ]
+  },
+  {
+   "check": "section-air",
+   "where": "main#main-content > section.sp-evaluation > div.sp-wrap > div.sp-evidence-note \"Noticeability is a beginning. These shor\"",
+   "msg": "a top border across 100% of the container, between the section's content: sections and their parts are told apart by air and ground, not lines (SR-3)",
+   "fix": "take the rule out: sections and their parts are parted by their ground and the air between them",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-air"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-evaluation > div.sp-wrap > div.sp-evidence-note \"Noticeability is a beginning. These shor\""
+   ]
+  },
+  {
+   "check": "one-section",
+   "where": "main#main-content > section.sp-evaluation \"Did PeopleNotice?20 questionnaire respon\"",
+   "msg": "the screen at scroll 7200px (stride 8) shows 222px of section 5 and the content of 2 sections, over 24px each beside section 6: a screen shows one section (another may peek 8px, 24px WARN) (SR-4)",
+   "fix": "make each section exactly one screen or two, so a screen shows one section and no neighbour peeks",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "one-section"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-evaluation \"Did PeopleNotice?20 questionnaire respon\"",
+    "main#main-content > section.sp-action \"See Sippyin ActionThe physical prototype\"",
+    "main#main-content > section.sp-hero \"← All projectsSippy.A playful desktop co\"",
+    "main#main-content > footer.sp-footer.sp-wrap \"Sippy · Tangible interaction · Group pro\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "header.site-header \"Ruizhe LaiAboutProjectsContact\"",
+   "msg": "the nav's content runs 60px from the left and 60px from the right (read from its outermost blocks: no .wrap): the page's container starts at 65px; the margin is 64-120px at 1440px (one container, equal margins, 2px either way) (SR-6)",
+   "fix": "use one container on every section and the nav (.wrap): one margin left and right, 64-120px on a desktop, 16-24px on a phone",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "header.site-header \"Ruizhe LaiAboutProjectsContact\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "a.skip-link \"Skip to content\"",
+   "msg": "a <a> at the top of the page, outside header.nav, main, footer.closing and nav.actionbar (SR-6)",
+   "fix": "build the page as header.nav, a main of sections (each one in-flow .wrap plus background layers) and footer.closing",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "a.skip-link \"Skip to content\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "header.site-header > nav > a:nth-of-type(3) \"Contact\"",
+   "msg": "\"Contact\" runs 1331-1380px, outside the container lines of the nav at 65-1375px: full width is for background layers and grounds only (SR-6)",
+   "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "header.site-header > nav > a:nth-of-type(3) \"Contact\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "header.site-header > a.wordmark \"Ruizhe Lai\"",
+   "msg": "\"Ruizhe Lai\" runs 60-165px, outside the container lines of the nav at 65-1375px: full width is for background layers and grounds only (SR-6)",
+   "fix": "keep it inside the container lines (.wrap): full width is for background layers and grounds only",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "header.site-header > a.wordmark \"Ruizhe Lai\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "div.sp-wrap > div.sp-film-primary > div.sp-film-side > p \"A small movement becomes something you c\"",
+   "msg": "1 text block starts on a left line at x 954, 890px from the container's left: text starts on the container's left, or on one split line (x 621, 732, 843) (SR-6)",
+   "fix": "start the text on the container's left, or on the one split line every split shares",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "div.sp-wrap > div.sp-film-primary > div.sp-film-side > p \"A small movement becomes something you c\""
+   ]
+  },
+  {
+   "check": "container-edges",
+   "where": "section#construction > p.sp-contribution \"I was a major contributor to this group \"",
+   "msg": "a box over half the container wide runs 65-815px, not on the container's lines at 65-1375px (SR-6)",
+   "fix": "run the picture or box from the container's left line to its right line, or put it in a row or a split",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "container-edges"
+   ],
+   "wheres": [
+    "section#construction > p.sp-contribution \"I was a major contributor to this group \""
+   ]
+  },
+  {
+   "check": "split-pair",
+   "where": "main#main-content > section.sp-evaluation > div.sp-wrap > div.sp-section-heading \"Did PeopleNotice?20 questionnaire respon\"",
+   "msg": "the two columns of the split start 101px apart at the top: a split's columns are top-aligned, 8px either way (SR-8)",
+   "fix": "top-align both columns of the split (align-items: start)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "split-pair"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-evaluation > div.sp-wrap > div.sp-section-heading \"Did PeopleNotice?20 questionnaire respon\""
+   ]
+  },
+  {
+   "check": "split-pair",
+   "where": "main#main-content > section.sp-action > div.sp-wrap > div.sp-section-heading \"See Sippyin ActionThe physical prototype\"",
+   "msg": "the two columns of the split start 73px apart at the top: a split's columns are top-aligned, 8px either way (SR-8)",
+   "fix": "top-align both columns of the split (align-items: start)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "split-pair"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-action > div.sp-wrap > div.sp-section-heading \"See Sippyin ActionThe physical prototype\""
+   ]
+  },
+  {
+   "check": "split-pair",
+   "where": "main#main-content > section.sp-evolution.sp-wrap > div.sp-section-heading \"From Ideato CompanionThe direction moved\"",
+   "msg": "the two columns of the split start 73px apart at the top: a split's columns are top-aligned, 8px either way (and 1 more like it: \"In the roomA small movem\") (SR-8)",
+   "fix": "top-align both columns of the split (align-items: start)",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "split-pair"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-evolution.sp-wrap > div.sp-section-heading \"From Ideato CompanionThe direction moved\""
+   ]
+  },
+  {
+   "check": "split-pair",
+   "where": "main#main-content > section.sp-action > div.sp-wrap > div.sp-film-primary \"In the roomA small movement becomes some\"",
+   "msg": "the split's left column starts with a picture or a box, not text: text left, the visual right, on every split (SR-8)",
+   "fix": "put the text in the left column and the visual in the right, on every split",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "split-pair"
+   ],
+   "wheres": [
+    "main#main-content > section.sp-action > div.sp-wrap > div.sp-film-primary \"In the roomA small movement becomes some\""
+   ]
+  },
+  {
+   "check": "heading-scale",
+   "where": "section.sp-evolution.sp-wrap > div.sp-development > article:nth-of-type(1) > h3 \"An early direction\"",
+   "msg": "h3 headings in 3 sizes, 14px (\"A moving presence\") to 28px (x2.00)",
+   "fix": "size headings by level: the h1 largest, one size per level, each level below the one above",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "heading-scale"
+   ],
+   "wheres": [
+    "section.sp-evolution.sp-wrap > div.sp-development > article:nth-of-type(1) > h3 \"An early direction\""
+   ]
+  },
+  {
+   "check": "text-contrast",
+   "where": "div.sp-systems > article.sp-system.sp-control > div.sp-system-copy > p \"An ESP32 connects sensing and movement. \"",
+   "msg": "body text in #52685a on #f1ede3 reads 5.15:1 (needs 7:1); 10 like it, like \"LiPo and 18650 battery\", \"A motor driver control\", \"3D-printed shells and \"",
+   "fix": "body text in the ink at 7:1 or more; grey (4.5:1 or more) only for captions and labels",
+   "widths": [
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "text-contrast"
+   ],
+   "wheres": [
+    "div.sp-systems > article.sp-system.sp-control > div.sp-system-copy > p \"An ESP32 connects sensing and movement. \""
+   ]
+  },
+  {
+   "check": "container",
+   "where": "page",
+   "msg": "no .wrap",
+   "fix": "put the content in one .wrap",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "layout",
+   "ids": [
+    "container"
+   ],
+   "wheres": [
+    "page"
+   ]
+  }
+ ],
+ "waived": [],
+ "warnCount": 27,
+ "openTold": true,
+ "at": "2026-11-15T09:46:28.603Z"
+}

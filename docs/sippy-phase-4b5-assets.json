@@ -1,0 +1,263 @@
+{
+  "inspected_files": 41,
+  "new_files": [
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.40 PM (1).jpeg",
+      "sha256": "5db5d9289c2ad524c8d4338c866482e01638190f694c1df7f41b2cac9352b817",
+      "new": true,
+      "bytes": 89730
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.40 PM.jpeg",
+      "sha256": "ad6ce1ceca8abb21e5e0cd8bc417b305e3e4bc4213674374979a68bc7ab7c3d1",
+      "new": true,
+      "bytes": 94411
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.44 PM (1).jpeg",
+      "sha256": "5328a2c2fedadfe123afc058ad1e27cf235237db9f08d54b75f500ec08e5c02c",
+      "new": true,
+      "bytes": 60666
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.44 PM (2).jpeg",
+      "sha256": "eb3d866f393b7558f99d9093005406c23748c364b231ed154b13e5a66d09c62b",
+      "new": true,
+      "bytes": 106602
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.44 PM.jpeg",
+      "sha256": "5d0b18a7d10ac6a90f1d664fcd03a145b94a7fc8be53f77631c93820e8ac15d5",
+      "new": true,
+      "bytes": 103449
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.45 PM (1).jpeg",
+      "sha256": "7872462b703bf60518910d3d036e372728fecd4c34bc0045829a7c669f6acedf",
+      "new": true,
+      "bytes": 71062
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.45 PM (2).jpeg",
+      "sha256": "75ebce09ba83330555387bc457a17e657e0d0f2d8aa48c86e60eba6b092a9862",
+      "new": true,
+      "bytes": 133508
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.45 PM (3).jpeg",
+      "sha256": "849d8891119166afb0545537e19727ee2a2bee96e5c11d9f7d42877028c5a5f4",
+      "new": true,
+      "bytes": 94477
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.45 PM.jpeg",
+      "sha256": "f46a74057c50dee75c40b296293c28e58a3bc3b8381cab63ea94809adf89ba79",
+      "new": true,
+      "bytes": 63510
+    },
+    {
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Video 2026-11-16 at 2.26.43 PM.mp4",
+      "sha256": "6ab0ee5df4ce3e57e6ae69bbef43f876b4af738f97ea38c4d9a1633224707c4e",
+      "new": true,
+      "bytes": 1305510
+    }
+  ],
+  "selected_derivatives": [
+    {
+      "id": "motor-bench",
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.40 PM (1).jpeg",
+      "source_sha256": "5db5d9289c2ad524c8d4338c866482e01638190f694c1df7f41b2cac9352b817",
+      "output": "public/images/sippy/process/motor-bench.webp",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "kind": "Original project process image",
+      "meaning": "Motor, driver and ESP32 wired on a bench; no result inferred.",
+      "operation": "EXIF orientation, downscale only, WebP encode; full frame",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 75036,
+      "output_sha256": "6a8f8e65d9aeedb8bd9349c1d2e506f6fe10ca5291137f31a0bd58b2e4084c24"
+    },
+    {
+      "id": "bench-test",
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.44 PM (1).jpeg",
+      "source_sha256": "5328a2c2fedadfe123afc058ad1e27cf235237db9f08d54b75f500ec08e5c02c",
+      "output": "public/images/sippy/process/bench-test.webp",
+      "dimensions": [
+        576,
+        1024
+      ],
+      "kind": "Original project process image",
+      "meaning": "Open chassis beside a laptop; integration/test context, not reliability data.",
+      "operation": "EXIF orientation, downscale only, WebP encode; full frame",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 50330,
+      "output_sha256": "5428e7542b2fc0cec20a21b281f2bc65a173c09e15ec26dd19868e3831d592c3"
+    },
+    {
+      "id": "open-shell",
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.44 PM (2).jpeg",
+      "source_sha256": "eb3d866f393b7558f99d9093005406c23748c364b231ed154b13e5a66d09c62b",
+      "output": "public/images/sippy/process/open-shell.webp",
+      "dimensions": [
+        576,
+        1024
+      ],
+      "kind": "Original project process image",
+      "meaning": "Separated grey shells, cup holder and packed internal components.",
+      "operation": "EXIF orientation, downscale only, WebP encode; full frame",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 109334,
+      "output_sha256": "40a8a4c15986c1cb6e364b2c99c6b674fb46826751bd7a9954b840bf4c48be78"
+    },
+    {
+      "id": "loadcell-integration",
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.44 PM.jpeg",
+      "source_sha256": "5d0b18a7d10ac6a90f1d664fcd03a145b94a7fc8be53f77631c93820e8ac15d5",
+      "output": "public/images/sippy/process/loadcell-integration.webp",
+      "dimensions": [
+        768,
+        1024
+      ],
+      "kind": "Original project process image",
+      "meaning": "Load cell wired beside chassis and controller.",
+      "operation": "EXIF orientation, downscale only, WebP encode; full frame",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 89414,
+      "output_sha256": "e636a327a3600b7f62ca3ab51580f124c5b3bae64810e8e8914779cb49162594"
+    },
+    {
+      "id": "fur-fabrication",
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.45 PM (1).jpeg",
+      "source_sha256": "7872462b703bf60518910d3d036e372728fecd4c34bc0045829a7c669f6acedf",
+      "output": "public/images/sippy/process/fur-fabrication.webp",
+      "dimensions": [
+        576,
+        1024
+      ],
+      "kind": "Original project process image",
+      "meaning": "Fur covering being fabricated, with scissors and glue gun.",
+      "operation": "EXIF orientation, downscale only, WebP encode; full frame",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 66400,
+      "output_sha256": "b5989d2e3d8a02e0ce3d02da4cddc1d6f995d104901bc0a303cf8509b1601159"
+    },
+    {
+      "id": "showcase",
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.45 PM (3).jpeg",
+      "source_sha256": "849d8891119166afb0545537e19727ee2a2bee96e5c11d9f7d42877028c5a5f4",
+      "output": "public/images/sippy/process/showcase.webp",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "kind": "Original project process image",
+      "meaning": "Plush prototype and laptop camera feed at showcase.",
+      "operation": "EXIF orientation, downscale only, WebP encode; full frame",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 92938,
+      "output_sha256": "0b53078920bdce96863a085706baae98989ea0ede286a3de1abd4ed2d809d330"
+    },
+    {
+      "id": "plush-assembly",
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Image 2026-11-16 at 2.26.45 PM.jpeg",
+      "source_sha256": "f46a74057c50dee75c40b296293c28e58a3bc3b8381cab63ea94809adf89ba79",
+      "output": "public/images/sippy/process/plush-assembly.webp",
+      "dimensions": [
+        576,
+        1024
+      ],
+      "kind": "Original project process image",
+      "meaning": "Plush base with exposed structure and cup holder.",
+      "operation": "EXIF orientation, downscale only, WebP encode; full frame",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 55336,
+      "output_sha256": "4da52ba6df147a5183ab844e278c5ecb1a0e088d7be301a32a6a094b0d53a77e"
+    },
+    {
+      "id": "shell-study",
+      "source": "E:\\portfolio source\\sippy\\sketch 4.png",
+      "source_sha256": "70ab3fc116e29c2e9f3b5e0176810143448085ad911c755bc665082c802ff37c",
+      "output": "public/images/sippy/process/shell-study.webp",
+      "dimensions": [
+        1200,
+        675
+      ],
+      "kind": "Original project process image",
+      "meaning": "Existing Sippy shell/cup-holder dimensional study, not a newly added sketch.",
+      "operation": "EXIF orientation, downscale only, WebP encode; full frame",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 23846,
+      "output_sha256": "a9a1163404732a6f27326451a67ad70dba84b807f805e59eec08e765f95fd274"
+    },
+    {
+      "id": "gesture-test-still",
+      "source": "E:\\portfolio source\\sippy\\WhatsApp Video 2026-11-16 at 2.26.43 PM.mp4",
+      "source_sha256": "6ab0ee5df4ce3e57e6ae69bbef43f876b4af738f97ea38c4d9a1633224707c4e",
+      "output": "public/images/sippy/process/gesture-test-still.webp",
+      "kind": "Original project test video still",
+      "operation": "0.8s frame; crop top 150px to exclude background faces; no enlargement",
+      "meaning": "Camera preview with detected hand landmarks, not a copy of editable implementation code",
+      "permission": "User explicitly confirmed new photos/video permitted on 16 November 2026",
+      "output_bytes": 12868,
+      "output_sha256": "bf81b8f340649a68bd801bed69eb9c3622d6deafefdc2fbd39e224d7cd1260c4",
+      "dimensions": [
+        352,
+        474
+      ]
+    }
+  ],
+  "not_selected": {
+    "WhatsApp Image 2026-11-16 at 2.26.45 PM (2).jpeg": "Redundant wide worktable view; selected closer assembly/test photographs are more legible.",
+    "WhatsApp Image 2026-11-16 at 2.26.40 PM.jpeg": "Chassis-wiring view inspected; closer load-cell and open-shell images selected instead."
+  },
+  "chronology": "Thematic process stages; filenames/import timestamps are not taken as creation dates.",
+  "cinematic_excerpts": [
+    {
+      "id": "gesture-story",
+      "source": "E:\\portfolio source\\sippy\\Group N64 - INFO90003.mp4",
+      "source_range": [
+        120.15,
+        122.85000000000001
+      ],
+      "operation": "crop=1440:900:280:180,scale=960:600; 30fps H264 CRF24; silent; faststart",
+      "output": "public\\images\\sippy\\gesture-story.mp4",
+      "poster": "public\\images\\sippy\\gesture-story.webp",
+      "meaning": "Separate authentic excerpt, not a continuous cycle; no interaction invented",
+      "permission": "Existing user all-permitted confirmation retained",
+      "output_bytes": 337376,
+      "output_sha256": "37a383e0627ebc2c6f4a60df09f0b685364c2571b769aabd5e0a951c7f430d0d"
+    },
+    {
+      "id": "movement-story",
+      "source": "E:\\portfolio source\\sippy\\Group N64 - INFO90003.mp4",
+      "source_range": [
+        136.2,
+        143.2
+      ],
+      "operation": "crop=800:500:1090:430; 30fps H264 CRF24; silent; faststart",
+      "output": "public\\images\\sippy\\movement-story.mp4",
+      "poster": "public\\images\\sippy\\movement-story.webp",
+      "meaning": "Separate authentic excerpt, not a continuous cycle; no interaction invented",
+      "permission": "Existing user all-permitted confirmation retained",
+      "output_bytes": 437167,
+      "output_sha256": "68572902746fd3a2df3bbaae87f123867eb392785ddedd24353a6f92dee30813"
+    },
+    {
+      "id": "cup-story",
+      "source": "E:\\portfolio source\\sippy\\Group N64 - INFO90003.mp4",
+      "source_range": [
+        128.0,
+        130.35
+      ],
+      "operation": "crop=960:600:850:480; 30fps H264 CRF24; silent; faststart",
+      "output": "public\\images\\sippy\\cup-story.mp4",
+      "poster": "public\\images\\sippy\\cup-story.webp",
+      "meaning": "Separate authentic excerpt, not a continuous cycle; no interaction invented",
+      "permission": "Existing user all-permitted confirmation retained",
+      "output_bytes": 447501,
+      "output_sha256": "d3a53582606c3139215ebe6a7c5c3ad25286b72a33ed91c456634526946ec20c"
+    }
+  ]
+}

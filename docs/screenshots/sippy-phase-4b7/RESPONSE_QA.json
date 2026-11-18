@@ -1,0 +1,1021 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "gesture": [
+        {
+          "length": 1048.3125,
+          "signal": 0.4929131401909722,
+          "dot": 0.010344328703703703,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 272.2776353624132,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 534.3557603624132,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 796.4338853624132,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 1048.3125,
+          "dot": 0,
+          "on": 0.8643120659722222,
+          "off": 0.1356879340277778,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 534.3557603624132,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 0.4929131401909722,
+          "dot": 0.010344328703703703,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        }
+      ],
+      "cup": [
+        {
+          "length": 1048.3125,
+          "signal": 963.8726874457465,
+          "dot": 1,
+          "on": 0.9997287326388888,
+          "off": 0.0002712673611111111,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 1048.3125,
+          "dot": 0,
+          "on": 0.49972873263888884,
+          "off": 0.5002712673611112,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 1048.3125,
+          "dot": 0,
+          "on": 0,
+          "off": 1,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 1048.3125,
+          "dot": 0,
+          "on": 0.49972873263888884,
+          "off": 0.5002712673611112,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 1048.3125,
+          "signal": 963.8726874457465,
+          "dot": 1,
+          "on": 0.9997287326388888,
+          "off": 0.0002712673611111111,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        }
+      ],
+      "notes": {
+        "removed": true,
+        "credits": [
+          "Kattni Rembor / Adafruit",
+          "CC BY-SA 3.0",
+          "Core Electronics"
+        ],
+        "stats": [
+          "65 percent",
+          "90 percent"
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "gesture": [
+        {
+          "length": 745.453125,
+          "signal": 0,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 193.57990407943726,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 379.619637966156,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 565.6593718528748,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 745.453125,
+          "dot": 0,
+          "on": 0.9918467203776042,
+          "off": 0.008153279622395704,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 379.619637966156,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 0,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        }
+      ],
+      "cup": [
+        {
+          "length": 745.453125,
+          "signal": 745.453125,
+          "dot": 0,
+          "on": 0.9999847412109376,
+          "off": 0.000015258789062370475,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 745.453125,
+          "dot": 0,
+          "on": 0.4994964599609376,
+          "off": 0.5005035400390624,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 745.453125,
+          "dot": 0,
+          "on": 0,
+          "off": 1,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 745.453125,
+          "dot": 0,
+          "on": 0.4994964599609376,
+          "off": 0.5005035400390624,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 745.453125,
+          "signal": 745.453125,
+          "dot": 0,
+          "on": 0.9999847412109376,
+          "off": 0.000015258789062370475,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        }
+      ],
+      "notes": {
+        "removed": true,
+        "credits": [
+          "Kattni Rembor / Adafruit",
+          "CC BY-SA 3.0",
+          "Core Electronics"
+        ],
+        "stats": [
+          "65 percent",
+          "90 percent"
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "gesture": [
+        {
+          "length": 315.375,
+          "signal": 0,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 82.06948481912143,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 161.02120716217723,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 239.58207939462383,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0.9216880798339844,
+          "off": 0.07831192016601561,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 161.02120716217723,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 0,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        }
+      ],
+      "cup": [
+        {
+          "length": 315.375,
+          "signal": 308.37169886184074,
+          "dot": 0.4885378518890322,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0.5005455017089844,
+          "off": 0.4994544982910156,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0,
+          "off": 1,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0.5005455017089844,
+          "off": 0.4994544982910156,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 308.37169886184074,
+          "dot": 0.4885378518890322,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        }
+      ],
+      "notes": {
+        "removed": true,
+        "credits": [
+          "Kattni Rembor / Adafruit",
+          "CC BY-SA 3.0",
+          "Core Electronics"
+        ],
+        "stats": [
+          "65 percent",
+          "90 percent"
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "gesture": [
+        {
+          "length": 315.375,
+          "signal": 0,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 82.13485650490284,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 160.9244386671663,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 239.71402082942976,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 160.9244386671663,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 0,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        }
+      ],
+      "cup": [
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0.5017147696978674,
+          "off": 0.4982852303021326,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0,
+          "off": 1,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0.5017147696978674,
+          "off": 0.4982852303021326,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        }
+      ],
+      "notes": {
+        "removed": true,
+        "credits": [
+          "Kattni Rembor / Adafruit",
+          "CC BY-SA 3.0",
+          "Core Electronics"
+        ],
+        "stats": [
+          "65 percent",
+          "90 percent"
+        ]
+      }
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "gesture": [
+        {
+          "length": 315.375,
+          "signal": 0,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 82.09054017581737,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 160.80738163170878,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 239.5242230876002,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 160.80738163170878,
+          "dot": 1,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 0,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "false",
+            "false",
+            "false",
+            "false"
+          ],
+          "overflow": false
+        }
+      ],
+      "cup": [
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0.5001635621921183,
+          "off": 0.49983643780788173,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0,
+          "off": 1,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 0.5001635621921183,
+          "off": 0.49983643780788173,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        },
+        {
+          "length": 315.375,
+          "signal": 315.375,
+          "dot": 0,
+          "on": 1,
+          "off": 0,
+          "reached": [
+            "true",
+            "true",
+            "true",
+            "true",
+            "true"
+          ],
+          "overflow": false
+        }
+      ],
+      "notes": {
+        "removed": true,
+        "credits": [
+          "Kattni Rembor / Adafruit",
+          "CC BY-SA 3.0",
+          "Core Electronics"
+        ],
+        "stats": [
+          "65 percent",
+          "90 percent"
+        ]
+      }
+    }
+  ],
+  "reduced": {
+    "length": 315.375,
+    "signal": 315.375,
+    "dot": 0,
+    "on": 1,
+    "off": 1,
+    "reached": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ],
+    "overflow": false
+  },
+  "staticResponse": true,
+  "errors": []
+}
