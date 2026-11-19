@@ -1,0 +1,78 @@
+{
+  "desktop": [
+    1440,
+    900
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "reducedMotion": [
+    1280,
+    800
+  ],
+  "storyboard": [
+    {
+      "label": "monitor-approach",
+      "p": 0.77,
+      "zoom": 6.73173914634244
+    },
+    {
+      "label": "fixlens",
+      "p": 1,
+      "zoom": 7.3381121971610535
+    },
+    {
+      "label": "sippy",
+      "p": 1.72,
+      "zoom": 7.3381121971610535
+    },
+    {
+      "label": "willdo",
+      "p": 2.36,
+      "zoom": 7.3381121971610535
+    },
+    {
+      "label": "workspace-return",
+      "p": 3.26,
+      "zoom": 1
+    },
+    {
+      "label": "frame-approach",
+      "p": 3.79,
+      "zoom": 6.719703023951199
+    },
+    {
+      "label": "about",
+      "p": 4,
+      "zoom": 7.340304103684844
+    },
+    {
+      "label": "workspace-return-2",
+      "p": 4.99,
+      "zoom": 1
+    },
+    {
+      "label": "phone-approach",
+      "p": 5.41,
+      "zoom": 14.728344340082712
+    },
+    {
+      "label": "contact",
+      "p": 5.52,
+      "zoom": 16.669908708729057
+    }
+  ],
+  "checks": [
+    "Single retained canvas; forward/reverse and settled home",
+    "Native small wheel",
+    "Keyboard hotspot; destination focus",
+    "Both FixLens hover planes and links",
+    "Opened FixLens and used browser Back",
+    "Header navigation and Back",
+    "Direct Contact and refresh",
+    "Mobile navigation and real touch activated Sippy",
+    "Reduced motion",
+    "Seven existing routes; no uncaught errors"
+  ]
+}
