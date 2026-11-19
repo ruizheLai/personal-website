@@ -1,0 +1,58 @@
+[
+  {
+    "path": "/",
+    "title": "Ruizhe Lai",
+    "canvas": true,
+    "lab": false
+  },
+  {
+    "path": "/projects",
+    "title": "Projects — Ruizhe Lai",
+    "heading": "Selected work",
+    "canvas": false,
+    "lab": false
+  },
+  {
+    "path": "/projects/fixlens",
+    "title": "FixLens — From report to follow-up — Ruizhe Lai",
+    "heading": "From a problem.\nTo a shared picture.",
+    "canvas": false,
+    "lab": false
+  },
+  {
+    "path": "/projects/sippy",
+    "title": "Sippy — A small companion with a little persistence — Ruizhe Lai",
+    "heading": "Sippy.",
+    "canvas": false,
+    "lab": false
+  },
+  {
+    "path": "/about",
+    "title": "About — Ruizhe Lai",
+    "heading": "About",
+    "canvas": false,
+    "lab": false
+  },
+  {
+    "path": "/contact",
+    "title": "Contact — Ruizhe Lai",
+    "heading": "Contact",
+    "canvas": false,
+    "lab": false
+  },
+  {
+    "path": "/design-lab/phase5a/concept-a",
+    "heading": "Ideas made\ntangible.",
+    "work": "Selected work"
+  },
+  {
+    "path": "/design-lab/phase5a/concept-b",
+    "heading": "Design in\nmotion.",
+    "work": "Project index"
+  },
+  {
+    "path": "/design-lab/phase5a/concept-c",
+    "heading": "Ruizhe\n\nLai",
+    "work": "The exhibits"
+  }
+]
