@@ -14,21 +14,23 @@ export function glide(x: number) {
   return t * t * t * (t * (6 * t - 15) + 10);
 }
 
-const movingWindows = [
-  ...rhythmChapters.flatMap(chapter => [[chapter.start, chapter.enter], [chapter.leave, chapter.end]]),
-  ...projectCurves.map(([start, end]) => [rhythmChapters[1].enter + start, rhythmChapters[1].enter + end]),
+export const collectMovingWindows = (chapters: typeof rhythmChapters | readonly { start: number; enter: number; leave: number; end: number }[]) => [
+  ...chapters.flatMap(chapter => [[chapter.start, chapter.enter], [chapter.leave, chapter.end]]),
+  ...projectCurves.map(([start, end]) => [chapters[1].enter + start, chapters[1].enter + end]),
   ...[1, 2, 3, 4].map(index => {
-    const boundary = rhythmChapters[0].enter + index * readingBeat;
+    const boundary = chapters[0].enter + index * readingBeat;
     return [boundary - readingCrossfadeHalf, boundary + readingCrossfadeHalf];
   }),
 ];
 
-export function presentScroll(target: number, previous: number, elapsed: number, snap: boolean) {
+const movingWindows = collectMovingWindows(rhythmChapters);
+
+export function presentScroll(target: number, previous: number, elapsed: number, snap: boolean, windows = movingWindows) {
   const delta = target - previous;
   if (snap || Math.abs(delta) < .0008 || Math.abs(delta) > .45) return target;
   const start = Math.min(target, previous);
   const end = Math.max(target, previous);
-  if (!movingWindows.some(([a, b]) => start < b && end > a)) return target;
+  if (!windows.some(([a, b]) => start < b && end > a)) return target;
   const blend = 1 - Math.exp(-Math.min(34, Math.max(8, elapsed)) / 36);
   const remaining = Math.min(.052, Math.abs(delta) * (1 - blend));
   return target - Math.sign(delta) * remaining;

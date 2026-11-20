@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "re
 import WorkspaceHero from "@/components/workspace/WorkspaceHero";
 import type { JourneyDriver } from "@/components/workspace/journey";
 import type { InteractionId } from "@/lib/workspace-config";
+import { pacingChapters, pacingWindows } from "../phase5g/pacing";
 import { glide, presentScroll, projectCurves, projectStops, readingBeat, readingCrossfadeHalf, rhythmChapters } from "../phase5f/rhythm";
 
 const query = "(min-width: 900px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)";
@@ -22,8 +23,8 @@ const transitionHalf = .07;
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
 const ease = (x: number) => { const t = clamp(x); return t * t * (3 - 2 * t); };
 
-export default function Journey({ about, projects, contact, polish = false, rhythm = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean }) {
-  const chapters = rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
+export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean }) {
+  const chapters = adaptive ? pacingChapters : rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
   const beatLength = rhythm ? readingBeat : storyBeat;
   const crossfadeHalf = rhythm ? readingCrossfadeHalf : transitionHalf;
   const jump = useRef<(index: number) => void>(() => {});
@@ -79,6 +80,8 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     const layers = Array.from(view.querySelectorAll<HTMLElement>(".pd-layer"));
     const beats = Array.from(view.querySelectorAll<HTMLElement>(".pd-beat"));
     const entries = Array.from(view.querySelectorAll<HTMLElement>(".pd-project"));
+    const identity = view.querySelector<HTMLElement>(".pd-identity")!;
+    const workspace = view.querySelector<HTMLElement>(".pc-workspace")!;
     const avatar = view.querySelector<HTMLElement>(".pd-avatar")!;
     const monitor = polish ? view.querySelector<HTMLElement>(".pd-projects") : null;
     const phone = polish ? view.querySelector<HTMLElement>(".pe-phone") : null;
@@ -97,7 +100,38 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     let previousApproach = -1;
     let previousReveal = -1;
     let offset = 0;
-    let direct: { index: number; start: number; scroll: number } | null = null;
+    let direct: { index: number; start: number; scroll: number; fromHome: boolean } | null = null;
+    let darkTheme = false;
+    let previousIntro = 1;
+    let flowObserver: IntersectionObserver | undefined;
+    let flowBand = "";
+
+    function setTheme(dark: boolean) {
+      if (darkTheme === dark) return;
+      darkTheme = dark;
+      header.dataset.theme = dark ? "dark" : "light";
+    }
+
+    function watchFlow() {
+      if (!adaptive) return;
+      const start = dimensions.current.header + 2;
+      const end = Math.max(0, window.innerHeight - start - 8);
+      const band = media.matches ? "" : `-${start}px 0px -${end}px 0px`;
+      if (band === flowBand) return;
+      flowBand = band;
+      flowObserver?.disconnect();
+      if (!band) return;
+      const regions = [workspace, ...layers];
+      const coverage = new Map<Element, number>();
+      flowObserver = new IntersectionObserver(records => {
+        if (media.matches) return;
+        records.forEach(record => coverage.set(record.target, record.intersectionRect.height));
+        const ranked = regions.map(region => coverage.get(region) ?? 0);
+        const largest = Math.max(...ranked);
+        if (largest > 0) setTheme(ranked.indexOf(largest) >= 2);
+      }, { rootMargin: band, threshold: [0, .001, .004, .008, .016, .032] });
+      regions.forEach(region => flowObserver?.observe(region));
+    }
     let focus: number | null = null;
     let projectFocus: number | null = null;
     let previousAvatar = "";
@@ -127,7 +161,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       const rawProgress = (y - offset) / height;
       lastRawProgress = rawProgress;
       const elapsed = lastSample && now - lastSample < 80 ? now - lastSample : 16.7;
-      const progress = rhythm ? presentScroll(rawProgress, presentation, elapsed, snapPresentation || Boolean(direct)) : rawProgress;
+      const progress = rhythm ? presentScroll(rawProgress, presentation, elapsed, snapPresentation || Boolean(direct), adaptive ? pacingWindows : undefined) : rawProgress;
       presentation = progress;
       lastSample = now;
       snapPresentation = false;
@@ -142,6 +176,16 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       const approach = rhythm ? glide(passage / .92) : ease(passage);
       const reveal = rhythm ? glide((passage - .67) / .33) : ease((approach - .69) / .31);
       const revealChanged = reveal !== previousReveal;
+      if (adaptive) {
+        // A dark surface must be visibly open before it takes over the header.
+        setTheme(index > 0 && reveal >= (darkTheme ? .62 : .72));
+        const intro = direct?.fromHome ? 1 - glide(passage / .40) : 1 - glide((progress - .24) / .27);
+        if (intro !== previousIntro) {
+          identity.style.setProperty("--intro-opacity", intro.toFixed(3));
+          identity.inert = intro === 0;
+          previousIntro = intro;
+        }
+      }
       const active = reveal > .98 ? index : -1;
       const switched = index !== previousChapter;
 
@@ -291,6 +335,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
           },
         };
       } else handoff.current = null;
+      watchFlow();
       queue();
     }
 
@@ -306,9 +351,10 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       }
       const y = Math.min(offset + (chapters[index]?.enter ?? 0) * dimensions.current.height, root.offsetHeight - dimensions.current.height + offset);
       resizeTarget = null;
+      const fromHome = lastRawProgress < .24;
       lastRawProgress = (y - offset) / dimensions.current.height;
       snapPresentation = true;
-      direct = fromObject && index >= 0 ? { index, start: performance.now(), scroll: y } : null;
+      direct = fromObject && index >= 0 ? { index, start: performance.now(), scroll: y, fromHome } : null;
       focus = push && index >= 0 ? index : null;
       window.scrollTo({ top: y, behavior: "instant" });
       scrollChanged = true;
@@ -346,6 +392,11 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
         layers.forEach(layer => { layer.inert = false; layer.style.cssText = ""; });
         beats.forEach(beat => { beat.inert = false; beat.style.cssText = ""; });
         entries.forEach(entry => { (entry.lastElementChild as HTMLElement).inert = false; });
+        if (adaptive) {
+          identity.style.removeProperty("--intro-opacity");
+          identity.inert = false;
+          previousIntro = 1;
+        }
         avatar.style.transform = "";
         resetHandoff(1);
         resetHandoff(2);
@@ -367,11 +418,12 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
+      flowObserver?.disconnect();
       media.removeEventListener("change", adapt);
       removeEventListener("scroll", onScroll);
       removeEventListener("hashchange", restoreLocation);
     };
-  }, [beatLength, chapters, crossfadeHalf, driver, polish, rhythm]);
+  }, [adaptive, beatLength, chapters, crossfadeHalf, driver, polish, rhythm]);
 
   function follow(event: MouseEvent<HTMLAnchorElement>, id: InteractionId | "home") {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -392,7 +444,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
   }
 
   return <main onClickCapture={rememberCaseStudy} ref={track} id="main-content" tabIndex={-1} className="pd-journey" data-cinematic="false">
-    <header ref={nav} className="pc-header">
+    <header ref={nav} className="pc-header" data-theme={adaptive ? "light" : undefined}>
       <a href="#home" onClick={e => follow(e,"home")}>Ruizhe Lai</a>
       <nav aria-label="Workspace navigation">
         {chapters.map(item => <a href={`#${item.id}`} key={item.id} onClick={e => follow(e,item.id)}>{item.label}</a>)}
