@@ -1,0 +1,200 @@
+{
+  "chairChangedSamples": 18873,
+  "backpack": "opened and dismissed",
+  "mug": "status appeared",
+  "trash": "keyboard grab, tilt and release",
+  "scrollBounds": [
+    {
+      "route": "/design-lab/phase5d",
+      "width": 1440,
+      "height": 900,
+      "phases": [
+        {
+          "y": "auto",
+          "excess": 664,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 664,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 664,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 127,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 0,
+          "acceptedScrollTop": 0
+        }
+      ]
+    },
+    {
+      "route": "/design-lab/phase5d",
+      "width": 1024,
+      "height": 768,
+      "phases": [
+        {
+          "y": "auto",
+          "excess": 532,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 532,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 532,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 102,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 0,
+          "acceptedScrollTop": 0
+        }
+      ]
+    },
+    {
+      "route": "/design-lab/phase5d",
+      "width": 940,
+      "height": 645,
+      "phases": [
+        {
+          "y": "auto",
+          "excess": 409,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 409,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 409,
+          "acceptedScrollTop": 80
+        },
+        {
+          "y": "auto",
+          "excess": 79,
+          "acceptedScrollTop": 79
+        },
+        {
+          "y": "auto",
+          "excess": 0,
+          "acceptedScrollTop": 0
+        }
+      ]
+    },
+    {
+      "route": "/design-lab/phase5e",
+      "width": 1440,
+      "height": 900,
+      "phases": [
+        {
+          "y": "clip",
+          "excess": 664,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 664,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 664,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 127,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 0,
+          "acceptedScrollTop": 0
+        }
+      ]
+    },
+    {
+      "route": "/design-lab/phase5e",
+      "width": 1024,
+      "height": 768,
+      "phases": [
+        {
+          "y": "clip",
+          "excess": 532,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 532,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 532,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 103,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 0,
+          "acceptedScrollTop": 0
+        }
+      ]
+    },
+    {
+      "route": "/design-lab/phase5e",
+      "width": 940,
+      "height": 645,
+      "phases": [
+        {
+          "y": "clip",
+          "excess": 409,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 409,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 409,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 79,
+          "acceptedScrollTop": 0
+        },
+        {
+          "y": "clip",
+          "excess": 0,
+          "acceptedScrollTop": 0
+        }
+      ]
+    }
+  ]
+}
