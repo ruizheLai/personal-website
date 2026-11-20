@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "re
 import WorkspaceHero from "@/components/workspace/WorkspaceHero";
 import type { JourneyDriver } from "@/components/workspace/journey";
 import type { InteractionId } from "@/lib/workspace-config";
+import { glide, presentScroll, projectCurves, projectStops, readingBeat, readingCrossfadeHalf, rhythmChapters } from "../phase5f/rhythm";
 
 const query = "(min-width: 900px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)";
 const phase5dChapters = [
@@ -21,15 +22,17 @@ const transitionHalf = .07;
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
 const ease = (x: number) => { const t = clamp(x); return t * t * (3 - 2 * t); };
 
-export default function Journey({ about, projects, contact, polish = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean }) {
-  const chapters = polish ? phase5eChapters : phase5dChapters;
+export default function Journey({ about, projects, contact, polish = false, rhythm = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean }) {
+  const chapters = rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
+  const beatLength = rhythm ? readingBeat : storyBeat;
+  const crossfadeHalf = rhythm ? readingCrossfadeHalf : transitionHalf;
   const jump = useRef<(index: number) => void>(() => {});
   const track = useRef<HTMLElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
   const nav = useRef<HTMLElement>(null);
   const navigate = useRef<(id: InteractionId | "home", fromObject?: boolean) => void>(() => {});
   const dimensions = useRef({ width: 0, height: 0, header: 0 });
-  const crop = useRef<{ element: HTMLElement; reveal: number } | null>(null);
+  const crop = useRef<{ element: HTMLElement; reveal: number; opacity?: number } | null>(null);
   const handoff = useRef<{
     monitor: HTMLElement | null;
     phone: HTMLElement | null;
@@ -43,6 +46,10 @@ export default function Journey({ about, projects, contact, polish = false }: { 
       const active = crop.current;
       if (!active) return;
       const { width, height, header } = dimensions.current;
+      if (active.opacity !== undefined) {
+        active.element.style.opacity = String(active.opacity);
+        if (id === "contact") active.element.style.setProperty("--contact-arrival", String(ease((active.reveal - .3) / .7)));
+      }
       const k = 1 - active.reveal;
       const mapped = handoff.current;
       if (id === "projects" && mapped?.monitor) {
@@ -94,19 +101,47 @@ export default function Journey({ about, projects, contact, polish = false }: { 
     let focus: number | null = null;
     let projectFocus: number | null = null;
     let previousAvatar = "";
+    let presentation = 0;
+    let lastRawProgress = 0;
+    let resizeTarget: number | null = null;
+    let sampledScroll = window.scrollY;
+    let scrollChanged = true;
+    let lastSample = 0;
+    let snapPresentation = true;
 
     function update(now: number) {
       frame = 0;
       if (!media.matches) return;
       const { height } = dimensions.current;
-      const y = window.scrollY;
+      if (resizeTarget !== null) {
+        const target = offset + resizeTarget * height;
+        resizeTarget = null;
+        window.scrollTo({ top: target, behavior: "instant" });
+        if (direct) direct.scroll = target;
+        scrollChanged = true;
+      }
+      if (!rhythm || scrollChanged) sampledScroll = window.scrollY;
+      scrollChanged = false;
+      const y = sampledScroll;
       if (direct && Math.abs(direct.scroll - y) > 3) direct = null;
-      const progress = (y - offset) / height;
+      const rawProgress = (y - offset) / height;
+      lastRawProgress = rawProgress;
+      const elapsed = lastSample && now - lastSample < 80 ? now - lastSample : 16.7;
+      const progress = rhythm ? presentScroll(rawProgress, presentation, elapsed, snapPresentation || Boolean(direct)) : rawProgress;
+      presentation = progress;
+      lastSample = now;
+      snapPresentation = false;
+      if (progress !== rawProgress) queue();
       const index = direct?.index ?? chapters.findIndex(v => progress >= v.start && progress < v.end);
       const visit = chapters[index];
-      const tapAmount = direct ? ease((now - direct.start) / 720) : 1;
-      const approach = direct ? tapAmount : visit ? Math.min(ease((progress - visit.start) / (visit.enter - visit.start)), ease((visit.end - progress) / (visit.end - visit.leave))) : 0;
-      const reveal = ease((approach - .69) / .31);
+      const tapAmount = direct ? clamp((now - direct.start) / (rhythm ? 850 : 720)) : 1;
+      const passage = direct ? tapAmount : visit
+        ? clamp(Math.min((progress - visit.start) / (visit.enter - visit.start), (visit.end - progress) / (visit.end - visit.leave)))
+        : 0;
+      // The camera parks before the shared passage finishes opening the projected screen.
+      const approach = rhythm ? glide(passage / .92) : ease(passage);
+      const reveal = rhythm ? glide((passage - .67) / .33) : ease((approach - .69) / .31);
+      const revealChanged = reveal !== previousReveal;
       const active = reveal > .98 ? index : -1;
       const switched = index !== previousChapter;
 
@@ -126,27 +161,28 @@ export default function Journey({ about, projects, contact, polish = false }: { 
       }
       if (active !== previousFocus) {
         layers.forEach((layer,i) => { layer.inert = i !== active; });
-        header.dataset.dark = String(active > 0);
+        if (!rhythm) header.dataset.dark = String(active > 0);
         root.dataset.destination = chapters[active]?.id ?? "";
         previousFocus = active;
       }
 
-      if (visit && (switched || reveal !== previousReveal)) {
+      if (visit && (switched || revealChanged)) {
         const layer = layers[index];
-        const layerOpacity = polish && index > 0 ? ease(reveal / .38) : reveal;
-        layer.style.opacity = String(layerOpacity);
-        if (polish && index === 2) layer.style.setProperty("--contact-arrival", String(ease((reveal - .3) / .7)));
+        const layerOpacity = polish && index > 0 ? ease(reveal / (rhythm ? .24 : .38)) : reveal;
+        const projected = rhythm && reveal > 0 && reveal < 1 && Boolean(driver.invalidate);
+        if (!projected) layer.style.opacity = String(layerOpacity);
+        if (polish && index === 2 && !projected) layer.style.setProperty("--contact-arrival", String(ease((reveal - .3) / .7)));
         if (!reveal || reveal === 1) {
           layer.style.clipPath = "";
           resetHandoff(index);
         }
-        crop.current = reveal > 0 && reveal < 1 ? { element: layer, reveal } : null;
+        crop.current = reveal > 0 && reveal < 1 ? { element: layer, reveal, opacity: projected ? layerOpacity : undefined } : null;
         driver.portal = Boolean(crop.current);
       } else if (!visit) {
         crop.current = null;
         driver.portal = false;
       }
-      if (switched || approach !== previousApproach) {
+      if (switched || approach !== previousApproach || (rhythm && revealChanged && driver.portal)) {
         driver.pose = visit ? { id: visit.id, approach } : null;
         driver.invalidate?.();
       }
@@ -155,13 +191,13 @@ export default function Journey({ about, projects, contact, polish = false }: { 
 
       if (index === 0 && reveal > 0) {
         const t = clamp((progress - chapters[0].enter) / (chapters[0].leave - chapters[0].enter));
-        const storyProgress = (progress - chapters[0].enter) / storyBeat;
+        const storyProgress = (progress - chapters[0].enter) / beatLength;
         const boundary = Math.round(storyProgress);
-        const crossing = storyProgress * storyBeat - boundary * storyBeat;
+        const crossing = storyProgress * beatLength - boundary * beatLength;
         const holding = Math.max(0, Math.min(4, Math.floor(storyProgress)));
         const position = polish
-          ? boundary >= 1 && boundary <= 4 && Math.abs(crossing) < transitionHalf
-            ? boundary - 1 + ease((crossing + transitionHalf) / (2 * transitionHalf))
+          ? boundary >= 1 && boundary <= 4 && Math.abs(crossing) < crossfadeHalf
+            ? boundary - 1 + (rhythm ? glide : ease)((crossing + crossfadeHalf) / (2 * crossfadeHalf))
             : holding
           : clamp((t - .07) / .87) * 4;
         const story = Math.round(position);
@@ -169,7 +205,7 @@ export default function Journey({ about, projects, contact, polish = false }: { 
           beats.forEach((beat,i) => {
             const delta = i - position;
             beat.style.opacity = String(1 - ease(Math.abs(delta)));
-            beat.style.transform = `translateY(${Math.max(-1,Math.min(1,delta))*34}px)`;
+            beat.style.transform = `translateY(${Math.max(-1,Math.min(1,delta))*(rhythm ? 19 : 34)}px)`;
           });
           previousStoryTime = position;
         }
@@ -188,8 +224,8 @@ export default function Journey({ about, projects, contact, polish = false }: { 
 
       if (index === 1 && reveal > 0) {
         const exhibitionProgress = progress - chapters[1].enter;
-        const second = ease((exhibitionProgress - .37) / .25);
-        const third = ease((exhibitionProgress - 1.01) / .25);
+        const second = rhythm ? glide((exhibitionProgress - projectCurves[0][0]) / (projectCurves[0][1] - projectCurves[0][0])) : ease((exhibitionProgress - .37) / .25);
+        const third = rhythm ? glide((exhibitionProgress - projectCurves[1][0]) / (projectCurves[1][1] - projectCurves[1][0])) : ease((exhibitionProgress - 1.01) / .25);
         const weights = [1 - second, second - third, third];
         const stack = weights.map(n => n.toFixed(3)).join("/");
         if (stack !== previousStack) {
@@ -226,12 +262,23 @@ export default function Journey({ about, projects, contact, polish = false }: { 
         queue();
       }
     }
+    function onScroll() {
+      scrollChanged = true;
+      queue();
+    }
     function queue() {
       if (!frame) frame = requestAnimationFrame(update);
     }
-    function measure() {
-      dimensions.current = { width: view.clientWidth, height: view.clientHeight, header: header.offsetHeight };
+    function measure(retainProgress = true) {
+      snapPresentation = true;
+      scrollChanged = true;
+      const oldHeight = dimensions.current.height;
+      const extent = view.clientHeight;
+      dimensions.current = { width: view.clientWidth, height: extent, header: header.offsetHeight };
       offset = root.getBoundingClientRect().top + scrollY;
+      if (rhythm && retainProgress && media.matches && oldHeight && oldHeight !== extent) {
+        resizeTarget ??= lastRawProgress;
+      }
       if (phone && media.matches) {
         handoff.current = {
           monitor,
@@ -258,9 +305,13 @@ export default function Journey({ about, projects, contact, polish = false }: { 
         return;
       }
       const y = Math.min(offset + (chapters[index]?.enter ?? 0) * dimensions.current.height, root.offsetHeight - dimensions.current.height + offset);
+      resizeTarget = null;
+      lastRawProgress = (y - offset) / dimensions.current.height;
+      snapPresentation = true;
       direct = fromObject && index >= 0 ? { index, start: performance.now(), scroll: y } : null;
       focus = push && index >= 0 ? index : null;
       window.scrollTo({ top: y, behavior: "instant" });
+      scrollChanged = true;
       if (push && id === "home") root.focus({ preventScroll: true });
       queue();
     };
@@ -268,10 +319,11 @@ export default function Journey({ about, projects, contact, polish = false }: { 
     jump.current = index => {
       if (!polish || !media.matches) return;
       projectFocus = index;
-      const target = chapters[1].enter + [.09, .78, 1.39][index];
+      const target = chapters[1].enter + (rhythm ? projectStops : [.09, .78, 1.39])[index];
       window.scrollTo({ top: offset + target * dimensions.current.height, behavior: "smooth" });
     };
     function restoreLocation() {
+      snapPresentation = true;
       const hasLocation = chapters.find(item => "#" + item.id === location.hash);
       const saved = history.state?.phase5dReturn;
       if (Number.isFinite(saved)) window.scrollTo({ top: saved, behavior: "instant" });
@@ -279,6 +331,7 @@ export default function Journey({ about, projects, contact, polish = false }: { 
       queue();
     }
     function adapt() {
+      resizeTarget = null;
       root.dataset.cinematic = String(media.matches);
       direct = null;
       focus = null;
@@ -288,7 +341,7 @@ export default function Journey({ about, projects, contact, polish = false }: { 
       if (!media.matches) {
         setLocked(false);
         root.dataset.away = "false";
-        header.dataset.dark = "false";
+        if (!rhythm) header.dataset.dark = "false";
         navigation.forEach(link => link.removeAttribute("aria-current"));
         layers.forEach(layer => { layer.inert = false; layer.style.cssText = ""; });
         beats.forEach(beat => { beat.inert = false; beat.style.cssText = ""; });
@@ -302,23 +355,23 @@ export default function Journey({ about, projects, contact, polish = false }: { 
       previousChapter = -2;
       previousStoryTime = -1;
       previousAvatar = "";
-      measure();
+      measure(false);
       restoreLocation();
     }
-    const observer = new ResizeObserver(measure);
+    const observer = new ResizeObserver(() => measure());
     observer.observe(view);
     adapt();
     media.addEventListener("change", adapt);
-    addEventListener("scroll", queue, { passive: true });
+    addEventListener("scroll", onScroll, { passive: true });
     addEventListener("hashchange", restoreLocation);
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
       media.removeEventListener("change", adapt);
-      removeEventListener("scroll", queue);
+      removeEventListener("scroll", onScroll);
       removeEventListener("hashchange", restoreLocation);
     };
-  }, [chapters, driver, polish]);
+  }, [beatLength, chapters, crossfadeHalf, driver, polish, rhythm]);
 
   function follow(event: MouseEvent<HTMLAnchorElement>, id: InteractionId | "home") {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

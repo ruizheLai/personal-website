@@ -1,0 +1,24 @@
+{
+  "frames": 202,
+  "median": 16.699999999999818,
+  "p95": 16.799999999999727,
+  "over25": 0,
+  "over50": 0,
+  "longTasks": [],
+  "reached": 9324,
+  "final": 0,
+  "timeline": {
+    "finish": "",
+    "pose": "1",
+    "canvasCount": 1
+  },
+  "LayoutCount": 236,
+  "RecalcStyleCount": 473,
+  "LayoutDuration": 0.0246,
+  "RecalcStyleDuration": 0.0849,
+  "ScriptDuration": 0.6264,
+  "TaskDuration": 1.1215,
+  "width": 1440,
+  "height": 900,
+  "max": 9324
+}
