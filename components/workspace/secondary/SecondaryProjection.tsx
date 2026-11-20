@@ -4,9 +4,11 @@ import {useMemo,type RefObject} from "react";
 import {Box3,Vector3,type Object3D} from "three";
 import type {SecondaryId} from "@/lib/secondary-config";
 import type {SecondaryElements} from "./SecondaryOverlay";
-export default function SecondaryProjection({objects,elements}:{objects:Record<SecondaryId,Object3D>;elements:RefObject<SecondaryElements>}){
+import type {JourneyDriver} from "../journey";
+export default function SecondaryProjection({objects,elements,journey}:{objects:Record<SecondaryId,Object3D>;elements:RefObject<SecondaryElements>;journey?:JourneyDriver}){
  const scratch=useMemo(()=>({box:new Box3(),center:new Vector3()}),[]);
  useFrame(({camera,size})=>{
+  if(journey?.pose)return;
   for(const id of ["backpack","mug"] as const){
    const object=objects[id];object.updateWorldMatrix(true,true);
    scratch.box.setFromObject(object);scratch.box.getCenter(scratch.center).project(camera);

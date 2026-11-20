@@ -61,7 +61,7 @@ export default function WorkspaceScene({driver,onNavigate,locked=false}:{driver?
   setSupported(available);if(!available)setStatus("unavailable");
   const resize=()=>setSmall(window.innerWidth<768);resize();window.addEventListener("resize",resize,{passive:true});return()=>window.removeEventListener("resize",resize);
  },[]);
- const retry=()=>{useGLTF.clear(MODEL_URL);useTexture.clear(driver?journeyTextures:INTERACTIONS.map(i=>i.image));setStatus("loading");setAttempt(v=>v+1);};
+ const retry=()=>{useGLTF.clear(MODEL_URL);useTexture.clear(driver?.textures??(driver?journeyTextures:INTERACTIONS.map(i=>i.image)));setStatus("loading");setAttempt(v=>v+1);};
  const shadowSize=small?512:1024;
  return <div ref={stage} className="workspace-stage" aria-label="Interactive 3D workspace" aria-busy={status==="loading"} inert={locked} data-phase={phase} data-focused={focus.id??""}>
   {supported&&<SceneBoundary key={attempt} onError={onError}><Canvas className={"workspace-canvas "+(status==="ready"?"is-ready":"")} orthographic camera={{position:[0,3.45,8.5],near:.1,far:300}} frameloop="demand" dpr={[1,small?config.rendering.mobileMaxDpr:config.rendering.maxDpr]} shadows="percentage" gl={{antialias:true,alpha:true,powerPreference:"high-performance"}} onPointerMissed={()=>reset()} onCreated={({gl})=>{gl.toneMapping=AgXToneMapping;gl.toneMappingExposure=config.rendering.exposure;gl.outputColorSpace=SRGBColorSpace;}}>

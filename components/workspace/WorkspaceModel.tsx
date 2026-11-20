@@ -42,7 +42,7 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
 }) {
   const asset = useGLTF(MODEL_URL);
   // Suspend the complete scene until every visible image is available.
-  const textures = useTexture(driver ? journeyTextures : INTERACTIONS.map(item => item.image));
+  const textures = useTexture(driver?.textures ?? (driver ? journeyTextures : INTERACTIONS.map(item => item.image)));
   const { gl, invalidate, size, events } = useThree();
   const frames = useRef(0);
   const prepared = useMemo(() => {
@@ -108,19 +108,26 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
     if (frames.current < 3) { frames.current++; invalidate(); if (frames.current === 3) onReady(); }
     camera.updateMatrixWorld();
     const stage=gl.domElement.closest(".workspace-stage") as HTMLElement|null;
-    if(stage){
+    const pose = driver?.textures ? driver.pose : null;
+    if(stage && !pose){
       stage.dataset.cameraPosition=JSON.stringify(camera.position);
       stage.dataset.cameraQuaternion=JSON.stringify(camera.quaternion.toArray());
       stage.dataset.cameraZoom=String(camera.zoom);
       stage.dataset.workspacePosition=JSON.stringify(prepared.model.getWorldPosition(new Vector3()));
       stage.dataset.backpackPosition=JSON.stringify(prepared.secondaryObjects.backpack.getWorldPosition(new Vector3()));
     }
-    const canvasRect = gl.domElement.getBoundingClientRect();
+    if (pose && !driver?.portal) return;
+    const canvasRect = pose ? null : gl.domElement.getBoundingClientRect();
     for (const item of INTERACTIONS) {
+      if (pose && item.id !== pose.id) continue;
       const points = prepared.corners[item.id].map(p => p.clone().project(camera));
       const xs = points.map(p => (p.x * .5 + .5) * size.width), ys = points.map(p => (-p.y * .5 + .5) * size.height);
       const left = Math.min(...xs), top = Math.min(...ys), width = Math.max(...xs) - left, height = Math.max(...ys) - top;
-      rects.current[item.id] = { left: canvasRect.left + left, top: canvasRect.top + top, width, height };
+      if (pose) {
+        driver?.project(item.id, { left, top, width, height });
+        continue;
+      }
+      rects.current[item.id] = { left: canvasRect!.left + left, top: canvasRect!.top + top, width, height };
       driver?.project(item.id, rects.current[item.id]!);
       const element = overlays.current[item.id];
       if (element) {
@@ -153,15 +160,15 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
   };
   return <>
     <CameraController referenceCamera={prepared.camera} surfaces={prepared.surfaces} backpackBounds={bagLayout.bounds} command={command} reducedMotion={reducedMotion} onSettled={onSettled} interactionLocked={secondary.dragging} driver={driver} />
-    <PhysicsBoundary><Suspense fallback={null}><TrashBinPhysics source={prepared.binSource} anchors={prepared.secondaryObjects} state={secondary} elements={secondaryElements} /></Suspense></PhysicsBoundary>
+    <PhysicsBoundary><Suspense fallback={null}><TrashBinPhysics source={prepared.binSource} anchors={prepared.secondaryObjects} state={secondary} elements={secondaryElements} journey={driver?.textures ? driver : undefined} /></Suspense></PhysicsBoundary>
     <BackpackInteraction model={prepared.model} open={secondary.bagOpen} reducedMotion={reducedMotion} />
     <MugInteraction mug={prepared.secondaryObjects.mug} hovered={secondary.hovered === "mug"} pulse={secondary.mugPulse} reducedMotion={reducedMotion} visible={visible && !command.id} />
     <BackpackIcons layout={bagLayout} state={secondary} elements={secondaryElements} reducedMotion={reducedMotion} visible={visible} />
-    <SecondaryProjection objects={prepared.secondaryObjects} elements={secondaryElements} />
+    <SecondaryProjection objects={prepared.secondaryObjects} elements={secondaryElements} journey={driver?.textures ? driver : undefined} />
     <ChairController chair={prepared.chair} reducedMotion={reducedMotion} />
     <primitive object={prepared.model} dispose={null} onPointerMove={move} onPointerOut={() => { onHoverChange(null); secondary.hover(null); }} onClick={click} />
     <primitive object={prepared.shadowFloor} dispose={null} />
     <primitive object={prepared.shadowWall} dispose={null} />
-    {INTERACTIONS.map((item, index) => <SurfaceArtwork key={item.id} surface={prepared.surfaces[item.id]} texture={textures[index]} kind={item.id === "about" ? "portrait" : "screen"} active={Boolean(driver) || active === item.id || command.id === item.id} reducedMotion={reducedMotion} />)}
+    {INTERACTIONS.map((item, index) => <SurfaceArtwork key={item.id} surface={prepared.surfaces[item.id]} texture={textures[index]} kind={item.id === "about" ? "portrait" : "screen"} active={Boolean(driver && !driver.textures) || active === item.id || command.id === item.id} wake={driver?.textures ? driver : undefined} id={item.id} reducedMotion={reducedMotion} />)}
   </>;
 }

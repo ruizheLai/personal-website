@@ -3,6 +3,8 @@ import type { InteractionId, SurfaceRect } from "@/lib/workspace-config";
 export type JourneyDriver = {
   pose: { id: InteractionId; approach: number } | null;
   invalidate?: () => void;
+  textures?: string[];
+  portal?: boolean;
   project: (id: InteractionId, rect: SurfaceRect) => void;
 };
 
