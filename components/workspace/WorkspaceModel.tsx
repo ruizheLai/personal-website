@@ -45,6 +45,7 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
   const textures = useTexture(driver?.textures ?? (driver ? journeyTextures : INTERACTIONS.map(item => item.image)));
   const { gl, invalidate, size, events } = useThree();
   const frames = useRef(0);
+  const animatedPortrait = Boolean(driver?.portrait);
   const prepared = useMemo(() => {
     const model = asset.scene.clone(true);
     const ownedMaterials: Material[] = [];
@@ -65,6 +66,16 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
       });
       object.material = Array.isArray(object.material) ? materials : materials[0];
     });
+    if (animatedPortrait) {
+      for (const name of ["FrameBacking", "FrameBottom", "FrameLeft", "FrameRight", "FrameTop"]) {
+        const piece = model.getObjectByName(name);
+        if (piece instanceof Mesh) {
+          piece.visible = false;
+          piece.castShadow = false;
+          piece.raycast = () => {};
+        }
+      }
+    }
     const graphic = model.getObjectByName("ArtworkGraphic");
     if (graphic) graphic.visible = false;
     model.updateMatrixWorld(true);
@@ -98,7 +109,7 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
       secondaryObjects[id as SecondaryId] = object;
     }
     return { model, secondaryObjects, binSource: secondaryObjects.bin as Mesh, chair, camera, ownedMaterials, surfaces, corners, shadowFloor, shadowMaterial, shadowWall, wallShadowMaterial };
-  }, [asset.scene]);
+  }, [asset.scene, animatedPortrait]);
   useEffect(() => () => { prepared.ownedMaterials.forEach(material => material.dispose()); prepared.shadowMaterial.dispose(); prepared.wallShadowMaterial.dispose(); }, [prepared]);
   useEffect(() => {
     gl.domElement.style.cursor = secondary.dragging ? "grabbing" : hovered || secondary.hovered ? "pointer" : "";
@@ -169,6 +180,6 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
     <primitive object={prepared.model} dispose={null} onPointerMove={move} onPointerOut={() => { onHoverChange(null); secondary.hover(null); }} onClick={click} />
     <primitive object={prepared.shadowFloor} dispose={null} />
     <primitive object={prepared.shadowWall} dispose={null} />
-    {INTERACTIONS.map((item, index) => <SurfaceArtwork key={item.id} surface={prepared.surfaces[item.id]} texture={textures[index]} kind={item.id === "about" ? "portrait" : "screen"} active={Boolean(driver && !driver.textures) || active === item.id || command.id === item.id} wake={driver?.textures ? driver : undefined} id={item.id} reducedMotion={reducedMotion} />)}
+    {INTERACTIONS.map((item, index) => <SurfaceArtwork key={item.id} surface={prepared.surfaces[item.id]} texture={textures[index]} completed={item.id === "about" ? textures[3] : undefined} kind={item.id === "about" ? "portrait" : "screen"} active={Boolean(driver && !driver.textures) || active === item.id || command.id === item.id} wake={driver?.textures ? driver : undefined} id={item.id} reducedMotion={reducedMotion} />)}
   </>;
 }

@@ -4,6 +4,8 @@ import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "re
 import WorkspaceHero from "@/components/workspace/WorkspaceHero";
 import type { JourneyDriver } from "@/components/workspace/journey";
 import type { InteractionId } from "@/lib/workspace-config";
+import { aboutLanding, aboutSample, animationChapters, animationHeight, animationWindows, mediaRoot, visibleCopy } from "../phase5h/timeline";
+import { createScrubber } from "../phase5h/scrubber";
 import { pacingChapters, pacingWindows } from "../phase5g/pacing";
 import { glide, presentScroll, projectCurves, projectStops, readingBeat, readingCrossfadeHalf, rhythmChapters } from "../phase5f/rhythm";
 
@@ -23,8 +25,8 @@ const transitionHalf = .07;
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
 const ease = (x: number) => { const t = clamp(x); return t * t * (3 - 2 * t); };
 
-export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean }) {
-  const chapters = adaptive ? pacingChapters : rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
+export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean }) {
+  const chapters = animated ? animationChapters : adaptive ? pacingChapters : rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
   const beatLength = rhythm ? readingBeat : storyBeat;
   const crossfadeHalf = rhythm ? readingCrossfadeHalf : transitionHalf;
   const jump = useRef<(index: number) => void>(() => {});
@@ -39,10 +41,12 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     phone: HTMLElement | null;
     phoneCenter: { x: number; y: number; width: number; height: number };
   } | null>(null);
+  const characterGeometry = useRef<{ element: HTMLElement; x: number; y: number; size: number } | null>(null);
   const [locked, setLocked] = useState(false);
   const [driver] = useState<JourneyDriver>(() => ({
     pose: null,
-    textures: ["/images/phase5d/avatar.webp", `/images/${polish ? "phase5e" : "phase5d"}/monitor.webp`, `/images/${polish ? "phase5e" : "phase5d"}/phone.webp`],
+    portrait: animated ? { canvas: null, revision: 0, mode: "start", clip: 0, desiredClip: 0 } : undefined,
+    textures: [animated ? mediaRoot + "/start-1.webp" : "/images/phase5d/avatar.webp", `/images/${polish ? "phase5e" : "phase5d"}/monitor.webp`, `/images/${polish ? "phase5e" : "phase5d"}/phone.webp`, ...(animated ? [mediaRoot + "/completed.webp"] : [])],
     project(id, rect) {
       const active = crop.current;
       if (!active) return;
@@ -52,6 +56,14 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
         if (id === "contact") active.element.style.setProperty("--contact-arrival", String(ease((active.reveal - .3) / .7)));
       }
       const k = 1 - active.reveal;
+      if (id === "about" && characterGeometry.current) {
+        const stage = characterGeometry.current;
+        const span = Math.min(rect.width, rect.height);
+        const sx = 1 + (span / stage.size - 1) * k;
+        const x = (rect.left + rect.width / 2 - stage.x) * k;
+        const y = (rect.top + rect.height / 2 - stage.y) * k;
+        stage.element.style.transform = `translate(${x}px,${y}px) scale(${sx})`;
+      }
       const mapped = handoff.current;
       if (id === "projects" && mapped?.monitor) {
         const sx = 1 + (rect.width / width - 1) * k;
@@ -82,10 +94,50 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     const entries = Array.from(view.querySelectorAll<HTMLElement>(".pd-project"));
     const identity = view.querySelector<HTMLElement>(".pd-identity")!;
     const workspace = view.querySelector<HTMLElement>(".pc-workspace")!;
-    const avatar = view.querySelector<HTMLElement>(".pd-avatar")!;
+    const avatar = view.querySelector<HTMLElement>(".pd-avatar");
+    const character = view.querySelector<HTMLElement>(".ph-screen");
+    const film = view.querySelector<HTMLCanvasElement>(".ph-film");
+    const copy = Array.from(view.querySelectorAll<HTMLElement>(".ph-copy section"));
+    let copyKey = "";
+    let requestedCopy = "";
+    let copyTimer: ReturnType<typeof setTimeout> | undefined;
+    function presentFilm(clip: number, time: number, elapsed: number) {
+      if (!film || !character || !driver.portrait) return;
+      if (elapsed >= 0) film.dataset.ready = "";
+      film.dataset.clip = String(clip);
+      film.dataset.time = time.toFixed(4);
+      film.dataset.seekMs = String(Math.round(elapsed));
+      film.dataset.presented = performance.now().toFixed(2);
+      character.dataset.scene = (clip === 1 && time < 3.0) || (clip === 5 && time >= 6.25) ? "framed" : "unframed";
+      driver.portrait.clip = elapsed >= 0 ? clip : 0;
+      driver.portrait.revision++;
+      if (driver.portrait.mode === "film") driver.invalidate?.();
+      paintCopy(clip, time);
+    }
+    function paintCopy(clip: number, time: number) {
+      const { chapter, step } = visibleCopy(clip, time);
+      const key = chapter + step;
+      if (key === requestedCopy) clearTimeout(copyTimer);
+      if (copyKey === key) return;
+      copyKey = key;
+      for (const section of copy) {
+        const active = section.dataset.copy === chapter;
+        section.toggleAttribute("data-on", active);
+        section.inert = !active;
+        for (const line of section.querySelectorAll<HTMLElement>("[data-step]")) {
+          const position = Number(line.dataset.step);
+          line.toggleAttribute("data-on", active && position <= step);
+          line.toggleAttribute("data-current", active && position === step);
+          line.inert = !active || position > step;
+        }
+      }
+    }
+    let scrubber: ReturnType<typeof createScrubber> | null = null;
+    if (film && driver.portrait) driver.portrait.canvas = film;
     const monitor = polish ? view.querySelector<HTMLElement>(".pd-projects") : null;
     const phone = polish ? view.querySelector<HTMLElement>(".pe-phone") : null;
     function resetHandoff(index: number) {
+      if (index === 0 && character) character.style.transform = "";
       if (index === 1 && monitor) monitor.style.transform = "";
       if (index === 2 && phone) phone.style.transform = "";
     }
@@ -161,7 +213,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       const rawProgress = (y - offset) / height;
       lastRawProgress = rawProgress;
       const elapsed = lastSample && now - lastSample < 80 ? now - lastSample : 16.7;
-      const progress = rhythm ? presentScroll(rawProgress, presentation, elapsed, snapPresentation || Boolean(direct), adaptive ? pacingWindows : undefined) : rawProgress;
+      const progress = rhythm ? presentScroll(rawProgress, presentation, elapsed, snapPresentation || Boolean(direct), animated ? animationWindows : adaptive ? pacingWindows : undefined) : rawProgress;
       presentation = progress;
       lastSample = now;
       snapPresentation = false;
@@ -173,8 +225,34 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
         ? clamp(Math.min((progress - visit.start) / (visit.enter - visit.start), (visit.end - progress) / (visit.end - visit.leave)))
         : 0;
       // The camera parks before the shared passage finishes opening the projected screen.
-      const approach = rhythm ? glide(passage / .92) : ease(passage);
-      const reveal = rhythm ? glide((passage - .67) / .33) : ease((approach - .69) / .31);
+      const filmSample = animated && index === 0 ? aboutSample(progress) : null;
+      const approach = filmSample?.approaching ?? (rhythm ? glide(passage / .92) : ease(passage));
+      const reveal = filmSample?.reveal ?? (rhythm ? glide((passage - .67) / .33) : ease((approach - .69) / .31));
+      if (driver.portrait) {
+        const portraitMode = filmSample && reveal < 1 ? "film" : progress >= chapters[0].leave ? "completed" : "start";
+        if (driver.portrait.mode !== portraitMode) {
+          driver.portrait.mode = portraitMode;
+          driver.invalidate?.();
+        }
+        if (filmSample) {
+          driver.portrait.desiredClip = filmSample.clip;
+          if (film && !scrubber) scrubber = createScrubber(film, presentFilm);
+          scrubber?.update(filmSample.clip, filmSample.time);
+          const { clip, time } = filmSample;
+          const copyCue = visibleCopy(clip, time);
+          const key = copyCue.chapter + copyCue.step;
+          if (requestedCopy !== key) {
+            requestedCopy = key;
+            clearTimeout(copyTimer);
+            if (key !== copyKey) copyTimer = setTimeout(() => paintCopy(clip, time), 450);
+          }
+        } else {
+          scrubber?.stop();
+          clearTimeout(copyTimer);
+          requestedCopy = "";
+        }
+        if (character) character.dataset.paint = reveal === 1 ? "full" : "handoff";
+      }
       const revealChanged = reveal !== previousReveal;
       if (adaptive) {
         // A dark surface must be visibly open before it takes over the header.
@@ -212,7 +290,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
 
       if (visit && (switched || revealChanged)) {
         const layer = layers[index];
-        const layerOpacity = polish && index > 0 ? ease(reveal / (rhythm ? .24 : .38)) : reveal;
+        const layerOpacity = filmSample ? Number(reveal > 0) : polish && index > 0 ? ease(reveal / (rhythm ? .24 : .38)) : reveal;
         const projected = rhythm && reveal > 0 && reveal < 1 && Boolean(driver.invalidate);
         if (!projected) layer.style.opacity = String(layerOpacity);
         if (polish && index === 2 && !projected) layer.style.setProperty("--contact-arrival", String(ease((reveal - .3) / .7)));
@@ -233,7 +311,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       previousApproach = approach;
       previousReveal = reveal;
 
-      if (index === 0 && reveal > 0) {
+      if (index === 0 && reveal > 0 && avatar) {
         const t = clamp((progress - chapters[0].enter) / (chapters[0].leave - chapters[0].enter));
         const storyProgress = (progress - chapters[0].enter) / beatLength;
         const boundary = Math.round(storyProgress);
@@ -335,6 +413,14 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
           },
         };
       } else handoff.current = null;
+      if (character && media.matches) {
+        characterGeometry.current = {
+          element: character,
+          x: character.offsetLeft + character.offsetWidth / 2,
+          y: character.offsetTop + character.offsetHeight / 2,
+          size: Math.max(1, character.offsetWidth),
+        };
+      } else characterGeometry.current = null;
       watchFlow();
       queue();
     }
@@ -349,14 +435,16 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
         if (push) target?.focus({ preventScroll: true });
         return;
       }
-      const y = Math.min(offset + (chapters[index]?.enter ?? 0) * dimensions.current.height, root.offsetHeight - dimensions.current.height + offset);
+      const landing = animated && id === "about" ? aboutLanding : chapters[index]?.enter ?? 0;
+      const y = Math.min(offset + landing * dimensions.current.height, root.offsetHeight - dimensions.current.height + offset);
       resizeTarget = null;
       const fromHome = lastRawProgress < .24;
       lastRawProgress = (y - offset) / dimensions.current.height;
       snapPresentation = true;
-      direct = fromObject && index >= 0 ? { index, start: performance.now(), scroll: y, fromHome } : null;
+      const filmObject = animated && id === "about" && fromObject;
+      direct = fromObject && index >= 0 && !filmObject ? { index, start: performance.now(), scroll: y, fromHome } : null;
       focus = push && index >= 0 ? index : null;
-      window.scrollTo({ top: y, behavior: "instant" });
+      window.scrollTo({ top: y, behavior: filmObject ? "smooth" : "instant" });
       scrollChanged = true;
       if (push && id === "home") root.focus({ preventScroll: true });
       queue();
@@ -397,7 +485,18 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
           identity.inert = false;
           previousIntro = 1;
         }
-        avatar.style.transform = "";
+        if (avatar) avatar.style.transform = "";
+        if (animated) {
+          scrubber?.stop();
+          copyKey = "";
+          requestedCopy = "";
+          clearTimeout(copyTimer);
+          for (const section of copy) {
+            section.inert = false;
+            for (const line of section.querySelectorAll<HTMLElement>("[data-step]")) line.inert = false;
+          }
+          if (driver.portrait) driver.portrait.mode = "start";
+        }
         resetHandoff(1);
         resetHandoff(2);
         driver.pose = null;
@@ -419,11 +518,13 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       cancelAnimationFrame(frame);
       observer.disconnect();
       flowObserver?.disconnect();
+      scrubber?.destroy();
+      clearTimeout(copyTimer);
       media.removeEventListener("change", adapt);
       removeEventListener("scroll", onScroll);
       removeEventListener("hashchange", restoreLocation);
     };
-  }, [adaptive, beatLength, chapters, crossfadeHalf, driver, polish, rhythm]);
+  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm]);
 
   function follow(event: MouseEvent<HTMLAnchorElement>, id: InteractionId | "home") {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -443,7 +544,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     history.replaceState({ ...history.state, phase5dReturn: window.scrollY }, "");
   }
 
-  return <main onClickCapture={rememberCaseStudy} ref={track} id="main-content" tabIndex={-1} className="pd-journey" data-cinematic="false">
+  return <main onClickCapture={rememberCaseStudy} ref={track} id="main-content" tabIndex={-1} className="pd-journey" style={animated ? { "--animated-height": `${animationHeight}svh` } as React.CSSProperties : undefined} data-cinematic="false">
     <header ref={nav} className="pc-header" data-theme={adaptive ? "light" : undefined}>
       <a href="#home" onClick={e => follow(e,"home")}>Ruizhe Lai</a>
       <nav aria-label="Workspace navigation">

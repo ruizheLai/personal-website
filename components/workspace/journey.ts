@@ -5,6 +5,13 @@ export type JourneyDriver = {
   invalidate?: () => void;
   textures?: string[];
   portal?: boolean;
+  portrait?: {
+    canvas: HTMLCanvasElement | null;
+    revision: number;
+    mode: "start" | "film" | "completed";
+    clip: number;
+    desiredClip: number;
+  };
   project: (id: InteractionId, rect: SurfaceRect) => void;
 };
 
