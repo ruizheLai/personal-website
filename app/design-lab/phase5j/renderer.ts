@@ -2,14 +2,18 @@ import { fps } from "../phase5h/timeline";
 import { fromTime, options, ordinal, type Frame, type Present } from "./frames";
 import { createSequence } from "./sequence";
 import { createVideo } from "./video";
+import { createPausedVideo } from "../phase5k/video";
 
-export function createFrameRenderer(root: HTMLElement) {
-  const { engine, gop, perf } = options(location.search);
+export function createFrameRenderer(root: HTMLElement, pausedPolish = false) {
+  const { engine: selection, gop, perf } = options(location.search);
+  const engine = pausedPolish ? "video" : selection;
+  const slots = new URLSearchParams(location.search).get("slots") === "1" ? 1 : 2;
   const stage = root.parentElement!;
   const diagnostics = root.dataset;
   const overlay = root.querySelector<HTMLOutputElement>("output")!;
   diagnostics.engine = engine;
   if (engine === "video") diagnostics.gop = gop;
+  if (pausedPolish) diagnostics.slots = String(slots);
   overlay.hidden = !perf;
   let wanted: Frame | null = null;
   let shown: Frame | null = null;
@@ -25,7 +29,8 @@ export function createFrameRenderer(root: HTMLElement) {
     const lag = shown ? Math.abs(ordinal(wanted) - ordinal(shown)) : "—";
     const stats = engine === "sequence" ? `Cache ${diagnostics.cache ?? 0} · hits ${diagnostics.hits ?? 0}`
       : `GOP ${gop} · seeks ${diagnostics.seeks ?? 0}`;
-    overlay.value = `${engine}  ${desired} → ${actual}\nLag ${lag} frames · ${diagnostics.latency ?? "—"} ms\n${stats}`;
+    const handoffs = pausedPolish ? `\n${slots} decoder${slots === 2 ? "s" : ""} · warm handoffs ${diagnostics.warmSwitches ?? 0}/${diagnostics.switches ?? 0}` : "";
+    overlay.value = `${engine}  ${desired} → ${actual}\nLag ${lag} frames · ${diagnostics.latency ?? "—"} ms\n${stats}${handoffs}`;
   }
 
   const present: Present = (next, decodeMs, method, draw) => {
@@ -49,7 +54,7 @@ export function createFrameRenderer(root: HTMLElement) {
   };
 
   const surface = root.querySelector<HTMLElement>(engine === "video" ? ".pj-video" : ".pj-images")!;
-  const renderer = engine === "video" ? createVideo(surface, gop, present, diagnostics) : createSequence(surface, present, diagnostics);
+  const renderer = pausedPolish ? createPausedVideo(surface, gop, slots, present, diagnostics) : engine === "video" ? createVideo(surface, gop, present, diagnostics) : createSequence(surface, present, diagnostics);
 
   return {
     update(clip: number, time: number) {

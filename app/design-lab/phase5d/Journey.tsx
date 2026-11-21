@@ -28,7 +28,7 @@ const transitionHalf = .07;
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
 const ease = (x: number) => { const t = clamp(x); return t * t * (3 - 2 * t); };
 
-export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false, triggered = false, scrollFrames = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean; triggered?: boolean; scrollFrames?: boolean }) {
+export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false, triggered = false, scrollFrames = false, pausedPolish = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean; triggered?: boolean; scrollFrames?: boolean; pausedPolish?: boolean }) {
   const chapters = animated ? animationChapters : adaptive ? pacingChapters : rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
   const beatLength = rhythm ? readingBeat : storyBeat;
   const crossfadeHalf = rhythm ? readingCrossfadeHalf : transitionHalf;
@@ -278,7 +278,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
         if (frameSurface) {
           const nearAbout = rawProgress >= .11 && rawProgress < chapters[0].start;
           if (scrollSample || nearAbout) {
-            frameRenderer ??= createFrameRenderer(frameSurface);
+            frameRenderer ??= createFrameRenderer(frameSurface, pausedPolish);
             frameRenderer.update(scrollSample?.clip ?? 1, scrollSample?.time ?? 0);
           } else frameRenderer?.stop();
           if (scrollSample) {
@@ -565,7 +565,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       removeEventListener("hashchange", restoreLocation);
       if (triggered || scrollFrames) removeEventListener("popstate", restoreLocation);
     };
-  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm, triggered, scrollFrames]);
+  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm, triggered, scrollFrames, pausedPolish]);
 
   function follow(event: MouseEvent<HTMLAnchorElement>, id: InteractionId | "home") {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
