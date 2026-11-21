@@ -77,8 +77,10 @@ export default function CameraController({referenceCamera,surfaces,backpackBound
    const {id,approach}=driver.pose;
    const target=journeyTargets.current[id];
    if(target){
-    camera.position.lerpVectors(home,target.position,approach);
     camera.zoom=MathUtils.lerp(config.zoom.initial,target.zoom,approach);
+    // Compensate for zoom so the projected frame stays between its safe endpoints.
+    const pan=driver.whiteWorkspace&&id==="about"?1-(1-approach)*config.zoom.initial/camera.zoom:approach;
+    camera.position.lerpVectors(home,target.position,pan);
     camera.updateProjectionMatrix();camera.updateMatrixWorld();
    }
    return;

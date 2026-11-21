@@ -2,7 +2,7 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, type RefObject } from "react";
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { useGLTF, useTexture } from "@react-three/drei";
-import { Mesh, MeshStandardMaterial, Object3D, OrthographicCamera, ShadowMaterial, Vector3, type Material } from "three";
+import { Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, OrthographicCamera, ShadowMaterial, Vector3, type Material } from "three";
 import { INTERACTIONS, MODEL_URL, type Interaction, type InteractionId, type SurfaceRect } from "@/lib/workspace-config";
 import CameraController, { type FocusCommand } from "./CameraController";
 import ChairController from "./ChairController";
@@ -46,18 +46,21 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
   const { gl, invalidate, size, events } = useThree();
   const frames = useRef(0);
   const animatedPortrait = Boolean(driver?.portrait);
+  const whiteWorkspace = Boolean(driver?.whiteWorkspace);
   const prepared = useMemo(() => {
     const model = asset.scene.clone(true);
     const ownedMaterials: Material[] = [];
     model.traverse(object => {
       if (!(object instanceof Mesh)) return;
-      object.castShadow = object.name !== "Floor" && object.name !== "SeamlessWall";
+      const environment = object.name === "Floor" || object.name === "SeamlessWall";
+      object.castShadow = !environment && !(whiteWorkspace && object.name === "FrameArtwork");
       object.receiveShadow = true;
       const originals = Array.isArray(object.material) ? object.material : [object.material];
       const materials = originals.map(original => {
-        const material = original.clone(); ownedMaterials.push(material);
+        const material = whiteWorkspace && environment ? new MeshBasicMaterial({ color: "#ffffff", toneMapped: false, side: original.side }) : original.clone();
+        ownedMaterials.push(material);
         if (material instanceof MeshStandardMaterial) {
-          if (object.name === "Floor" || object.name === "SeamlessWall") material.emissive.setRGB(3.5, 3.5, 3.5);
+          if (environment) material.emissive.setRGB(3.5, 3.5, 3.5);
           if (object.name === "MonitorScreen" || object.name === "PhoneScreen") {
             material.color.set("#070a0c"); material.emissive.set(0); material.roughness = .18; material.metalness = .2;
           }
@@ -109,7 +112,7 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
       secondaryObjects[id as SecondaryId] = object;
     }
     return { model, secondaryObjects, binSource: secondaryObjects.bin as Mesh, chair, camera, ownedMaterials, surfaces, corners, shadowFloor, shadowMaterial, shadowWall, wallShadowMaterial };
-  }, [asset.scene, animatedPortrait]);
+  }, [asset.scene, animatedPortrait, whiteWorkspace]);
   useEffect(() => () => { prepared.ownedMaterials.forEach(material => material.dispose()); prepared.shadowMaterial.dispose(); prepared.wallShadowMaterial.dispose(); }, [prepared]);
   useEffect(() => {
     gl.domElement.style.cursor = secondary.dragging ? "grabbing" : hovered || secondary.hovered ? "pointer" : "";

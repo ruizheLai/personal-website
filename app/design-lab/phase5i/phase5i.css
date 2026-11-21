@@ -1,0 +1,28 @@
+.pi-study, .pi-study .pd-journey, .pi-study .pc-workspace,
+.pi-study .workspace-stage, .pi-study .ph-about, .pi-study .ph-screen {
+  background-color: #fff;
+}
+.pi-study .ph-screen[data-paint] { background-image: none; }
+.pi-player { position: relative; width: 100%; height: 100%; }
+.pi-player img, .pi-player video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.pi-player video { opacity: 0; }
+.pi-player[data-playing] video { opacity: 1; }
+.pi-study .ph-screen[data-scene=framed] .pi-player {
+  filter: brightness(1.009);
+  mask-image: linear-gradient(to right,transparent,#000 3%,#000 97%,transparent),
+    linear-gradient(to bottom,transparent,#000 3%,#000 97%,transparent);
+  mask-composite: intersect;
+}
+.pi-study .ph-screen[data-scene=unframed] .pi-player {
+  filter: brightness(1.014);
+  mask-image: linear-gradient(to right,transparent,#000 1.5%,#000 98.5%,transparent),
+    linear-gradient(to bottom,transparent,#000 1.5%,#000 98.5%,transparent);
+  mask-composite: intersect;
+}

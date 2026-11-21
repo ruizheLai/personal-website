@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { mediaRoot } from "./timeline";
 
 const capabilities = [
@@ -12,10 +13,10 @@ function Still({ name }: { name: string }) {
   return <Image className="ph-still" src={`${mediaRoot}/${name}.webp`} alt="" width={940} height={940} unoptimized />;
 }
 
-export default function About() {
+export default function About({ motion }: { motion?: ReactNode }) {
   return <article className="ph-about">
     <div className="ph-screen" aria-hidden="true">
-      <canvas className="ph-film" width="940" height="940" />
+      {motion ?? <canvas className="ph-film" width="940" height="940" />}
     </div>
     <div className="ph-copy">
       <section data-copy="intro">
@@ -27,7 +28,7 @@ export default function About() {
       <section data-copy="education">
         <Still name="education" />
         <h2>From Design to Technology.</h2>
-        <dl className="ph-list"><div data-step="0"><dt>Design</dt><dd>Undergraduate background.</dd></div>
+        <dl className="ph-list"><div data-step="0"><dt>Design</dt><dd>Undergraduate background{motion ? " in Design" : ""}.</dd></div>
         <div data-step="1"><dt>Master of Information Technology</dt><dd>University of Melbourne.</dd></div></dl>
       </section>
       <section data-copy="capabilities">

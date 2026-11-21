@@ -1,0 +1,14 @@
+[
+  {"id":"wake","clip":1,"frames":[0,66],"trigger":0.26,"actionEnd":0.86,"holdEnd":1.14,"chapter":-1,"step":0,"camera":"approach","pose":"Reaching inside the frame"},
+  {"id":"pull","clip":1,"frames":[66,120],"trigger":1.14,"actionEnd":1.67,"holdEnd":1.94,"chapter":-1,"step":0,"camera":"pull","pose":"Inside the portrait"},
+  {"id":"arrival","clip":2,"frames":[0,120],"trigger":1.94,"actionEnd":2.85,"holdEnd":3.70,"chapter":0,"step":0,"camera":"stage","pose":"Standing introduction gesture"},
+  {"id":"design","clip":3,"frames":[0,48],"trigger":3.70,"actionEnd":4.14,"holdEnd":4.80,"chapter":1,"step":0,"camera":"stage","pose":"Drawing at the easel"},
+  {"id":"technology","clip":3,"frames":[48,120],"trigger":4.80,"actionEnd":5.34,"holdEnd":6.06,"chapter":1,"step":1,"camera":"stage","pose":"Laptop and phone"},
+  {"id":"problem","clip":4,"frames":[0,42],"trigger":6.06,"actionEnd":6.35,"holdEnd":6.94,"chapter":2,"step":0,"camera":"stage","pose":"Framing the problem"},
+  {"id":"research","clip":4,"frames":[42,90],"trigger":6.94,"actionEnd":7.24,"holdEnd":7.83,"chapter":2,"step":1,"camera":"stage","pose":"Research gesture"},
+  {"id":"interface","clip":4,"frames":[90,146],"trigger":7.83,"actionEnd":8.14,"holdEnd":8.72,"chapter":2,"step":2,"camera":"stage","pose":"Designing the interface"},
+  {"id":"build","clip":4,"frames":[146,205],"trigger":8.72,"actionEnd":9.08,"holdEnd":9.97,"chapter":2,"step":3,"camera":"stage","pose":"Building a product"},
+  {"id":"jersey","clip":5,"frames":[0,59],"trigger":9.97,"actionEnd":10.24,"holdEnd":10.56,"chapter":-1,"step":0,"camera":"stage","pose":"Chelsea jersey established"},
+  {"id":"interests","clip":5,"frames":[59,115],"trigger":10.56,"actionEnd":11.00,"holdEnd":11.57,"chapter":3,"step":0,"camera":"stage","pose":"Relaxed with the four sports props"},
+  {"id":"return","clip":5,"frames":[115,216],"trigger":11.57,"actionEnd":12.90,"holdEnd":13.24,"chapter":-1,"step":0,"camera":"return","pose":"Framed Chelsea portrait"}
+]

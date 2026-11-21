@@ -65,6 +65,7 @@ export default function WorkspaceScene({driver,onNavigate,locked=false}:{driver?
  const shadowSize=small?512:1024;
  return <div ref={stage} className="workspace-stage" aria-label="Interactive 3D workspace" aria-busy={status==="loading"} inert={locked} data-phase={phase} data-focused={focus.id??""}>
   {supported&&<SceneBoundary key={attempt} onError={onError}><Canvas className={"workspace-canvas "+(status==="ready"?"is-ready":"")} orthographic camera={{position:[0,3.45,8.5],near:.1,far:300}} frameloop="demand" dpr={[1,small?config.rendering.mobileMaxDpr:config.rendering.maxDpr]} shadows="percentage" gl={{antialias:true,alpha:true,powerPreference:"high-performance"}} onPointerMissed={()=>reset()} onCreated={({gl})=>{gl.toneMapping=AgXToneMapping;gl.toneMappingExposure=config.rendering.exposure;gl.outputColorSpace=SRGBColorSpace;}}>
+   {driver?.whiteWorkspace && <color attach="background" args={["#ffffff"]} />}
    <ambientLight intensity={1.1}/><hemisphereLight args={["#ffffff","#c4c4c1",1.1]}/>
    <directionalLight position={[-3.5,9,5]} intensity={3.2} castShadow shadow-mapSize-width={shadowSize} shadow-mapSize-height={shadowSize} shadow-camera-left={-4} shadow-camera-right={4} shadow-camera-top={4} shadow-camera-bottom={-4} shadow-camera-near={.5} shadow-camera-far={20} shadow-bias={-.0002} shadow-normalBias={.012} shadow-radius={4}/>
    <directionalLight position={[4,3,-2]} intensity={.8}/>

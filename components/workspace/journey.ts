@@ -5,6 +5,7 @@ export type JourneyDriver = {
   invalidate?: () => void;
   textures?: string[];
   portal?: boolean;
+  whiteWorkspace?: boolean;
   portrait?: {
     canvas: HTMLCanvasElement | null;
     revision: number;
