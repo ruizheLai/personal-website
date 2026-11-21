@@ -6,6 +6,7 @@ export type JourneyDriver = {
   textures?: string[];
   portal?: boolean;
   whiteWorkspace?: boolean;
+  projectedPortrait?: boolean;
   portrait?: {
     canvas: HTMLCanvasElement | null;
     revision: number;

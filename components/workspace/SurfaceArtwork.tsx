@@ -54,6 +54,8 @@ export default function SurfaceArtwork({ surface, texture, kind, active, reduced
   useFrame((_, delta) => {
     const portrait = completed && wake?.portrait;
     if (portrait) {
+      // The projected DOM frame occupies the artwork's exact portal in Phase 5J.
+      if (wake.projectedPortrait) surface.visible = wake.pose?.id !== "about";
       const live = portrait.mode === "film" && portrait.canvas && portrait.clip === portrait.desiredClip;
       const fallback = portrait.mode === "completed" || (portrait.mode === "film" && portrait.desiredClip === 5);
       const image = live ? portrait.canvas : fallback ? completed.image : cached.image;

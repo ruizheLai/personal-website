@@ -1,0 +1,35 @@
+.pj-study, .pj-study .pd-journey, .pj-study .pc-workspace,
+.pj-study .workspace-stage, .pj-study .ph-about, .pj-study .ph-screen {
+  background-color: #fff;
+}
+.pj-media, .pj-images, .pj-video, .pj-media img, .pj-media canvas { width: 100%; height: 100%; }
+.pj-media { position: relative; }
+.pj-images, .pj-video, .pj-media canvas { position: absolute; inset: 0; }
+.pj-media img, .pj-media canvas { display: block; object-fit: contain; }
+.pj-media:not([data-engine=video]) .pj-video,
+.pj-media:not([data-engine=sequence]) .pj-images { display: none; }
+.pj-media:not([data-ready]) canvas { visibility: hidden; }
+.pj-decoder { position: absolute; inset: 0 auto auto 0; width: 2px; height: 2px; pointer-events: none; }
+.pj-study .ph-screen:not(:has(.pj-media[data-ready])) {
+  background: #fff url("/images/phase5j/1/000.webp") center / contain no-repeat;
+}
+.pj-study .ph-screen:has(.pj-media[data-ready]) { background-image: none; }
+.pj-study .ph-screen[data-scene] :is(.pj-images, .pj-video) {
+  --blend: 1.5%;
+  filter: brightness(1.014);
+  mask-image: linear-gradient(to right,transparent,#000 var(--blend),#000 calc(100% - var(--blend)),transparent),
+    linear-gradient(to bottom,transparent,#000 var(--blend),#000 calc(100% - var(--blend)),transparent);
+  mask-composite: intersect;
+}
+.pj-study .ph-screen[data-scene=framed] :is(.pj-images, .pj-video) { --blend: 3%; filter: brightness(1.009); }
+.pj-diagnostics {
+  position: absolute;
+  z-index: 1;
+  inset: auto auto 8px 8px;
+  padding: 6px 9px;
+  white-space: pre;
+  color: white;
+  background: #1e2422;
+  font: 11px/1.45 monospace;
+  pointer-events: none;
+}
