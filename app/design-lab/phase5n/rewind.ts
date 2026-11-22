@@ -1,6 +1,6 @@
 import { glide, unit } from "../phase5f/rhythm";
 import { scene } from "../phase5l/timeline";
-import type { NavigationRewind } from "../phase5l/controller";
+import type { CinematicNavigation } from "../phase5l/controller";
 import { refinedChapters, refinedLanding, refinedPlan } from "../phase5m/timeline";
 
 const [about, projects, contact] = refinedChapters;
@@ -8,7 +8,7 @@ const desk = about.end + .035;
 const mix = (from: number, to: number, fraction: number) => from + (to - from) * glide(fraction);
 const noCopy = refinedPlan.copy(-1, 1);
 
-export function navigationRewind(anchor: number, destination: string): NavigationRewind | undefined {
+export function navigationRewind(anchor: number, destination: string): CinematicNavigation | undefined {
   const fromContact = anchor >= contact.start + .05;
   const fromProjects = anchor >= projects.start + .05 && anchor < projects.end - .05;
   if (!(destination === "about" && (fromProjects || fromContact) || destination === "projects" && fromContact)) return;
@@ -30,13 +30,16 @@ export function navigationRewind(anchor: number, destination: string): Navigatio
     };
   }
 
+  return rewindAbout(anchor, prelude, elapsed => elapsed < retreat ? mix(anchor, roomExit, elapsed / retreat) : desk);
+}
+
+export function rewindAbout(anchor: number, prelude: number, retreat: (elapsed: number) => number): CinematicNavigation {
   return {
     anchor, target: refinedLanding, prelude, duration: prelude + 56 / 30 * 1000,
     source: "/images/phase5n/rewind.mp4",
     view(elapsed, presentedTime) {
       if (presentedTime === undefined) {
-        const progress = elapsed < retreat ? mix(anchor, roomExit, elapsed / retreat) : desk;
-        return { progress, about: null, text: noCopy };
+        return { progress: retreat(elapsed), about: null, text: noCopy };
       }
       const frame = Math.round(presentedTime * 30);
       const fraction = unit(frame / 19);

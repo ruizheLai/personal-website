@@ -3,14 +3,16 @@ import { unit } from "../phase5f/rhythm";
 import { aboutEnd, camera, copy, initialPose, mediaBeats, scene, stages, type Stage } from "./timeline";
 import { createScrollLock } from "./scrollLock";
 
-type State = "holding" | "preparing" | "playing-forward" | "playing-reverse" | "rewinding" | "settling" | "error";
-export type NavigationRewind = {
+type State = "holding" | "preparing" | "playing-forward" | "playing-reverse" | "fast-forwarding" | "rewinding" | "settling" | "error";
+export type CinematicNavigation = {
   anchor: number;
   target: number;
-  prelude: number;
+  prelude?: number;
+  postlude?: number;
   duration: number;
   source?: string;
-  view: (elapsed: number, presentedTime?: number) => {
+  mediaStart?: number;
+  view: (elapsed: number, presentedTime?: number, elapsedAfterMedia?: number) => {
     progress: number;
     about: ReturnType<typeof camera> | null;
     text: ReturnType<typeof copy>;
@@ -32,8 +34,10 @@ type Run = {
   abort: AbortController;
   blob?: string;
   settledAt?: number;
-  rewind?: NavigationRewind;
+  navigation?: CinematicNavigation;
   launch?: () => void;
+  awaitingPlayback?: boolean;
+  mediaEnded?: number;
 };
 type Beat = typeof mediaBeats[number];
 export type CinematicPlan = {
@@ -110,7 +114,7 @@ export function createCinematic(
       root.dataset.cinematicFrames = String(frames);
       video.pause();
       video.removeAttribute("src");
-      if (current?.rewind) video.preload = "none";
+      if (current?.navigation) video.preload = "none";
       video.load();
     }
     if (current?.blob) URL.revokeObjectURL(current.blob);
@@ -158,15 +162,15 @@ export function createCinematic(
     wake();
   }
 
-  function begin(stage: Stage, direction: 1 | -1, rewind?: NavigationRewind) {
-    const target = rewind?.target ?? (direction > 0 ? stage.end + clearance : Math.max(0, stage.start - clearance));
-    const anchor = rewind?.anchor ?? (direction > 0 ? stage.start - clearance : stage.end + clearance);
-    const url = rewind?.source ?? (direction > 0 ? stage.media?.forward : stage.media?.reverse);
+  function begin(stage: Stage, direction: 1 | -1, navigation?: CinematicNavigation) {
+    const target = navigation?.target ?? (direction > 0 ? stage.end + clearance : Math.max(0, stage.start - clearance));
+    const anchor = navigation?.anchor ?? (direction > 0 ? stage.start - clearance : stage.end + clearance);
+    const url = navigation?.source ?? (direction > 0 ? stage.media?.forward : stage.media?.reverse);
     const poster = url ? new Image() : null;
     if (poster) poster.src = beats[settledIndex(target)]?.endPoster ?? initialPose;
     const current: Run = {
       stage, direction, anchor, target, poster, started: performance.now(), clock: 0,
-      decoded: 0, waiting: false, advanced: 0, observed: 0, abort: new AbortController(), rewind,
+      decoded: 0, waiting: false, advanced: 0, observed: 0, abort: new AbortController(), navigation,
     };
     run = current;
     posterGeneration++;
@@ -175,8 +179,10 @@ export function createCinematic(
     root.dataset.cinematicDirection = direction > 0 ? "forward" : "reverse";
     lock.lock();
     pin(anchor);
-    const playing = rewind ? "rewinding" : direction > 0 ? "playing-forward" : "playing-reverse";
-    status(rewind ? playing : "preparing");
+    const playing = navigation
+      ? direction > 0 ? "fast-forwarding" : "rewinding"
+      : direction > 0 ? "playing-forward" : "playing-reverse";
+    status(navigation ? playing : "preparing");
     emergency = window.setTimeout(() => {
       if (run !== current) return;
       // Release the document even if the render loop stops consuming a recovery.
@@ -200,7 +206,8 @@ export function createCinematic(
     const { signal } = current.abort;
     const original = () => {
       if (run !== current || signal.aborted) return;
-      if (!rewind) video.src = current.blob ?? url;
+      if (!navigation) video.src = current.blob ?? url;
+      current.awaitingPlayback = false;
       void video.play().catch(() => { if (run === current && !signal.aborted) finish(true); });
     };
     function first() {
@@ -218,7 +225,7 @@ export function createCinematic(
       const frame: VideoFrameRequestCallback = (_, metadata) => {
         callback = 0;
         if (run !== current || signal.aborted) return;
-        if (current.launch) {
+        if (current.awaitingPlayback) {
           callback = video.requestVideoFrameCallback(frame);
           return;
         }
@@ -245,11 +252,30 @@ export function createCinematic(
       current.waiting = true;
       root.dataset.cinematicWaiting = String(++waits);
     }, { signal });
-    video.addEventListener("ended", () => finish(), { once: true, signal });
+    video.addEventListener("ended", () => {
+      if (navigation?.postlude && current.clock) {
+        current.mediaEnded = performance.now();
+        wake();
+      } else finish();
+    }, { once: true, signal });
     video.addEventListener("error", () => finish(true), { once: true, signal });
     timer = window.setTimeout(() => finish(true), 4500);
-    if (rewind) {
-      current.launch = original;
+    if (navigation) {
+      current.awaitingPlayback = true;
+      const start = navigation.mediaStart ?? 0;
+      let ready = start === 0;
+      let requested = false;
+      current.launch = () => {
+        requested = true;
+        if (ready) original();
+      };
+      if (start > 0) {
+        video.addEventListener("loadedmetadata", () => { video.currentTime = start; }, { once: true, signal });
+        video.addEventListener("seeked", () => {
+          ready = true;
+          if (requested) original();
+        }, { once: true, signal });
+      }
       video.preload = "auto";
       video.src = url;
     } else if (prepared?.url === url) {
@@ -316,16 +342,22 @@ export function createCinematic(
         return visual(index, 1, target);
       }
       if (Math.abs(raw - current.anchor) > .004) pin(current.anchor);
-      if (current.rewind) {
+      if (current.navigation) {
+        const navigation = current.navigation;
         const elapsed = now - current.started;
-        if (current.launch && elapsed >= current.rewind.prelude) {
+        if (current.launch && elapsed >= (navigation.prelude ?? 0)) {
           const launch = current.launch;
           current.launch = undefined;
           launch();
         }
-        if (!current.rewind.source && elapsed >= current.rewind.duration) finish();
-        if (current.rewind.source && current.clock && now - current.advanced > 2400) finish(true);
-        const view = current.rewind.view(elapsed, current.rewind.source && current.clock ? current.decoded : undefined);
+        const after = current.mediaEnded === undefined ? undefined : Math.max(0, now - current.mediaEnded);
+        if (navigation.source) {
+          if (after !== undefined) {
+            if (after >= (navigation.postlude ?? 0)) finish();
+          } else if (current.clock && now - current.advanced > 2400) finish(true);
+        } else if (elapsed >= navigation.duration) finish();
+        const time = typeof video.requestVideoFrameCallback === "function" || current.waiting ? current.decoded : video.currentTime;
+        const view = navigation.view(elapsed, navigation.source && current.clock ? time : undefined, after);
         if (view.scene) stageElement.dataset.scene = view.scene;
         return view;
       }
@@ -352,9 +384,10 @@ export function createCinematic(
       return visual(index, authored, progress);
     },
     get active() { return lock.locked; },
-    get rewinding() { return Boolean(run?.rewind); },
-    rewind(rewind: NavigationRewind) {
-      begin({ id: "navigation-rewind", start: rewind.target, end: rewind.anchor, duration: rewind.duration }, -1, rewind);
+    get navigating() { return Boolean(run?.navigation); },
+    navigate(navigation: CinematicNavigation, direction: 1 | -1) {
+      const { anchor, target, duration } = navigation;
+      begin({ id: direction > 0 ? "navigation-forward" : "navigation-rewind", start: Math.min(anchor, target), end: Math.max(anchor, target), duration }, direction, navigation);
     },
     cancel() {
       stopVideo(run);

@@ -53,7 +53,7 @@ function Icon({ name }: { name: string }) {
   return <Image src={`/images/phase5e/icons/${name}.svg`} width={24} height={24} alt="" unoptimized />;
 }
 
-function PhoneScreen() {
+function PhoneScreen({ showDock }: { showDock: boolean }) {
   return <div className="pe-phone" aria-hidden="true">
     <div className="pe-phone-status"><span>10:08</span><span><Icon name="reception-4" /><Icon name="wifi" /><Icon name="battery-full" /></span></div>
     <div className="pe-phone-grid">
@@ -61,22 +61,23 @@ function PhoneScreen() {
         <span className={`pe-icon pe-icon-${icon}`}><Icon name={icon} /></span><span>{label}</span>
       </div>)}
     </div>
-    <div className="pe-dock">
+    {showDock && <div className="pe-dock">
       {homeApps.slice(4).map(({label, icon}) => <div className="pe-app" key={icon}>
         <span className={`pe-icon pe-icon-${icon}`}><Icon name={icon} /></span><span>{label}</span>
       </div>)}
-    </div>
+    </div>}
     <div className="pe-home-line" />
   </div>;
 }
 
-export function Contact() {
+export function Contact({ simplePhone = false, email }: { simplePhone?: boolean; email?: string } = {}) {
   return <article className="pd-contact pe-contact">
-    <PhoneScreen />
+    <PhoneScreen showDock={!simplePhone} />
     <div className="pd-contact-copy">
       <p className="pc-eyebrow">Contact</p>
       <h2>Stay in touch.</h2>
       <p>Have something in mind? I&apos;d love to hear about it.</p>
+      {email && <p className="po-email"><a href={`mailto:${email}`}>{email}</a></p>}
       <a className="pe-github" href="https://github.com/ruizheLai"><Icon name="github" /> GitHub <span aria-hidden="true">↗</span></a>
       <p className="pe-closing">Thanks for stopping by.</p>
     </div>
