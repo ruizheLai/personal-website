@@ -1,6 +1,6 @@
 import { fps } from "../phase5h/timeline";
 import { unit } from "../phase5f/rhythm";
-import { aboutEnd, camera, copy, initialPose, mediaBeats, scene, settledIndex, stages, type Stage } from "./timeline";
+import { aboutEnd, camera, copy, initialPose, mediaBeats, scene, stages, type Stage } from "./timeline";
 import { createScrollLock } from "./scrollLock";
 
 type State = "holding" | "preparing" | "playing-forward" | "playing-reverse" | "settling" | "error";
@@ -20,18 +20,35 @@ type Run = {
   blob?: string;
   settledAt?: number;
 };
-const clearance = .022;
-const hysteresis = .008;
+type Beat = typeof mediaBeats[number];
+export type CinematicPlan = {
+  stages: Stage[];
+  beats: Beat[];
+  aboutEnd: number;
+  clearance: number;
+  hysteresis: number;
+  responsive?: boolean;
+  camera: typeof camera;
+  copy: (index: number, fraction: number) => ReturnType<typeof copy>;
+  look: (beat: Beat, fraction: number) => ReturnType<typeof scene>;
+};
+
+const originalPlan: CinematicPlan = {
+  stages, beats: mediaBeats, aboutEnd, clearance: .022, hysteresis: .008, camera, copy,
+  look(beat, fraction) { return scene(beat.clip, (beat.frames[0] + fraction * (beat.frames[1]-beat.frames[0])) / fps); },
+};
 
 export function createCinematic(
-  root: HTMLElement, surface: HTMLElement, pin: (position: number) => void, wake: () => void,
+  root: HTMLElement, surface: HTMLElement, pin: (position: number) => void, wake: () => void, plan = originalPlan,
 ) {
+  const { stages, beats, clearance, hysteresis, aboutEnd } = plan;
+  const settledIndex = (progress: number) => stages.findLastIndex(stage => Boolean(stage.media) && progress >= stage.end - .001);
   const image = surface.querySelector("img")!;
   const video = surface.querySelector("video")!;
   const stageElement = surface.parentElement!;
   const skip = root.querySelector<HTMLButtonElement>(".pl-skip")!;
   const listeners = new AbortController();
-  const lock = createScrollLock(() => finish());
+  const lock = createScrollLock(() => finish(), plan.responsive);
   let state: State = "holding";
   let run: Run | null = null;
   let previous: number | null = null;
@@ -85,9 +102,9 @@ export function createCinematic(
   }
 
   function showPoster(index: number, decoded?: HTMLImageElement | null) {
-    const beat = mediaBeats[index];
+    const beat = beats[index];
     const url = beat?.endPoster ?? initialPose;
-    stageElement.dataset.scene = beat ? scene(beat.clip, beat.frames[1] / fps) : "framed";
+    stageElement.dataset.scene = beat ? plan.look(beat, 1) : "framed";
     if (image.getAttribute("src") === url) {
       if (pendingPose) posterGeneration++;
       pendingPose = "";
@@ -129,7 +146,7 @@ export function createCinematic(
     const target = direction > 0 ? stage.end + clearance : Math.max(0, stage.start - clearance);
     const anchor = direction > 0 ? stage.start - clearance : stage.end + clearance;
     const poster = stage.media ? new Image() : null;
-    if (poster) poster.src = mediaBeats[settledIndex(target)]?.endPoster ?? initialPose;
+    if (poster) poster.src = beats[settledIndex(target)]?.endPoster ?? initialPose;
     const current: Run = {
       stage, direction, anchor, target, poster, started: performance.now(), clock: 0,
       decoded: 0, waiting: false, advanced: 0, observed: 0, abort: new AbortController(),
@@ -220,7 +237,7 @@ export function createCinematic(
   }
 
   function visual(index: number, fraction: number, progress: number) {
-    return { progress, about: progress < aboutEnd && index >= 0 ? camera(index, fraction) : null, text: copy(index, fraction) };
+    return { progress, about: progress < aboutEnd && index >= 0 ? plan.camera(index, fraction) : null, text: plan.copy(index, fraction) };
   }
 
   function hold(progress: number) {
@@ -281,7 +298,9 @@ export function createCinematic(
       if (media) {
         if (now - current.advanced > 2400) finish(true);
         const displayed = current.waiting ? current.decoded : Math.min(video.currentTime, current.decoded + 1 / fps);
-        const duration = Math.max(.04, (media.frames[1] - media.frames[0]) / fps);
+        const duration = Math.max(.04, plan.responsive && Number.isFinite(video.duration)
+          ? video.duration - 1 / fps
+          : (media.frames[1] - media.frames[0]) / fps);
         fraction = unit(displayed / duration);
       } else {
         fraction = unit((now - current.clock) / stage.duration);
@@ -289,9 +308,9 @@ export function createCinematic(
       }
       const authored = direction > 0 ? fraction : 1 - fraction;
       const progress = stage.start + (stage.end - stage.start) * authored;
-      if (!media) return { progress, about: null, text: copy(-1, 1) };
-      const index = mediaBeats.indexOf(media);
-      stageElement.dataset.scene = scene(media.clip, (media.frames[0] + authored * (media.frames[1] - media.frames[0])) / fps);
+      if (!media) return { progress, about: null, text: plan.copy(-1, 1) };
+      const index = beats.indexOf(media);
+      stageElement.dataset.scene = plan.look(media, authored);
       return visual(index, authored, progress);
     },
     get active() { return lock.locked; },

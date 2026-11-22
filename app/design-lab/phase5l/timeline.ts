@@ -79,14 +79,15 @@ export function camera(index: number, fraction: number) {
   }
 }
 
-export function copy(index: number, fraction: number) {
-  const previous = mediaBeats[index - 1];
-  const next = mediaBeats[index];
+export function copy(index: number, fraction: number, beats = mediaBeats, cue?: number) {
+  const previous = beats[index - 1];
+  const next = beats[index];
   if (!next || fraction === 1) return { chapter: next?.copy ?? "", step: next?.step ?? 0, alpha: 1, line: 1 };
   if (previous?.copy && previous.copy === next.copy) {
-    const line = unit((fraction - .79) / .18);
+    const line = unit((fraction - (cue ?? .79)) / (cue ? 1 - cue : .18));
     return { chapter: next.copy, step: line > 0 ? next.step : previous.step, alpha: 1, line: line || 1 };
   }
   if (fraction < .24) return { chapter: previous?.copy ?? "", step: previous?.step ?? 0, alpha: 1 - glide(fraction / .24), line: 1 };
-  return { chapter: fraction > .76 ? next.copy : "", step: next.step, alpha: glide((fraction - .76) / .24), line: 1 };
+  const enter = cue ?? .76;
+  return { chapter: fraction > enter ? next.copy : "", step: next.step, alpha: glide((fraction - enter) / (1 - enter)), line: 1 };
 }

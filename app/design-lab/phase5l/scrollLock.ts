@@ -1,13 +1,14 @@
 const keys = new Set([" ", "Spacebar", "PageDown", "PageUp", "ArrowDown", "ArrowUp", "Home", "End"]);
 const quietGap = 160;
 
-export function createScrollLock(finish: () => void) {
+export function createScrollLock(finish: () => void, responsive = false) {
   const html = document.documentElement;
   const events = new AbortController();
   const { signal } = events;
   let locked = false;
   let draining = false;
   let lastWheel = -Infinity;
+  let lastDelta = 0;
   let touchActive = false;
   let discardTouch = false;
 
@@ -16,10 +17,17 @@ export function createScrollLock(finish: () => void) {
   }
 
   window.addEventListener("wheel", event => {
-    if (event.ctrlKey || event.metaKey) return;
+    if (event.ctrlKey || event.metaKey || responsive && (!event.deltaY || Math.abs(event.deltaX) > Math.abs(event.deltaY))) return;
     const gap = event.timeStamp - lastWheel;
+    const magnitude = Math.abs(event.deltaY);
+    const discrete = event.deltaMode !== WheelEvent.DOM_DELTA_PIXEL;
+    // A renewed impulse or deliberate reversal can re-arm before a flat momentum tail goes quiet.
+    const reverse = gap >= 18 && magnitude >= (discrete ? 1 : 16) && Math.sign(event.deltaY) !== Math.sign(lastDelta);
+    const renewed = gap >= 44 && (discrete || magnitude >= 48 && magnitude > Math.abs(lastDelta) * 1.7 + 8);
+    const fresh = responsive ? reverse || renewed || gap >= (discrete ? 55 : 100) : gap >= quietGap;
     lastWheel = event.timeStamp;
-    if (locked || draining && gap < quietGap) prevent(event);
+    lastDelta = event.deltaY;
+    if (locked || draining && !fresh) prevent(event);
     else draining = false;
   }, { signal, capture: true, passive: false });
 
