@@ -11,6 +11,7 @@ import { createBeatPlayer } from "../phase5i/player";
 import { createCinematic } from "../phase5l/controller";
 import { aboutLanding as cinematicLanding } from "../phase5l/timeline";
 import { refinedChapters, refinedHeight, refinedLanding, refinedPlan } from "../phase5m/timeline";
+import { navigationRewind } from "../phase5n/rewind";
 import { createFrameRenderer } from "../phase5j/renderer";
 import { pacingChapters, pacingWindows } from "../phase5g/pacing";
 import { glide, presentScroll, projectCurves, projectStops, readingBeat, readingCrossfadeHalf, rhythmChapters } from "../phase5f/rhythm";
@@ -31,7 +32,7 @@ const transitionHalf = .07;
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
 const ease = (x: number) => { const t = clamp(x); return t * t * (3 - 2 * t); };
 
-export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false, triggered = false, scrollFrames = false, pausedPolish = false, cinematicLocks = false, refinedCinematics = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean; triggered?: boolean; scrollFrames?: boolean; pausedPolish?: boolean; cinematicLocks?: boolean; refinedCinematics?: boolean }) {
+export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false, triggered = false, scrollFrames = false, pausedPolish = false, cinematicLocks = false, refinedCinematics = false, navigationPolish = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean; triggered?: boolean; scrollFrames?: boolean; pausedPolish?: boolean; cinematicLocks?: boolean; refinedCinematics?: boolean; navigationPolish?: boolean }) {
   const chapters = refinedCinematics ? refinedChapters : animated ? animationChapters : adaptive ? pacingChapters : rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
   const beatLength = rhythm ? readingBeat : storyBeat;
   const crossfadeHalf = rhythm ? readingCrossfadeHalf : transitionHalf;
@@ -110,6 +111,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     let frameRenderer: ReturnType<typeof createFrameRenderer> | null = null;
     const cinematicSurface = cinematicLocks ? view.querySelector<HTMLElement>(".pl-media") : null;
     let cinematic: ReturnType<typeof createCinematic> | null = null;
+    let rewindDestination: InteractionId | "home" | null = null;
     let copyKey = "";
     let requestedCopy = "";
     let copyTimer: ReturnType<typeof setTimeout> | undefined;
@@ -314,7 +316,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
           previousIntro = intro;
         }
       }
-      const active = reveal > .98 && !(cinematic?.active && index > 0) ? index : -1;
+      const active = reveal > .98 && !(cinematic?.active && (index > 0 || cinematic.rewinding)) ? index : -1;
       const switched = index !== previousChapter;
 
       if (switched) {
@@ -395,7 +397,8 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       }
 
       if (index === 1 && reveal > 0) {
-        const exhibitionProgress = progress - chapters[1].enter;
+        const preservingProject = cinematic?.rewinding && rawProgress >= chapters[1].enter && rawProgress <= chapters[1].leave;
+        const exhibitionProgress = (preservingProject ? rawProgress : progress) - chapters[1].enter;
         const second = rhythm ? glide((exhibitionProgress - projectCurves[0][0]) / (projectCurves[0][1] - projectCurves[0][0])) : ease((exhibitionProgress - .37) / .25);
         const third = rhythm ? glide((exhibitionProgress - projectCurves[1][0]) / (projectCurves[1][1] - projectCurves[1][0])) : ease((exhibitionProgress - 1.01) / .25);
         const weights = [1 - second, second - third, third];
@@ -482,10 +485,18 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     }
 
     const changeLocation = (id: InteractionId | "home", fromObject = false, push = true) => {
+      const interrupted = cinematic?.rewinding;
+      if (push && interrupted && rewindDestination === id) return;
+      const origin = (scrollY - offset) / dimensions.current.height;
+      const rewind = navigationPolish && cinematic && push && !fromObject && !interrupted
+        ? navigationRewind(origin, id) : undefined;
       cinematic?.cancel();
       const index = chapters.findIndex(item => item.id === id);
       const hash = id === "home" ? "" : "#" + id;
-      if (push && location.hash !== hash) history.pushState(null, "", hash || (scrollFrames || cinematicLocks ? location.pathname + location.search : location.pathname));
+      if (push && location.hash !== hash) {
+        if (navigationPolish && !interrupted) history.replaceState({ ...history.state, phase5dReturn: scrollY }, "");
+        history.pushState(null, "", hash || (scrollFrames || cinematicLocks ? location.pathname + location.search : location.pathname));
+      }
       if (!media.matches) {
         const target = document.getElementById(id);
         target?.scrollIntoView({ behavior: "instant" });
@@ -495,12 +506,19 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       const landing = animated && id === "about" ? (refinedCinematics ? refinedLanding : cinematicLocks ? cinematicLanding : triggered ? beatLanding : aboutLanding) : chapters[index]?.enter ?? 0;
       const y = Math.min(offset + landing * dimensions.current.height, root.offsetHeight - dimensions.current.height + offset);
       resizeTarget = null;
+      focus = push && index >= 0 ? index : null;
+      if (rewind && cinematic) {
+        direct = null;
+        rewindDestination = id;
+        cinematic.rewind(rewind);
+        queue();
+        return;
+      }
       const fromHome = lastRawProgress < .24;
       lastRawProgress = (y - offset) / dimensions.current.height;
       snapPresentation = true;
       const filmObject = animated && id === "about" && fromObject && !cinematicLocks;
       direct = fromObject && index >= 0 && !filmObject && !cinematicLocks ? { index, start: performance.now(), scroll: y, fromHome } : null;
-      focus = push && index >= 0 ? index : null;
       window.scrollTo({ top: y, behavior: filmObject ? "smooth" : "instant" });
       scrollChanged = true;
       if (push && id === "home") root.focus({ preventScroll: true });
@@ -515,6 +533,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     };
     function restoreLocation() {
       cinematic?.cancel();
+      if (navigationPolish) focus = null;
       snapPresentation = true;
       const hasLocation = chapters.find(item => "#" + item.id === location.hash);
       const saved = history.state?.phase5dReturn;
@@ -592,7 +611,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       removeEventListener("hashchange", restoreLocation);
       if (triggered || scrollFrames || cinematicLocks) removeEventListener("popstate", restoreLocation);
     };
-  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm, triggered, scrollFrames, pausedPolish, cinematicLocks, refinedCinematics]);
+  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm, triggered, scrollFrames, pausedPolish, cinematicLocks, refinedCinematics, navigationPolish]);
 
   function follow(event: MouseEvent<HTMLAnchorElement>, id: InteractionId | "home") {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -613,7 +632,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
   }
 
   return <main onClickCapture={rememberCaseStudy} ref={track} id="main-content" tabIndex={-1} className="pd-journey" style={animated ? { "--animated-height": `${refinedCinematics ? refinedHeight : animationHeight}svh` } as React.CSSProperties : undefined} data-cinematic="false">
-    {cinematicLocks && <button type="button" className="pl-skip" hidden>Skip transition</button>}
+    {cinematicLocks && !navigationPolish && <button type="button" className="pl-skip" hidden>Skip transition</button>}
     <header ref={nav} className="pc-header" data-theme={adaptive ? "light" : undefined}>
       <a href="#home" onClick={e => follow(e,"home")}>Ruizhe Lai</a>
       <nav aria-label="Workspace navigation">

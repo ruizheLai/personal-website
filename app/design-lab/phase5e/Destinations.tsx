@@ -23,14 +23,14 @@ const exhibition = [
   { name: "WillDo", caption: "In Development", artwork: <WillDo /> },
 ];
 
-export function Projects() {
+export function Projects({ cleanHeaders = false }: { cleanHeaders?: boolean } = {}) {
   return <div className="pd-projects" aria-label="Projects">
     {exhibition.map(({ name, caption, artwork }, index) =>
       <section className="pd-project" data-project={index} key={name} aria-label={name}>
         <h2 className="pe-strip-heading">
           <span className="pd-project-strip pe-strip-static"><span>{name}</span><small>{caption}</small></span>
           <button className="pd-project-strip pe-strip-control" type="button" data-project-jump={index} aria-expanded={index === 0} aria-controls={`pe-project-${index}`}>
-            <span>{name}</span><small>{caption}</small><span className="pe-strip-arrow" aria-hidden="true">↗</span>
+            <span>{name}</span><small>{caption}</small>{!cleanHeaders && <span className="pe-strip-arrow" aria-hidden="true">↗</span>}
           </button>
         </h2>
         <div className="pd-project-body" id={`pe-project-${index}`} tabIndex={-1}>{artwork}</div>

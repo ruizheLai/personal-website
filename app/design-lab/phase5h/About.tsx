@@ -13,7 +13,7 @@ function Still({ name }: { name: string }) {
   return <Image className="ph-still" src={`${mediaRoot}/${name}.webp`} alt="" width={940} height={940} unoptimized />;
 }
 
-export default function About({ motion }: { motion?: ReactNode }) {
+export default function About({ motion, educationDetails = false }: { motion?: ReactNode; educationDetails?: boolean }) {
   return <article className="ph-about">
     <div className="ph-screen" aria-hidden="true">
       {motion ?? <canvas className="ph-film" width="940" height="940" />}
@@ -28,8 +28,11 @@ export default function About({ motion }: { motion?: ReactNode }) {
       <section data-copy="education">
         <Still name="education" />
         <h2>From Design to Technology.</h2>
-        <dl className="ph-list"><div data-step="0"><dt>Design</dt><dd>Undergraduate background{motion ? " in Design" : ""}.</dd></div>
-        <div data-step="1"><dt>Master of Information Technology</dt><dd>University of Melbourne.</dd></div></dl>
+        {educationDetails ? <dl className="ph-list pn-education">
+          <div data-step="0"><dt>Bachelor of Design</dt><dd>University of Melbourne</dd><dd className="pn-date">2022 – 2025</dd></div>
+          <div data-step="1"><dt>Master of Information Technology</dt><dd>University of Melbourne</dd><dd className="pn-date">2025 – 2027</dd></div>
+        </dl> : <dl className="ph-list"><div data-step="0"><dt>Design</dt><dd>Undergraduate background{motion ? " in Design" : ""}.</dd></div>
+        <div data-step="1"><dt>Master of Information Technology</dt><dd>University of Melbourne.</dd></div></dl>}
       </section>
       <section data-copy="capabilities">
         <Still name="capabilities" />
