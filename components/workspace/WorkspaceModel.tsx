@@ -119,7 +119,12 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
     return () => { gl.domElement.style.cursor = ""; };
   }, [hovered, secondary.hovered, secondary.dragging, gl]);
   useFrame(({ camera, size }) => {
-    if (frames.current < 3) { frames.current++; invalidate(); if (frames.current === 3) onReady(); }
+    if (frames.current < 3 && size.width > 0 && size.height > 0) {
+      // The previous frames have rendered with the model and its textures resolved.
+      frames.current++;
+      if (frames.current === 3) onReady();
+      else invalidate();
+    }
     camera.updateMatrixWorld();
     const stage=gl.domElement.closest(".workspace-stage") as HTMLElement|null;
     const pose = driver?.textures ? driver.pose : null;

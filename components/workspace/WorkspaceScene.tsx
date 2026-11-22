@@ -14,10 +14,11 @@ import HeroFallback from "./HeroFallback";
 import SceneBoundary from "./SceneBoundary";
 import {useReducedMotion} from "./useReducedMotion";
 import {usePageTransition} from "./PageTransitionProvider";
-type Status="loading"|"ready"|"error"|"unavailable";
+export type WorkspaceStatus="loading"|"ready"|"error"|"unavailable";
 type FocusState={id:FocusId|null;phase:InteractionPhase;revision:number};
-export default function WorkspaceScene({driver,onNavigate,locked=false}:{driver?:JourneyDriver;onNavigate?:(id:InteractionId)=>void;locked?:boolean}){
- const [supported,setSupported]=useState<boolean|null>(null),[status,setStatus]=useState<Status>("loading"),[attempt,setAttempt]=useState(0),[small,setSmall]=useState(false);
+export default function WorkspaceScene({driver,onNavigate,onStatusChange,locked=false}:{driver?:JourneyDriver;onNavigate?:(id:InteractionId)=>void;onStatusChange?:(status:WorkspaceStatus)=>void;locked?:boolean}){
+ const [supported,setSupported]=useState<boolean|null>(null),[status,setStatus]=useState<WorkspaceStatus>("loading"),[attempt,setAttempt]=useState(0),[small,setSmall]=useState(false);
+ useEffect(()=>{onStatusChange?.(status);},[onStatusChange,status]);
  const reducedMotion=useReducedMotion(),stage=useRef<HTMLDivElement>(null),visible=useWorkspaceVisibility(stage);
  const secondaryElements=useRef<SecondaryElements>({anchors:{},labels:[],physics:{},toast:null});
  const {enter,resetRevision}=usePageTransition(),previousReset=useRef(resetRevision);

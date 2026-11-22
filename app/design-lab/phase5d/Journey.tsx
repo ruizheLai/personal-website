@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import WorkspaceHero from "@/components/workspace/WorkspaceHero";
+import { useWorkspaceWelcome } from "@/components/portfolio/useWorkspaceWelcome";
+import { workspaceNavigation } from "@/components/portfolio/workspaceNavigation";
 import type { JourneyDriver } from "@/components/workspace/journey";
 import type { InteractionId } from "@/lib/workspace-config";
 import { aboutLanding, aboutSample, animationChapters, animationHeight, animationWindows, mediaRoot, visibleCopy } from "../phase5h/timeline";
@@ -34,13 +36,15 @@ const transitionHalf = .07;
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
 const ease = (x: number) => { const t = clamp(x); return t * t * (3 - 2 * t); };
 
-export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false, triggered = false, scrollFrames = false, pausedPolish = false, cinematicLocks = false, refinedCinematics = false, navigationPolish = false, bidirectionalNavigation = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean; triggered?: boolean; scrollFrames?: boolean; pausedPolish?: boolean; cinematicLocks?: boolean; refinedCinematics?: boolean; navigationPolish?: boolean; bidirectionalNavigation?: boolean }) {
+export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false, triggered = false, scrollFrames = false, pausedPolish = false, cinematicLocks = false, refinedCinematics = false, navigationPolish = false, bidirectionalNavigation = false, productionExperience = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean; triggered?: boolean; scrollFrames?: boolean; pausedPolish?: boolean; cinematicLocks?: boolean; refinedCinematics?: boolean; navigationPolish?: boolean; bidirectionalNavigation?: boolean; productionExperience?: boolean }) {
   const chapters = refinedCinematics ? refinedChapters : animated ? animationChapters : adaptive ? pacingChapters : rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
   const beatLength = rhythm ? readingBeat : storyBeat;
   const crossfadeHalf = rhythm ? readingCrossfadeHalf : transitionHalf;
   const jump = useRef<(index: number) => void>(() => {});
   const track = useRef<HTMLElement>(null);
   const viewport = useRef<HTMLDivElement>(null);
+  const welcomeIdentity = useRef<HTMLDivElement>(null);
+  const { covering, dismiss: dismissWelcome, loadingPreview, onWorkspaceStatus, status: workspaceStatus } = useWorkspaceWelcome(productionExperience, track, welcomeIdentity);
   const nav = useRef<HTMLElement>(null);
   const navigate = useRef<(id: InteractionId | "home", fromObject?: boolean) => void>(() => {});
   const dimensions = useRef({ width: 0, height: 0, header: 0 });
@@ -493,11 +497,13 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     }
 
     const changeLocation = (id: InteractionId | "home", fromObject = false, push = true) => {
+      if (push) dismissWelcome();
       const interrupted = cinematic?.navigating;
       if (push && interrupted && navigationDestination === id) return;
       const origin = (scrollY - offset) / dimensions.current.height;
-      const canAnimate = cinematic && push && !interrupted;
-      const move = canAnimate && bidirectionalNavigation ? phase5oNavigation(origin, id) : undefined;
+      const canAnimate = cinematic && push && !interrupted && (!productionExperience || workspaceStatus.current === "ready");
+      const natural = canAnimate && productionExperience && fromObject && id !== "home" ? workspaceNavigation(origin, id) : undefined;
+      const move = canAnimate && bidirectionalNavigation && !natural ? phase5oNavigation(origin, id) : undefined;
       const rewind = canAnimate && navigationPolish && !bidirectionalNavigation && !fromObject ? navigationRewind(origin, id) : undefined;
       cinematic?.cancel();
       const index = chapters.findIndex(item => item.id === id);
@@ -518,11 +524,11 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       const y = Math.min(offset + landing * dimensions.current.height, root.offsetHeight - dimensions.current.height + offset);
       resizeTarget = null;
       focus = push && index >= 0 ? index : null;
-      const navigationPlan = move?.plan ?? rewind;
+      const navigationPlan = natural ?? move?.plan ?? rewind;
       if (navigationPlan && cinematic) {
         direct = null;
         navigationDestination = id;
-        cinematic.navigate(navigationPlan, move?.direction ?? -1);
+        cinematic.navigate(navigationPlan, natural ? 1 : move?.direction ?? -1, natural ? "workspace-object" : "top-navigation");
         queue();
         return;
       }
@@ -624,7 +630,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       removeEventListener("hashchange", restoreLocation);
       if (triggered || scrollFrames || cinematicLocks) removeEventListener("popstate", restoreLocation);
     };
-  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm, triggered, scrollFrames, pausedPolish, cinematicLocks, refinedCinematics, navigationPolish, bidirectionalNavigation]);
+  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm, triggered, scrollFrames, pausedPolish, cinematicLocks, refinedCinematics, navigationPolish, bidirectionalNavigation, productionExperience, dismissWelcome, workspaceStatus]);
 
   function follow(event: MouseEvent<HTMLAnchorElement>, id: InteractionId | "home") {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -644,7 +650,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     history.replaceState({ ...history.state, phase5dReturn: window.scrollY }, "");
   }
 
-  return <main onClickCapture={rememberCaseStudy} ref={track} id="main-content" tabIndex={-1} className="pd-journey" style={animated ? { "--animated-height": `${refinedCinematics ? refinedHeight : animationHeight}svh` } as React.CSSProperties : undefined} data-cinematic="false">
+  return <main onClickCapture={rememberCaseStudy} ref={track} id="main-content" tabIndex={-1} className="pd-journey" style={animated ? { "--animated-height": `${refinedCinematics ? refinedHeight : animationHeight}svh` } as React.CSSProperties : undefined} data-cinematic="false" data-welcome={productionExperience ? "boot" : undefined}>
     {cinematicLocks && !navigationPolish && <button type="button" className="pl-skip" hidden>Skip transition</button>}
     <header ref={nav} className="pc-header" data-theme={adaptive ? "light" : undefined}>
       <a href="#home" onClick={e => follow(e,"home")}>Ruizhe Lai</a>
@@ -654,8 +660,12 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     </header>
     <div ref={viewport} className="pd-viewport">
       <div className="pc-workspace" id="home" tabIndex={-1}>
-        <WorkspaceHero driver={driver} onNavigate={id => navigate.current(id,true)} locked={locked} />
-        <div className="pd-identity">
+        <WorkspaceHero driver={driver} onNavigate={id => navigate.current(id,true)} onStatusChange={productionExperience ? onWorkspaceStatus : undefined} locked={locked || covering} />
+        {loadingPreview && <div className="pp-loading-preview">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/workspace_v3_preview.png" width={1600} height={1067} alt="The workspace with its desk, monitor and chair." />
+        </div>}
+        <div className="pd-identity" ref={welcomeIdentity}>
           <h1>Welcome to my workplace.</h1>
           <p>Try interacting with everything—or scroll down for a guided walkthrough.</p>
         </div>

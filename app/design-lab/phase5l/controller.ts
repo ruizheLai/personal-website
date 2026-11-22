@@ -4,6 +4,7 @@ import { aboutEnd, camera, copy, initialPose, mediaBeats, scene, stages, type St
 import { createScrollLock } from "./scrollLock";
 
 type State = "holding" | "preparing" | "playing-forward" | "playing-reverse" | "fast-forwarding" | "rewinding" | "settling" | "error";
+export type NavigationIntent = "scroll" | "workspace-object" | "top-navigation";
 export type CinematicNavigation = {
   anchor: number;
   target: number;
@@ -162,7 +163,7 @@ export function createCinematic(
     wake();
   }
 
-  function begin(stage: Stage, direction: 1 | -1, navigation?: CinematicNavigation) {
+  function begin(stage: Stage, direction: 1 | -1, navigation?: CinematicNavigation, intent: NavigationIntent = "scroll") {
     const target = navigation?.target ?? (direction > 0 ? stage.end + clearance : Math.max(0, stage.start - clearance));
     const anchor = navigation?.anchor ?? (direction > 0 ? stage.start - clearance : stage.end + clearance);
     const url = navigation?.source ?? (direction > 0 ? stage.media?.forward : stage.media?.reverse);
@@ -176,10 +177,11 @@ export function createCinematic(
     posterGeneration++;
     pendingPose = "";
     root.dataset.cinematicStage = stage.id;
+    root.dataset.cinematicIntent = intent;
     root.dataset.cinematicDirection = direction > 0 ? "forward" : "reverse";
     lock.lock();
     pin(anchor);
-    const playing = navigation
+    const playing = intent === "top-navigation"
       ? direction > 0 ? "fast-forwarding" : "rewinding"
       : direction > 0 ? "playing-forward" : "playing-reverse";
     status(navigation ? playing : "preparing");
@@ -385,9 +387,10 @@ export function createCinematic(
     },
     get active() { return lock.locked; },
     get navigating() { return Boolean(run?.navigation); },
-    navigate(navigation: CinematicNavigation, direction: 1 | -1) {
+    navigate(navigation: CinematicNavigation, direction: 1 | -1, intent: NavigationIntent = "top-navigation") {
       const { anchor, target, duration } = navigation;
-      begin({ id: direction > 0 ? "navigation-forward" : "navigation-rewind", start: Math.min(anchor, target), end: Math.max(anchor, target), duration }, direction, navigation);
+      const id = intent === "workspace-object" ? "workspace-object" : direction > 0 ? "navigation-forward" : "navigation-rewind";
+      begin({ id, start: Math.min(anchor, target), end: Math.max(anchor, target), duration }, direction, navigation, intent);
     },
     cancel() {
       stopVideo(run);

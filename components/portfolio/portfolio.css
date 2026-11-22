@@ -1,0 +1,40 @@
+html:has(.pp-portfolio [data-welcome=boot]):not(:has(.pp-portfolio .pd-layer:target)),
+html:has(.pp-portfolio :is([data-welcome=intro],[data-welcome=revealing])) {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.pp-portfolio { --welcome-scale: 1.17; --welcome-entrance: 500ms; }
+.pp-portfolio .pd-identity > :is(h1,p) { width: fit-content; }
+
+.pp-portfolio :is([data-welcome=boot]:not(:has(.pd-layer:target)),[data-welcome=intro]) .pd-identity {
+  position: fixed;
+  z-index: 4;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  transform: translate(-50%,-50%) scale(var(--welcome-scale));
+  animation: portfolio-welcome-in var(--welcome-entrance) cubic-bezier(.22,.65,.29,1) both;
+}
+.pp-portfolio :is([data-welcome=boot]:not(:has(.pd-layer:target)),[data-welcome=intro]) .workspace-stage { opacity: 0; }
+.pp-portfolio :is([data-welcome=boot]:not(:has(.pd-layer:target)),[data-welcome=intro],[data-welcome=revealing]) .pd-layer { visibility: hidden; }
+.pp-loading-preview {
+  position: absolute;
+  inset: var(--head) 0 0;
+  background: #fff;
+  pointer-events: none;
+}
+.pp-loading-preview img { width: 100%; height: 100%; object-fit: contain; }
+
+@keyframes portfolio-welcome-in {
+  from { opacity: 0; transform: translate(-50%,calc(-50% + 10px)) scale(var(--welcome-scale)); }
+  to { opacity: 1; transform: translate(-50%,-50%) scale(var(--welcome-scale)); }
+}
+@media (max-width: 600px) {
+  .pp-portfolio { --welcome-scale: 1.07; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pp-portfolio { --welcome-entrance: 0ms; --welcome-scale: 1; }
+}
