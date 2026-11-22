@@ -1,0 +1,73 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "clearance": {
+        "left": 87,
+        "top": 106,
+        "width": 599,
+        "height": 109,
+        "objectPixels": 0
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "clearance": {
+        "left": 62,
+        "top": 101,
+        "width": 599,
+        "height": 61,
+        "objectPixels": 0
+      }
+    },
+    {
+      "width": 768,
+      "height": 900,
+      "clearance": {
+        "left": 47,
+        "top": 99,
+        "width": 599,
+        "height": 57,
+        "objectPixels": 0
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "clearance": {
+        "left": 24,
+        "top": 97,
+        "width": 341,
+        "height": 77,
+        "objectPixels": 0
+      }
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "clearance": {
+        "left": 24,
+        "top": 96,
+        "width": 326,
+        "height": 77,
+        "objectPixels": 0
+      }
+    }
+  ],
+  "checks": [
+    "Only two exact monochrome pairs, with single wheel-driven switches",
+    "Welcome image-region clearance at all widths",
+    "Copy fades on entry and stays hidden during 0.68vh holds",
+    "Neutral desk holds, direct hash reload and resize both directions",
+    "Identical settled monitor projection on forward and reverse",
+    "About hold endpoints and full-opacity reverse for every beat",
+    "No desktop nested scroll; small and rapid real wheel, both directions",
+    "All strips fit, maps expand and collapse",
+    "One full FixLens link and hover for both figures",
+    "Thumbnail-free project strips and WillDo status",
+    "Strip jump, Back from real cases, phone via keyboard",
+    "Mobile touch links, reduced motion, direct refresh, earlier routes"
+  ]
+}

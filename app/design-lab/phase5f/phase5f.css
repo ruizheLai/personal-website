@@ -1,0 +1,8 @@
+.pf-study .pd-journey[data-cinematic=true] { height: 1136svh; overflow-anchor: none; }
+.pf-study .pd-journey .pc-header {
+  color: #ffffff;
+  background: #111111;
+  border-color: #ffffff20;
+  backdrop-filter: none;
+}
+.pf-study .pc-header a:focus-visible { outline: 2px solid #ffffff; }

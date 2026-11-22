@@ -1,0 +1,36 @@
+{
+  "captures": [
+    {
+      "width": 1440,
+      "height": 900,
+      "mode": "true"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "mode": "true"
+    },
+    {
+      "width": 768,
+      "height": 900,
+      "mode": "false"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "mode": "false"
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "mode": "false"
+    }
+  ],
+  "checks": [
+    "Forward and reverse journey, canvas retained",
+    "All project strips visible on desktop",
+    "Keyboard and object entry, browser Back, refresh",
+    "Hover visuals, real case links, mobile touch",
+    "Reduced motion and original routes"
+  ]
+}

@@ -1,4 +1,5 @@
 "use client";
+import type {JourneyDriver} from "../journey";
 import {useEffect,useLayoutEffect,useMemo,useRef,useState,type ReactNode,type RefObject} from "react";
 import {useFrame,useThree,type ThreeEvent} from "@react-three/fiber";
 import {Physics,RigidBody,CylinderCollider,ConvexHullCollider,BallCollider,CuboidCollider,useRapier,useAfterPhysicsStep,type RapierRigidBody} from "@react-three/rapier";
@@ -9,10 +10,10 @@ import {PHYSICS_IDS,type PhysicsBodyId,type SecondaryId} from "@/lib/secondary-c
 import {usePhysicsGrab,type GrabBodies} from "./usePhysicsGrab";
 import type {SecondaryState} from "./useSecondaryInteractions";
 import type {SecondaryElements} from "./SecondaryOverlay";
-export default function TrashBinPhysics({source,anchors,state,elements}:{source:Mesh;anchors:Record<SecondaryId,Object3D>;state:SecondaryState;elements:RefObject<SecondaryElements>}){
+export default function TrashBinPhysics({source,anchors,state,elements,journey}:{source:Mesh;anchors:Record<SecondaryId,Object3D>;state:SecondaryState;elements:RefObject<SecondaryElements>;journey?:JourneyDriver}){
  const [running,setRunning]=useState(true);
  return <Physics gravity={[0,-9.81,0]} timeStep={1/60} updateLoop="independent" interpolate paused={!state.enabled||state.bagFocused||!running} colliders={false}>
-  <BinBodies source={source} anchors={anchors} state={state} elements={elements} setRunning={setRunning}/>
+  <BinBodies source={source} anchors={anchors} state={state} elements={elements} journey={journey} setRunning={setRunning}/>
  </Physics>;
 }
 function PhysicsBody({id,bodies,position,state,onGrab,children}:{id:PhysicsBodyId;bodies:RefObject<GrabBodies>;position:[number,number,number];state:SecondaryState;onGrab:(id:PhysicsBodyId,event:ThreeEvent<PointerEvent>)=>void;children:ReactNode}){
@@ -23,7 +24,7 @@ function PhysicsBody({id,bodies,position,state,onGrab,children}:{id:PhysicsBodyI
   <group {...(id==="bin"?{onPointerDown:(e:ThreeEvent<PointerEvent>)=>onGrab(id,e),onPointerMove:(e:ThreeEvent<PointerEvent>)=>{e.stopPropagation();state.hover("bin");},onPointerOut:()=>state.hover(null),onClick:(e:ThreeEvent<MouseEvent>)=>e.stopPropagation()}:{})}>{children}</group>
  </RigidBody>;
 }
-function BinBodies({source,anchors,state,elements,setRunning}:{source:Mesh;anchors:Record<SecondaryId,Object3D>;state:SecondaryState;elements:RefObject<SecondaryElements>;setRunning:(v:boolean)=>void}){
+function BinBodies({source,anchors,state,elements,journey,setRunning}:{source:Mesh;anchors:Record<SecondaryId,Object3D>;state:SecondaryState;elements:RefObject<SecondaryElements>;setRunning:(v:boolean)=>void;journey?:JourneyDriver}){
  const {world}=useRapier(),{gl,invalidate}=useThree();
  const bodies=useRef<GrabBodies>({bin:null,"paper-1":null,"paper-2":null,"paper-3":null,"paper-4":null});
  const latest=useRef(state);latest.current=state;
@@ -69,7 +70,7 @@ function BinBodies({source,anchors,state,elements,setRunning}:{source:Mesh;ancho
  });
  const scratch=useMemo(()=>({position:new Vector3(),local:new Vector3(),inverse:new Quaternion(),up:new Vector3()}),[]);
  useFrame(({camera,size})=>{
-  const bin=bodies.current.bin;if(!bin)return;
+  const bin=bodies.current.bin;if(!bin||journey?.pose)return;
   const stage=gl.domElement.closest(".workspace-stage") as HTMLElement|null;
   const poses:Record<string,unknown>={};
   scratch.inverse.copy(bin.rotation()).invert();

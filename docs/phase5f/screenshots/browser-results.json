@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "width": 768,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 375,
+      "height": 812
+    }
+  ],
+  "checks": [
+    "Opaque #111111 / white navigation in all captures",
+    "Neutral desk holds, direct hash reload and resize both directions",
+    "Identical settled monitor projection on forward and reverse",
+    "About hold endpoints and full-opacity reverse for every beat",
+    "No desktop nested scroll; small and rapid real wheel, both directions",
+    "All strips fit, maps expand and collapse",
+    "One full FixLens link and hover for both figures",
+    "Thumbnail-free project strips and WillDo status",
+    "Strip jump, Back from real cases, phone via keyboard",
+    "Mobile touch links, reduced motion, direct refresh, earlier routes"
+  ]
+}

@@ -1,20 +1,30 @@
 "use client";
 import { useEffect, useMemo, useRef } from "react";
 import { createPortal, useFrame, useThree } from "@react-three/fiber";
-import { Float32BufferAttribute, MathUtils, Mesh, MeshBasicMaterial, SRGBColorSpace, type Texture } from "three";
+import { Float32BufferAttribute, LinearFilter, MathUtils, Mesh, MeshBasicMaterial, SRGBColorSpace, Source, type Texture } from "three";
+
+import type { InteractionId } from "@/lib/workspace-config";
+import type { JourneyDriver } from "./journey";
 
 // A replaceable image layer on the existing screen/artwork geometry, never the frame border.
-export default function SurfaceArtwork({ surface, texture, kind, active, reducedMotion }: {
-  surface: Mesh; texture: Texture; kind: "portrait" | "screen"; active: boolean; reducedMotion: boolean;
+export default function SurfaceArtwork({ surface, texture, kind, active, reducedMotion, wake, id, completed }: {
+  completed?: Texture; wake?: JourneyDriver; id?: InteractionId; surface: Mesh; texture: Texture; kind: "portrait" | "screen"; active: boolean; reducedMotion: boolean;
 }) {
   const cached = texture;
   const { invalidate } = useThree();
   const amount = useRef(0);
+  const paintedRevision = useRef(-1);
+  const animated = Boolean(completed);
   const prepared = useMemo(() => {
     const texture = cached.clone();
     texture.colorSpace = SRGBColorSpace;
     texture.flipY = true;
     texture.needsUpdate = true;
+    if (animated) {
+      texture.source = new Source(cached.image);
+      texture.generateMipmaps = false;
+      texture.minFilter = LinearFilter;
+    }
     const geometry = surface.geometry.clone();
     geometry.computeBoundingBox();
     const box = geometry.boundingBox!;
@@ -38,16 +48,33 @@ export default function SurfaceArtwork({ surface, texture, kind, active, reduced
     mesh.position.z = 0.0005;
     mesh.renderOrder = 2;
     return { texture, geometry, material, mesh, cropX, cropY };
-  }, [cached, surface, kind]);
+  }, [cached, surface, kind, animated]);
   useEffect(() => { invalidate(); }, [active, invalidate]);
   useEffect(() => () => { prepared.texture.dispose(); prepared.geometry.dispose(); prepared.material.dispose(); }, [prepared]);
   useFrame((_, delta) => {
-    const target = active ? 1 : 0;
+    const portrait = completed && wake?.portrait;
+    if (portrait) {
+      // The projected DOM frame occupies the artwork's exact portal in Phase 5J.
+      if (wake.projectedPortrait) surface.visible = wake.pose?.id !== "about";
+      const live = portrait.mode === "film" && portrait.canvas && portrait.clip === portrait.desiredClip;
+      const fallback = portrait.mode === "completed" || (portrait.mode === "film" && portrait.desiredClip === 5);
+      const image = live ? portrait.canvas : fallback ? completed.image : cached.image;
+      if (prepared.texture.image !== image || (live && paintedRevision.current !== portrait.revision)) {
+        prepared.texture.image = image;
+        prepared.texture.needsUpdate = true;
+        paintedRevision.current = portrait.revision;
+      }
+      return;
+    }
+    const target = active || (wake?.pose?.id === id && (wake?.pose?.approach ?? 0) > .04) ? 1 : 0;
     const next = reducedMotion ? target : MathUtils.damp(amount.current, target, 13, Math.min(delta, 0.06));
     amount.current = Math.abs(next - target) < 0.0002 ? target : next;
-    if (kind === "screen") prepared.material.opacity = amount.current;
+    if (kind === "screen") {
+      prepared.material.opacity = amount.current;
+      if (wake) prepared.mesh.visible = amount.current > 0;
+    }
     else {
-      const scale = 1; // Keep the supplied portrait fully visible, including on hover.
+      const scale = wake ? 1 + amount.current * .024 : 1;
       prepared.mesh.position.z = .0005 + amount.current * .003;
       prepared.texture.repeat.set(prepared.cropX / scale, prepared.cropY / scale);
       prepared.texture.offset.set((1 - prepared.texture.repeat.x) / 2, (1 - prepared.texture.repeat.y) / 2);

@@ -2,10 +2,11 @@
 import { usePageTransition } from "@/components/workspace/PageTransitionProvider";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-const links = [{ href: "/about", label: "About" }, { href: "/projects", label: "Projects" }, { href: "/contact", label: "Contact" }];
+const links = [{ href: "/#about", label: "About" }, { href: "/projects", label: "Projects" }, { href: "/#contact", label: "Contact" }];
 export default function Header() {
   const pathname = usePathname();
   const { cancel } = usePageTransition();
+  if (pathname === "/") return null;
   return (
     <header className="site-header">
       <Link onClick={cancel} href="/" className="wordmark" aria-label="Ruizhe Lai — Home" aria-current={pathname === "/" ? "page" : undefined}>Ruizhe Lai</Link>

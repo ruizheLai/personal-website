@@ -4,12 +4,14 @@ import {useFrame,useThree} from "@react-three/fiber";
 import {Box3,MathUtils,OrthographicCamera,Vector3,type Mesh} from "three";
 import {WORKSPACE_CONFIG as config,type InteractionId} from "@/lib/workspace-config";
 import {backpackCameraTarget} from "@/lib/backpack-focus";
+import type {JourneyDriver} from "./journey";
 export type FocusId=InteractionId|"backpack";
 export type FocusCommand={id:FocusId|null;revision:number};
-export default function CameraController({referenceCamera,surfaces,backpackBounds,command,reducedMotion,onSettled,interactionLocked=false}:{
- referenceCamera:OrthographicCamera;surfaces:Record<InteractionId,Mesh>;backpackBounds:Box3;command:FocusCommand;reducedMotion:boolean;onSettled:()=>void;interactionLocked?:boolean;
+export default function CameraController({referenceCamera,surfaces,backpackBounds,command,reducedMotion,onSettled,interactionLocked=false,driver}:{
+ referenceCamera:OrthographicCamera;surfaces:Record<InteractionId,Mesh>;backpackBounds:Box3;command:FocusCommand;reducedMotion:boolean;onSettled:()=>void;interactionLocked?:boolean;driver?:JourneyDriver;
 }){
  const {size,gl,invalidate,set,get}=useThree();
+ const journeyTargets=useRef<Partial<Record<InteractionId,{position:Vector3;zoom:number}>>>({});
  const zoomTarget=useRef<number>(config.zoom.initial),returnZoom=useRef(1),previousFocus=useRef<FocusId|null>(null);
  const motion=useRef<{from:Vector3;to:Vector3;fromZoom:number;toZoom:number;elapsed:number;duration:number}|null>(null);
  const settled=useRef(onSettled);settled.current=onSettled;
@@ -23,6 +25,20 @@ export default function CameraController({referenceCamera,surfaces,backpackBound
   const width=size.width<768?config.framing.mobileWidth:size.width<1100?config.framing.tabletWidth:config.framing.desktopWidth;
   const height=width/Math.max(size.width/size.height,.1);
   camera.left=-width/2;camera.right=width/2;camera.top=height/2;camera.bottom=-height/2;camera.updateProjectionMatrix();
+  if(driver){
+   const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion);
+   const up=new Vector3(0,1,0).applyQuaternion(camera.quaternion);
+   for(const id of Object.keys(surfaces) as InteractionId[]){
+    const box=new Box3().setFromObject(surfaces[id]);
+    const offset=box.getCenter(new Vector3()).sub(home);
+    const position=home.clone().addScaledVector(right,offset.dot(right)).addScaledVector(up,offset.dot(up));
+    const span=box.getSize(new Vector3());
+    const projectedWidth=span.dot(new Vector3(Math.abs(right.x),Math.abs(right.y),Math.abs(right.z)));
+    const projectedHeight=span.dot(new Vector3(Math.abs(up.x),Math.abs(up.y),Math.abs(up.z)));
+    journeyTargets.current[id]={position,zoom:Math.min(width*.83/projectedWidth,height*.81/projectedHeight)};
+   }
+   driver.invalidate=invalidate;
+  }
   if(command.id&&!previousFocus.current)returnZoom.current=camera.zoom;
   previousFocus.current=command.id;
   const target=home.clone();let targetZoom=returnZoom.current;
@@ -41,8 +57,9 @@ export default function CameraController({referenceCamera,surfaces,backpackBound
   }
   zoomTarget.current=returnZoom.current;
   motion.current={from:camera.position.clone(),to:target,fromZoom:camera.zoom,toZoom:targetZoom,elapsed:0,duration:reducedMotion?0:(command.id?config.focus.duration:config.focus.returnDuration)/1000};invalidate();
- },[size.width,size.height,camera,home,surfaces,backpackBounds,command.id,command.revision,reducedMotion,invalidate]);
+ },[size.width,size.height,camera,home,surfaces,backpackBounds,command.id,command.revision,reducedMotion,invalidate,driver]);
  useEffect(()=>{
+  if(driver)return;
   const element=gl.domElement;
   const wheel=(event:WheelEvent)=>{
    if(interactionLocked||command.id||motion.current||event.ctrlKey||event.metaKey)return;
@@ -54,8 +71,24 @@ export default function CameraController({referenceCamera,surfaces,backpackBound
    event.preventDefault();zoomTarget.current=next;returnZoom.current=next;invalidate();
   };
   element.addEventListener("wheel",wheel,{passive:false});return()=>element.removeEventListener("wheel",wheel);
- },[command.id,interactionLocked,gl,invalidate]);
+ },[command.id,interactionLocked,gl,invalidate,driver]);
  useFrame((_,delta)=>{
+  if(driver?.pose){
+   const {id,approach}=driver.pose;
+   const target=journeyTargets.current[id];
+   if(target){
+    camera.zoom=MathUtils.lerp(config.zoom.initial,target.zoom,approach);
+    // Compensate for zoom so the projected frame stays between its safe endpoints.
+    const pan=driver.whiteWorkspace&&id==="about"?1-(1-approach)*config.zoom.initial/camera.zoom:approach;
+    camera.position.lerpVectors(home,target.position,pan);
+    camera.updateProjectionMatrix();camera.updateMatrixWorld();
+   }
+   return;
+  }
+  if(driver&&!command.id&&!motion.current){
+   camera.position.copy(home);camera.zoom=config.zoom.initial;camera.updateProjectionMatrix();camera.updateMatrixWorld();
+   return;
+  }
   const moving=motion.current;
   if(moving){
    moving.elapsed+=Math.min(delta,.06);const t=moving.duration?Math.min(1,moving.elapsed/moving.duration):1,eased=t*t*(3-2*t);
@@ -64,6 +97,6 @@ export default function CameraController({referenceCamera,surfaces,backpackBound
   }else if(!command.id&&Math.abs(camera.zoom-zoomTarget.current)>.0001){
    camera.zoom=reducedMotion?zoomTarget.current:MathUtils.damp(camera.zoom,zoomTarget.current,config.zoom.damping,Math.min(delta,.06));camera.updateProjectionMatrix();invalidate();
   }
- });
+ },driver?-1:0);
  return null;
 }

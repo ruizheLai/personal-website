@@ -1,0 +1,256 @@
+{
+  "metricsOut": [
+    {
+      "p": 0.43,
+      "clip": 1,
+      "t": 0.5417,
+      "at": 1785.3,
+      "seek": 3,
+      "y": 387,
+      "copy": "",
+      "visible": 0,
+      "mode": "true",
+      "scene": "framed",
+      "turnMs": 116.6999998569488
+    },
+    {
+      "p": 1.24,
+      "clip": 1,
+      "t": 3.0417,
+      "at": 3118.1,
+      "seek": 2,
+      "y": 1116,
+      "copy": "",
+      "visible": 0,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 4.099999999999909
+    },
+    {
+      "p": 2.13,
+      "clip": 2,
+      "t": 0.8333,
+      "at": 4294.6,
+      "seek": 2,
+      "y": 1917,
+      "copy": "",
+      "visible": 0,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 35.2999998092655
+    },
+    {
+      "p": 3.16,
+      "clip": 2,
+      "t": 4.5833,
+      "at": 6086.4,
+      "seek": 3,
+      "y": 2844,
+      "copy": "intro",
+      "visible": 0,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 12.399999999999636
+    },
+    {
+      "p": 4.52,
+      "clip": 3,
+      "t": 2,
+      "at": 7852.1,
+      "seek": 2,
+      "y": 4068,
+      "copy": "education",
+      "visible": 0,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 8.499999856949216
+    },
+    {
+      "p": 5.62,
+      "clip": 3,
+      "t": 4.3333,
+      "at": 9219.9,
+      "seek": 2,
+      "y": 5058,
+      "copy": "education",
+      "visible": 0,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 4.299999856948489
+    },
+    {
+      "p": 6.71,
+      "clip": 4,
+      "t": 1.75,
+      "at": 11119.4,
+      "seek": 3,
+      "y": 6039,
+      "copy": "capabilities",
+      "visible": 1,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 17.499999904632205
+    },
+    {
+      "p": 7.61,
+      "clip": 4,
+      "t": 3.75,
+      "at": 12919.5,
+      "seek": 3,
+      "y": 6849,
+      "copy": "capabilities",
+      "visible": 2,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 3.0999999046325684
+    },
+    {
+      "p": 8.51,
+      "clip": 4,
+      "t": 6.0833,
+      "at": 14285.9,
+      "seek": 2,
+      "y": 7659,
+      "copy": "capabilities",
+      "visible": 3,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 4.999999904632205
+    },
+    {
+      "p": 9.48,
+      "clip": 4,
+      "t": 8.5417,
+      "at": 16118.9,
+      "seek": 2,
+      "y": 8532,
+      "copy": "capabilities",
+      "visible": 4,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 5.799999856948489
+    },
+    {
+      "p": 11.24,
+      "clip": 5,
+      "t": 4.7917,
+      "at": 17303.7,
+      "seek": 3,
+      "y": 10116,
+      "copy": "interests",
+      "visible": 0,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 3.7000000000007276
+    },
+    {
+      "p": 12.51,
+      "clip": 5,
+      "t": 7.8333,
+      "at": 19152.5,
+      "seek": 2,
+      "y": 11259,
+      "copy": "",
+      "visible": 0,
+      "mode": "true",
+      "scene": "framed",
+      "turnMs": 10.5
+    },
+    {
+      "p": 12.51,
+      "direction": "reverse",
+      "clip": 5,
+      "t": 7.8333,
+      "at": 19152.5,
+      "seek": 2,
+      "y": 11259,
+      "copy": "",
+      "visible": 0,
+      "mode": "true",
+      "scene": "framed",
+      "turnMs": 0
+    },
+    {
+      "p": 11.24,
+      "direction": "reverse",
+      "clip": 5,
+      "t": 4.7917,
+      "at": 21505.8,
+      "seek": 4,
+      "y": 10116,
+      "copy": "interests",
+      "visible": 0,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 12.099999952315557
+    },
+    {
+      "p": 9.48,
+      "direction": "reverse",
+      "clip": 4,
+      "t": 8.5417,
+      "at": 21618.4,
+      "seek": 0,
+      "y": 8532,
+      "copy": "capabilities",
+      "visible": 4,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 9.19999995231774
+    },
+    {
+      "p": 8.51,
+      "direction": "reverse",
+      "clip": 4,
+      "t": 6.0833,
+      "at": 21737.7,
+      "seek": 2,
+      "y": 7659,
+      "copy": "capabilities",
+      "visible": 3,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 17.99999995231701
+    },
+    {
+      "p": 7.61,
+      "direction": "reverse",
+      "clip": 4,
+      "t": 3.75,
+      "at": 21838.1,
+      "seek": 2,
+      "y": 6849,
+      "copy": "capabilities",
+      "visible": 2,
+      "mode": "true",
+      "scene": "unframed",
+      "turnMs": 9.599999999998545
+    }
+  ],
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      900
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      375,
+      812
+    ]
+  ],
+  "reducedMotion": [
+    1280,
+    800
+  ]
+}

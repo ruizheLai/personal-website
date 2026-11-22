@@ -1,0 +1,184 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "initial": {
+        "links": [
+          "/projects/fixlens",
+          "/projects/sippy"
+        ],
+        "projects": [
+          "FixLens",
+          "Sippy",
+          "WillDo"
+        ],
+        "willDo": "03 / Future workWillDoIn Development",
+        "scroll": "true"
+      },
+      "midpoint": 0.501,
+      "reversed": 0.501,
+      "about": [
+        "technology",
+        "interaction",
+        "making",
+        "design"
+      ],
+      "contact": {
+        "href": "https://github.com/ruizheLai",
+        "state": "true",
+        "links": 1
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "initial": {
+        "links": [
+          "/projects/fixlens",
+          "/projects/sippy"
+        ],
+        "projects": [
+          "FixLens",
+          "Sippy",
+          "WillDo"
+        ],
+        "willDo": "03 / Future workWillDoIn Development",
+        "scroll": "true"
+      },
+      "midpoint": 0.5,
+      "reversed": 0.503,
+      "about": [
+        "technology",
+        "interaction",
+        "making",
+        "design"
+      ],
+      "contact": {
+        "href": "https://github.com/ruizheLai",
+        "state": "true",
+        "links": 1
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "initial": {
+        "links": [
+          "/projects/fixlens",
+          "/projects/sippy"
+        ],
+        "projects": [
+          "FixLens",
+          "Sippy",
+          "WillDo"
+        ],
+        "willDo": "03 / Future workWillDoIn Development",
+        "scroll": "false"
+      },
+      "midpoint": null,
+      "reversed": null,
+      "about": [
+        "technology",
+        "interaction",
+        "making",
+        "design"
+      ],
+      "contact": {
+        "href": "https://github.com/ruizheLai",
+        "state": "true",
+        "links": 1
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "links": [
+          "/projects/fixlens",
+          "/projects/sippy"
+        ],
+        "projects": [
+          "FixLens",
+          "Sippy",
+          "WillDo"
+        ],
+        "willDo": "03 / Future workWillDoIn Development",
+        "scroll": "false"
+      },
+      "midpoint": null,
+      "reversed": null,
+      "about": [
+        "technology",
+        "interaction",
+        "making",
+        "design"
+      ],
+      "contact": {
+        "href": "https://github.com/ruizheLai",
+        "state": "true",
+        "links": 1
+      }
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "initial": {
+        "links": [
+          "/projects/fixlens",
+          "/projects/sippy"
+        ],
+        "projects": [
+          "FixLens",
+          "Sippy",
+          "WillDo"
+        ],
+        "willDo": "03 / Future workWillDoIn Development",
+        "scroll": "false"
+      },
+      "midpoint": null,
+      "reversed": null,
+      "about": [
+        "technology",
+        "interaction",
+        "making",
+        "design"
+      ],
+      "contact": {
+        "href": "https://github.com/ruizheLai",
+        "state": "true",
+        "links": 1
+      }
+    },
+    {
+      "route": "/",
+      "preserved": true
+    },
+    {
+      "route": "/projects",
+      "preserved": true
+    },
+    {
+      "route": "/projects/fixlens",
+      "preserved": true
+    },
+    {
+      "route": "/projects/sippy",
+      "preserved": true
+    },
+    {
+      "route": "/about",
+      "preserved": true
+    },
+    {
+      "route": "/contact",
+      "preserved": true
+    },
+    {
+      "route": "/design-lab/phase5a",
+      "preserved": true
+    }
+  ],
+  "reducedMotion": true,
+  "errors": []
+}

@@ -2,7 +2,7 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, type RefObject } from "react";
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import { useGLTF, useTexture } from "@react-three/drei";
-import { Mesh, MeshStandardMaterial, Object3D, OrthographicCamera, ShadowMaterial, Vector3, type Material } from "three";
+import { Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, OrthographicCamera, ShadowMaterial, Vector3, type Material } from "three";
 import { INTERACTIONS, MODEL_URL, type Interaction, type InteractionId, type SurfaceRect } from "@/lib/workspace-config";
 import CameraController, { type FocusCommand } from "./CameraController";
 import ChairController from "./ChairController";
@@ -16,6 +16,7 @@ import BackpackIcons from "./secondary/BackpackIcons";
 import { backpackLayout } from "@/lib/backpack-layout";
 import PhysicsBoundary from "./secondary/PhysicsBoundary";
 import SurfaceArtwork from "./SurfaceArtwork";
+import {journeyTextures,type JourneyDriver} from "./journey";
 const TrashBinPhysics = lazy(() => import("./secondary/TrashBinPhysics"));
 export type OverlayElements = Partial<Record<InteractionId, HTMLDivElement | null>>;
 export type SurfaceRects = Partial<Record<InteractionId, SurfaceRect>>;
@@ -32,30 +33,34 @@ function secondaryFor(object: Object3D): SecondaryId | null {
   }
   return null;
 }
-export default function WorkspaceModel({ reducedMotion, onReady, active, hovered, command, onSettled, onHoverChange, onActivate, onReset, overlays, rects, secondary, secondaryElements, visible }: {
+export default function WorkspaceModel({ reducedMotion, onReady, active, hovered, command, onSettled, onHoverChange, onActivate, onReset, overlays, rects, secondary, secondaryElements, visible, driver }: {
   reducedMotion: boolean; onReady: () => void; active: InteractionId | null; hovered: InteractionId | null;
   command: FocusCommand; onSettled: () => void;
   onHoverChange: (value: InteractionId | null) => void; onActivate: (id: InteractionId) => void; onReset: () => void;
   overlays: RefObject<OverlayElements>; rects: RefObject<SurfaceRects>;
-  secondary: SecondaryState; secondaryElements: RefObject<SecondaryElements>; visible: boolean;
+  secondary: SecondaryState; secondaryElements: RefObject<SecondaryElements>; visible: boolean; driver?: JourneyDriver;
 }) {
   const asset = useGLTF(MODEL_URL);
   // Suspend the complete scene until every visible image is available.
-  const textures = useTexture(INTERACTIONS.map(item => item.image));
+  const textures = useTexture(driver?.textures ?? (driver ? journeyTextures : INTERACTIONS.map(item => item.image)));
   const { gl, invalidate, size, events } = useThree();
   const frames = useRef(0);
+  const animatedPortrait = Boolean(driver?.portrait);
+  const whiteWorkspace = Boolean(driver?.whiteWorkspace);
   const prepared = useMemo(() => {
     const model = asset.scene.clone(true);
     const ownedMaterials: Material[] = [];
     model.traverse(object => {
       if (!(object instanceof Mesh)) return;
-      object.castShadow = object.name !== "Floor" && object.name !== "SeamlessWall";
+      const environment = object.name === "Floor" || object.name === "SeamlessWall";
+      object.castShadow = !environment && !(whiteWorkspace && object.name === "FrameArtwork");
       object.receiveShadow = true;
       const originals = Array.isArray(object.material) ? object.material : [object.material];
       const materials = originals.map(original => {
-        const material = original.clone(); ownedMaterials.push(material);
+        const material = whiteWorkspace && environment ? new MeshBasicMaterial({ color: "#ffffff", toneMapped: false, side: original.side }) : original.clone();
+        ownedMaterials.push(material);
         if (material instanceof MeshStandardMaterial) {
-          if (object.name === "Floor" || object.name === "SeamlessWall") material.emissive.setRGB(3.5, 3.5, 3.5);
+          if (environment) material.emissive.setRGB(3.5, 3.5, 3.5);
           if (object.name === "MonitorScreen" || object.name === "PhoneScreen") {
             material.color.set("#070a0c"); material.emissive.set(0); material.roughness = .18; material.metalness = .2;
           }
@@ -64,6 +69,16 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
       });
       object.material = Array.isArray(object.material) ? materials : materials[0];
     });
+    if (animatedPortrait) {
+      for (const name of ["FrameBacking", "FrameBottom", "FrameLeft", "FrameRight", "FrameTop"]) {
+        const piece = model.getObjectByName(name);
+        if (piece instanceof Mesh) {
+          piece.visible = false;
+          piece.castShadow = false;
+          piece.raycast = () => {};
+        }
+      }
+    }
     const graphic = model.getObjectByName("ArtworkGraphic");
     if (graphic) graphic.visible = false;
     model.updateMatrixWorld(true);
@@ -97,29 +112,42 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
       secondaryObjects[id as SecondaryId] = object;
     }
     return { model, secondaryObjects, binSource: secondaryObjects.bin as Mesh, chair, camera, ownedMaterials, surfaces, corners, shadowFloor, shadowMaterial, shadowWall, wallShadowMaterial };
-  }, [asset.scene]);
+  }, [asset.scene, animatedPortrait, whiteWorkspace]);
   useEffect(() => () => { prepared.ownedMaterials.forEach(material => material.dispose()); prepared.shadowMaterial.dispose(); prepared.wallShadowMaterial.dispose(); }, [prepared]);
   useEffect(() => {
     gl.domElement.style.cursor = secondary.dragging ? "grabbing" : hovered || secondary.hovered ? "pointer" : "";
     return () => { gl.domElement.style.cursor = ""; };
   }, [hovered, secondary.hovered, secondary.dragging, gl]);
   useFrame(({ camera, size }) => {
-    if (frames.current < 3) { frames.current++; invalidate(); if (frames.current === 3) onReady(); }
+    if (frames.current < 3 && size.width > 0 && size.height > 0) {
+      // The previous frames have rendered with the model and its textures resolved.
+      frames.current++;
+      if (frames.current === 3) onReady();
+      else invalidate();
+    }
     camera.updateMatrixWorld();
     const stage=gl.domElement.closest(".workspace-stage") as HTMLElement|null;
-    if(stage){
+    const pose = driver?.textures ? driver.pose : null;
+    if(stage && !pose){
       stage.dataset.cameraPosition=JSON.stringify(camera.position);
       stage.dataset.cameraQuaternion=JSON.stringify(camera.quaternion.toArray());
       stage.dataset.cameraZoom=String(camera.zoom);
       stage.dataset.workspacePosition=JSON.stringify(prepared.model.getWorldPosition(new Vector3()));
       stage.dataset.backpackPosition=JSON.stringify(prepared.secondaryObjects.backpack.getWorldPosition(new Vector3()));
     }
-    const canvasRect = gl.domElement.getBoundingClientRect();
+    if (pose && !driver?.portal) return;
+    const canvasRect = pose ? null : gl.domElement.getBoundingClientRect();
     for (const item of INTERACTIONS) {
+      if (pose && item.id !== pose.id) continue;
       const points = prepared.corners[item.id].map(p => p.clone().project(camera));
       const xs = points.map(p => (p.x * .5 + .5) * size.width), ys = points.map(p => (-p.y * .5 + .5) * size.height);
       const left = Math.min(...xs), top = Math.min(...ys), width = Math.max(...xs) - left, height = Math.max(...ys) - top;
-      rects.current[item.id] = { left: canvasRect.left + left, top: canvasRect.top + top, width, height };
+      if (pose) {
+        driver?.project(item.id, { left, top, width, height });
+        continue;
+      }
+      rects.current[item.id] = { left: canvasRect!.left + left, top: canvasRect!.top + top, width, height };
+      driver?.project(item.id, rects.current[item.id]!);
       const element = overlays.current[item.id];
       if (element) {
         element.style.transform = `translate3d(${left + width / 2}px,${top + height / 2}px,0)`;
@@ -150,16 +178,16 @@ export default function WorkspaceModel({ reducedMotion, onReady, active, hovered
     else { secondary.closeBag(); if (interaction) onActivate(interaction.id); else onReset(); }
   };
   return <>
-    <CameraController referenceCamera={prepared.camera} surfaces={prepared.surfaces} backpackBounds={bagLayout.bounds} command={command} reducedMotion={reducedMotion} onSettled={onSettled} interactionLocked={secondary.dragging} />
-    <PhysicsBoundary><Suspense fallback={null}><TrashBinPhysics source={prepared.binSource} anchors={prepared.secondaryObjects} state={secondary} elements={secondaryElements} /></Suspense></PhysicsBoundary>
+    <CameraController referenceCamera={prepared.camera} surfaces={prepared.surfaces} backpackBounds={bagLayout.bounds} command={command} reducedMotion={reducedMotion} onSettled={onSettled} interactionLocked={secondary.dragging} driver={driver} />
+    <PhysicsBoundary><Suspense fallback={null}><TrashBinPhysics source={prepared.binSource} anchors={prepared.secondaryObjects} state={secondary} elements={secondaryElements} journey={driver?.textures ? driver : undefined} /></Suspense></PhysicsBoundary>
     <BackpackInteraction model={prepared.model} open={secondary.bagOpen} reducedMotion={reducedMotion} />
     <MugInteraction mug={prepared.secondaryObjects.mug} hovered={secondary.hovered === "mug"} pulse={secondary.mugPulse} reducedMotion={reducedMotion} visible={visible && !command.id} />
     <BackpackIcons layout={bagLayout} state={secondary} elements={secondaryElements} reducedMotion={reducedMotion} visible={visible} />
-    <SecondaryProjection objects={prepared.secondaryObjects} elements={secondaryElements} />
+    <SecondaryProjection objects={prepared.secondaryObjects} elements={secondaryElements} journey={driver?.textures ? driver : undefined} />
     <ChairController chair={prepared.chair} reducedMotion={reducedMotion} />
     <primitive object={prepared.model} dispose={null} onPointerMove={move} onPointerOut={() => { onHoverChange(null); secondary.hover(null); }} onClick={click} />
     <primitive object={prepared.shadowFloor} dispose={null} />
     <primitive object={prepared.shadowWall} dispose={null} />
-    {INTERACTIONS.map((item, index) => <SurfaceArtwork key={item.id} surface={prepared.surfaces[item.id]} texture={textures[index]} kind={item.id === "about" ? "portrait" : "screen"} active={active === item.id || command.id === item.id} reducedMotion={reducedMotion} />)}
+    {INTERACTIONS.map((item, index) => <SurfaceArtwork key={item.id} surface={prepared.surfaces[item.id]} texture={textures[index]} completed={item.id === "about" ? textures[3] : undefined} kind={item.id === "about" ? "portrait" : "screen"} active={Boolean(driver && !driver.textures) || active === item.id || command.id === item.id} wake={driver?.textures ? driver : undefined} id={item.id} reducedMotion={reducedMotion} />)}
   </>;
 }
