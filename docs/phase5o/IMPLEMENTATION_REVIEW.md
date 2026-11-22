@@ -17,9 +17,11 @@ The scroll timeline uses the same media files, animation bounds, landing poses a
 | Build & Iterate | 211–216 | 191–205 | The working phone and laptop replace the mockups |
 | Beyond Work | 99–115 | 59–86 | The Chelsea shirt is established as the equipment arrives |
 
-Cross-chapter changes keep the previous copy in view until a seven-frame fade into the next cue. Same-chapter changes add the new line while keeping the previous ones visible. Both directions use the same frame mapping. In the abbreviated frame entry, the Introduction still follows the same original gesture.
+Cross-chapter changes fade the previous copy down to 20% over seven frames, then bring in the next copy from 20% at the cue. The low-opacity handoff keeps a single active heading and avoids a blank between chapters. Same-chapter changes add the new line while keeping the previous ones visible. Both directions use the same frame mapping. In the abbreviated frame entry, the Introduction still follows the same original gesture.
 
-In the 1440 × 900 Chrome wheel walkthrough, the Introduction first appeared at 91% of the entrance, effectively full at 99%. The earlier copy was effectively full at 64% and 87% for the two Education actions, 68%, 59%, 60% and 68% for the four Capabilities, and 72% for Beyond Work. The programmer cue remains later in its action so the outfit change can finish.
+In the 1440 × 900 Chrome wheel walkthrough, the Introduction first appeared at 91% of the entrance, effectively full at 99%. The earlier copy was effectively full at 64% and 87% for the two Education actions, 67%, 59%, 60% and 69% for the four Capabilities, and 72% for Beyond Work. The programmer cue remains later in its action so the outfit change can finish.
+
+Reverse wheel tests checked the transition from Beyond Work to Capabilities and the removal of Design the Experience on the way back to Research the People. Each sample retained a single active chapter and the correct number of entries at the reading hold.
 
 ## Projects and Contact
 
@@ -29,7 +31,7 @@ The Contact phone keeps WeChat, Facebook, LinkedIn and GitHub in its original to
 
 ## Verification
 
-TypeScript, the production build and the existing workspace interaction checks passed. The build emitted a Next.js dependency advisory.
+TypeScript and the existing workspace interaction checks passed. The browser tests used the compiled production build. The local build emitted a Next.js dependency advisory.
 
 Chrome verified both expanded and collapsed labels on the cinematic layouts at 1920 × 1080, 1440 × 900 and 1024 × 768. The 768 × 900, 390 × 844 and 375 × 812 layouts kept aligned labels and readable Contact content in the static flow. At all six sizes the full email was a link in the accessibility tree and fit within the layout. The tablet resize exercise exposed stale coordinates for offscreen 3D controls, so the static workspace now clips its own scene projections to its bounds.
 
