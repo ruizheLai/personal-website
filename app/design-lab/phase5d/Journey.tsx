@@ -8,6 +8,8 @@ import { aboutLanding, aboutSample, animationChapters, animationHeight, animatio
 import { createScrubber } from "../phase5h/scrubber";
 import { entry, exitEnd, finalPoster, frameCamera, initialPoster, landing as beatLanding } from "../phase5i/beats";
 import { createBeatPlayer } from "../phase5i/player";
+import { createCinematic } from "../phase5l/controller";
+import { aboutLanding as cinematicLanding } from "../phase5l/timeline";
 import { createFrameRenderer } from "../phase5j/renderer";
 import { pacingChapters, pacingWindows } from "../phase5g/pacing";
 import { glide, presentScroll, projectCurves, projectStops, readingBeat, readingCrossfadeHalf, rhythmChapters } from "../phase5f/rhythm";
@@ -28,7 +30,7 @@ const transitionHalf = .07;
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
 const ease = (x: number) => { const t = clamp(x); return t * t * (3 - 2 * t); };
 
-export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false, triggered = false, scrollFrames = false, pausedPolish = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean; triggered?: boolean; scrollFrames?: boolean; pausedPolish?: boolean }) {
+export default function Journey({ about, projects, contact, polish = false, rhythm = false, adaptive = false, animated = false, triggered = false, scrollFrames = false, pausedPolish = false, cinematicLocks = false }: { about: ReactNode; projects: ReactNode; contact: ReactNode; polish?: boolean; rhythm?: boolean; adaptive?: boolean; animated?: boolean; triggered?: boolean; scrollFrames?: boolean; pausedPolish?: boolean; cinematicLocks?: boolean }) {
   const chapters = animated ? animationChapters : adaptive ? pacingChapters : rhythm ? rhythmChapters : polish ? phase5eChapters : phase5dChapters;
   const beatLength = rhythm ? readingBeat : storyBeat;
   const crossfadeHalf = rhythm ? readingCrossfadeHalf : transitionHalf;
@@ -48,10 +50,10 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
   const [locked, setLocked] = useState(false);
   const [driver] = useState<JourneyDriver>(() => ({
     pose: null,
-    whiteWorkspace: triggered || scrollFrames,
-    projectedPortrait: scrollFrames,
+    whiteWorkspace: triggered || scrollFrames || cinematicLocks,
+    projectedPortrait: scrollFrames || cinematicLocks,
     portrait: animated ? { canvas: null, revision: 0, mode: "start", clip: 0, desiredClip: 0 } : undefined,
-    textures: [scrollFrames ? "/images/phase5j/1/000.webp" : triggered ? initialPoster : animated ? mediaRoot + "/start-1.webp" : "/images/phase5d/avatar.webp", `/images/${polish ? "phase5e" : "phase5d"}/monitor.webp`, `/images/${polish ? "phase5e" : "phase5d"}/phone.webp`, ...(animated ? [scrollFrames ? "/images/phase5j/5/216.webp" : triggered ? finalPoster : mediaRoot + "/completed.webp"] : [])],
+    textures: [scrollFrames ? "/images/phase5j/1/000.webp" : triggered || cinematicLocks ? initialPoster : animated ? mediaRoot + "/start-1.webp" : "/images/phase5d/avatar.webp", `/images/${polish ? "phase5e" : "phase5d"}/monitor.webp`, `/images/${polish ? "phase5e" : "phase5d"}/phone.webp`, ...(animated ? [scrollFrames ? "/images/phase5j/5/216.webp" : triggered || cinematicLocks ? finalPoster : mediaRoot + "/completed.webp"] : [])],
     project(id, rect) {
       const active = crop.current;
       if (!active) return;
@@ -85,7 +87,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
         }
       }
       const inset = [rect.top, width - rect.left - rect.width, height - header - rect.top - rect.height, rect.left];
-      active.element.style.clipPath = `inset(${inset.map(n => (Math.max(0,n)*k).toFixed(1) + "px").join(" ")} round ${(((triggered || scrollFrames) && id === "about" ? 0 : 10)*k).toFixed(1)}px)`;
+      active.element.style.clipPath = `inset(${inset.map(n => (Math.max(0,n)*k).toFixed(1) + "px").join(" ")} round ${(((triggered || scrollFrames || cinematicLocks) && id === "about" ? 0 : 10)*k).toFixed(1)}px)`;
     },
   }));
 
@@ -105,6 +107,8 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     const copy = Array.from(view.querySelectorAll<HTMLElement>(".ph-copy section"));
     const frameSurface = scrollFrames ? view.querySelector<HTMLElement>(".pj-media") : null;
     let frameRenderer: ReturnType<typeof createFrameRenderer> | null = null;
+    const cinematicSurface = cinematicLocks ? view.querySelector<HTMLElement>(".pl-media") : null;
+    let cinematic: ReturnType<typeof createCinematic> | null = null;
     let copyKey = "";
     let requestedCopy = "";
     let copyTimer: ReturnType<typeof setTimeout> | undefined;
@@ -225,18 +229,21 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       const rawProgress = (y - offset) / height;
       lastRawProgress = rawProgress;
       const elapsed = lastSample && now - lastSample < 80 ? now - lastSample : 16.7;
-      const progress = rhythm ? presentScroll(rawProgress, presentation, elapsed, snapPresentation || Boolean(direct), animated ? animationWindows : adaptive ? pacingWindows : undefined) : rawProgress;
+      const motion = cinematic?.sample(rawProgress, now, snapPresentation);
+      if (cinematic?.active) queue();
+      const progress = motion?.progress ?? (rhythm ? presentScroll(rawProgress, presentation, elapsed, snapPresentation || Boolean(direct), animated ? animationWindows : adaptive ? pacingWindows : undefined) : rawProgress);
       presentation = progress;
       lastSample = now;
       const forceTarget = snapPresentation;
       snapPresentation = false;
-      if (progress !== rawProgress) queue();
+      if (!motion && progress !== rawProgress) queue();
       player?.update(rawProgress, forceTarget, rawProgress >= chapters[1].start);
       const action = player?.visual();
       // A nearby scroll stop can wait for the current action. A jump to another section cancels it.
       const finishing = action?.busy && rawProgress >= exitEnd && rawProgress < chapters[1].start;
       const waking = action?.busy && rawProgress < entry && action.index === 0;
       const index = direct?.index ?? (finishing || waking ? 0 : chapters.findIndex(v => {
+        if (motion && v.id === "about" && !motion.about) return false;
         const position = scrollFrames && v.id === "about" ? rawProgress : progress;
         return position >= v.start && position < v.end;
       }));
@@ -246,14 +253,15 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
         ? clamp(Math.min((progress - visit.start) / (visit.enter - visit.start), (visit.end - progress) / (visit.end - visit.leave)))
         : 0;
       // The camera parks before the shared passage finishes opening the projected screen.
-      const filmSample = animated && !triggered && !scrollFrames && index === 0 ? aboutSample(progress) : null;
+      const filmSample = animated && !triggered && !scrollFrames && !cinematicLocks && index === 0 ? aboutSample(progress) : null;
       const scrollSample = scrollFrames && index === 0 ? aboutSample(rawProgress) : null;
       const beatSample = action && index === 0 ? frameCamera(action.index, action.fraction, progress) : null;
       if (action?.cameraMotion && index === 0) queue();
-      const approach = scrollSample?.approaching ?? beatSample?.approach ?? filmSample?.approaching ?? (rhythm ? glide(passage / .92) : ease(passage));
-      const reveal = scrollSample ? Math.max(.001, scrollSample.reveal) : beatSample?.reveal ?? filmSample?.reveal ?? (rhythm ? glide((passage - .67) / .33) : ease((approach - .69) / .31));
+      const approach = motion?.about?.approach ?? scrollSample?.approaching ?? beatSample?.approach ?? filmSample?.approaching ?? (rhythm ? glide(passage / .92) : ease(passage));
+      const reveal = motion?.about?.reveal ?? (scrollSample ? Math.max(.001, scrollSample.reveal) : beatSample?.reveal ?? filmSample?.reveal ?? (rhythm ? glide((passage - .67) / .33) : ease((approach - .69) / .31)));
       if (driver.portrait) {
-        const portraitMode = filmSample && reveal < 1 ? "film" : (scrollFrames ? rawProgress >= chapters[0].end : progress >= (triggered ? exitEnd : chapters[0].leave)) ? "completed" : "start";
+        const finish = scrollFrames || cinematicLocks ? chapters[0].end : triggered ? exitEnd : chapters[0].leave;
+        const portraitMode = filmSample && reveal < 1 ? "film" : (scrollFrames ? rawProgress : progress) >= finish ? "completed" : "start";
         if (driver.portrait.mode !== portraitMode) {
           driver.portrait.mode = portraitMode;
           driver.invalidate?.();
@@ -286,6 +294,12 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
             if (chapter + step !== copyKey) paintChapter(chapter, step);
           }
         }
+        if (motion) {
+          const { chapter, step, alpha, line } = motion.text;
+          if (chapter + step !== copyKey) paintChapter(chapter, step);
+          layers[0].style.setProperty("--pl-copy", String(alpha));
+          layers[0].style.setProperty("--pl-line", String(line));
+        }
         if (character) character.dataset.paint = reveal === 1 ? "full" : "handoff";
       }
       const revealChanged = reveal !== previousReveal;
@@ -299,7 +313,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
           previousIntro = intro;
         }
       }
-      const active = reveal > .98 ? index : -1;
+      const active = reveal > .98 && !(cinematic?.active && index > 0) ? index : -1;
       const switched = index !== previousChapter;
 
       if (switched) {
@@ -325,7 +339,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
 
       if (visit && (switched || revealChanged)) {
         const layer = layers[index];
-        const layerOpacity = filmSample || beatSample || scrollSample ? Number(reveal > 0) : polish && index > 0 ? ease(reveal / (rhythm ? .24 : .38)) : reveal;
+        const layerOpacity = filmSample || beatSample || scrollSample || motion?.about ? Number(reveal > 0) : polish && index > 0 ? ease(reveal / (rhythm ? .24 : .38)) : reveal;
         const projected = rhythm && reveal > 0 && reveal < 1 && Boolean(driver.invalidate);
         if (!projected) layer.style.opacity = String(layerOpacity);
         if (polish && index === 2 && !projected) layer.style.setProperty("--contact-arrival", String(ease((reveal - .3) / .7)));
@@ -460,24 +474,31 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       queue();
     }
 
+    function pin(position: number) {
+      const top = Math.min(offset + position * dimensions.current.height, root.offsetHeight - dimensions.current.height + offset);
+      if (Math.abs(scrollY - top) > 1) window.scrollTo({ top, behavior: "instant" });
+      scrollChanged = true;
+    }
+
     const changeLocation = (id: InteractionId | "home", fromObject = false, push = true) => {
+      cinematic?.cancel();
       const index = chapters.findIndex(item => item.id === id);
       const hash = id === "home" ? "" : "#" + id;
-      if (push && location.hash !== hash) history.pushState(null, "", hash || (scrollFrames ? location.pathname + location.search : location.pathname));
+      if (push && location.hash !== hash) history.pushState(null, "", hash || (scrollFrames || cinematicLocks ? location.pathname + location.search : location.pathname));
       if (!media.matches) {
         const target = document.getElementById(id);
         target?.scrollIntoView({ behavior: "instant" });
         if (push) target?.focus({ preventScroll: true });
         return;
       }
-      const landing = animated && id === "about" ? (triggered ? beatLanding : aboutLanding) : chapters[index]?.enter ?? 0;
+      const landing = animated && id === "about" ? (cinematicLocks ? cinematicLanding : triggered ? beatLanding : aboutLanding) : chapters[index]?.enter ?? 0;
       const y = Math.min(offset + landing * dimensions.current.height, root.offsetHeight - dimensions.current.height + offset);
       resizeTarget = null;
       const fromHome = lastRawProgress < .24;
       lastRawProgress = (y - offset) / dimensions.current.height;
       snapPresentation = true;
-      const filmObject = animated && id === "about" && fromObject;
-      direct = fromObject && index >= 0 && !filmObject ? { index, start: performance.now(), scroll: y, fromHome } : null;
+      const filmObject = animated && id === "about" && fromObject && !cinematicLocks;
+      direct = fromObject && index >= 0 && !filmObject && !cinematicLocks ? { index, start: performance.now(), scroll: y, fromHome } : null;
       focus = push && index >= 0 ? index : null;
       window.scrollTo({ top: y, behavior: filmObject ? "smooth" : "instant" });
       scrollChanged = true;
@@ -492,6 +513,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       window.scrollTo({ top: offset + target * dimensions.current.height, behavior: "smooth" });
     };
     function restoreLocation() {
+      cinematic?.cancel();
       snapPresentation = true;
       const hasLocation = chapters.find(item => "#" + item.id === location.hash);
       const saved = history.state?.phase5dReturn;
@@ -507,7 +529,10 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       previousFocus = -2;
       previousProject = -1;
       previousStory = -1;
+      if (media.matches && cinematicSurface) cinematic ??= createCinematic(root, cinematicSurface, pin, queue);
       if (!media.matches) {
+        cinematic?.destroy();
+        cinematic = null;
         setLocked(false);
         root.dataset.away = "false";
         if (!rhythm) header.dataset.dark = "false";
@@ -551,9 +576,10 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
     media.addEventListener("change", adapt);
     addEventListener("scroll", onScroll, { passive: true });
     addEventListener("hashchange", restoreLocation);
-    if (triggered || scrollFrames) addEventListener("popstate", restoreLocation);
+    if (triggered || scrollFrames || cinematicLocks) addEventListener("popstate", restoreLocation);
     return () => {
       player?.reset();
+      cinematic?.destroy();
       frameRenderer?.destroy();
       cancelAnimationFrame(frame);
       observer.disconnect();
@@ -563,9 +589,9 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
       media.removeEventListener("change", adapt);
       removeEventListener("scroll", onScroll);
       removeEventListener("hashchange", restoreLocation);
-      if (triggered || scrollFrames) removeEventListener("popstate", restoreLocation);
+      if (triggered || scrollFrames || cinematicLocks) removeEventListener("popstate", restoreLocation);
     };
-  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm, triggered, scrollFrames, pausedPolish]);
+  }, [adaptive, animated, beatLength, chapters, crossfadeHalf, driver, polish, rhythm, triggered, scrollFrames, pausedPolish, cinematicLocks]);
 
   function follow(event: MouseEvent<HTMLAnchorElement>, id: InteractionId | "home") {
     if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -586,6 +612,7 @@ export default function Journey({ about, projects, contact, polish = false, rhyt
   }
 
   return <main onClickCapture={rememberCaseStudy} ref={track} id="main-content" tabIndex={-1} className="pd-journey" style={animated ? { "--animated-height": `${animationHeight}svh` } as React.CSSProperties : undefined} data-cinematic="false">
+    {cinematicLocks && <button type="button" className="pl-skip" hidden>Skip transition</button>}
     <header ref={nav} className="pc-header" data-theme={adaptive ? "light" : undefined}>
       <a href="#home" onClick={e => follow(e,"home")}>Ruizhe Lai</a>
       <nav aria-label="Workspace navigation">
